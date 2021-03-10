@@ -14,14 +14,25 @@ const Payment = () => {
   const {
     user: { userNumber },
   } = isAuthenticated();
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
-  const { totalValue } = total;
-  const l = total.totalPrice;
+  useEffect(() => {
+    getTotalOfCart();
+    getOrderId();
+  }, []);
+
+  const { totalPrice } = total;
+  const l = totalPrice;
   var am = l * 100;
 
   const options = {
     key: 'rzp_live_1P3qqDk71fnJ6t',
-    amount: 1000, //  = INR 1
+    amount: am, //  =amount to be paid
     currency: 'INR',
     name: 'PetsWonder',
     order_id: order.id,
@@ -59,13 +70,6 @@ const Payment = () => {
     e.preventDefault();
   };
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
-
   const getTotalOfCart = () => {
     getTotal(userNumber)
       .then((data) => {
@@ -89,11 +93,6 @@ const Payment = () => {
         console.log(err);
       });
   };
-
-  useEffect(() => {
-    getTotalOfCart();
-    getOrderId();
-  }, []);
 
   const handleCOD = () => {};
 

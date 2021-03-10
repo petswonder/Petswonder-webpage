@@ -36,14 +36,23 @@ const Book1 = ({
           {comingSoon ? (
             comingS()
           ) : (
-            <div>
-              <button
-                onClick={redirectToPage}
-                type='button'
-                class='btn btn-warning'
-              >
-                <Link to={`/${page}`}>Click me</Link>
-              </button>
+            <div
+              style={{
+                height: '8.1rem',
+                width: '290px',
+                margin: 'auto',
+                padding: '70px 0',
+              }}
+            >
+              <Link to={`/${page}`}>
+                <button
+                  type='button'
+                  class='btn btn-warning'
+                  style={{ padding: '20px', width: '50%' }}
+                >
+                  Click me
+                </button>
+              </Link>
             </div>
           )}
         </div>
