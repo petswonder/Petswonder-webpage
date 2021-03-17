@@ -11,6 +11,13 @@ import dslide3 from '../../images/banners/Drools.PNG';
 import cslide1 from '../../images/banners/ACANA.PNG';
 import cslide2 from '../../images/banners/Farmina.PNG';
 import cslide3 from '../../images/banners/Capt Zack.PNG';
+import { brand } from '../shopping/Brands';
+import jerhigh from '../../images/brands/jerhigh.jpg';
+import pedigree from '../../images/brands/pedigree.png';
+import whiskas from '../../images/brands/whiskas.png';
+import purina from '../../images/brands/purina.png';
+import acana from '../../images/brands/acana.png';
+import drools from '../../images/brands/drools.png';
 
 const Pet = (props) => {
   const [data, setData] = useState([]);
@@ -44,23 +51,29 @@ const Pet = (props) => {
     <div className='container col-12'>
       <div className=' col-12 category'>
         <img className='category-img' src={icon} alt='' />
-        {slider}
       </div>
       <div className='container'>
         <ShoppingCategories pet={pet} />
       </div>
+      <div className='col-12'>{slider}</div>
 
       <div className='container col-12 col-md-12'>
         <h1 className='mt-4 mb-4'>{props.location.nameProps}</h1>
         {/* <Heading text={`Pet ${name}`} /> */}
         <br />
         <div className='row'>
-          {data &&
-            data.map((p, i) => (
-              <div key={i} className='col-xl-3 col-lg-4 col-12 product'>
-                <Card data={p} />
-              </div>
-            ))}
+          <div className='col-12 col-md-12'>
+            <Heading text='Our popular brands' />
+          </div>
+          <br />
+          <div className='row mx-auto p-5'>
+            {brand('pedigree', pedigree)}
+            {brand('jerhigh', jerhigh)}
+            {brand('whiskas', whiskas)}
+            {brand('purina', purina)}
+            {brand('drools', drools)}
+            {brand('acana', acana)}
+          </div>
         </div>
       </div>
     </div>

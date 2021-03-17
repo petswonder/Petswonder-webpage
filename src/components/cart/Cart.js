@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
-import { getCart } from './cartApi';
+import { deleteCart, getCart } from './cartApi';
 import Card from '../core/Card';
 import CheckOut from '../core/CheckOut';
 import { Link } from 'react-router-dom';
@@ -36,6 +36,7 @@ const Cart = () => {
     return (
       <div>
         <h2>Your Cart has {`${items.length}`} items</h2>
+
         <hr />
         {/* {items.map((product, i)=>{
                 return product && <Card key={i} product={product} showAddToButton={false} cartUpdate={true} showRemoveProductButton = {true} />          
@@ -71,6 +72,17 @@ const Cart = () => {
       </h3>
     );
   };
+  //delete items in cart
+  const deleteItemsInCart = () => {
+    deleteCart(userNumber)
+      .then((data) => {
+        console.log(data.status);
+        if (data.status === 'Success') {
+          setItems([]);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Layout
@@ -91,6 +103,14 @@ const Cart = () => {
         <div className='col-md-9 col-12'>
           {/* {JSON.stringify(items[4])} */}
           {items.length > 0 ? showItems(items) : noItemsMessage()}
+          {items.length > 0 ? (
+            <button className='btn btn-danger mb-4' onClick={deleteItemsInCart}>
+              Clear items
+            </button>
+          ) : (
+            <div></div>
+          )}
+          {}
         </div>
         )
       </div>

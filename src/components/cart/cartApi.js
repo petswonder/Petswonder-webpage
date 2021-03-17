@@ -14,6 +14,22 @@ export const addToCart = ({ userNumber, id }) => {
     });
 };
 
+//delete cart items
+export const deleteCart = (userNumber) => {
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/cart/clearCart?userNumber=${userNumber}`,
+    {
+      method: 'POST',
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 //get products of cart
 export const getCart = (userNumber) => {
   return fetch(
