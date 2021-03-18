@@ -32,7 +32,7 @@ const CheckOut = ({ products }) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [total]);
 
   useEffect(() => {
     getProfile(userNumber)
