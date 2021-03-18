@@ -76,26 +76,27 @@ const Card = ({
   const showCartUpdateOptions = (cartUpdate) => {
     return (
       cartUpdate && (
-        <div>
-          <div className='input-group mb-3'>
+        <div style={{ width: '50%', margin: 'auto' }}>
+          <div className='input-group mt-3 mb-3 '>
             <div className='input-group-prepend'>
               <button
                 onClick={decrease}
-                className='input-group-text btn btn-warning'
+                className='input-group-text btn btn-warning rounded-circle'
               >
                 -
               </button>
             </div>
             <input
               type='number'
-              className='form-control'
+              className='form-control text-center'
+              style={{ borderTop: '0', borderLeft: '0', borderRight: '0' }}
               value={count}
               onChange={handleChange(data.productId)}
             />
             <div className='input-group-prepend'>
               <button
                 onClick={increase}
-                className='input-group-text btn btn-warning'
+                className='input-group-text btn btn-warning rounded-circle '
               >
                 +
               </button>
@@ -105,6 +106,7 @@ const Card = ({
       )
     );
   };
+
   const [visible, setVisible] = useState(false);
 
   const toggle = () => setVisible(!visible);
@@ -144,28 +146,30 @@ const Card = ({
               </span>
             </div>
           </div>
-          <div className=''>
-            <Link
-              className='btn btn-outline-warning btn-md mb-2'
-              onClick={handleClick}
-              style={{ textDecorationLine: 'none' }}
-            >
-              Add to Cart{' '}
-            </Link>{' '}
-            {/* <a href="#"><span ><i class="far fa-lg fa-heart" style={{paddingRight:"20px"}}></i></span></a>{' '} */}
-            <Link
-              to={{
-                pathname: `/product/${data.productId}`,
-                productProps: data,
-              }}
-              className='btn btn-danger btn-md mb-2'
-              style={{ textDecorationLine: 'none' }}
-            >
-              {' '}
-              Buy Now{' '}
-            </Link>
-            {'  '}
-          </div>
+          {showAddToButton && (
+            <div className='buttons'>
+              <Link
+                className='btn btn-outline-warning btn-md mb-2'
+                onClick={handleClick}
+                style={{ textDecorationLine: 'none' }}
+              >
+                Add to Cart{' '}
+              </Link>{' '}
+              {/* <a href="#"><span ><i class="far fa-lg fa-heart" style={{paddingRight:"20px"}}></i></span></a>{' '} */}
+              <Link
+                to={{
+                  pathname: `/product/${data.productId}`,
+                  productProps: data,
+                }}
+                className='btn btn-danger btn-md mb-2'
+                style={{ textDecorationLine: 'none' }}
+              >
+                {' '}
+                Buy Now{' '}
+              </Link>
+              {'  '}
+            </div>
+          )}
         </div>
 
         {showCartUpdateOptions(cartUpdate)}

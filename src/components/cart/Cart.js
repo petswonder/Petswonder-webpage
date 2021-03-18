@@ -8,6 +8,9 @@ import { isAuthenticated } from '../auth/index';
 import emptycart from '../../images/emptycart.png';
 
 const Cart = () => {
+  useEffect(() => {
+    getItemsInCart();
+  }, []);
   const [items, setItems] = useState([]);
 
   const {
@@ -18,6 +21,7 @@ const Cart = () => {
   const getItemsInCart = () => {
     getCart(userNumber)
       .then((data) => {
+        console.log(data);
         setItems(data.cart);
       })
       .catch((err) => {
@@ -25,14 +29,9 @@ const Cart = () => {
       });
   };
 
-  useEffect(() => {
-    getItemsInCart();
-  }, []);
-
   // console.log(items);
 
   const showItems = (items) => {
-    console.log(items);
     return (
       <div>
         <h2>Your Cart has {`${items.length}`} items</h2>
@@ -47,10 +46,10 @@ const Cart = () => {
             p && (
               <div
                 key={i}
-                className='col-xl-4 col-lg-6 col-6 product'
+                className='col-xl-4 col-lg-6 col-12 product'
                 style={{ display: 'inline-block' }}
               >
-                <Card data={p} cartUpdate={true} />
+                <Card data={p} cartUpdate={true} showAddToButton={false} />
               </div>
             )
           );
@@ -60,7 +59,7 @@ const Cart = () => {
   };
 
   const noItemsMessage = () => {
-    console.log(items);
+    console.log(items, '$$$');
     return (
       <h3>
         Your Cart is Empty
@@ -93,6 +92,7 @@ const Cart = () => {
       <div className='row'>
         <div className='col-md-3 col-12'>
           <h2 className='mb-4'>Your Cart Summary</h2>
+          {console.log(items, '$')}
           {items.length > 0 ? (
             <CheckOut products={items} />
           ) : (
@@ -112,9 +112,7 @@ const Cart = () => {
           )}
           {}
         </div>
-        )
       </div>
-
       {/* {showItems(items)} */}
     </Layout>
   );

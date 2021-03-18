@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProfile, isAuthenticated } from '../auth/index';
-import { deleteCart, getCart } from '../cart/cartApi';
+import { getCart } from '../cart/cartApi';
 
 const CheckOut = ({ products }) => {
   const [total, setTotal] = useState({});
@@ -12,12 +12,10 @@ const CheckOut = ({ products }) => {
   } = isAuthenticated();
   console.log(userNumber);
 
-  const { totalValue } = total;
-  var amount = totalValue * 100;
-
   const getTotalOfCart = () => {
     getCart(userNumber)
       .then((data) => {
+        console.log(data.cartTotal);
         setTotal(data.cartTotal);
       })
       .catch((error) => {
@@ -45,6 +43,9 @@ const CheckOut = ({ products }) => {
         console.log(error);
       });
   }, []);
+  console.log(total);
+  const { totalValue } = total;
+  var amount = totalValue * 100;
 
   const showCheckOut = () => {
     return isAuthenticated() ? (

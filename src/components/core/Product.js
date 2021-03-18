@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { addToCart } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
 import { Link, Redirect } from 'react-router-dom';
+import { Alert } from 'reactstrap';
 
 const Product = ({ product }) => {
   // const {jwt, user:{userNumber}} = isAuthenticated();
@@ -24,7 +25,7 @@ const Product = ({ product }) => {
       addToCart({ userNumber, id })
         .then((data) => {
           if (data.status === 'Product added to cart') {
-            alert('Product added to cart succesfully!');
+            setVisible(true);
           }
         })
         .catch((err) => {
@@ -88,6 +89,9 @@ const Product = ({ product }) => {
   const relatedProducts = () => {
     return <div>yo</div>;
   };
+  const [visible, setVisible] = useState(false);
+
+  const toggle = () => setVisible(!visible);
 
   return (
     <div className='container particularProduct'>
@@ -105,11 +109,14 @@ const Product = ({ product }) => {
       </div>
 
       <hr />
-
+      <Alert color='success' isOpen={visible} toggle={toggle}>
+        Product has been added to cart
+      </Alert>
       <div className='row'>
         {leftImage()}
         {rightDescription()}
       </div>
+
       {redirect && redirectToSignin()}
     </div>
   );

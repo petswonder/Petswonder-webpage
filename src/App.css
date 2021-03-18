@@ -929,7 +929,8 @@ button {
 }
 
 .akruti-img {
-  height: 180px;
+  object-fit: contain;
+  height: 150px;
 }
 
 #over img {
