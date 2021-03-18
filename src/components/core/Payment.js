@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { getTotal, saveOrder } from '../cart/cartApi';
+import { deleteCart, getTotal, saveOrder } from '../cart/cartApi';
 import { getProfile, isAuthenticated } from '../auth/index';
 import logo from '../../images/logo1.png';
 import Heading from './Heading';
@@ -151,6 +151,7 @@ const Payment = () => {
   };
 
   const redirectToCart = () => {
+    deleteCart(userNumber);
     return <Redirect to='/cart' />;
   };
 
