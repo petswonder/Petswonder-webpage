@@ -7,17 +7,17 @@ export const addToCart = ({ userNumber, id }) => {
     }
   )
     .then((response) => {
+      console.log(userNumber, id);
       return response.json();
     })
     .catch((err) => {
       console.log(err);
     });
 };
-
-//delete cart items
-export const deleteCart = (userNumber) => {
+//get products of cart
+export const getCart = (userNumber) => {
   return fetch(
-    `https://petswonder.co.in/petswonder/api/cart/clearCart?userNumber=${userNumber}`,
+    `https://petswonder.co.in/petswonder/api/cart/getCartProducts?userNumber=${userNumber}`,
     {
       method: 'POST',
     }
@@ -30,10 +30,10 @@ export const deleteCart = (userNumber) => {
     });
 };
 
-//get products of cart
-export const getCart = (userNumber) => {
+//delete cart items
+export const deleteCart = (userNumber) => {
   return fetch(
-    `https://petswonder.co.in/petswonder/api/cart/getCartProducts?userNumber=${userNumber}`,
+    `https://petswonder.co.in/petswonder/api/cart/clearCart?userNumber=${userNumber}`,
     {
       method: 'POST',
     }

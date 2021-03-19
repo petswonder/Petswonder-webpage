@@ -48,7 +48,7 @@ const Card = ({
   const handleChange = (productId) => (e) => {};
 
   const decrease = () => {
-    count > 0 && setCount(count - 1);
+    count >= 0 && setCount(count - 1);
   };
 
   const increase = () => {
