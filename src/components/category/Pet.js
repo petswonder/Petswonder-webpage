@@ -18,8 +18,11 @@ import whiskas from '../../images/brands/whiskas.png';
 import purina from '../../images/brands/purina.png';
 import acana from '../../images/brands/acana.png';
 import drools from '../../images/brands/drools.png';
+import BannerApi from '../core/BannerApi';
 
 const Pet = (props) => {
+  var banners = [];
+  const [items, setItems] = useState([]);
   const [data, setData] = useState([]);
   const icon = icons[`${props.match.params.pet}Icon`];
 
@@ -35,17 +38,24 @@ const Pet = (props) => {
   useEffect(() => {
     const pet = props.match.params.pet;
     getProductByName(pet);
+    getBanners();
     window.scrollTo(0, 0);
   }, []);
 
   const pet = props.match.params.pet;
 
-  var slider;
-  if (pet === 'Dog') {
-    slider = <Slider slide1={dslide1} slide2={dslide2} slide3={dslide3} />;
-  } else if (pet === 'Cat') {
-    slider = <Slider slide1={cslide1} slide2={cslide2} slide3={cslide3} />;
-  }
+  const getBanners = () => {
+    BannerApi()
+      .then((data) => {
+        banners = data.filter((ab) => {
+          return ab.content === 'shopping';
+        });
+        setItems(banners);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className='container col-12'>
@@ -55,7 +65,9 @@ const Pet = (props) => {
       <div className='container'>
         <ShoppingCategories pet={pet} />
       </div>
-      <div className='col-12'>{slider}</div>
+      <div className='col-12'>
+        <Slider banners={items} />
+      </div>
 
       <div className='container col-12 col-md-12'>
         <h1 className='mt-4 mb-4'>{props.location.nameProps}</h1>

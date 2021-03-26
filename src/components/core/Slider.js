@@ -13,26 +13,10 @@ import photo from '../../images/hero_image_01.png';
 
 import slids1 from './imgs/slids1.jpg';
 
-const Slider = ({ slide1, slide2, slide3 }) => {
+const Slider = ({ banners }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const items = [
-    {
-      src: slide1,
-      altText: 'Slide 1',
-      caption: 'Slide 1',
-    },
-    {
-      src: slide2,
-      altText: 'Slide 2',
-      caption: 'Slide 2',
-    },
-    {
-      src: slide3,
-      altText: 'Slide 3',
-      caption: 'Slide 3',
-    },
-  ];
+  const items = banners;
 
   const next = () => {
     if (animating) return;
@@ -56,13 +40,13 @@ const Slider = ({ slide1, slide2, slide3 }) => {
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={item.src}
+        key={item.id}
       >
         <img
           className='slider-images'
           style={{ objectFit: 'fill', height: '23rem' }}
-          src={item.src}
-          alt={item.altText}
+          src={item.bannerName}
+          alt='banner'
         />
         {/* <CarouselCaption captionText={item.caption} captionHeader={item.caption} /> */}
       </CarouselItem>

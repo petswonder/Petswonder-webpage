@@ -19,7 +19,6 @@ const Cart = () => {
   console.log(userNumber);
 
   const getItemsInCart = () => {
-    console.log('HI');
     getCart(userNumber)
       .then((data) => {
         console.log(data);
