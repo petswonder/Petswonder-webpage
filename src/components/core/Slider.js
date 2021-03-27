@@ -44,7 +44,7 @@ const Slider = ({ banners }) => {
       >
         <img
           className='slider-images'
-          style={{ objectFit: 'fill', height: '23rem' }}
+          style={{ objectFit: 'cover', height: '31rem' }}
           src={item.bannerName}
           alt='banner'
         />
