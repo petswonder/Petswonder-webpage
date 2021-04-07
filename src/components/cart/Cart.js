@@ -59,7 +59,6 @@ const Cart = () => {
   };
 
   const noItemsMessage = () => {
-    console.log(items, '$$$');
     return (
       <h3>
         Your Cart is Empty
@@ -93,11 +92,13 @@ const Cart = () => {
         <div className='col-md-3 col-12'>
           <h2 className='mb-4'>Your Cart Summary</h2>
           {console.log(items, '$')}
-          {items.length > 0 ? (
-            <CheckOut products={items} />
-          ) : (
-            <img src={emptycart} alt='' />
-          )}
+
+          {items !== undefined &&
+            (items.length > 0 ? (
+              <CheckOut products={items} />
+            ) : (
+              <img src={emptycart} alt='' />
+            ))}
           {/* <p>show checkout options, payent options</p> */}
         </div>
         <div className='col-md-9 col-12'>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import jerhigh from '../../images/brands/jerhigh.jpg';
-import pedigree from '../../images/brands/pedigree.png';
-import whiskas from '../../images/brands/whiskas.png';
-import purina from '../../images/brands/purina.png';
-import acana from '../../images/brands/acana.png';
-import drools from '../../images/brands/drools.png';
+import Jerhigh from '../../images/brands/jerhigh.jpg';
+import Pedigree from '../../images/brands/pedigree.png';
+import Whiskas from '../../images/brands/whiskas.png';
+import Purina from '../../images/brands/purina.png';
+import Acana from '../../images/brands/acana.png';
+import Drools from '../../images/brands/drools.png';
 
 export const brand = (name, photo) => {
   return (
@@ -49,12 +49,12 @@ const Brands = () => {
       </div>
       <br />
       <div className='row'>
-        {brand('pedigree', pedigree)}
-        {brand('jerhigh', jerhigh)}
-        {brand('whiskas', whiskas)}
-        {brand('purina', purina)}
-        {brand('drools', drools)}
-        {brand('acana', acana)}
+        {brand('Pedigree', Pedigree)}
+        {brand('Jerhigh', Jerhigh)}
+        {brand('Whiskas', Whiskas)}
+        {brand('Purina', Purina)}
+        {brand('Drools', Drools)}
+        {brand('Acana', Acana)}
       </div>
     </div>
   );

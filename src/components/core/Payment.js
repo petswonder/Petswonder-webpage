@@ -4,6 +4,7 @@ import { deleteCart, getTotal, saveOrder } from '../cart/cartApi';
 import { getProfile, isAuthenticated } from '../auth/index';
 import logo from '../../images/logo1.png';
 import Heading from './Heading';
+import { UncontrolledAlert } from 'reactstrap';
 
 const Payment = () => {
   const [total, setTotal] = useState({});
@@ -45,7 +46,7 @@ const Payment = () => {
         razorpaySignature: response.razorpay_signature,
       };
       setData(data);
-      alert(d);
+      console.log(d);
       setRedirect(true);
     },
     theme: {
@@ -157,6 +158,7 @@ const Payment = () => {
 
   return (
     <div className='container'>
+      {d && <UncontrolledAlert color='info'>{d}</UncontrolledAlert>}
       <br />
       {/* <h2 className="mt-8 payment"></h2> */}
       <Heading text='Make Payment' />

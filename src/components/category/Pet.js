@@ -13,11 +13,11 @@ import cslide2 from '../../images/banners/Farmina.PNG';
 import cslide3 from '../../images/banners/Capt Zack.PNG';
 import { brand } from '../shopping/Brands';
 import jerhigh from '../../images/brands/jerhigh.jpg';
-import pedigree from '../../images/brands/pedigree.png';
-import whiskas from '../../images/brands/whiskas.png';
-import purina from '../../images/brands/purina.png';
-import acana from '../../images/brands/acana.png';
-import drools from '../../images/brands/drools.png';
+import Pedigree from '../../images/brands/pedigree.png';
+import Whiskas from '../../images/brands/whiskas.png';
+import Purina from '../../images/brands/purina.png';
+import Acana from '../../images/brands/acana.png';
+import Drools from '../../images/brands/drools.png';
 import BannerApi from '../core/BannerApi';
 
 const Pet = (props) => {
@@ -79,12 +79,12 @@ const Pet = (props) => {
           </div>
           <br />
           <div className='row mx-auto p-5'>
-            {brand('pedigree', pedigree)}
+            {brand('Pedigree', Pedigree)}
             {brand('jerhigh', jerhigh)}
-            {brand('whiskas', whiskas)}
-            {brand('purina', purina)}
-            {brand('drools', drools)}
-            {brand('acana', acana)}
+            {brand('Whiskas', Whiskas)}
+            {brand('Purina', Purina)}
+            {brand('Drools', Drools)}
+            {brand('Acana', Acana)}
           </div>
         </div>
       </div>
