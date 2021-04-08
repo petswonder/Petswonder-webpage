@@ -29,6 +29,7 @@ import AboutUs from './components/core/AboutUs';
 import OrderHistory from './components/core/OrderHistory';
 import PetSnap from './components/petServices/PetSnap';
 import OnlineDoc from './components/petServices/OnlineDoc';
+import Successful from './components/core/Successful';
 
 const App = () => {
   return (
@@ -75,6 +76,7 @@ const App = () => {
           <PrivateRoute exact path='/petGuide' component={PetGuide} />
           <PrivateRoute exact path='/petMate' component={petMate} />
           <PrivateRoute exact path='/petSnap' component={PetSnap} />
+          <PrivateRoute exact path='/success' component={Successful} />
           <PrivateRoute
             exact
             path='/historyPurchase'

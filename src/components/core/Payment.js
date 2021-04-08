@@ -153,7 +153,7 @@ const Payment = () => {
 
   const redirectToCart = () => {
     deleteCart(userNumber);
-    return <Redirect to='/cart' />;
+    return <Redirect to='/success' />;
   };
 
   return (
