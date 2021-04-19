@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { deleteCart, getTotal, saveOrder } from '../cart/cartApi';
+import { deleteCart, getCart, getTotal, saveOrder } from '../cart/cartApi';
 import { getProfile, isAuthenticated } from '../auth/index';
 import logo from '../../images/logo1.png';
 import Heading from './Heading';
 import { UncontrolledAlert } from 'reactstrap';
+import { putOrder } from './OrderApi';
 
-const Payment = () => {
+const Payment = (props) => {
   const [total, setTotal] = useState({});
   const [order, setOrder] = useState({});
   const [redirect, setRedirect] = useState(false);
   const [d, setData] = useState({});
+  const [items, setItems] = useState([]);
+  const address = props.location.state.formData;
 
   const {
     user: { userNumber },
@@ -24,8 +27,20 @@ const Payment = () => {
 
   useEffect(() => {
     getTotalOfCart();
-    getOrderId();
+    // getOrderId();
+    getItemsInCart();
   }, []);
+
+  const getItemsInCart = () => {
+    getCart(userNumber)
+      .then((data) => {
+        console.log(data);
+        setItems(data.cart);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const { totalPrice } = total;
   const l = totalPrice;
@@ -81,21 +96,71 @@ const Payment = () => {
       });
   };
 
-  const getOrderId = () => {
-    const order = {
-      amount: am,
-      currency: 'INR',
+  // const getOrderId = () => {
+  //   const order = {
+  //     amount: am,
+  //     currency: 'INR',
+  //   };
+  //   saveOrder(order)
+  //     .then((data) => {
+  //       setOrder(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  var products = [];
+
+  for (var i = 0; i < items.length; i++) {
+    products.push({
+      productId: items[i].productId,
+      quantityOrdered: items[i].quantity,
+      sellerNumber: items[i].sellerNumber,
+      singleItemPrice: items[i].price,
+      totalItemsPrice: items[i].price * items[i].quantity,
+      discount: total.discount,
+      priceAfterDiscount: total.totalPrice,
+      productTitle: items[i].title,
+    });
+  }
+
+  //Give the order
+  const giveOrderCod = () => {
+    const data = {
+      orderedBy: userNumber,
+      totalPrice: total.totalPrice,
+      paymentType: 'COD',
+      deliveryCharge: total.totalDeliveryCharge,
+      address: {
+        latitude: '0',
+        longitude: '0',
+        state: address.state,
+        city: address.city,
+        addressLine1: address.addressLine1,
+        addressLine2: address.addressLine2,
+        pinCode: address.pinCode,
+        area: address.area,
+      },
+      paymentStatus: 'Pending',
+      orderStatus: 'pending',
+
+      plusPointsEarned: total.totalPlusPoints,
+      promoCodeDetails: {
+        promoCode: '',
+        promoCodeDiscount: 0,
+      },
+      productDetails: products,
     };
-    saveOrder(order)
-      .then((data) => {
-        setOrder(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    saveOrder(data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
-  const handleCOD = () => {};
+  console.log(products, 'products');
+  console.log(items, 'cartitems');
+  const handleCOD = () => {
+    giveOrderCod();
+  };
 
   const showCheckOut = () => {
     return isAuthenticated() ? (
@@ -103,7 +168,7 @@ const Payment = () => {
         <button onClick={openPayModal} className='btn btn-success mb-4 mr-4'>
           Pay Online
         </button>
-        <button onClick={handleCOD()} className='btn btn-success mb-4'>
+        <button onClick={handleCOD} className='btn btn-success mb-4'>
           Cash On Delivery
         </button>
       </div>
@@ -151,14 +216,18 @@ const Payment = () => {
     );
   };
 
+  console.log(address);
+  console.log(items);
+  console.log(total);
+
   const redirectToCart = () => {
-    deleteCart(userNumber);
-    return <Redirect to='/success' />;
+    return <Redirect to='/cart' />;
   };
 
   return (
     <div className='container'>
-      {d && <UncontrolledAlert color='info'>{d}</UncontrolledAlert>}
+      {console.log(d)}
+      {/* {d && <UncontrolledAlert color='info'>{d}</UncontrolledAlert>} */}
       <br />
       {/* <h2 className="mt-8 payment"></h2> */}
       <Heading text='Make Payment' />

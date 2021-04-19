@@ -6,8 +6,10 @@ import { Alert } from 'reactstrap';
 
 const Product = ({ product }) => {
   // const {jwt, user:{userNumber}} = isAuthenticated();
-  console.log(product);
-  const id = product.productID;
+
+  console.log(product, 'state');
+
+  const id = product.productId;
 
   const [redirect, setRedirect] = useState(false);
   const redirectToSignin = () => {
@@ -34,13 +36,11 @@ const Product = ({ product }) => {
     }
   };
 
-  console.log(product);
-
   const leftImage = () => {
     return (
       <div className='col-12 col-md-6' id='over'>
         <img
-          src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${product.productId}.PNG`}
+          src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${product.id}.PNG`}
           alt={product.title}
         />
       </div>

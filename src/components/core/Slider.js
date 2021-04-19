@@ -43,9 +43,9 @@ const Slider = ({ banners }) => {
         key={item.id}
       >
         <img
-          className='slider-images'
+          className='slider-images '
           style={{
-            height: '33vw',
+            height: '39vw',
           }}
           src={item.bannerName}
           alt='banner'

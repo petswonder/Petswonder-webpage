@@ -79,14 +79,17 @@ export const getTotal = (userNumber) => {
 };
 
 export const saveOrder = (order) => {
-  return fetch(`https://petswonder.co.in/petswonder/api/saveOrder/razorpay`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(order),
-  })
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/saveOrder/orderDetails`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: order,
+    }
+  )
     .then((response) => {
       return response.json();
     })

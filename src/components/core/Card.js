@@ -4,6 +4,7 @@ import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
 import notFound from '../../images/notfound.jpg';
 import { Alert } from 'reactstrap';
+import noImage from '../../images/no image.png';
 
 const Card = ({
   data,
@@ -115,14 +116,22 @@ const Card = ({
     <div className='single_courses'>
       <div className='thumb'>
         <Link
-          to={{ pathname: `/product/${data.productId}`, productProps: data }}
+          to={{
+            pathname: `/product/${data.productId}`,
+            state: data,
+          }}
           style={{ textDecorationLine: 'none' }}
         >
           <a className='akruti-a'>
-            <img
-              className='akruti-img'
-              src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-            />
+            {data.productImages ? (
+              <img
+                className='akruti-img'
+                src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
+                alt='No image found'
+              />
+            ) : (
+              <img className='akruti-img' src={noImage} />
+            )}
           </a>
         </Link>
       </div>

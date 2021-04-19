@@ -28,9 +28,9 @@ export const validateOTP = ({ phoneNumber, otp }) => {
     });
 };
 
-export const registerUser = ({ phoneNumber, password, name }) => {
+export const registerUser = ({ phoneNumber, password, name, email }) => {
   return fetch(
-    `https://petswonder.co.in/petswonder/api/register/save?mobileNumber=${phoneNumber}&password=${password}&name=${name}`,
+    `https://petswonder.co.in/petswonder/api/register/save?mobileNumber=${phoneNumber}&password=${password}&name=${name}&email=${email}`,
     {
       method: 'POST',
     }

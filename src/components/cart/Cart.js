@@ -102,7 +102,7 @@ const Cart = () => {
           {/* <p>show checkout options, payent options</p> */}
         </div>
         <div className='col-md-9 col-12'>
-          {/* {JSON.stringify(items[4])} */}
+          {console.log(items)}
           {items.length > 0 ? showItems(items) : noItemsMessage()}
           {items.length > 0 ? (
             <button className='btn btn-danger mb-4' onClick={deleteItemsInCart}>
