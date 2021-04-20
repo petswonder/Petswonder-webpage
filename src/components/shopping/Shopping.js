@@ -33,9 +33,9 @@ const Shopping = () => {
 
   return (
     <div>
+      <Slider banners={items} />
       <Product />
       <ShopByPets />
-      <Slider banners={items} />
 
       <ShopByBrand />
       <PopularProducts />
