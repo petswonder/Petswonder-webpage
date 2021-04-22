@@ -17,8 +17,8 @@ const Customer = () => {
   };
 
   return (
-    <section className='py-5'>
-      <div class='container'>
+    <section className='py-2'>
+      <div class='mx-5'>
         <div class='container'>
           <div class='row'>
             <div class='col-12'>
@@ -28,30 +28,26 @@ const Customer = () => {
           </div>
         </div>
 
-        <div class='container'>
+        <div class=''>
           <div class='row '>
-            <div class='col-md-4'>
+            <div class='col-md-3'>
               {services(
                 'stethoscope',
                 'Online Vet Doctor',
-                'We are available 24/7 with the promise to provide intuitive, reassuring and informative service.'
+                'We are available 24/7 online vet consultation.'
               )}
             </div>
-            <div class='col-md-4'>
+            <div class='col-md-3'>
               {services(
                 'scissors',
                 'Pet Grooming',
-                'Servicing your pet with style. "A groomed puppy is a happy puppy".'
+                'Servicing your pet with style.'
               )}
             </div>
-            <div class='col-md-4'>
-              {services(
-                'camera',
-                'Pet Snap',
-                'Get your pet clicked and keep their special moments preserved.'
-              )}
+            <div class='col-md-3'>
+              {services('camera', 'Pet Snap', 'Get your pet clicked.')}
             </div>
-            <div class='col-md-4 mx-auto'>
+            <div class='col-md-3'>
               {services(
                 'dog',
                 'Pet Mate',
