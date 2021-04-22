@@ -1,18 +1,12 @@
-import React from 'react'
-import PetsCategories from './PetsCategories'
-
+import React from 'react';
+import PetsCategories from './PetsCategories';
 
 const ShopByPets = () => {
+  return (
+    <div className='container'>
+      <PetsCategories />
+    </div>
+  );
+};
 
-
-
-    
-    return (
-        <div className="container">
-         
-            <PetsCategories />
-        </div>
-    )
-}
-
-export default ShopByPets
+export default ShopByPets;
