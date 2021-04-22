@@ -44,7 +44,6 @@ const Slider = ({ banners }) => {
       >
         <img
           className='slider-images '
-          style={{}}
           src={item.bannerName}
           alt='banner'
         />
