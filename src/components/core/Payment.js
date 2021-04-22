@@ -62,6 +62,7 @@ const Payment = (props) => {
       };
       setData(data);
       console.log(d);
+      giveOrderOnline();
       setRedirect(true);
     },
     theme: {
@@ -96,19 +97,6 @@ const Payment = (props) => {
       });
   };
 
-  // const getOrderId = () => {
-  //   const order = {
-  //     amount: am,
-  //     currency: 'INR',
-  //   };
-  //   saveOrder(order)
-  //     .then((data) => {
-  //       setOrder(data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
   var products = [];
 
   for (var i = 0; i < items.length; i++) {
@@ -117,14 +105,14 @@ const Payment = (props) => {
       quantityOrdered: items[i].quantity,
       sellerNumber: items[i].sellerNumber,
       singleItemPrice: items[i].price,
-      totalItemsPrice: items[i].price * items[i].quantity,
+      totalItemsPrice: total.totalValue,
       discount: total.discount,
       priceAfterDiscount: total.totalPrice,
       productTitle: items[i].title,
     });
   }
 
-  //Give the order
+  //Give the orderCOD
   const giveOrderCod = () => {
     const data = {
       orderedBy: userNumber,
@@ -151,8 +139,49 @@ const Payment = (props) => {
       },
       productDetails: products,
     };
+    console.log(data);
     saveOrder(data)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        setRedirect(true);
+        deleteCart(userNumber);
+      })
+      .catch((err) => console.log(err));
+  };
+  //Give the orderOnline
+  const giveOrderOnline = () => {
+    const data = {
+      orderedBy: userNumber,
+      totalPrice: total.totalPrice,
+      paymentType: 'Razorpay',
+      deliveryCharge: total.totalDeliveryCharge,
+      address: {
+        latitude: '0',
+        longitude: '0',
+        state: address.state,
+        city: address.city,
+        addressLine1: address.addressLine1,
+        addressLine2: address.addressLine2,
+        pinCode: address.pinCode,
+        area: address.area,
+      },
+      paymentStatus: 'Pending',
+      orderStatus: 'pending',
+
+      plusPointsEarned: total.totalPlusPoints,
+      promoCodeDetails: {
+        promoCode: '',
+        promoCodeDiscount: 0,
+      },
+      productDetails: products,
+    };
+    console.log(data);
+    saveOrder(data)
+      .then((res) => {
+        console.log(res);
+        setRedirect(true);
+        deleteCart(userNumber);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -221,7 +250,7 @@ const Payment = (props) => {
   console.log(total);
 
   const redirectToCart = () => {
-    return <Redirect to='/cart' />;
+    return <Redirect to='/success' />;
   };
 
   return (

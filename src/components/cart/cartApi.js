@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 //add to cart
 export const addToCart = ({ userNumber, id }) => {
   return fetch(
@@ -78,22 +80,15 @@ export const getTotal = (userNumber) => {
     });
 };
 
-export const saveOrder = (order) => {
-  return fetch(
-    `https://petswonder.co.in/petswonder/api/saveOrder/orderDetails`,
+export const saveOrder = async (data) => {
+  const response = await axios.post(
+    'https://petswonder.co.in/petswonder/api/saveOrder/orderDetails',
+    JSON.stringify(data),
     {
-      method: 'POST',
       headers: {
-        Accept: 'application/json',
-        'Content-type': 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: order,
     }
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  );
+  return response;
 };

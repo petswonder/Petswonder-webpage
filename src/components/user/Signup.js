@@ -11,7 +11,7 @@ import {
 import logo from '../../images/logo1.png';
 
 const Signup = () => {
-  const [phoneNumber, setPhoneNumber] = useState('+91 ');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOTP] = useState('');
   const [name, setName] = useState('');

@@ -65,6 +65,7 @@ const Address = () => {
       <div className='address'>
         <h5>Default Address</h5>
         <div className='address-block'>
+          {console.log(profile)}
           {profile && (
             <table class='table table-borderless table-light'>
               <tbody>
@@ -112,17 +113,20 @@ const Address = () => {
       addressLine2: profile.details.addressLine2,
       addressLine1: profile.details.addressLine1,
     });
+    <Redirect to='/payment' />;
   };
 
   return (
     <div className='container'>
-      <div className='col-md-6 mx-auto'>
-        {address()}
-        <button className='btn btn-warning btn-md my-1' onClick={handleClick}>
-          Submit this address
-        </button>
-        {console.log(formData)}
-      </div>
+      {profile && (
+        <div className='col-md-6 mx-auto'>
+          {address()}
+          <button className='btn btn-warning btn-md my-1' onClick={handleClick}>
+            Submit this address 👇
+          </button>
+          {console.log(formData)}
+        </div>
+      )}
 
       <div className='container profile-about bg-light p-5 mt-5'>
         <h3 className='mb-3'>Add Address</h3>
