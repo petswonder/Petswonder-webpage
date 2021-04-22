@@ -168,7 +168,7 @@ const Card = ({
               <Link
                 to={{
                   pathname: `/product/${data.productId}`,
-                  productProps: data,
+                  state: data,
                 }}
                 className='btn btn-danger btn-md mb-2'
                 style={{ textDecorationLine: 'none' }}
