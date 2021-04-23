@@ -57,10 +57,10 @@ const Category = (props) => {
     return (
       <div className='container recent-game-section spad set-bg'>
         <div className='row'>
-          {categoryBox('Dry Food', food, 1, '#a685e2', 'Dry+Food')}
-          {categoryBox('Wet Food', food, 2, '#65d6ce', 'Wet+Food')}
-          {categoryBox('Vet Food', food, 3, '#fff76a', 'Vet+Food')}
-          {categoryBox('Snacks&Treats', food, 4, '#fca3cc', 'Snacks&Treats')}
+          {categoryBox('Dry food', food, 1, '#a685e2', 'Dry-food')}
+          {categoryBox('Wet Food', food, 2, '#65d6ce', 'Wet-food')}
+          {categoryBox('Vet Food', food, 3, '#fff76a', 'Vet-food')}
+          {categoryBox('Treats&snacks', food, 4, '#fca3cc', 'Treats&snacks')}
         </div>
       </div>
     );
