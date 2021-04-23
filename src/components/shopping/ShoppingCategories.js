@@ -3,11 +3,12 @@ import food from '../../images/categories/food1.png';
 import petcare from '../../images/categories/grooming.png';
 import acc from '../../images/categories/accessories1.png';
 import toys from '../../images/categories/toys1.png';
-import gifts from '../../images/categories/clothing.png';
+import clothing from '../../images/categories/clothing.png';
+import gift from '../../images/categories/gift1.png';
 import { Link } from 'react-router-dom';
 
 const ShoppingCategories = (pet) => {
-  console.log(pet);
+  console.log(pet.pet);
 
   const categoryBox = (name, photo, categoryId, color) => {
     return (
@@ -54,7 +55,9 @@ const ShoppingCategories = (pet) => {
         {categoryBox('Grooming', petcare, 2, '#65d6ce')}
         {categoryBox('Accessories', acc, 3, '#fff76a')}
         {categoryBox('Toys', toys, 4, '#fca3cc')}
-        {categoryBox('Gifts', gifts, 5, '#f6d6ad')}
+        {categoryBox('Gifts', gift, 5, '#F8BE14')}
+        {pet.pet === 'Dog' && categoryBox('Clothing', clothing, 5, '#f6d6ad')}
+        {pet.pet === 'Cat' && categoryBox('Clothing', clothing, 5, '#f6d6ad')}
       </div>
     </div>
   );
