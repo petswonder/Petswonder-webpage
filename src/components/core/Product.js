@@ -40,7 +40,7 @@ const Product = ({ product }) => {
     return (
       <div className='col-12 col-md-6' id='over'>
         <img
-          src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${product.id}.PNG`}
+          src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${product.productId}.PNG`}
           alt={product.title}
         />
       </div>
