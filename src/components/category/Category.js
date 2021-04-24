@@ -60,7 +60,7 @@ const Category = (props) => {
           {categoryBox('Dry food', food, 1, '#a685e2', 'Dry-food')}
           {categoryBox('Wet Food', food, 2, '#65d6ce', 'Wet-food')}
           {categoryBox('Vet Food', food, 3, '#fff76a', 'Vet-food')}
-          {categoryBox('Treats&snacks', food, 4, '#fca3cc', 'Treats&snacks')}
+          {categoryBox('Treats&snacks', food, 4, '#fca3cc', 'Treat-Snacks')}
         </div>
       </div>
     );

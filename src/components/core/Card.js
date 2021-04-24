@@ -5,6 +5,7 @@ import { isAuthenticated } from '../auth/index';
 import notFound from '../../images/notfound.jpg';
 import { Alert } from 'reactstrap';
 import noImage from '../../images/no image.png';
+import soldout from '../../images/soldout.png';
 
 const Card = ({
   data,
@@ -15,6 +16,7 @@ const Card = ({
 }) => {
   // console.log(data);
   const [count, setCount] = useState(data.quantity);
+  const [disable, setDisable] = useState(false);
 
   const productId = data.productId;
   const id = data.productId;
@@ -72,6 +74,9 @@ const Card = ({
             console.log(err);
           });
     }
+    if (data.inventory === 0) {
+      setDisable(true);
+    }
   }, [count]);
 
   const showCartUpdateOptions = (cartUpdate) => {
@@ -122,6 +127,21 @@ const Card = ({
           }}
           style={{ textDecorationLine: 'none' }}
         >
+          {disable && (
+            <img
+              src={soldout}
+              alt='soldout'
+              style={{
+                position: 'absolute',
+                zIndex: '10',
+                opacity: '50%',
+                top: '10%',
+                left: '25%',
+                width: '50%',
+              }}
+            />
+          )}
+
           <a className='akruti-a'>
             {data.productImages ? (
               <img
@@ -157,13 +177,14 @@ const Card = ({
           </div>
           {showAddToButton && (
             <div className='buttons'>
-              <Link
-                className='btn btn-outline-warning btn-md mb-2'
+              <button
+                className='btn btn-outline-warning btn-md mb-2 mr-4'
                 onClick={handleClick}
-                style={{ textDecorationLine: 'none' }}
+                disabled={disable}
+                style={{ cursor: disable ? 'not-allowed' : 'pointer' }}
               >
-                Add to Cart{' '}
-              </Link>{' '}
+                Add to Cart
+              </button>
               {/* <a href="#"><span ><i class="far fa-lg fa-heart" style={{paddingRight:"20px"}}></i></span></a>{' '} */}
               <Link
                 to={{

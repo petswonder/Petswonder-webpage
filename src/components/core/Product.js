@@ -8,6 +8,10 @@ const Product = ({ product }) => {
   // const {jwt, user:{userNumber}} = isAuthenticated();
 
   console.log(product, 'state');
+  const [disable, setDisable] = useState(false);
+  if (product.inventory === 0) {
+    setDisable(true);
+  }
 
   const id = product.productId;
 
@@ -68,7 +72,8 @@ const Product = ({ product }) => {
         <br />
         <div className='row'>
           <div className='col-12 col-md-4 iconspro'>
-            <i class='fas fa-shopping-cart'></i> In Stock
+            <i class='fas fa-shopping-cart'></i>
+            {disable && ' Not'} In Stock
           </div>
           <div className='col-12 col-md-4 iconspro'>
             <i class='fas fa-money-bill'></i> COD Available
@@ -79,7 +84,12 @@ const Product = ({ product }) => {
         </div>
         <br />
 
-        <button onClick={handleClick} className='btn btn-lg btn-warning mt-5'>
+        <button
+          onClick={handleClick}
+          className='btn btn-lg btn-warning mt-5'
+          disabled={disable}
+          style={{ cursor: disable ? 'not-allowed' : 'pointer' }}
+        >
           <span class='fas fa-sm fa-shopping-cart'></span> Add To Cart
         </button>
       </div>
