@@ -201,7 +201,7 @@ const Card = ({
                   textDecorationLine: 'none',
                   position: 'absolute',
                   bottom: '15%',
-                  right: '25%',
+                  right: '20%',
                 }}
               >
                 Buy Now
