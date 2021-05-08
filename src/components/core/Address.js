@@ -66,7 +66,7 @@ const Address = () => {
         <h5>Default Address</h5>
         <div className='address-block'>
           {console.log(profile)}
-          {profile && (
+          {profile.length > 0 && (
             <table class='table table-borderless table-light'>
               <tbody>
                 <tr>
@@ -118,7 +118,7 @@ const Address = () => {
 
   return (
     <div className='container'>
-      {profile && (
+      {profile.length > 0 && (
         <div className='col-md-6 mx-auto'>
           {address()}
           <button className='btn btn-warning btn-md my-1' onClick={handleClick}>
