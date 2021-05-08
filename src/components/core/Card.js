@@ -147,10 +147,10 @@ const Card = ({
               <img
                 className='akruti-img'
                 src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-                alt='No image found'
+                alt='image'
               />
             ) : (
-              <img className='akruti-img' src={noImage} />
+              <img className='akruti-img' src={noImage} alt='No image found' />
             )}
           </a>
         </Link>
@@ -178,10 +178,15 @@ const Card = ({
           {showAddToButton && (
             <div className='buttons'>
               <button
-                className='btn btn-outline-warning btn-sm mb-2 mr-2'
+                className='btn btn-outline-warning btn-sm mb-2 '
                 onClick={handleClick}
                 disabled={disable}
-                style={{ cursor: disable ? 'not-allowed' : 'pointer' }}
+                style={{
+                  cursor: disable ? 'not-allowed' : 'pointer',
+                  position: 'absolute',
+                  bottom: '15%',
+                  left: '20%',
+                }}
               >
                 Add to Cart
               </button>
@@ -192,7 +197,12 @@ const Card = ({
                   state: data,
                 }}
                 className='btn btn-danger btn-sm mb-2'
-                style={{ textDecorationLine: 'none' }}
+                style={{
+                  textDecorationLine: 'none',
+                  position: 'absolute',
+                  bottom: '15%',
+                  right: '25%',
+                }}
               >
                 Buy Now
               </Link>
