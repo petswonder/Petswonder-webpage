@@ -178,7 +178,7 @@ const Card = ({
           {showAddToButton && (
             <div className='buttons'>
               <button
-                className='btn btn-outline-warning btn-md mb-2 mr-4'
+                className='btn btn-outline-warning btn-sm mb-2 mr-2'
                 onClick={handleClick}
                 disabled={disable}
                 style={{ cursor: disable ? 'not-allowed' : 'pointer' }}
@@ -191,13 +191,11 @@ const Card = ({
                   pathname: `/product/${data.productId}`,
                   state: data,
                 }}
-                className='btn btn-danger btn-md mb-2'
+                className='btn btn-danger btn-sm mb-2'
                 style={{ textDecorationLine: 'none' }}
               >
-                {' '}
-                Buy Now{' '}
+                Buy Now
               </Link>
-              {'  '}
             </div>
           )}
         </div>
