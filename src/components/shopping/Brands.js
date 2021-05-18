@@ -50,10 +50,10 @@ const Brands = () => {
       <br />
       <div className='row'>
         {brand('Pedigree', Pedigree)}
-        {brand('Jerhigh', Jerhigh)}
+        {brand('jerhigh', Jerhigh)}
         {brand('Whiskas', Whiskas)}
         {brand('Purina', Purina)}
-        {brand('Drools', Drools)}
+        {brand('drools', Drools)}
         {brand('Acana', Acana)}
       </div>
     </div>

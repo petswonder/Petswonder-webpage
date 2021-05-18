@@ -11,7 +11,7 @@ import {
 import logo from '../../images/logo1.png';
 
 const Signup = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('91 ');
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOTP] = useState('');
   const [name, setName] = useState('');
@@ -161,7 +161,9 @@ const Signup = () => {
                 </div>
                 <br />
                 <div class='group'>
-                  <button className='btn btn-primary button'>Send OTP</button>
+                  <button className='btn btn-primary button'>
+                    Validate OTP
+                  </button>
                 </div>
                 <div class='hr'></div>
                 <div class='foot-lnk'>
