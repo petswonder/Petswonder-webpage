@@ -5,10 +5,12 @@ const Heading = ({ text }) => {
   return (
     <>
       <div className='colored-heading'>
-        <h2>{text}</h2>
+        <div className='container'>
+          <h2>{text}</h2>
+        </div>
       </div>
       <div className='colored-crumbs'>
-        <p>
+        <p className='container'>
           <Breadcrumbs />
         </p>
       </div>
