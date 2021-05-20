@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/core/Home';
 import Menu from './components/core/Menu';
@@ -35,11 +35,7 @@ const App = () => {
   return (
     <Router>
       <Menu />
-      <br />
-      <br />
-      <br className='d-none d-xl-block' />
-      <br className='d-none d-lg-block d-xl-none' />
-      <div className='container whole-cont col-12'>
+      <div className='mt-100'>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/signup' component={Signup} />
@@ -85,7 +81,7 @@ const App = () => {
           <Route exact path='/about' component={AboutUs} />
         </Switch>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };

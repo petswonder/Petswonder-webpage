@@ -37,24 +37,24 @@ const Slider = ({ banners }) => {
 
   const slides = items.map((item) => {
     return (
-      <CarouselItem
+      <CarouselItem className='h-100'
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.id}
       >
-        <img
-          className='slider-images '
+        {/* <img
+          className='slider-images w-100'
           src={item.bannerName}
           alt='banner'
-        />
+        /> */}
         {/* <CarouselCaption captionText={item.caption} captionHeader={item.caption} /> */}
       </CarouselItem>
     );
   });
 
   return (
-    <div className='recent-game-section spad set-bg ' data-setbg={photo}>
-      <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+    <div className='h-350' data-setbg={photo}>
+      <Carousel activeIndex={activeIndex} next={next} previous={previous} className='h-100'>
         <CarouselIndicators
           items={items}
           activeIndex={activeIndex}

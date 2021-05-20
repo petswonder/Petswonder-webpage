@@ -8,14 +8,14 @@ const Partner = () => {
             <div class="container">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-md-5 col-lg-6 col-xl-6">
-                        <div class="learning_img">
-                            <img src={photo} alt="" />
+                        <div class="learning_img w-100 py-0 px-5">
+                            <img src={photo} alt="image" class='w-100' />
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-6 col-xl-5">
                         <div class="about_us_text">
                             <h6 id="mentorship-heading"></h6>
-                            <h2>Find the best partner for your pet</h2>
+                            <h2 class='text-center'>Find the best partner for your pet</h2>
                             <br/>
                             <p id="mentorship-desc">
                             We are here with new features called PetMate which helps you find the best suited companion for your beloved pet.

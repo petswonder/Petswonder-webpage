@@ -13,7 +13,7 @@ import {
 import { Link, withRouter } from 'react-router-dom';
 import { isAuthenticated, signout } from '../auth/index';
 import LogoName from '../../images/LogoName.png';
-import './../../App.css';
+// import './../../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCartArrowDown,
@@ -42,7 +42,7 @@ const Menu = ({ history }) => {
   // }
 
   return (
-    <Navbar expand='lg' variant='light' fixed='top' className='bg-n py-0'>
+    <Navbar expand='lg' variant='light' fixed='top' className='bg-primary py-0'>
       <Container>
           <Navbar.Brand>
             {'  '}
