@@ -3,6 +3,7 @@ import logo from '../../images/logo1.png';
 import cs from '../../images/cs.png';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Button, Card } from 'react-bootstrap';
 
 const Book1 = ({
   d: { serviceImageUrls, title, page },
@@ -11,7 +12,7 @@ const Book1 = ({
   const comingS = () => {
     return (
       <div>
-        <img src={cs} style={{ height: '8.1rem', width: '290px' }} alt='' />
+        <h4>Coming Soon</h4>
       </div>
     );
   };
@@ -24,8 +25,34 @@ const Book1 = ({
   };
 
   return (
-    <div className='col-12 col-md-6 mb-4 mx-auto'>
-      <div className='card' style={{ padding: '10px' }}>
+    <div className='col-12 col-md-5 mb-4 mx-auto'>
+      <Card>
+        <Card.Title
+          className='p-2 mx-auto'
+          style={{ borderBottom: '2px solid darkblue', width: '50%' }}
+        >
+          {title}
+        </Card.Title>
+        <Card.Img
+          variant='top'
+          src={serviceImageUrls}
+          style={{ height: '280px' }}
+        />
+        <Card.Body>
+          <Card.Text>
+            {comingSoon ? (
+              comingS()
+            ) : (
+              <div style={{ minHeight: '' }}>
+                <Link to={`/${page}`}>
+                  <Button variant='warning'>Book now</Button>
+                </Link>
+              </div>
+            )}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      {/* <div className='card' style={{ padding: '10px' }}>
         <h5>{title}</h5>
         <img
           className='card-img-top'
@@ -36,27 +63,16 @@ const Book1 = ({
           {comingSoon ? (
             comingS()
           ) : (
-            <div
-              style={{
-                height: '8.1rem',
-                width: '290px',
-                margin: 'auto',
-                padding: '70px 0',
-              }}
-            >
+            <div style={{ minHeight: '' }}>
               <Link to={`/${page}`}>
-                <button
-                  type='button'
-                  class='btn btn-warning'
-                  style={{ padding: '20px', width: '50%' }}
-                >
-                  Click me
+                <button type='button' class='btn btn-warning '>
+                  Book now
                 </button>
               </Link>
             </div>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
