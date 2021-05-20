@@ -3,10 +3,7 @@ import Layout from './Layout';
 import Slider from './Slider';
 import photo from '../../images/img7.jpg';
 import Customer from './home/Customer';
-import Extra from './Extra';
-import Getall from './home/Getall';
-import Vet from './home/Vet';
-import Partner from './home/Partner';
+import HomeContent from './home/HomeContent';
 import petFood from '../../images/banners/Food.jpg';
 import petCare from '../../images/banners/PetCare.jpg';
 import petGifts from '../../images/banners/Gifts.jpg';
@@ -39,10 +36,11 @@ const Home = () => {
 
       <Slider banners={items} />
       <Customer />
-      <Extra />
+      <HomeContent />
+      {/* <Extra />
       <Getall />
       <Vet />
-      <Partner />
+      <Partner /> */}
       {/* </Layout> */}
     </div>
   );

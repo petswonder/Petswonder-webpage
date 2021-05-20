@@ -16,7 +16,7 @@ $theme-colors: (
     }
   }
 
-  @each $size in (12,40) {
+  @each $size in (12,14,40) {
     .font-size-#{$size} {
       font-size: unquote($size + "px !important");
     }

@@ -10,13 +10,12 @@ const service_items = [
 const Customer = () => {
   
   return (
-    <section className='py-2'>
+    <section className='py-2 mb-5'>
       <div class='mx-5'>
         <div class='container'>
           <div class='row'>
             <div class='col-12'>
-              <h1 style={{ textAlign: 'center' }}>Services</h1>
-              <br />
+              <h1 class='text-center mb-3'>Services</h1>
             </div>
           </div>
         </div>
@@ -27,7 +26,7 @@ const Customer = () => {
             <div class='col'>
               <div class='d-flex justify-content-between flex-column px-4 py-3 text-center border rounded border-primary'>
                 <div class='icon text-center font-size-40'>
-                  <i class={`fas fa-${service.icon} fa-lg `} style={{ color: '#ffb116' }}></i>
+                  <i class={`fas fa-${service.icon} fa-lg text-primary`}></i>
                 </div>
                 <div class='media-body'>
                   <h5 class='heading font-weight-bold my-1'>{service.name}</h5>

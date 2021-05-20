@@ -11139,6 +11139,10 @@ a.text-bg:hover, a.text-bg:focus {
   font-size: 12px !important;
 }
 
+.font-size-14 {
+  font-size: 14px !important;
+}
+
 .font-size-40 {
   font-size: 40px !important;
 }
