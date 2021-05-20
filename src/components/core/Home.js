@@ -33,7 +33,6 @@ const Home = () => {
         console.log(err);
       });
   };
-  console.log(items);
   return (
     <div>
       {/* <Layout title="Home Page" description="Node React E-Commerce App" className="" > */}

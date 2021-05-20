@@ -1,21 +1,14 @@
 import React from 'react';
 import photo from '../../../images/img7.jpg';
 
+const service_items = [
+  {"id": 1, "name": "Online Vet Doctor", "desc": "We are available 24/7 online vet consultation.", "icon": "user-md"},
+  {"id": 2, "name": "Pet Grooming", "desc": "Servicing your pet with style.", "icon": "scissors"},
+  {"id": 3, "name": "Pet Snap", "desc": "Get your pet clicked.", "icon": "camera"},
+  {"id": 4, "name": "Pet Mate", "desc": "Find perfect partner for your pet.", "icon": "dog"}
+]
 const Customer = () => {
-  const services = (fa, name, intro) => {
-    return (
-      <div class='d-block services d-flex justify-content-between'>
-        <div class='icon d-flex align-items-center justify-content-center'>
-          <i class={`fas fa-${fa} fa-lg`} style={{ color: '#ffb116' }}></i>
-        </div>
-        <div class='media-body'>
-          <h3 class='heading'>{name}</h3>
-          <p class='mb-0'>{intro}</p>
-        </div>
-      </div>
-    );
-  };
-
+  
   return (
     <section className='py-2'>
       <div class='mx-5'>
@@ -30,30 +23,19 @@ const Customer = () => {
 
         <div class=''>
           <div class='row '>
-            <div class='col-md-3'>
-              {services(
-                'stethoscope',
-                'Online Vet Doctor',
-                'We are available 24/7 online vet consultation.'
-              )}
+          {service_items.map(service => (
+            <div class='col'>
+              <div class='d-block bg-light d-flex justify-content-between flex-column'>
+                <div class='icon d-flex align-items-center justify-content-center'>
+                  <i class={`fas fa-${service.icon} fa-lg`} style={{ color: '#ffb116' }}></i>
+                </div>
+                <div class='media-body'>
+                  <h5 class='heading'>{service.name}</h5>
+                  <p class='mb-0'>{service.desc}</p>
+                </div>
+              </div>
             </div>
-            <div class='col-md-3'>
-              {services(
-                'scissors',
-                'Pet Grooming',
-                'Servicing your pet with style.'
-              )}
-            </div>
-            <div class='col-md-3'>
-              {services('camera', 'Pet Snap', 'Get your pet clicked.')}
-            </div>
-            <div class='col-md-3'>
-              {services(
-                'dog',
-                'Pet Mate',
-                'Find perfect partner for your pet.'
-              )}
-            </div>
+          ))}
           </div>
         </div>
       </div>
