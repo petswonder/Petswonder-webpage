@@ -12,136 +12,95 @@ import gplay from '../../images/gplay.png';
 
 const Footer = () => {
   return (
-    <div className='footer-clean'>
+    <div className='footer-clean bg-secondary py-5'>
       <footer>
-        <div className='container col-12 col-md-11'>
-          <div className='row justify-content-center'>
+        <div className='container'>
+          <div className='row justify-content-around'>
             <div className='col-sm-4 col-md-3 item col-lg-2'>
-              <h3 className='text-white'>Services</h3>
-              <ul>
-                <li className='aradhna_footerli'>
-                  <Link to='/shopping'>Shopping</Link>
+              <h6 className='text-primary font-weight-medium font-size-14'>Services</h6>
+              <ul class="list-group">
+                <li className='list-group-item border-0 bg-transparent p-0'>
+                  <Link to='/shopping' class='text-white font-size-12 font-weight-light'>Shopping</Link>
                 </li>
-                <li className='aradhna_footerli'>
-                  <Link to='/petGuide'>Pet Guide</Link>
+                <li className='list-group-item border-0 bg-transparent p-0'>
+                  <Link to='/petGuide' class='text-white font-size-12 font-weight-light'>Pet Guide</Link>
                 </li>
-                <li className='aradhna_footerli'>
-                  <Link to='/petMate'>Pet Mate</Link>
+                <li className='list-group-item border-0 bg-transparent p-0'>
+                  <Link to='/petMate' class='text-white font-size-12 font-weight-light'>Pet Mate</Link>
                 </li>
-                <li className='aradhna_footerli'>
-                  <Link to='/petCare'>Pet Services</Link>
+                <li className='list-group-item border-0 bg-transparent p-0'>
+                  <Link to='/petCare' class='text-white font-size-12 font-weight-light'>Pet Services</Link>
                 </li>
               </ul>
             </div>
             <div className='col-sm-4 col-md-3 item col-lg-2'>
-              <h3 className='text-white'>Quick Links</h3>
-              <ul>
-                <li className='aradhna_footerli'>
-                  <Link to='/'>Home</Link>
+            <h6 className='text-primary font-weight-medium font-size-14'>Quick Links</h6>
+              <ul class='list-group'>
+                <li className='list-group-item border-0 bg-transparent p-0'>
+                  <Link to='/' class='text-white font-size-12 font-weight-light'>Home</Link>
                 </li>
-                <li className='aradhna_footerli'>
-                  <Link to='/shopping'>Shopping</Link>
+                <li className='list-group-item border-0 bg-transparent p-0'>
+                  <Link to='/shopping' class='text-white font-size-12 font-weight-light'>Shopping</Link>
                 </li>
-                <li className='aradhna_footerli'>
-                  <Link to='/about'>About us</Link>
+                <li className='list-group-item border-0 bg-transparent p-0'>
+                  <Link to='/about' class='text-white font-size-12 font-weight-light'>About Us</Link>
                 </li>
               </ul>
             </div>
             <div className='col-sm-4 col-md-3 item col-lg-2'>
-              <h3 className='text-white'>Have a question</h3>
-              <ul>
-                <li className='aradhna_footerli'>
-                  <FontAwesomeIcon
-                    icon={faLocationArrow}
-                    className=' fa-lg'
-                    style={{ color: '#ffb116' }}
-                  />{' '}
-                  Dilsukhnagar, Hyderabad, Telangana - 500035
+              <h6 className='text-primary font-weight-medium font-size-14'>Contact</h6>
+              <ul class='list-group'>
+                <li className='list-group-item border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
+                  <i class='fas fa-map-marker-alt fa-lg text-primary mr-2 opacity-20'></i>
+                  <span>Dilsukhnagar, Hyderabad, Telangana - 500035</span>
                 </li>
-                <li className='aradhna_footerli'>
-                  <i
-                    class='fab fa-lg fa-whatsapp'
-                    aria-hidden='true'
-                    style={{ color: '#ffb116' }}
-                  ></i>{' '}
-                  +918886633291
+                <li className='list-group-item border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
+                <i class='fab fa-whatsapp fa-lg text-primary mr-2 opacity-20'></i>
+                  <span>+918886633291</span>
                 </li>
-                <li className='aradhna_footerli'>
-                  <Link to=''></Link>
+                <li className='list-group-item border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
+                <i class='fas fa-at fa-lg text-primary mr-2 opacity-20'></i>
+                  <span>support@petswonder.in</span>
                 </li>
-                <li className='aradhna_footerli'>
-                  <FontAwesomeIcon
-                    icon={faPaperPlane}
-                    className='fa-lg'
-                    style={{ color: '#ffb116' }}
-                  />{' '}
-                  support@petswonder.in
-                </li>
-              </ul>
-            </div>
-
-            <div className='col-sm-4 col-md-4  col-lg-3 item social'>
-              <a href='https://www.facebook.com/petswonder.in' target='_blank'>
-                {' '}
-                <i class='fab fa-facebook-square'></i>{' '}
+                <li className='list-group-item border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
+                <a href='https://www.facebook.com/petswonder.in' target='_blank'>
+                <i class='fab fa-facebook-square'></i>
               </a>
               <a
                 href='https://www.instagram.com/petswonder_official/'
-                target='_blank'
-              >
-                {' '}
-                <i class='fab fa-instagram-square'></i>{' '}
+                target='_blank'>
+                
+                <i class='fab fa-instagram-square'></i>
               </a>
 
               <a href='https://twitter.com/PetsWonder1' target='_blank'>
-                {' '}
-                <i class='fab fa-twitter'></i>{' '}
+                
+                <i class='fab fa-twitter'></i>
               </a>
               <a
                 href='https://www.linkedin.com/company/petswonder/?viewAsMember=true'
-                target='_blank'
-              >
-                {' '}
-                <i class='fab fa-linkedin-square'></i>{' '}
+                target='_blank'>
+                
+                <i class='fab fa-linkedin-square'></i>
               </a>
-
-              <p className='copyright'>
-                {' '}
-                <img src={logo} id='aradhna_footer_logo' />{' '}
-              </p>
-              <p className='copyright' style={{ fontSize: '16px' }}>
-                At Petswonder your pet is our pet.
-              </p>
+                </li>
+              </ul>
             </div>
 
-            <div className='col-sm-4 col-md-4  col-lg-3 item '>
-              <h3 className='text-white'>Available also on</h3>
-              <div className='col-12 mb-7'>
-                <a
-                  href='https://www.facebook.com/petswonder.in'
-                  target='_blank'
-                >
-                  <img
-                    style={{
-                      height: '50px',
-                      width: '150px',
-                      marginBottom: '10px',
-                    }}
-                    src={aplay}
-                  ></img>
-                </a>
-              </div>
-              <div className='col-12 mb-7'>
-                <a
-                  href='https://play.google.com/store/apps/details?id=com.petswonder'
-                  target='_blank'
-                >
-                  <img
-                    style={{ height: '55px', width: '150px' }}
-                    src={gplay}
-                  ></img>
-                </a>
-              </div>
+            
+            
+            <div className='col-sm-4 col-md-3 item col-lg-2'>
+              <h6 className='text-primary font-weight-medium font-size-14'>Also Available On:</h6>
+              <img href='https://www.facebook.com/petswonder.in'
+                  target='_blank'  src={aplay} class='w-100'/>
+              <img href='https://play.google.com/store/apps/details?id=com.petswonder'
+                  target='_blank' src={gplay} class='w-100'/>
+            </div>
+            <div className='col-sm-4 col-md-3 item col-lg-2 text-center'>
+              <img src={logo} class='w-25'/>
+              <p className='copyright text-white font-size-14 text-center'>
+                At Petswonder your pet is our pet.
+              </p>
             </div>
           </div>
         </div>

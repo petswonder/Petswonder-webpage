@@ -4,13 +4,16 @@ import {
   NavDropdown,
   Nav,
   Form,
+  Row,
+  Col,
   FormControl,
   Button,
+  Container
 } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { isAuthenticated, signout } from '../auth/index';
 import LogoName from '../../images/LogoName.png';
-import './../../App.css';
+// import './../../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCartArrowDown,
@@ -39,45 +42,46 @@ const Menu = ({ history }) => {
   // }
 
   return (
-    <div className='header' style={{ position: 'relative' }}>
-      <div className='col-12'>
-        <Navbar expand='lg' variant='light' fixed='top' className='px-4 bg-n'>
-          <Navbar.Brand style={{ fontSize: '24px' }}>
+    <Navbar expand='lg' variant='light' fixed='top' className='bg-primary py-0'>
+      <Container>
+          <Navbar.Brand>
             {'  '}
             <img
               src={LogoName}
-              style={{ height: '50px', width: '150px' }}
+              style={{ width: '230px' }}
             ></img>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
-          <Navbar.Collapse
+          <Navbar
             id='basic-navbar-nav'
-            className='justify-content-end'
+            className='flex-column align-items-end w-100 py-0'
           >
-            <Nav className=' mb-auto mt-0 '>
+            <Nav className=''>
               {!jwt && (
-                <Nav.Link
-                  className='nav-links mb-4'
-                  href='/signin'
-                  style={isActive(history, '/signin')}
-                >
-                  Signin
-                </Nav.Link>
+                <Button variant="light" className="round">Sign In</Button>
+                // <Nav.Link
+                //   className='nav-links'
+                //   href='/signin'
+                //   style={isActive(history, '/signin')}
+                // >
+                //   Signin
+                // </Nav.Link>
               )}
 
               {!jwt && (
-                <Nav.Link
-                  className='nav-links'
-                  href='/signup'
-                  style={isActive(history, '/signup')}
-                >
-                  Signup
-                </Nav.Link>
+                <Button variant="light" className="round">Sign Up</Button>
+                // <Nav.Link
+                //   className='nav-links'
+                //   href='/signup'
+                //   style={isActive(history, '/signup')}
+                // >
+                //   Signup
+                // </Nav.Link>
               )}
 
-              <Form inline>
+              {/* <Form inline>
                 {
                   <Nav.Link
                     className='nav-links ml-2 mr-3 mb-3'
@@ -93,7 +97,30 @@ const Menu = ({ history }) => {
                     </Button>
                   </Nav.Link>
                 }
-              </Form>
+              </Form> */}
+
+              
+            </Nav>
+            <Nav className=''>
+              
+
+              {/* <Form inline>
+                {
+                  <Nav.Link
+                    className='nav-links ml-2 mr-3 mb-3'
+                    href='/search'
+                    style={isActive(history, '/search')}
+                  >
+                    <Button className='mb-5 py-1 btn btn btn-dark'>
+                      <FontAwesomeIcon
+                        icon={faSearch}
+                        style={{ fontSize: '18px' }}
+                      />{' '}
+                      Search
+                    </Button>
+                  </Nav.Link>
+                }
+              </Form> */}
 
               {jwt && (
                 <Nav.Link
@@ -153,7 +180,6 @@ const Menu = ({ history }) => {
                 Home
               </Nav.Link>
             </Nav>
-
             <Form inline>
               {jwt && (
                 <Nav.Link
@@ -202,10 +228,10 @@ const Menu = ({ history }) => {
                 </Nav.Link>
               )}
             </Form>
-          </Navbar.Collapse>
-        </Navbar>
-      </div>
-    </div>
+          </Navbar>
+          </Container>
+    </Navbar>
+    
   );
 };
 
