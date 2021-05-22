@@ -37,11 +37,6 @@ const Home = () => {
       <Slider banners={items} />
       <Customer />
       <HomeContent />
-      {/* <Extra />
-      <Getall />
-      <Vet />
-      <Partner /> */}
-      {/* </Layout> */}
     </div>
   );
 };
