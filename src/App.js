@@ -30,6 +30,7 @@ import OrderHistory from './components/core/OrderHistory';
 import PetSnap from './components/petServices/PetSnap';
 import OnlineDoc from './components/petServices/OnlineDoc';
 import Successful from './components/core/Successful';
+import NotFound from './components/404';
 
 const App = () => {
   return (
@@ -83,6 +84,7 @@ const App = () => {
             component={OrderHistory}
           />
           <Route exact path='/about' component={AboutUs} />
+          <Route exact path='*' component={NotFound} />
         </Switch>
       </div>
       <Footer />
