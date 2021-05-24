@@ -80,9 +80,6 @@ const Footer = () => {
                   />{' '}
                   support@petswonder.in
                 </li>
-                <li className='aradhna_footerli'>
-                  <Link to='/termsandconditions'>Terms and conditions</Link>
-                </li>
               </ul>
             </div>
 

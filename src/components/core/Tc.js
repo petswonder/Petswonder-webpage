@@ -47,8 +47,7 @@ const Tc = () => {
           as possible. <br /> <br />
           Q: Are there any shipping charges?
           <br />
-          A: No shipping charges if you have placed a cash on orders above
-          Rs.1500.
+          A: No shipping charges on orders above Rs.1500.
           <br />
           <br />
           Q: Accepts COD Payments?
@@ -201,7 +200,7 @@ const Tc = () => {
           would like to contact us in relation to this privacy policy or your
           personal information please contact us at:
           <br /> <br />
-          Email: support@petswonder.in <br /> PH: 75068 39062
+          Email: support@petswonder.in <br /> PH: 88866 33291
         </p>
       </div>
     </div>
