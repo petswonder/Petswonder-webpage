@@ -153,7 +153,7 @@ const Payment = (props) => {
     const data = {
       orderedBy: userNumber,
       totalPrice: total.totalPrice,
-      paymentType: 'Razorpay',
+      paymentType: 'RazorPay',
       deliveryCharge: total.totalDeliveryCharge,
       address: {
         latitude: '0',

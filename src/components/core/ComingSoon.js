@@ -5,19 +5,12 @@ import logo from '../../images/logo.png';
 
 const ComingSoon = () => {
   return (
-    <div className='row ' style={{ height: '80vh' }}>
-      <div className='col-md-6'>
-        <img
-          src={logo}
-          style={{
-            borderRadius: '50%',
-            padding: '8px',
-            height: '10rem',
-            borderLeft: '3px solid red',
-            borderTop: '2px solid red',
-          }}
-          alt=''
-        />
+    <div className='row mx-auto' style={{ height: '80vh' }}>
+      <div className='col-md-5 mx-auto'>
+        <div className=' mx-auto'>
+          <img src={logo} className='logo-img' alt='' />
+        </div>
+
         <h1 className='my-5 '>Coming Soon</h1>
 
         <ul
@@ -58,8 +51,8 @@ const ComingSoon = () => {
           </a>
         </div>
       </div>
-      <div className='col-0 col-md-6 d-none d-lg-block pt-5'>
-        <img src={image} alt='sad image' style={{ width: '100%' }} />
+      <div className=' col-md-7 d-none d-lg-block pt-5'>
+        <img className='w-100' src={image} alt='sad image' />
       </div>
     </div>
   );

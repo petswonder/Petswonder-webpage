@@ -11182,4 +11182,45 @@ a.text-bg:hover, a.text-bg:focus {
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+.w-0 {
+  width: "0%";
+}
+
+.w-100 {
+  width: "100%";
+}
+
+.colored-heading {
+  background-color: rgba(225, 173, 1, 0.2);
+  padding-left: 7px;
+  text-align: left;
+  border-left: solid 6px red;
+}
+
+.colored-crumbs {
+  background-color: rgba(225, 173, 1, 0.2);
+  padding-top: 0px;
+  font-size: 0.8rem;
+  text-align: left;
+  border-left: solid 6px red;
+}
+
+.colored-heading h2 {
+  margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .colored-heading h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.logo-img {
+  border-radius: 50%;
+  padding: 8px;
+  height: 10rem;
+  border-left: 3px solid red;
+  border-top: 2px solid red;
+}
 /*# sourceMappingURL=custom.css.map */
