@@ -5,7 +5,7 @@ import { isAuthenticated } from '../auth/index';
 import notFound from '../../images/notfound.jpg';
 import { Alert } from 'reactstrap';
 import noImage from '../../images/no image.png';
-import soldout from '../../images/soldout.png';
+import soldout from '../../images/outofstock.png';
 
 const Card = ({
   data,
@@ -135,9 +135,9 @@ const Card = ({
                 position: 'absolute',
                 zIndex: '10',
                 opacity: '50%',
-                top: '10%',
-                left: '25%',
-                width: '50%',
+                top: '5%',
+                left: '30%',
+                width: '40%',
               }}
             />
           )}
