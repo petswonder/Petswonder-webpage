@@ -49,40 +49,18 @@ const Footer = () => {
             </div>
             <div className='col-sm-4 col-md-3 item col-lg-2'>
               <h6 className='text-primary font-weight-medium font-size-14'>Contact</h6>
-              <ul class='list-group'>
-                <li className='list-group-item border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
+              <ul class='list-group ml-n3'>
+                <li className='list-group-item mb-1 border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
                   <i class='fas fa-map-marker-alt fa-lg text-primary mr-2 opacity-20'></i>
                   <span>Dilsukhnagar, Hyderabad, Telangana - 500035</span>
                 </li>
-                <li className='list-group-item border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
+                <li className='list-group-item mb-1 border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
                 <i class='fab fa-whatsapp fa-lg text-primary mr-2 opacity-20'></i>
                   <span>+918886633291</span>
                 </li>
-                <li className='list-group-item border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
+                <li className='list-group-item mb-1 border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
                 <i class='fas fa-at fa-lg text-primary mr-2 opacity-20'></i>
                   <span>support@petswonder.in</span>
-                </li>
-                <li className='list-group-item border-0 bg-transparent p-0 text-white font-size-12 d-flex align-items-center'>
-                <a href='https://www.facebook.com/petswonder.in' target='_blank'>
-                <i class='fab fa-facebook-square'></i>
-              </a>
-              <a
-                href='https://www.instagram.com/petswonder_official/'
-                target='_blank'>
-                
-                <i class='fab fa-instagram-square'></i>
-              </a>
-
-              <a href='https://twitter.com/PetsWonder1' target='_blank'>
-                
-                <i class='fab fa-twitter'></i>
-              </a>
-              <a
-                href='https://www.linkedin.com/company/petswonder/?viewAsMember=true'
-                target='_blank'>
-                
-                <i class='fab fa-linkedin-square'></i>
-              </a>
                 </li>
               </ul>
             </div>
@@ -97,6 +75,28 @@ const Footer = () => {
                   target='_blank' src={gplay} class='w-100'/>
             </div>
             <div className='col-sm-4 col-md-3 item col-lg-2 text-center'>
+              <div class="">
+                <a class="mr-2" href='https://www.facebook.com/petswonder.in' target='_blank'>
+                  <i class='h5 fab fa-facebook-square'></i>
+                </a>
+                <a class="mr-2"
+                  href='https://www.instagram.com/petswonder_official/'
+                  target='_blank'>
+                  
+                  <i class='h5 fab fa-instagram-square'></i>
+                </a>
+
+                <a class="mr-2" href='https://twitter.com/PetsWonder1' target='_blank'>
+                  
+                  <i class='h5 fab fa-twitter'></i>
+                </a>
+                <a class="mr-2"
+                  href='https://www.linkedin.com/company/petswonder/?viewAsMember=true'
+                  target='_blank'>
+                  
+                  <i class='h5 fab fa-linkedin-square'></i>
+                </a>
+              </div>
               <img src={logo} class='w-25'/>
               <p className='copyright text-white font-size-14 text-center'>
                 At Petswonder your pet is our pet.

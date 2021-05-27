@@ -1,28 +1,37 @@
 
 $theme-colors: (
     "primary": #e1ad01,
-   "secondary": #000,
-  "tertiary": #cacaca,
-  "bg": #d44400
+    "secondary": #000,
+    "tertiary": #cacaca,
+    "bg": #d44400
   );
 // Exo font
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700;800&family=Poppins:wght@100;300;400;600;700&display=swap');
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-@each $h in (350) {
+@each $h in (200,300,350, 400) {
     .h-#{$h} {
       height: unquote($h + "px !important");
     }
+    .w-#{$h} {
+      width: unquote($h + "px !important");
+    }
+    .min-height-#{$h} {
+      min-height: unquote($h + "px !important");
+    }
+    .max-height-#{$h} {
+      max-height: unquote($h + "px !important");
+    }
   }
 
-  @each $size in (12,14,40) {
+  @each $size in (12,14,16,18,22,30,40) {
     .font-size-#{$size} {
       font-size: unquote($size + "px !important");
     }
   }
 
-  @each $p in (100) {
+  @each $p in (71,100) {
     .pb-#{$p} {
       padding-bottom: unquote($p + "px !important");
     }
@@ -49,6 +58,18 @@ $theme-colors: (
         }
   }
 
+  @each $number in (9){
+    .z-#{$number} {
+      z-index: unquote($number)
+    }
+  }
+
 body {
     font-family: 'Poppins', sans-serif;
+    // background: url('../public/images/Pet_Wonder_Wallpaper.jpg');
 }
+
+
+
+
+// jeswanth css

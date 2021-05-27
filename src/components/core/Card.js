@@ -118,105 +118,49 @@ const Card = ({
   const toggle = () => setVisible(!visible);
 
   return (
-    <div className='single_courses'>
-      <div className='thumb'>
-        <Link
-          to={{
-            pathname: `/product/${data.productId}`,
-            state: data,
-          }}
-          style={{ textDecorationLine: 'none' }}
-        >
-          {disable && (
-            <img
-              src={soldout}
-              alt='soldout'
-              style={{
-                position: 'absolute',
-                zIndex: '10',
-                opacity: '50%',
-                top: '10%',
-                left: '25%',
-                width: '50%',
-              }}
-            />
-          )}
-
-          <a className='akruti-a'>
-            {data.productImages ? (
-              <img
-                className='akruti-img'
-                src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-                alt='image'
-              />
-            ) : (
-              <img className='akruti-img' src={noImage} alt='No image found' />
-            )}
-          </a>
-        </Link>
+    <div class="card h-100">
+      <div class="h-50 card-body">
+        {data.productImages ? (
+          <img
+          src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
+          alt='image' class="card-img-top h-100" alt={`${data.productId}_img`}
+          />
+        ) : (
+          <img className='' src={noImage} alt='No image found' />
+        )}
       </div>
-      <div className='courses_info'>
-        <h3 className='akruti-h3'>
-          {data.title} <br></br>
-        </h3>
-        {/* <p className="d-sm-none d-md-block d-none d-sm-block">
-                {data.description.slice(0,95)}
-                {data.description.length>95 && <Fragment>.....</Fragment>}
-            </p> */}
-        <div className='star_prise justify-content-between'>
-          <div className='star col-sm-8 col-12 lol'>
-            <div
-              className='prise col-sm-4 col-12 lol'
-              style={{ display: 'inline-block' }}
-            >
-              <span className='offer'>₹{data.price}</span>
-              <span className='active_prise'>
-                ₹{data.price - (data.price * data.discount) / 100}
-              </span>
-            </div>
-          </div>
-          {showAddToButton && (
-            <div className='buttons'>
+      <div class="card-footer p-0">
+        <h5 class="card-title m-0 font-size-16 py-2">{data.title}</h5>
+        <div>
+          <span className='mr-1 text-dark text-decoration-line-through' style={{ textDecoration: 'line-through' }}>₹{data.price}</span>
+          <span className='ml-1 font-weight-bold text-secondary'>
+            ₹{data.price - (data.price * data.discount) / 100}
+          </span>
+        </div>
+        {/* <p class="card-text m-0 font-size-14">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+        {showAddToButton && (
+            <div className=''>
               <button
-                className='btn btn-outline-warning btn-sm mb-2 '
+                className='btn btn-primary btn-sm mb-2 mr-2'
                 onClick={handleClick}
                 disabled={disable}
-                style={{
-                  cursor: disable ? 'not-allowed' : 'pointer',
-                  position: 'absolute',
-                  bottom: '15%',
-                  left: '20%',
-                }}
               >
                 Add to Cart
               </button>
-              {/* <a href="#"><span ><i class="far fa-lg fa-heart" style={{paddingRight:"20px"}}></i></span></a>{' '} */}
               <Link
                 to={{
                   pathname: `/product/${data.productId}`,
                   state: data,
                 }}
                 className='btn btn-danger btn-sm mb-2'
-                style={{
-                  textDecorationLine: 'none',
-                  position: 'absolute',
-                  bottom: '15%',
-                  right: '20%',
-                }}
               >
                 Buy Now
               </Link>
             </div>
           )}
-        </div>
-
-        {showCartUpdateOptions(cartUpdate)}
-        {redirect && redirectToSignin()}
       </div>
-      <Alert color='success' isOpen={visible} toggle={toggle}>
-        Product has been added to cart
-      </Alert>
     </div>
+    
   );
 };
 

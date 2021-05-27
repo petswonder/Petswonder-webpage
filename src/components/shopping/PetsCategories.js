@@ -9,53 +9,58 @@ import { Link } from 'react-router-dom'
 
 const PetsCategories = () => {
 
-    const pet = (name, photo) =>{
-        return <div className="col-6 col-md-3 ttmcat-slider mb-3">
-          <div className="content">
-            <div className="image">
-            <Link to ={`/pet/${name}`}>
-              <img src={photo} alt="Cats" title="Cats" className="img-responsive-categ"/>
-            </Link>
-            </div>
-            
-            <div className="caption">
-            <div className="cat-title">
-              <h4><Link className="petscat" to ={`/pet/${name}`}>{name}</Link></h4>
-                    </div>
-                  </div> 
-            
-          </div>
-	    </div>
-    }
+    const petcategories = [
+        {"name": "Dog", "imgUrl": dog},
+        {"name": "Cat", "imgUrl": dog},
+        {"name": "Fish", "imgUrl": dog},
+        {"name": "Rabbit", "imgUrl": dog}
 
+    ]
 
-
+    const petbrands = [
+        {"name": "Pedigree", "imgUrl": dog},
+        {"name": "jerhigh", "imgUrl": dog},
+        {"name": "Whiskas", "imgUrl": dog},
+        {"name": "Purina", "imgUrl": dog},
+        {"name": "drools", "imgUrl": dog},
+        {"name": "Acana", "imgUrl": dog}
+    ]
 
     return (
-        <div className="shopbypets">
-            <div className="colored-heading">
-                <div className="row">
-                    <div className="col-2">
-                        <h2><i className="fas fa-paw"></i></h2>
-                    </div>
-                    <div className="col-8">
-                        <h2>Shop By Pets</h2>
-                    </div>
-                    <div className="col-2">
-                        <h2><i className="fas fa-paw"></i></h2>
-                    </div>
-
-                </div>
-            </div>
-            <br/>
+        <>
+        <div class="my-3">
+            <h2 class="text-center">Shop By Pets</h2>
             <div className="row">
-            
-            {pet("Dog", dog)}
-            {pet("Cat", cat)}
-            {pet("Rabbit", rabbit)}
-            {pet("Fish", fish)}
-            </div>
+            {petcategories.map(pet => (
+                <div class="col flex-column h-100 text-center">
+                <Link to ={`/pet/${pet.name}`} className="">
+                    <div className="mx-auto w-200 h-200 mx-auto">
+                    {/* <i class="fa fa-fish"></i> */}
+                    <img src={pet.imgUrl} alt="Cats" title="Cats" className="img-responsive w-100 rounded-circle shadow "/>
+                    </div>
+                    <h5 class="mt-3">{pet.name}</h5>
+                </Link>
+                </div>
+            ))}
+           </div>
         </div>
+        <div class="my-3">
+            <h2 class="text-center">Shop By Brands</h2>
+            <div className="row">
+            {petbrands.map(pet => (
+                <div class="col flex-column h-100 text-center">
+                <Link to ={`/pet/${pet.name}`} className="">
+                    <div className="mx-auto">
+                    {/* <i class="fa fa-fish"></i> */}
+                    <img src={pet.imgUrl} alt="Cats" title="Cats" className="img-responsive w-100 rounded-circle shadow "/>
+                    </div>
+                    <h5 class="mt-3">{pet.name}</h5>
+                </Link>
+                </div>
+            ))}
+        </div>
+        </div>
+        </>
     )
 }
 

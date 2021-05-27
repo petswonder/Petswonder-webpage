@@ -56,17 +56,14 @@ const PopularProducts = () => {
 
     return (
         <div className="recent-game-section spad set-bg container col-xl-11 col-12">
-            <br/>
-            <br/>
-            <br/>
-            <Heading text="Popular Products" />
-            <br/>
+            {/* <Heading text="Popular Products" /> */}
             {/* {postsToShow.length > 0 && ( */}
             {/* <Search /> */}
+            <h2 class="text-center">Popular Products</h2>
             <div className="row">
                 
                 {postsToShow.map((data, i) => (
-                    <div key={i} className="col-xl-3 col-lg-4 col-6 product">
+                    <div key={i} className="col-xl-3 col-lg-4 col-6 product h-400 text-center my-3">
                         <Card data={data} />
                     </div>
                 ))}
@@ -75,7 +72,7 @@ const PopularProducts = () => {
             {/* <div class="group">
                 <button className="btn btn-warning button" onClick={handleShowMorePosts}>Load More</button>
             </div> */}
-            <div class="group">
+            <div class="text-center">
                 <Link to="/popularProducts"><button className="btn btn-warning button">Explore More</button></Link>
             </div>
             <br/>

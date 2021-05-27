@@ -12,7 +12,7 @@ const Book1 = ({
   const comingS = () => {
     return (
       <div>
-        <h4>Coming Soon</h4>
+        <h6 class="m-0">Coming Soon !!!</h6>
       </div>
     );
   };
@@ -25,32 +25,29 @@ const Book1 = ({
   };
 
   return (
-    <div className='col-12 col-md-5 mb-4 mx-auto'>
+    <div className='col-12 col-md-6 mb-4 mx-auto'>
       <Card>
         <Card.Title
-          className='p-2 mx-auto'
-          style={{ borderBottom: '2px solid darkblue', width: '50%' }}
+          className='p-2 card-title h5 text-center m-0'
         >
           {title}
         </Card.Title>
-        <Card.Img
+        <div class="h-200 text-center">
+          <img src={serviceImageUrls} alt="" class="h-100"/>
+        </div>
+        {/* <Card.Img
           variant='top'
           src={serviceImageUrls}
-          style={{ height: '280px' }}
-        />
-        <Card.Body>
-          <Card.Text>
-            {comingSoon ? (
+        /> */}
+        <Card.Footer className="text-center border-0 bg-transparent">
+          {comingSoon ? (
               comingS()
             ) : (
-              <div style={{ minHeight: '' }}>
-                <Link to={`/${page}`}>
-                  <Button variant='warning'>Book now</Button>
-                </Link>
-              </div>
+              <Link to={`/${page}`}>
+                  <Button variant='primary'>Book now</Button>
+              </Link>
             )}
-          </Card.Text>
-        </Card.Body>
+        </Card.Footer>
       </Card>
       {/* <div className='card' style={{ padding: '10px' }}>
         <h5>{title}</h5>

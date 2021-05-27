@@ -6,60 +6,53 @@ import logo from '../../images/logo.png';
 const ComingSoon = () => {
   return (
     <div className='row ' style={{ height: '80vh' }}>
-      <div className='col-md-6'>
+      <div className='col-md-6 text-center'>
         <img
           src={logo}
-          style={{
-            borderRadius: '50%',
-            padding: '8px',
-            height: '10rem',
-            borderLeft: '3px solid red',
-            borderTop: '2px solid red',
-          }}
-          alt=''
+          alt='brand_logo'
+          width="200"
+          className="rounded-circle border-left border-bg p-2 border border-5"
         />
-        <h1 className='my-5 '>Coming Soon</h1>
+        <h1 className='my-5 '>Coming Soon !!!</h1>
 
         <ul
-          className='d-flex justify-content-between pr-4'
-          style={{ listStyleType: 'none' }}
+          className='d-flex justify-content-center pr-4 list-group list-group-horizontal'
         >
-          <li className='aradhna_footerli'>
+          <li className='list-group-item py-0 border-0 text-secondary'>
             <Link to='/'>Home</Link>
           </li>
-          <li className='aradhna_footerli'>
+          <li className='list-group-item py-0 border-0 text-secondary'>
             <Link to='/shopping'>Shopping</Link>
           </li>
-          <li className='aradhna_footerli'>
+          <li className='list-group-item py-0 border-0 text-secondary'>
             <Link to='/about'>About us</Link>
           </li>
         </ul>
 
         <div
-          className='d-flex justify-content-around mt-5 '
-          style={{ fontSize: '2rem' }}
+          className='d-flex justify-content-center mt-3 '
         >
-          <a href='https://www.facebook.com/petswonder.in' target='_blank'>
+          <a href='https://www.facebook.com/petswonder.in' target='_blank' class="px-3 py-0">
             {' '}
-            <i class='fab fa-facebook'></i>{' '}
+            <i class='fab font-size-30 fa-facebook'></i>{' '}
           </a>
 
           <a
             href='https://www.instagram.com/petswonder_official/'
-            target='_blank'
+            target='_blank' class="px-3 py-0"
           >
             {' '}
-            <i class='fab fa-instagram'></i>{' '}
+            <i class='fab font-size-30 fa-instagram'></i>{' '}
           </a>
 
-          <a href='https://twitter.com/PetsWonder1' target='_blank'>
+          <a href='https://twitter.com/PetsWonder1' target='_blank' class="px-3 py-0">
             {' '}
-            <i class='fab fa-twitter'></i>{' '}
+            <i class='fab font-size-30 fa-twitter'></i>{' '}
           </a>
         </div>
       </div>
       <div className='col-0 col-md-6 d-none d-lg-block pt-5'>
-        <img src={image} alt='sad image' style={{ width: '100%' }} />
+        <img src={image} alt='sad_image' className="w-100"/>
       </div>
     </div>
   );

@@ -9,10 +9,9 @@ const Breadcrumbs = (props) => {
   } = props;
   const pathnames = pathname.split('/').filter((x) => x);
   return (
-    <div>
-      <nav aria-label='breadcrumb'>
-        <ol class='breadcrumb' style={{ backgroundColor: 'rgb(0,0,0,0)' }}>
-          <li class='breadcrumb-item' onClick={() => history.push('/')}>
+    <nav aria-label='breadcrumb'>
+        <ol class='breadcrumb p-0 m-0' style={{ backgroundColor: 'rgb(0,0,0,0)' }}>
+          <li class='breadcrumb-item font-size-14' onClick={() => history.push('/')}>
             <a href=''>Home</a>
           </li>
           {/* <MUIBreadcrumbs.Item >
@@ -22,12 +21,12 @@ const Breadcrumbs = (props) => {
             const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
             const isLast = index === pathnames.length - 1;
             return isLast ? (
-              <li class='breadcrumb-item active' aria-current='page'>
+              <li class='breadcrumb-item font-size-14 active' aria-current='page'>
                 {name}
               </li>
             ) : (
               <li
-                class='breadcrumb-item '
+                class='breadcrumb-item font-size-14 '
                 onClick={() => history.push(routeTo)}
               >
                 <a href=''>{name}</a>
@@ -36,7 +35,7 @@ const Breadcrumbs = (props) => {
           })}
         </ol>
       </nav>
-    </div>
+    
   );
 };
 

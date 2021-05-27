@@ -7,10 +7,8 @@ import Book1 from './Book1';
 const PetServices = () => {
   return (
     <>
-      <br />
       <Heading text='Pet Care' />
-      <br />
-      <div className='container'>
+      <div className='container px-0 py-4'>
         <div className='row mx-auto'>
           <Book1
             d={{

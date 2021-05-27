@@ -34,10 +34,10 @@ const Shopping = () => {
   return (
     <div>
       <Slider banners={items} />
-      <Product />
+      {/* <Product /> */}
       <ShopByPets />
 
-      <ShopByBrand />
+      {/* <ShopByBrand /> */}
       <PopularProducts />
     </div>
   );

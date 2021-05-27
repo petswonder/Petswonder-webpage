@@ -8,11 +8,13 @@ import {
   Col,
   FormControl,
   Button,
-  Container
+  Container,
+  Dropdown
 } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { isAuthenticated, signout } from '../auth/index';
 import LogoName from '../../images/LogoName.png';
+import SearchComponent from '../core/Search'
 // import './../../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -27,9 +29,20 @@ const isActive = (history, path) => {
   } else return { color: '#ffffff' };
 };
 
+var nav_items = [
+  {id: 1, name: "Home", auth: false, link: "/" },
+  {id: 2, name: "Shopping", auth: false, link: "/shopping" },
+  {id: 3, name: "Pet Care", auth: true, link: "/petCare" },
+  {id: 4, name: "Pet Mate", auth: true, link: "/petMate" },
+  {id: 5, name: "Pet Snap", auth: true, link: "/petSnap" },
+  {id: 6, name: "Pet Guide", auth: true, link: "/petGuide" }
+]
+
 const Menu = ({ history }) => {
   const jwt = isAuthenticated();
-
+  
+  nav_items = jwt ? nav_items : nav_items.filter( i => {return i.auth == false})
+  const search_bar = false
   // const [search, setSearch] = useState('');
 
   // const handleChange = e =>{
@@ -42,195 +55,54 @@ const Menu = ({ history }) => {
   // }
 
   return (
-    <Navbar expand='lg' variant='light' fixed='top' className='bg-primary py-0'>
+    <Navbar collapseOnSelect expand="lg" bg="primary" variant="light" className="py-1 fixed-top">
       <Container>
-          <Navbar.Brand>
-            {'  '}
-            <img
-              src={LogoName}
-              style={{ width: '230px' }}
-            ></img>
-          </Navbar.Brand>
+      <Navbar.Brand><Link to={'/'} className="nav-link p-0"> <img src={LogoName} style={{ width: '160px' }} /> </Link></Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <div class="row flex-column w-100">
+          <div class="col-12">
+          <Nav className="d-flex justify-content-end align-items-center">
+            <SearchComponent />
+          
+          {!jwt ? (
+            <div>
+              <Link to='/signin' className="font-size-14 btn btn-secondary text-white py-1 mr-3 rounded-pill">Sign In</Link>
+              <Link to='/signup' className="font-size-14 btn btn-secondary text-white py-1 rounded-pill">Sign Up</Link>
+            </div>
+          ) : (
+            
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-custom-components" className='nav-link dropdown-toggle py-0 h5 m-0'>
+                  <i class="fa fa-user text-secondary"></i>
+                </Dropdown.Toggle>
 
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-
-          <Navbar
-            id='basic-navbar-nav'
-            className='flex-column align-items-end w-100 py-0'
-          >
-            <Nav className=''>
-              {!jwt && (
-                <Button variant="light" className="round">Sign In</Button>
-                // <Nav.Link
-                //   className='nav-links'
-                //   href='/signin'
-                //   style={isActive(history, '/signin')}
-                // >
-                //   Signin
-                // </Nav.Link>
-              )}
-
-              {!jwt && (
-                <Button variant="light" className="round">Sign Up</Button>
-                // <Nav.Link
-                //   className='nav-links'
-                //   href='/signup'
-                //   style={isActive(history, '/signup')}
-                // >
-                //   Signup
-                // </Nav.Link>
-              )}
-
-              {/* <Form inline>
-                {
-                  <Nav.Link
-                    className='nav-links ml-2 mr-3 mb-3'
-                    href='/search'
-                    style={isActive(history, '/search')}
-                  >
-                    <Button className='mb-5 py-1 btn btn btn-dark'>
-                      <FontAwesomeIcon
-                        icon={faSearch}
-                        style={{ fontSize: '18px' }}
-                      />{' '}
-                      Search
-                    </Button>
-                  </Nav.Link>
-                }
-              </Form> */}
-
-              
-            </Nav>
-            <Nav className=''>
-              
-
-              {/* <Form inline>
-                {
-                  <Nav.Link
-                    className='nav-links ml-2 mr-3 mb-3'
-                    href='/search'
-                    style={isActive(history, '/search')}
-                  >
-                    <Button className='mb-5 py-1 btn btn btn-dark'>
-                      <FontAwesomeIcon
-                        icon={faSearch}
-                        style={{ fontSize: '18px' }}
-                      />{' '}
-                      Search
-                    </Button>
-                  </Nav.Link>
-                }
-              </Form> */}
-
-              {jwt && (
-                <Nav.Link
-                  className='nav-links'
-                  href='/petGuide'
-                  style={isActive(history, '/petGuide')}
-                >
-                  Pet Guide
-                </Nav.Link>
-              )}
-
-              {jwt && (
-                <Nav.Link
-                  className='nav-links'
-                  href='/petSnap'
-                  style={isActive(history, '/petSnap')}
-                >
-                  Pet Snap
-                </Nav.Link>
-              )}
-
-              {jwt && (
-                <Nav.Link
-                  className='nav-links'
-                  href='/petMate'
-                  style={isActive(history, '/petMate')}
-                >
-                  Pet Mate
-                </Nav.Link>
-              )}
-
-              {jwt && (
-                <Nav.Link
-                  className='nav-links'
-                  href='/petCare'
-                  style={isActive(history, '/petCare')}
-                >
-                  Pet Care
-                </Nav.Link>
-              )}
-
-              {
-                <Nav.Link
-                  className='nav-links'
-                  href='/shopping'
-                  style={isActive(history, '/shopping')}
-                >
-                  Shopping
-                </Nav.Link>
-              }
-
-              <Nav.Link
-                className='nav-links'
-                href='/'
-                style={isActive(history, '/')}
-              >
-                Home
-              </Nav.Link>
-            </Nav>
-            <Form inline>
-              {jwt && (
-                <Nav.Link
-                  className='nav-links mb-3'
-                  href='/cart'
-                  style={isActive(history, '/cart')}
-                >
-                  <FontAwesomeIcon
-                    icon={faCartArrowDown}
-                    style={{ fontSize: '22px' }}
-                  />{' '}
-                </Nav.Link>
-              )}
-
-              {jwt && (
-                <Nav.Link
-                  className='nav-links mb-3'
-                  href='/profile'
-                  style={isActive(history, '/profile')}
-                >
-                  <FontAwesomeIcon
-                    icon={faUserCircle}
-                    style={{ fontSize: '22px' }}
-                  />{' '}
-                </Nav.Link>
-              )}
-
-              {jwt && (
-                <Nav.Link
-                  className='nav-links mb-3'
-                  onClick={() =>
+                <Dropdown.Menu align="right" menuRole="menu" flip="true" className="rounded-0 border-0 py-0 shadow">
+                  <Dropdown.Item to='/profile' className="font-size-14 py-2">Profile</Dropdown.Item>
+                  <Dropdown.Item to='/signin' className="font-size-14 py-2" onClick={() =>
                     signout(() => {
                       history.push('/signin');
                     })
-                  }
-                  href='/signin'
-                  style={isActive(history, '/signin')}
-                  style={{
-                    color: '#fff',
-                    fontWeight: '600px',
-                    fontSize: '22px',
-                    fontFamily: 'sans-serif',
-                  }}
-                >
-                  SignOut
-                </Nav.Link>
-              )}
-            </Form>
-          </Navbar>
-          </Container>
+                  }>Sign Out</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            
+          )}
+          </Nav>
+          
+        </div>
+        <div class="col-12">
+        <Nav className="d-flex justify-content-end mt-2">
+          {nav_items.map(item => (
+            <Link to={item.link} className="nav-link py-0 text-secondary">{item.name}</Link>
+          ))}
+        </Nav>
+        </div>
+        </div>
+      </Navbar.Collapse>
+      </Container>
     </Navbar>
+    
     
   );
 };

@@ -3,18 +3,14 @@ import Breadcrumbs from './Breadcrumbs';
 
 const Heading = ({ text }) => {
   return (
-    <>
-      <div className='colored-heading'>
-        <div className='container'>
-          <h2>{text}</h2>
-        </div>
-      </div>
-      <div className='colored-crumbs'>
-        <p className='container'>
+    <div class="bg-light">
+      <div className='container py-2'>
+        <h2 class="m-0">{text}</h2>
+        <p class="m-0">
           <Breadcrumbs />
         </p>
       </div>
-    </>
+    </div>
   );
 };
 
