@@ -5,7 +5,7 @@ import image from '../images/sad-dog.png';
 
 const NotFound = () => {
   return (
-    <div style={{ height: '80vh' }}>
+    <div className='mx-5'>
       <div
         className='mx-auto '
         style={{

@@ -4,7 +4,7 @@ import ComingSoon from '../core/ComingSoon';
 
 const petMate = () => {
   return (
-    <div className='container petMate'>
+    <div className='container '>
       <br />
       <ComingSoon />
     </div>

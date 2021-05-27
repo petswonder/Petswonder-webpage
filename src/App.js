@@ -31,6 +31,7 @@ import PetSnap from './components/petServices/PetSnap';
 import OnlineDoc from './components/petServices/OnlineDoc';
 import Successful from './components/core/Successful';
 import NotFound from './components/404';
+import Tc from './components/core/Tc';
 
 const App = () => {
   return (
@@ -80,6 +81,7 @@ const App = () => {
             component={OrderHistory}
           />
           <Route exact path='/about' component={AboutUs} />
+          <Route exact path='/termsandconditions' component={Tc} />
           <Route exact path='*' component={NotFound} />
         </Switch>
       </div>
