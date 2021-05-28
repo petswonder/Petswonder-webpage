@@ -55,7 +55,7 @@ const PopularProducts = () => {
 
 
     return (
-        <div className="recent-game-section spad set-bg container col-xl-11 col-12">
+        <div className="container">
             {/* <Heading text="Popular Products" /> */}
             {/* {postsToShow.length > 0 && ( */}
             {/* <Search /> */}

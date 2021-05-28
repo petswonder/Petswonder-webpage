@@ -1,4 +1,5 @@
 import React from 'react'
+import Slider from "react-slick";
 import dog from '../../images/pets/dog 6.jpg'
 import cat from '../../images/pets/cat 2.jpg'
 import fish from '../../images/pets/fish 14.jpg'
@@ -8,6 +9,16 @@ import rabbit from '../../images/pets/rabbit 18.jpg'
 import { Link } from 'react-router-dom'
 
 const PetsCategories = () => {
+
+    const slider_settings = {
+        dots: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        speed: 2000,
+        autoplaySpeed: 1000,
+        cssEase: "linear"
+      };
 
     const petcategories = [
         {"name": "Dog", "imgUrl": dog},
@@ -25,6 +36,7 @@ const PetsCategories = () => {
         {"name": "drools", "imgUrl": dog},
         {"name": "Acana", "imgUrl": dog}
     ]
+    
 
     return (
         <>
@@ -46,8 +58,9 @@ const PetsCategories = () => {
         </div>
         <div class="my-3">
             <h2 class="text-center">Shop By Brands</h2>
-            <div className="row">
-            {petbrands.map(pet => (
+            <div class="row">
+              <Slider {...slider_settings} className="h-100 w-100">
+              {petbrands.map(pet => (
                 <div class="col flex-column h-100 text-center">
                 <Link to ={`/pet/${pet.name}`} className="">
                     <div className="mx-auto">
@@ -57,8 +70,10 @@ const PetsCategories = () => {
                     <h5 class="mt-3">{pet.name}</h5>
                 </Link>
                 </div>
-            ))}
-        </div>
+              ))}
+              </Slider>
+            </div>
+            
         </div>
         </>
     )
