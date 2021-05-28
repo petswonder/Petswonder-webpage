@@ -68,6 +68,12 @@ $theme-colors: (
     }
   }
 
+  @each $prop in ('pointer'){
+    .cursor-#{$prop} {
+      cursor: unquote($prop)
+    }
+  }
+
 body {
   font-family: 'Poppins', sans-serif;
 }

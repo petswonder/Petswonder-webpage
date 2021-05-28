@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
-import Slider from './Slider';
+import HomeBannerSlider from './Slider';
 import photo from '../../images/img7.jpg';
 import Customer from './home/Customer';
 import HomeContent from './home/HomeContent';
@@ -34,7 +34,7 @@ const Home = () => {
     <div>
       {/* <Layout title="Home Page" description="Node React E-Commerce App" className="" > */}
 
-      <Slider banners={items} />
+      <HomeBannerSlider banners={items} />
       <Customer />
       <HomeContent />
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Slider from '../core/Slider';
+import HomeBannerSlider from '../core/Slider';
 import Product from '../product/Product';
 import PopularProducts from './PopularProducts';
 import ShopByBrand from './ShopByBrand';
@@ -33,7 +33,7 @@ const Shopping = () => {
 
   return (
     <div>
-      <Slider banners={items} />
+      <HomeBannerSlider banners={items} />
       {/* <Product /> */}
       <ShopByPets />
 
