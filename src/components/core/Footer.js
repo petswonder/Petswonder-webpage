@@ -45,6 +45,9 @@ const Footer = () => {
                 <li className='list-group-item border-0 bg-transparent p-0'>
                   <Link to='/about' class='text-white font-size-12 font-weight-light'>About Us</Link>
                 </li>
+                <li className='list-group-item border-0 bg-transparent p-0'>
+                  <Link to='/termsandconditions' class='text-white font-size-12 font-weight-light'>Terms &amp; Conditions</Link>
+                </li>
               </ul>
             </div>
             <div className='col-sm-4 col-md-3 item col-lg-2'>
