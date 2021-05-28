@@ -160,7 +160,7 @@ export const editProfile = (formData) => {
 //get order history
 export const getOrderHistory = (userNumber) => {
   return fetch(
-    `https://petswonder.co.in/petswonder/api/petProfileDetails/getPetDetails?mobileNumber=${userNumber}`,
+    `https://petswonder.co.in/petswonder/api/saveOrder/getOrderDetails?mobileNumber=${userNumber}`,
     {
       method: 'POST',
     }
