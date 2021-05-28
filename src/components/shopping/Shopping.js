@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HomeBannerSlider from '../core/Slider';
-import Product from '../product/Product';
 import PopularProducts from './PopularProducts';
-import ShopByBrand from './ShopByBrand';
 import ShopByPets from './ShopByPets';
-import ShoppingCategories from './ShoppingCategories';
-import petAccessories from '../../images/banners/Accessories.jpg';
-import petGifts from '../../images/banners/Gifts.jpg';
-import petFood from '../../images/banners/Food.jpg';
 import BannerApi from '../core/BannerApi';
 
 const Shopping = () => {

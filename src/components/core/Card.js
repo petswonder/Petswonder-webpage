@@ -1,37 +1,29 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, {  useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
-import notFound from '../../images/notfound.jpg';
-import { Alert } from 'reactstrap';
 import noImage from '../../images/no image.png';
-import soldout from '../../images/soldout.png';
 
 const Card = ({
   data,
-  showViewButton = true,
   showAddToButton = true,
   cartUpdate = false,
-  showRemoveProductButton = false,
 }) => {
   // console.log(data);
-  const [count, setCount] = useState(data.quantity);
+  const [count] = useState(data.quantity);
   const [disable, setDisable] = useState(false);
 
   const productId = data.productId;
   const id = data.productId;
 
-  const [redirect, setRedirect] = useState(false);
-  const redirectToSignin = () => {
-    return <Redirect to='/signin' />;
-  };
+  const [setRedirect] = useState(false);
+  
 
   const handleClick = () => {
-    if (isAuthenticated() == false) {
+    if (isAuthenticated() === false) {
       setRedirect(true);
     } else {
       const {
-        jwt,
         user: { userNumber },
       } = isAuthenticated();
       addToCart({ userNumber, id })
@@ -48,20 +40,19 @@ const Card = ({
 
   // console.log(data);
 
-  const handleChange = (productId) => (e) => {};
+  // const handleChange = (productId) => (e) => {};
 
-  const decrease = () => {
-    count >= 0 && setCount(count - 1);
-  };
+  // const decrease = () => {
+  //   count >= 0 && setCount(count - 1);
+  // };
 
-  const increase = () => {
-    setCount(count + 1);
-  };
+  // const increase = () => {
+  //   setCount(count + 1);
+  // };
 
   useEffect(() => {
     if (count >= 0) {
       const {
-        jwt,
         user: { userNumber },
       } = isAuthenticated();
       isAuthenticated() &&
@@ -79,43 +70,43 @@ const Card = ({
     }
   }, [count]);
 
-  const showCartUpdateOptions = (cartUpdate) => {
-    return (
-      cartUpdate && (
-        <div style={{ width: '50%', margin: 'auto' }}>
-          <div className='input-group mt-3 mb-3 '>
-            <div className='input-group-prepend'>
-              <button
-                onClick={decrease}
-                className='input-group-text btn btn-warning rounded-circle'
-              >
-                -
-              </button>
-            </div>
-            <input
-              type='number'
-              className='form-control text-center'
-              style={{ borderTop: '0', borderLeft: '0', borderRight: '0' }}
-              value={count}
-              onChange={handleChange(data.productId)}
-            />
-            <div className='input-group-prepend'>
-              <button
-                onClick={increase}
-                className='input-group-text btn btn-warning rounded-circle '
-              >
-                +
-              </button>
-            </div>
-          </div>
-        </div>
-      )
-    );
-  };
+  // const showCartUpdateOptions = (cartUpdate) => {
+  //   return (
+  //     cartUpdate && (
+  //       <div style={{ width: '50%', margin: 'auto' }}>
+  //         <div className='input-group mt-3 mb-3 '>
+  //           <div className='input-group-prepend'>
+  //             <button
+  //               onClick={decrease}
+  //               className='input-group-text btn btn-warning rounded-circle'
+  //             >
+  //               -
+  //             </button>
+  //           </div>
+  //           <input
+  //             type='number'
+  //             className='form-control text-center'
+  //             style={{ borderTop: '0', borderLeft: '0', borderRight: '0' }}
+  //             value={count}
+  //             onChange={handleChange(data.productId)}
+  //           />
+  //           <div className='input-group-prepend'>
+  //             <button
+  //               onClick={increase}
+  //               className='input-group-text btn btn-warning rounded-circle '
+  //             >
+  //               +
+  //             </button>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )
+  //   );
+  // };
 
-  const [visible, setVisible] = useState(false);
+  const [ setVisible] = useState(false);
 
-  const toggle = () => setVisible(!visible);
+  // const toggle = () => setVisible(!visible);
 
   return (
     <div class="card h-100 text-center">

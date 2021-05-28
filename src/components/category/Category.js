@@ -3,7 +3,6 @@ import Card from '../core/Card';
 import { productByCategory } from '../product/apiProduct';
 import * as icons from '../../images/index';
 import Heading from '../core/Heading';
-import ShoppingCategories from '../shopping/ShoppingCategories';
 import { Link } from 'react-router-dom';
 import food from '../../images/categories/food1.png';
 

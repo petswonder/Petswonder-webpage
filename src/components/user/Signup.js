@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Layout from '../core/Layout';
 import signin_bg from '../../images/signin_bg.jpg';
 
 import {
@@ -10,7 +9,6 @@ import {
   isAuthenticated,
   authenticate,
 } from '../auth/index';
-import logo from '../../images/logo1.png';
 
 const Signup = () => {
   const [phoneNumber, setPhoneNumber] = useState('91 ');

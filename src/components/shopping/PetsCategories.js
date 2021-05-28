@@ -1,11 +1,6 @@
 import React from 'react'
 import Slider from "react-slick";
 import dog from '../../images/pets/dog 6.jpg'
-import cat from '../../images/pets/cat 2.jpg'
-import fish from '../../images/pets/fish 14.jpg'
-import smallpets from '../../images/pets/smallpets.png'
-import parrot from '../../images/pets/parrot.png'
-import rabbit from '../../images/pets/rabbit 18.jpg'
 import { Link } from 'react-router-dom'
 
 const PetsCategories = () => {

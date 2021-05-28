@@ -1,5 +1,4 @@
 import React from 'react';
-import { Breadcrumb as MUIBreadcrumbs } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 
 const Breadcrumbs = (props) => {
@@ -12,7 +11,7 @@ const Breadcrumbs = (props) => {
     <nav aria-label='breadcrumb'>
         <ol class='breadcrumb p-0 m-0' style={{ backgroundColor: 'rgb(0,0,0,0)' }}>
           <li class='breadcrumb-item font-size-14' onClick={() => history.push('/')}>
-            <a href=''>Home</a>
+            <span>Home</span>
           </li>
           {/* <MUIBreadcrumbs.Item >
           Home

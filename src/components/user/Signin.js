@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Layout from '../core/Layout';
 import { signin, authenticate } from '../auth/index';
-import logo from '../../images/logo1.png';
 import signin_bg from '../../images/signin_bg.jpg';
 
 const Signin = () => {
@@ -14,9 +12,9 @@ const Signin = () => {
     redirectToReferrer: false,
   });
 
-  const [status, setStatus] = useState('');
+  // const [status, setStatus] = useState('');
 
-  const { userNumber, password, error, loading, redirectToReferrer } = formData;
+  const { userNumber, password, error, redirectToReferrer } = formData;
 
   const handleChange = (e) => {
     setFormdata({

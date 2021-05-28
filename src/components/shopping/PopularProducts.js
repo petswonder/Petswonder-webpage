@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import img4 from '../../images/popular-products/pedigree.jpg'
 import {getProducts} from '../product/apiProduct'
-import Product from './Product'
-import {productData} from './shared'
 import Card from '../core/Card'
-import Search from '../core/Search'
 import { Link } from 'react-router-dom'
-import Heading from '../core/Heading'
 
 const postsPerPage = 4;
 let arrayForHoldingPosts = [];

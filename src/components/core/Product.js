@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { addToCart } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Alert } from 'reactstrap';
 import Heading from '../core/Heading';
 
