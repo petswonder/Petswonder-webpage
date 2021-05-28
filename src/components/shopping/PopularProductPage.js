@@ -22,19 +22,17 @@ const PopularProductPage = () => {
     },[]);
 
     return (
-        <div className="recent-game-section spad set-bg container col-xl-11 col-12">
-            <br/>
-            <br/>
+        <div className="">
+            
             <Heading text="Popular Products" />
-            <br/>
-            <div className="row">
-                
+            <div className="container">
+                <div className="row">
                 {products && products.map((data, i) => (
-                    <div key={i} className="col-xl-3 col-lg-4 col-6 product">
-                        <Card data={data} />
+                    <div key={i} className="col-xl-3 col-lg-4 col-6 product my-3">
+                        <Card data={data} className="text-center"/>
                     </div>
                 ))}
-                
+                </div>
             </div>
             {/* <div class="group">
                 <button className="btn btn-warning button" onClick={handleShowMorePosts}>Load More</button>

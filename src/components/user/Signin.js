@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import Layout from '../core/Layout';
 import { signin, authenticate } from '../auth/index';
 import logo from '../../images/logo1.png';
+import signin_bg from '../../images/signin_bg.jpg';
 
 const Signin = () => {
   const [formData, setFormdata] = useState({
@@ -62,11 +63,11 @@ const Signin = () => {
   };
 
   const signinForm = () => (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
       <div class='login-wrap'>
         <div class='login-html'>
           <div className='img-sign'>
-            <img src={logo} alt='' />
+            {/* <img src={logo} alt='' /> */}
           </div>
           <div className='sign-content'>
             <h2>SIGNIN</h2>
@@ -96,13 +97,12 @@ const Signin = () => {
                 </div>
                 <br />
                 <div class='group'>
-                  <button className='btn btn-primary button'>Signin</button>
+                  <button className='btn btn-secondary button'>Signin</button>
                 </div>
 
-                <div class='hr'></div>
-                <div class='foot-lnk'>
+                <div class='font-size-14 mt-3'>
                   Don't have an Account?{' '}
-                  <Link className='signlinks' to='/signup'>
+                  <Link className='text-secondary text-underline ml-2' to='/signup'>
                     Signup
                   </Link>
                 </div>
@@ -126,11 +126,15 @@ const Signin = () => {
   };
 
   return (
-    <div className='signforms'>
-      {showError()}
-      {redirectUser()}
-      {signinForm()}
+    <div className="container py-5">
+      <div className='signforms border-primary border border-5' style={{'background': `url(${signin_bg})`, 'background-size': 'contain',
+    'background-position': 'right center'}}>
+        {showError()}
+        {redirectUser()}
+        {signinForm()}
+      </div>
     </div>
+    
   );
 };
 

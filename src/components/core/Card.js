@@ -118,7 +118,7 @@ const Card = ({
   const toggle = () => setVisible(!visible);
 
   return (
-    <div class="card h-100">
+    <div class="card h-100 text-center">
       <div class="h-50 card-body">
         {data.productImages ? (
           <img
