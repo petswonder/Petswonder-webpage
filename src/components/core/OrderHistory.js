@@ -35,7 +35,7 @@ const OrderHistory = () => {
       <Heading text='Order History' />
       <br />
 
-      {orderHistory.length > 0 ? (
+      {orderHistory && orderHistory.length > 0 ? (
         <div className='row p-2'>
           {orderHistory.map((order) => {
             const { date, orderStatus, paymentType, productDetails } = order;
