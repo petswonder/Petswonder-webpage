@@ -92,7 +92,7 @@ const Book = ({
   const comingS = () => {
     return (
       <div>
-        <img src={cs} style={{ height: '8.1rem', width: '290px' }} alt='' />
+        <h6 class="m-0">Coming Soon !!!</h6>
       </div>
     );
   };

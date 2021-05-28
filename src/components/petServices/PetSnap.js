@@ -10,12 +10,14 @@ const PetSnap = () => {
 
 
     return (
-        <div className="container">
-            <br/>
+        <div className="">
             <Heading text="Pet Snap" />
-            <br/>
-            <div className="row">
+            <div className="container my-4">
+                <div class="row">
+
+                
                 <Book d={{title:"Pet Photography", serviceImageUrls:PetPhoto, price:"20"}} comingSoon="true"   />
+                </div>
             </div>
         </div>
     )

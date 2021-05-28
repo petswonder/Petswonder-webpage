@@ -26,14 +26,14 @@ const PetGuide = () => {
 
 
     return (
-        <div className="container">
-            <br/>
+        <div className="">
             <Heading text="Pet Guide" />
-            <br/>
+            <div className="container my-4">
             <div className="row">
                 {data.length>0 && data.map((d,i)=>{
                     return <Frames key={i} text={d.title} img={d.image} desc={d.description} />
                 })}
+            </div>
             </div>
         </div>
     )
