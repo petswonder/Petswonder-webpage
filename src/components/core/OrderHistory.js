@@ -35,10 +35,11 @@ const OrderHistory = () => {
       <Heading text='Order History' />
       <br />
 
+      {console.log(orderHistory)}
       {orderHistory && orderHistory.length > 0 ? (
         <div className='row p-2'>
           {orderHistory.map((order) => {
-            const { date, orderStatus, paymentType, productDetails } = order;
+            const { date, orderStatus, totalPrice, productDetails } = order;
             var time = new Date(date);
 
             return (
@@ -49,11 +50,7 @@ const OrderHistory = () => {
                 <div className='m-3 text-left'>
                   <div>
                     <p>ORDER PLACED: {time.toDateString()}</p>
-                    <p>
-                      PRICE:
-                      {productDetails && productDetails[0].priceAfterDiscount}
-                    </p>
-
+                    <p>PRICE: {totalPrice}</p>
                     <div>
                       {productDetails.map((product) => {
                         const { productTitle } = product;
