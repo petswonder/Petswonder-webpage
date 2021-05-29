@@ -11,6 +11,8 @@ $theme-colors: (
 @import "../../node_modules/slick-carousel/slick/slick.css"; 
 @import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
+
+
 @each $h in (200,300,350, 400) {
     .h-#{$h} {
       height: unquote($h + "px !important");

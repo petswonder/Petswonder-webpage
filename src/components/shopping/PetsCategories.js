@@ -1,69 +1,84 @@
 import React from 'react'
 import Slider from "react-slick";
-import dog from '../../images/pets/dog 6.jpg'
 import { Link } from 'react-router-dom'
+
 
 const PetsCategories = () => {
 
+    const SamplePrevArrow = (props) => {
+        const { onClick } = props;
+        return (
+          <div onClick={onClick} className="cursor-pointer position-absolute font-size-40 z-9 h-100 align-items-center d-flex px-4" style={{'left':-60}}><i class="fas fa-chevron-left text-dark"></i></div>
+        )
+      }
+      
+      const SampleNextArrow = (props) => {
+        const { onClick } = props;
+        return (
+          <div onClick={onClick} className="cursor-pointer position-absolute font-size-40 z-9 h-100 align-items-center d-flex px-4" style={{'top':0,'right':-60}}><i class="fas fa-chevron-right text-dark"></i></div>
+        )
+      }
+
     const slider_settings = {
-        dots: true,
-        slidesToShow: 4,
+        pauseOnHover: true,
+        slidesToShow: 5,
         slidesToScroll: 1,
+        infinite:true,
         autoplay: true,
         speed: 2000,
         autoplaySpeed: 1000,
-        cssEase: "linear"
+        cssEase: "linear",
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />
       };
 
     const petcategories = [
-        {"name": "Dog", "imgUrl": dog},
-        {"name": "Cat", "imgUrl": dog},
-        {"name": "Fish", "imgUrl": dog},
-        {"name": "Rabbit", "imgUrl": dog}
+        {"name": "Dog", "img": require('../../images/pets/dog.svg').default},
+        {"name": "Cat", "img": require('../../images/pets/cat.svg').default},
+        {"name": "Fish", "img": require('../../images/pets/fish.svg').default},
+        {"name": "Rabbit", "img": require('../../images/pets/rabbit.svg').default}
 
     ]
 
     const petbrands = [
-        {"name": "Pedigree", "imgUrl": dog},
-        {"name": "jerhigh", "imgUrl": dog},
-        {"name": "Whiskas", "imgUrl": dog},
-        {"name": "Purina", "imgUrl": dog},
-        {"name": "drools", "imgUrl": dog},
-        {"name": "Acana", "imgUrl": dog}
+        {"name": "Pedigree", "img": require('../../images/brands/pedigree.png').default},
+        {"name": "jerhigh", "img": require('../../images/brands/jerhigh.jpg').default},
+        {"name": "Whiskas", "img": require('../../images/brands/whiskas.png').default},
+        {"name": "Purina", "img": require('../../images/brands/purina.png').default},
+        {"name": "drools", "img": require('../../images/brands/drools.png').default},
+        {"name": "Acana", "img": require('../../images/brands/acana.png').default}
     ]
-    
 
     return (
         <>
         <div class="my-3">
             <h2 class="text-center">Shop By Pets</h2>
-            <div className="row">
+            <div className="row my-4">
             {petcategories.map(pet => (
                 <div class="col flex-column h-100 text-center">
                 <Link to ={`/pet/${pet.name}`} className="">
                     <div className="mx-auto w-200 h-200 mx-auto">
-                    {/* <i class="fa fa-fish"></i> */}
-                    <img src={pet.imgUrl} alt="Cats" title="Cats" className="img-responsive w-100 rounded-circle shadow "/>
-                    </div>
-                    <h5 class="mt-3">{pet.name}</h5>
+                    <img src={pet.img} alt={pet.name + '_img'} className="img-responsive w-100 "/>
+                    </div> 
+                    {/* <h5 class="mt-3">{pet.name}</h5> */}
                 </Link>
                 </div>
             ))}
            </div>
         </div>
         <div class="my-3">
-            <h2 class="text-center">Shop By Brands</h2>
+            <h2 class="text-center mt-5 mb-0">Shop By Brands</h2>
             <div class="row">
-              <Slider {...slider_settings} className="h-100 w-100">
-              {petbrands.map(pet => (
+              <Slider {...slider_settings} className="h-100 w-100 align-items-center">
+              {petbrands.map(brand => (
                 <div class="col flex-column h-100 text-center">
-                <Link to ={`/pet/${pet.name}`} className="">
-                    <div className="mx-auto">
+                {/* <Link to ={`/brand/${brand.name}`} className=""> */}
+                    <div className="mx-auto w-200 h-200 align-items-center d-flex">
                     {/* <i class="fa fa-fish"></i> */}
-                    <img src={pet.imgUrl} alt="Cats" title="Cats" className="img-responsive w-100 rounded-circle shadow "/>
+                    <img src={brand.img} alt={brand.name + '_img'} className="mx-auto w-75"/>
                     </div>
-                    <h5 class="mt-3">{pet.name}</h5>
-                </Link>
+                    {/* <h5 class="mt-3">{brand.name}</h5> */}
+                {/* </Link> */}
                 </div>
               ))}
               </Slider>
