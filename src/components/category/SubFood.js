@@ -31,20 +31,17 @@ const SubFood = (props) => {
   console.log(name, sub, pet);
 
   return (
-    <div className='container category col-12 '>
+    <div className=''>
       <img className='category-img' src={icon} alt='' />
-      <div className='row'>
-        <div className='col-12 col-md-12'>
-          <Heading text={`${pet} ${sub}`} />
-          <br />
-          <div className='row'>
-            {data &&
+      <Heading text={`${pet} ${sub}`} />
+      <div class="container">
+        <div className='row'>
+          {data &&
               data.map((p, i) => (
-                <div key={i} className='col-xl-3 col-lg-4 col-6 product'>
+                <div key={i} className='col-xl-3 col-lg-4 col-6 product col-md-3 my-3'>
                   <Card data={p} />
                 </div>
               ))}
-          </div>
         </div>
       </div>
     </div>
