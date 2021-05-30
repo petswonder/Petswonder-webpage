@@ -11,7 +11,10 @@ $theme-colors: (
 @import "../../node_modules/slick-carousel/slick/slick.css"; 
 @import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
-
+body{
+  background: url('../images/Pet_Wonder_Wallpaper.jpg');
+  background-size: 400px;
+}
 
 @each $h in (150,200,300,350, 400) {
     .h-#{$h} {

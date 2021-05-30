@@ -24,7 +24,7 @@ const Customer = () => {
           <div class='row '>
           {service_items.map(service => (
             <div class='col'>
-              <div class='d-flex justify-content-between flex-column px-4 py-3 text-center shadow'>
+              <div class='d-flex justify-content-between flex-column px-4 py-3 text-center shadow bg-light'>
                 <div class='icon text-center font-size-40'>
                   {/* <i class={`fas fa-${service.icon} fa-lg text-primary`}></i> */}
                   <img src={service.img} alt={service.name + '_img'} className="w-100 p-4"/>
