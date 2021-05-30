@@ -36,7 +36,13 @@ const ShopByBrand = () => {
         {"id": 3,"name": "Whiskas", "img": require('../../images/brands/whiskas.png').default},
         {"id": 4,"name": "Purina", "img": require('../../images/brands/purina.png').default},
         {"id": 5,"name": "drools", "img": require('../../images/brands/drools.png').default},
-        {"id": 6,"name": "Acana", "img": require('../../images/brands/acana.png').default}
+        {"id": 6,"name": "Acana", "img": require('../../images/brands/acana.png').default},
+        {"id": 7,"name": "Himalaya", "img": require('../../images/brands/himalaya.png').default},
+        {"id": 8,"name": "Me-O", "img": require('../../images/brands/meo.png').default},
+        {"id": 9,"name": "Orijen", "img": require('../../images/brands/orijen.png').default},
+        {"id": 10,"name": "Royal Canin", "img": require('../../images/brands/royal_canin.png').default},
+        {"id": 11,"name": "Purepet", "img": require('../../images/brands/purepet.jpg').default}
+
     ]
     return (
         <>
