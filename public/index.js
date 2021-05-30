@@ -5,6 +5,7 @@
 // elements scroll below the fold again?
 // --> Check https://codepen.io/bramus/pen/vKpjNP
 
+
 jQuery(function($) {
   
     // Function which adds the 'animated' class to any '.animatable' in view
