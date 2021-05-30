@@ -13,7 +13,7 @@ $theme-colors: (
 
 
 
-@each $h in (200,300,350, 400) {
+@each $h in (150,200,300,350, 400) {
     .h-#{$h} {
       height: unquote($h + "px !important");
     }

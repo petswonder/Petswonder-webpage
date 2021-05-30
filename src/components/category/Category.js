@@ -4,7 +4,7 @@ import { productByCategory } from '../product/apiProduct';
 import * as icons from '../../images/index';
 import Heading from '../core/Heading';
 import { Link } from 'react-router-dom';
-import food from '../../images/categories/food1.png';
+import food from '../../images/categories/food.svg';
 
 const Category = (props) => {
   const [data, setData] = useState([]);
