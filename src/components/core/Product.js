@@ -8,6 +8,7 @@ import Heading from '../core/Heading';
 
 const Product = ({ product }) => {
   // const {jwt, user:{userNumber}} = isAuthenticated();
+  
 
   // console.log(product, 'state');
   const [disable, setDisable] = useState(false);
@@ -54,7 +55,7 @@ const Product = ({ product }) => {
   return (
     <>
     <Heading text='Product' />
-    <div className='container particularProduct mb-4'>
+    <div className='container particularProduct my-3'>
       <Alert color='success' isOpen={visible} toggle={toggle}>
         Product has been added to cart
       </Alert>
