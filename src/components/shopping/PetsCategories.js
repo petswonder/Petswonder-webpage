@@ -6,10 +6,6 @@ import ShopByBrand from './ShopByBrand'
 
 const PetsCategories = () => {
 
-    
-
-    
-
     const petcategories = [
         {"name": "Dog", "img": require('../../images/pets/dog.svg').default},
         {"name": "Cat", "img": require('../../images/pets/cat.svg').default},

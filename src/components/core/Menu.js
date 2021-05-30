@@ -11,17 +11,10 @@ import {
   Container,
   Dropdown
 } from 'react-bootstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { isAuthenticated, signout } from '../auth/index';
 import LogoName from '../../images/LogoName.png';
 import SearchComponent from '../core/Search'
-// import './../../App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCartArrowDown,
-  faUserCircle,
-  faSearch,
-} from '@fortawesome/free-solid-svg-icons';
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
@@ -94,7 +87,7 @@ const Menu = ({ history }) => {
         <div class="col-12">
         <Nav className="d-flex justify-content-end mt-2">
           {nav_items.map(item => (
-            <Link to={item.link} className="nav-link py-0 text-secondary">{item.name}</Link>
+            <NavLink to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
           ))}
         </Nav>
         </div>
