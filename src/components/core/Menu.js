@@ -24,19 +24,22 @@ const isActive = (history, path) => {
 };
 
 
-var nav_items = [
-  {id: 1, name: "Home", auth: false, link: "/" },
-  {id: 2, name: "Shopping", auth: false, link: "/shopping" },
-  {id: 3, name: "Pet Care", auth: true, link: "/petCare" },
-  {id: 4, name: "Pet Mate", auth: true, link: "/petMate" },
-  {id: 5, name: "Pet Snap", auth: true, link: "/petSnap" },
-  {id: 6, name: "Pet Guide", auth: true, link: "/petGuide" }
-]
+
+
+
 
 const Menu = ({ history }) => {
+  const nav_items = [
+    {id: 1, name: "Home", auth: false, link: "/" },
+    {id: 2, name: "Shopping", auth: false, link: "/shopping" },
+    {id: 3, name: "Pet Care", auth: true, link: "/petCare" },
+    {id: 4, name: "Pet Mate", auth: true, link: "/petMate" },
+    {id: 5, name: "Pet Snap", auth: true, link: "/petSnap" },
+    {id: 6, name: "Pet Guide", auth: true, link: "/petGuide" }
+  ]
   const jwt = isAuthenticated();
   
-  nav_items = jwt ? nav_items : nav_items.filter( i => {return i.auth == false})
+  const def_nav_items = nav_items.filter( i => {return i.auth == false})
   const search_bar = false
   const [cart_length, setCount] = useState([]);
   
@@ -60,7 +63,7 @@ const Menu = ({ history }) => {
             <SearchComponent />
           
           {!jwt ? (
-            <div>
+            <div className="ml-2">
               <Link to='/signin' className="font-size-14 btn btn-secondary text-white py-1 mr-3 rounded-pill">Sign In</Link>
               <Link to='/signup' className="font-size-14 btn btn-secondary text-white py-1 rounded-pill">Sign Up</Link>
             </div>
@@ -92,9 +95,20 @@ const Menu = ({ history }) => {
         </div>
         <div className="col-12">
         <Nav className="d-flex justify-content-end mt-2">
-          {nav_items.map(item => (
-            <NavLink key={item.id} to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
-          ))}
+          {!jwt ? (
+            <>
+            {def_nav_items.map(item => (
+              <NavLink key={item.id} to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
+            ))}
+            </>
+          ) : (
+            <>
+            {nav_items.map(item => (
+              <NavLink key={item.id} to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
+            ))}
+            </>
+          )}
+          
         </Nav>
         </div>
         </div>

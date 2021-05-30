@@ -33,7 +33,6 @@ const Signin = () => {
     signin({ userNumber, password }).then((data) => {
       if (data === 'Success') {
         authenticate({ data: data, user: { userNumber } }, () => {
-          console.log('success lol yipeeeww');
           setFormdata({
             ...formData,
             loading: false,
@@ -69,7 +68,6 @@ const Signin = () => {
           </div>
           <div className='sign-content'>
             <h2>SIGNIN</h2>
-            <br />
             <div className='login-form'>
               <div className='sign-in-htm'>
                 <div className='group'>
@@ -82,7 +80,6 @@ const Signin = () => {
                     className='form-control input'
                   />
                 </div>
-                <br />
                 <div className='group'>
                   <label className='label'>Password</label>
                   <input

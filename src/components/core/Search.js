@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { list} from '../product/apiProduct'
 import { Link } from 'react-router-dom';
-import Card from './Card'
-import photo from '../../images/search.png'
 import {
-    Navbar,
-    NavDropdown,
-    Nav,
     Form,
-    Row,
-    Col,
     FormControl,
-    Button,
-    Container,
-    Dropdown
+    Button
   } from 'react-bootstrap';
 
 class SearchComponent extends React.Component{
