@@ -19,7 +19,6 @@ const ShoppingCategories = (pet) => {
 
       <div className='row'>
         {categories.map(category => (
-          
           <div className="col my-3">
            <Link to={`/pet/${pet.pet}/category/${category.name}`} className="text-center">
            <img alt={category.name + '_img'} class='w-100 p-4' src={category.img}/>
@@ -27,8 +26,6 @@ const ShoppingCategories = (pet) => {
           </Link>
           </div>
         ))}
-        {/* {pet.pet === 'Dog' && categoryBox('Clothing', clothing, 5, '#f6d6ad')}
-        {pet.pet === 'Cat' && categoryBox('Clothing', clothing, 5, '#f6d6ad')} */}
       </div>
   );
 };

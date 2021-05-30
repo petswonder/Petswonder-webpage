@@ -28,26 +28,26 @@ const Category = (props) => {
 
   const name = props.match.params.name;
   const pet = props.match.params.pet;
-  console.log({ name });
+
+  const categories = [
+    {"id": 1, "name": "Dry Food", "img": require('../../images/categories/food_1.svg').default, "url": "Dry-food"},
+    {"id": 2, "name": "Wet Food", "img": require('../../images/categories/food_2.svg').default, "url": "Wet-food"},
+    {"id": 3, "name": "Vet Food", "img": require('../../images/categories/food_3.svg').default, "url": "Vet-food"},
+    {"id": 4, "name": "Treats & Snacks", "img": require('../../images/categories/food_4.svg').default, "url": "Treat-Snacks"}
+  ]
 
   const categoryBox = (n, photo, categoryId, color, url) => {
     return (
-      <div class='col-6 col-sm-2 categorylist'>
-        <p class='banner'>
+      <div class='col text-center my-3'>
           <Link to={`/pet/${pet}/category/${name}/${url}`}>
             <img
-              alt='Banner 01'
-              class='img-responsive-categ'
+              class='img-responsive mx-auto'
               src={photo}
-              style={{ backgroundColor: `${color}` }}
+              style={{'width': '150px'}}
             />
+            <h5 class="text-secondary mt-1">{n}</h5>
           </Link>
-        </p>
-        <h6>
-          <Link to={`/pet/${pet}/category/${name}/${url}`} class='title'>
-            {n}
-          </Link>
-        </h6>
+        
       </div>
     );
   };
@@ -56,10 +56,19 @@ const Category = (props) => {
     return (
       <div className='container recent-game-section spad set-bg'>
         <div className='row'>
-          {categoryBox('Dry food', food, 1, '#a685e2', 'Dry-food')}
-          {categoryBox('Wet Food', food, 2, '#65d6ce', 'Wet-food')}
-          {categoryBox('Vet Food', food, 3, '#fff76a', 'Vet-food')}
-          {categoryBox('Treats&snacks', food, 4, '#fca3cc', 'Treat-Snacks')}
+          {categories.map( item => (
+            <div class='col text-center my-3'>
+              <Link to={`/pet/${pet}/category/${name}/${item.url}`}>
+                <img
+                  class='img-responsive mx-auto'
+                  src={item.img}
+                  style={{'max-width': '100px'}}
+                />
+                <h5 class="text-secondary mt-1">{item.name}</h5>
+              </Link>
+            
+          </div>
+          ))}
         </div>
       </div>
     );
@@ -73,10 +82,9 @@ const Category = (props) => {
     <div class="">
     <Heading text={`Pet ${name}`} />
     </div>
-    <div className='container category'>
+    <div className='container'>
       
       <div className='row'>
-        <div className='col-12 col-md-12'>
           
           {name === 'Food' && FoodCategories()}
           <div className='row my-4'>
@@ -88,7 +96,6 @@ const Category = (props) => {
               ))}
           </div>
         </div>
-      </div>
     </div>
     </>
   );
