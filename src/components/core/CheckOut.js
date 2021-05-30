@@ -10,12 +10,12 @@ const CheckOut = ({ products }) => {
   const {
     user: { userNumber },
   } = isAuthenticated();
-  console.log(userNumber);
+  // console.log(userNumber);
 
   const getTotalOfCart = () => {
     getCart(userNumber)
       .then((data) => {
-        console.log(data.cartTotal);
+        // console.log(data.cartTotal);
         setTotal(data.cartTotal);
       })
       .catch((error) => {
@@ -43,7 +43,7 @@ const CheckOut = ({ products }) => {
         console.log(error);
       });
   }, []);
-  console.log(total);
+  // console.log(total);
   const { totalValue } = total;
   var amount = totalValue * 100;
 
@@ -66,7 +66,7 @@ const CheckOut = ({ products }) => {
   };
 
   const table = () => {
-    console.log(total);
+    // console.log(total);
     return (
       total && (
         <div className="bg-white p-2">

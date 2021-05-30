@@ -110,18 +110,18 @@ const Card = ({
 
   return (
     <div className="card h-100 text-center">
-      <div className="h-50 card-body">
+      <div className="card-body h-200">
         {data.productImages ? (
           <img
           src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-          alt='image' className="card-img-top h-100" alt={`${data.productId}_img`}
+          alt='image' style={{'object-fit': 'contain'}} className="card-img-top w-100 h-100" alt={`${data.productId}_img`}
           />
         ) : (
           <img className='' src={noImage} alt='No image found' />
         )}
       </div>
       <div className="card-footer p-0">
-        <h5 className="card-title m-0 font-size-16 py-2">{data.title}</h5>
+        <h5 className="card-title m-0 font-size-14 py-2">{data.title}</h5>
         <div>
           <span className='mr-1 text-dark text-decoration-line-through' style={{ textDecoration: 'line-through' }}>₹{data.price}</span>
           <span className='ml-1 font-weight-bold text-secondary'>

@@ -50,7 +50,7 @@ const PopularProducts = () => {
             <div className="row">
                 
                 {postsToShow.map((data, i) => (
-                    <div key={i} className="col-xl-3 col-lg-4 col-6 product h-400 text-center my-3">
+                    <div key={i} className="col-xl-3 col-lg-4 col-6 product text-center my-3">
                         <Card data={data} />
                     </div>
                 ))}
