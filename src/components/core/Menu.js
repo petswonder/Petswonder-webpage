@@ -64,10 +64,14 @@ const Menu = ({ history }) => {
               <Link to='/signup' className="font-size-14 btn btn-secondary text-white py-1 rounded-pill">Sign Up</Link>
             </div>
           ) : (
-            
+            <>
+              <Link to='/cart' className="font-size-22 mx-3">
+                <i class="fas fa-shopping-cart text-secondary"></i>
+                <span class="badge bg-light position-absolute rounded-circle font-size-12 text-dark w-15 h-15 p-0 lh-15"></span>
+              </Link>
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-custom-components" className='nav-link dropdown-toggle py-0 h5 m-0'>
-                  <i class="fa fa-user text-secondary"></i>
+                  <i class="fa fa-user text-secondary font-size-22"></i>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu align="right" menuRole="menu" flip="true" className="rounded-0 border-0 py-0 shadow">
@@ -79,7 +83,8 @@ const Menu = ({ history }) => {
                   }>Sign Out</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-            
+              
+            </>
           )}
           </Nav>
           

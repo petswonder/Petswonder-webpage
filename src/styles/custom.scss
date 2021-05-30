@@ -16,7 +16,7 @@ body{
   background-size: 400px;
 }
 
-@each $h in (150,200,300,350, 400) {
+@each $h in (15,150,200,300,350, 400) {
     .h-#{$h} {
       height: unquote($h + "px !important");
     }
@@ -70,6 +70,11 @@ body{
   @each $number in (9){
     .z-#{$number} {
       z-index: unquote($number)
+    }
+  }
+  @each $number in (15){
+    .lh-#{$number} {
+      line-height: unquote($number + 'px!important')
     }
   }
 
