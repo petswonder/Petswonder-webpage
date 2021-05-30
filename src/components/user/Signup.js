@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Layout from '../core/Layout';
+import signin_bg from '../../images/signin_bg.jpg';
+
 import {
   sentOTP,
   validateOTP,
@@ -8,7 +9,6 @@ import {
   isAuthenticated,
   authenticate,
 } from '../auth/index';
-import logo from '../../images/logo1.png';
 
 const Signup = () => {
   const [phoneNumber, setPhoneNumber] = useState('91 ');
@@ -87,11 +87,11 @@ const Signup = () => {
   };
 
   const signupForm = () => (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
       <div class='login-wrap'>
         <div class='login-html'>
           <div className='img-sign'>
-            <img src={logo} alt='' />
+            {/* <img src={logo} alt='' /> */}
           </div>
           <div className='sign-content'>
             <h2>SIGNUP</h2>
@@ -110,12 +110,11 @@ const Signup = () => {
                 </div>
                 <br />
                 <div class='group'>
-                  <button className='btn btn-primary button'>Send OTP</button>
+                  <button className='btn btn-secondary button'>Send OTP</button>
                 </div>
-                <div class='hr'></div>
-                <div class='foot-lnk'>
+                <div class='font-size-14 mt-3'>
                   Already have an Account?{' '}
-                  <Link className='signlinks' to='/signin'>
+                  <Link className='text-secondary text-underline ml-2 ' to='/signin'>
                     Signin
                   </Link>
                 </div>
@@ -133,11 +132,11 @@ const Signup = () => {
   };
 
   const validateForm = () => (
-    <form onSubmit={(e) => handleOTP(e)}>
+    <form onSubmit={(e) => handleOTP(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
       <div class='login-wrap'>
         <div class='login-html'>
           <div className='img-sign'>
-            <img src={logo} alt='' />
+            {/* <img src={logo} alt='' /> */}
           </div>
           <div className='sign-content'>
             <h2>
@@ -161,14 +160,13 @@ const Signup = () => {
                 </div>
                 <br />
                 <div class='group'>
-                  <button className='btn btn-primary button'>
+                  <button className='btn btn-secondary button'>
                     Validate OTP
                   </button>
                 </div>
-                <div class='hr'></div>
-                <div class='foot-lnk'>
+                <div class='font-size-14 mt-3'>
                   Already have an Account?{' '}
-                  <Link className='signlinks' to='/signin'>
+                  <Link className='text-secondary text-underline ml-2 ' to='/signin'>
                     Signin
                   </Link>
                 </div>
@@ -181,11 +179,11 @@ const Signup = () => {
   );
 
   const registerForm = () => (
-    <form onSubmit={(e) => handleregister(e)}>
+    <form onSubmit={(e) => handleregister(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
       <div class='login-wrap'>
         <div class='login-html'>
           <div className='img-sign'>
-            <img src={logo} alt='' />
+            {/* <img src={logo} alt='' /> */}
           </div>
           <div className='sign-content'>
             <h2>Register User</h2>
@@ -231,9 +229,8 @@ const Signup = () => {
                 </div>
                 <br />
                 <div class='group'>
-                  <button className='btn btn-primary button'>Register</button>
+                  <button className='btn btn-secondary button'>Register</button>
                 </div>
-                <div class='hr'></div>
                 {/* <div class="foot-lnk">
                             Already have an Account? <Link className="signlinks" to="/signin">Signin</Link>
                             </div> */}
@@ -269,12 +266,15 @@ const Signup = () => {
   };
 
   return (
-    <div className='signforms'>
+    <div className="container py-5">
+    <div className='signforms border-primary border border-5' style={{'background': `url(${signin_bg})`, 'background-size': 'contain',
+    'background-position': 'right center'}}>
       {redirectUser()}
       {showError()}
       {!otpSent && signupForm()}
       {otpSent && !register && validateForm()}
       {otpSent && register && registerForm()}
+    </div>
     </div>
   );
 };

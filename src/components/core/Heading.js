@@ -1,22 +1,17 @@
-import React from 'react'
+import React from 'react';
+import Breadcrumbs from './Breadcrumbs';
 
-const Heading = ({text}) => {
-    return (
-        <div className="colored-heading container" style={{textAlign:"center"}}>
-        <div className="row">
-            <div className="col-2">
-                <h2><i class="fas fa-paw"></i></h2>
-            </div>
-            <div className="col-8" >
-                <h2>{text}</h2>
-            </div>
-            <div className="col-2">
-                <h2><i class="fas fa-paw"></i></h2>
-            </div>
-
-        </div>
+const Heading = ({ text }) => {
+  return (
+    <div class="bg-light">
+      <div className='container py-2'>
+        <h2 class="m-0">{text}</h2>
+        <p class="m-0">
+          <Breadcrumbs />
+        </p>
+      </div>
     </div>
-    )
-}
+  );
+};
 
-export default Heading
+export default Heading;

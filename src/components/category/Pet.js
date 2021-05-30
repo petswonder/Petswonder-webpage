@@ -1,23 +1,12 @@
 import React, { useEffect, useState } from 'react';
+
+import ShopByBrand from '../shopping/ShopByBrand';
 import Card from '../core/Card';
 import { productByPets } from '../product/apiProduct';
 import * as icons from '../../images/index';
 import Heading from '../core/Heading';
 import ShoppingCategories from '../shopping/ShoppingCategories';
 import Slider from '../core/Slider';
-import dslide1 from '../../images/banners/pedigree.PNG';
-import dslide2 from '../../images/banners/Farmina.PNG';
-import dslide3 from '../../images/banners/Drools.PNG';
-import cslide1 from '../../images/banners/ACANA.PNG';
-import cslide2 from '../../images/banners/Farmina.PNG';
-import cslide3 from '../../images/banners/Capt Zack.PNG';
-import { brand } from '../shopping/Brands';
-import jerhigh from '../../images/brands/jerhigh.jpg';
-import Pedigree from '../../images/brands/pedigree.png';
-import Whiskas from '../../images/brands/whiskas.png';
-import Purina from '../../images/brands/purina.png';
-import Acana from '../../images/brands/acana.png';
-import Drools from '../../images/brands/drools.png';
 import BannerApi from '../core/BannerApi';
 
 const Pet = (props) => {
@@ -58,37 +47,13 @@ const Pet = (props) => {
   };
 
   return (
-    <div className='container col-12'>
-      <div className=' col-12 category'>
-        <img className='category-img' src={icon} alt='' />
-      </div>
-      <div className='container'>
-        <ShoppingCategories pet={pet} />
-      </div>
-      <div className='col-12'>
-        <Slider banners={items} />
-      </div>
-
-      <div className='container col-12 col-md-12'>
-        <h1 className='mt-4 mb-4'>{props.location.nameProps}</h1>
-        {/* <Heading text={`Pet ${name}`} /> */}
-        <br />
-        <div className='row'>
-          <div className='col-12 col-md-12'>
-            <Heading text='Our popular brands' />
-          </div>
-          <br />
-          <div className='row mx-auto p-5'>
-            {brand('Pedigree', Pedigree)}
-            {brand('jerhigh', jerhigh)}
-            {brand('Whiskas', Whiskas)}
-            {brand('Purina', Purina)}
-            {brand('Drools', Drools)}
-            {brand('Acana', Acana)}
-          </div>
-        </div>
-      </div>
+    <>
+    <Slider banners={items} />
+    <div className='container'>
+      <ShoppingCategories pet={pet} />
+      <ShopByBrand />
     </div>
+    </>
   );
 };
 

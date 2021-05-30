@@ -3,9 +3,8 @@ import Card from '../core/Card';
 import { productByCategory } from '../product/apiProduct';
 import * as icons from '../../images/index';
 import Heading from '../core/Heading';
-import ShoppingCategories from '../shopping/ShoppingCategories';
 import { Link } from 'react-router-dom';
-import food from '../../images/categories/food1.png';
+import food from '../../images/categories/food.svg';
 
 const Category = (props) => {
   const [data, setData] = useState([]);
@@ -67,14 +66,20 @@ const Category = (props) => {
   };
 
   return (
-    <div className='container category col-12 '>
-      <img className='category-img' src={icon} alt='' />
+    <>
+    <div class="">
+      <img className='category-img w-100' src={icon} alt='' />
+    </div>
+    <div class="">
+    <Heading text={`Pet ${name}`} />
+    </div>
+    <div className='container category'>
+      
       <div className='row'>
         <div className='col-12 col-md-12'>
-          <Heading text={`Pet ${name}`} />
-          <br />
+          
           {name === 'Food' && FoodCategories()}
-          <div className='row'>
+          <div className='row my-4'>
             {data &&
               data.map((p, i) => (
                 <div key={i} className='col-xl-3 col-lg-4 col-6 product'>
@@ -85,6 +90,7 @@ const Category = (props) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

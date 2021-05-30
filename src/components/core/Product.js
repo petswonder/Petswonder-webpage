@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { addToCart } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Alert } from 'reactstrap';
+import Heading from '../core/Heading';
+
 
 const Product = ({ product }) => {
   // const {jwt, user:{userNumber}} = isAuthenticated();
 
-  console.log(product, 'state');
+  // console.log(product, 'state');
   const [disable, setDisable] = useState(false);
   if (product.inventory === 0) {
     setDisable(true);
@@ -40,61 +42,7 @@ const Product = ({ product }) => {
     }
   };
 
-  const leftImage = () => {
-    return (
-      <div className='col-12 col-md-6' id='over'>
-        <img
-          src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${product.productId}.PNG`}
-          alt={product.title}
-        />
-      </div>
-    );
-  };
 
-  const rightDescription = () => {
-    return (
-      <div className='col-12 col-md-6'>
-        <br className='d-xl-none' />
-        <h2>{product.title}</h2>
-        <p>{product.description}</p>
-        <h3>
-          <span style={{ color: '#dc3545' }}>
-            ₹ {product.price - (product.price * product.discount) / 100}{' '}
-          </span>{' '}
-          <span className='cross'>₹ {product.price}</span>
-          <span className='save'>({parseInt(product.discount)}% OFF)</span>
-        </h3>
-        <p>
-          <i class='fas fa-exclamation-circle' style={{ color: '#e88345' }}></i>{' '}
-          By purchasing this product, you will earn {product.plusPoints}{' '}
-          Pluspoints
-        </p>
-        <br />
-        <div className='row'>
-          <div className='col-12 col-md-4 iconspro'>
-            <i class='fas fa-shopping-cart'></i>
-            {disable && ' Not'} In Stock
-          </div>
-          <div className='col-12 col-md-4 iconspro'>
-            <i class='fas fa-money-bill'></i> COD Available
-          </div>
-          <div className='col-12 col-md-4 iconspro'>
-            <i class='far fa-times-circle'></i> No Returns
-          </div>
-        </div>
-        <br />
-
-        <button
-          onClick={handleClick}
-          className='btn btn-lg btn-warning mt-5'
-          disabled={disable}
-          style={{ cursor: disable ? 'not-allowed' : 'pointer' }}
-        >
-          <span class='fas fa-sm fa-shopping-cart'></span> Add To Cart
-        </button>
-      </div>
-    );
-  };
 
   const relatedProducts = () => {
     return <div>yo</div>;
@@ -104,31 +52,62 @@ const Product = ({ product }) => {
   const toggle = () => setVisible(!visible);
 
   return (
-    <div className='container particularProduct'>
-      <div className='row'>
-        <div className='col-12 col-md-6'>
-          <h2>Product</h2>
-        </div>
-        <div className='col-12 col-md-6 left'>
-          <p>
-            <Link to={`/category/${product.category}`}>{product.category}</Link>
-            / <Link to={`/category/${product.species}`}>{product.species}</Link>
-            / {product.title}
-          </p>
-        </div>
-      </div>
-
-      <hr />
+    <>
+    <Heading text='Product' />
+    <div className='container particularProduct mb-4'>
       <Alert color='success' isOpen={visible} toggle={toggle}>
         Product has been added to cart
       </Alert>
-      <div className='row'>
-        {leftImage()}
-        {rightDescription()}
+      <div className='row h-350'>
+        <div className='col-12 col-md-6 h-100 text-center'>
+          <img
+            src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${product.productId}.PNG`}
+            alt={product.title} className="h-100"
+          />
+        </div>
+        <div className='col-12 col-md-6 justify-content-center d-flex flex-column'>
+          <h2 class="m-0">{product.title}</h2>
+          <p className="m-0 font-size-14 py-1">{product.description}</p>
+          <h3 class="m-0">
+            <span class="mr-2 font-weight-bold">
+              ₹ {product.price - (product.price * product.discount) / 100}
+            </span>
+            <span className='cross text-bg mr-2' style={{ textDecoration: 'line-through' }}>₹ {product.price}</span>
+            <span className='font-size-18'>({parseInt(product.discount)}% OFF)</span>
+          </h3>
+          <p class="m-0 font-size-14 py-1 d-flex align-items-center">
+            <i class='fas fa-exclamation-circle text-dark mr-2'></i>
+            By purchasing this product, you will earn {product.plusPoints} pluspoints
+          </p>
+          <div className='d-flex'>
+            <div className='mr-2'>
+              <i class='fas fa-shopping-cart'></i>
+              {disable && ' Not'} In Stock
+            </div>
+            <div className='mr-2'>
+              <i class='fas fa-money-bill'></i> COD Available
+            </div>
+            <div className=''>
+              <i class='far fa-times-circle'></i> No Returns
+            </div>
+          </div>
+          <div class="mt-3">
+            <button
+              onClick={handleClick}
+              className='btn btn-lg btn-primary'
+              disabled={disable}
+              style={{ cursor: disable ? 'not-allowed' : 'pointer' }}
+            >
+              <span class='fas fa-sm fa-shopping-cart'></span> Add To Cart
+            </button>
+          </div>
+          
+        </div>
       </div>
 
       {redirect && redirectToSignin()}
     </div>
+    </>
   );
 };
 

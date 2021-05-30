@@ -6,28 +6,28 @@ import Book1 from './Book1';
 
 const PetServices = () => {
   return (
-    <div className='container'>
-      <br />
+    <>
       <Heading text='Pet Care' />
-      <br />
-      <div className='row'>
-        <Book1
-          d={{
-            title: 'Online doctor',
-            serviceImageUrls: vet,
-            page: 'onlineDoc',
-          }}
-        />
-        <Book1
-          d={{
-            title: 'Pet Grooming',
-            serviceImageUrls: PetGroom,
-            page: 'petSnap',
-          }}
-          comingSoon='true'
-        />
+      <div className='container px-0 py-4'>
+        <div className='row mx-auto'>
+          <Book1
+            d={{
+              title: 'Online doctor',
+              serviceImageUrls: vet,
+              page: 'onlineDoc',
+            }}
+          />
+          <Book1
+            d={{
+              title: 'Pet Grooming',
+              serviceImageUrls: PetGroom,
+              page: 'petSnap',
+            }}
+            comingSoon='true'
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

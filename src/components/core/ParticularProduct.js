@@ -12,16 +12,12 @@ const ParticularProduct = (props) => {
 
   const relatedProducts = () => {
     return (
-      <div
-        className='recent-game-section spad set-bg container col-xl-11 col-12'
-        style={{ textAlign: 'left' }}
-      >
-        <h1>Related Products</h1>
-        <hr />
-        <div className='row' style={{ textAlign: 'center' }}>
+      <div className='container'>
+        <h3 class="m-0">Related Products</h3>
+        <div className='row text-center'>
           {productData.map((p, i) => (
-            <div key={i} className='col-xl-3 col-lg-4 col-6 product'>
-              <Card data={p} />
+            <div key={i} className='col-xl-3 col-lg-4 col-6 product h-400 my-3'>
+              <Card data={p}/>
             </div>
           ))}
         </div>
@@ -32,7 +28,6 @@ const ParticularProduct = (props) => {
   return (
     <div>
       <Product product={props.location.state} />
-      <br />
       {relatedProducts()}
     </div>
   );

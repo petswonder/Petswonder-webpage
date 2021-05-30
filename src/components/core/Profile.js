@@ -22,7 +22,6 @@ const Profile = (props) => {
     return (
         <div>
          
-          {/* {JSON.stringify(profile)} */}
           
           <div class="container col-12 col-md-10 profile-about bg-light p-2" style={{textAlign:"left"}}>
           <br/>

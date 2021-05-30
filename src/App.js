@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/core/Home';
 import Menu from './components/core/Menu';
@@ -30,17 +30,14 @@ import OrderHistory from './components/core/OrderHistory';
 import PetSnap from './components/petServices/PetSnap';
 import OnlineDoc from './components/petServices/OnlineDoc';
 import Successful from './components/core/Successful';
+import NotFound from './components/404';
 import Tc from './components/core/Tc';
 
 const App = () => {
   return (
     <Router>
       <Menu />
-      <br />
-      <br />
-      <br className='d-none d-xl-block' />
-      <br className='d-none d-lg-block d-xl-none' />
-      <div className='container whole-cont col-12'>
+      <div className='mt-71'>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/signup' component={Signup} />
@@ -85,6 +82,7 @@ const App = () => {
           />
           <Route exact path='/about' component={AboutUs} />
           <Route exact path='/termsandconditions' component={Tc} />
+          <Route exact path='*' component={NotFound} />
         </Switch>
       </div>
       <Footer />

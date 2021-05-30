@@ -1,37 +1,29 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, {  useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
-import notFound from '../../images/notfound.jpg';
-import { Alert } from 'reactstrap';
 import noImage from '../../images/no image.png';
-import soldout from '../../images/outofstock.png';
 
 const Card = ({
   data,
-  showViewButton = true,
   showAddToButton = true,
   cartUpdate = false,
-  showRemoveProductButton = false,
 }) => {
   // console.log(data);
-  const [count, setCount] = useState(data.quantity);
+  const [count] = useState(data.quantity);
   const [disable, setDisable] = useState(false);
 
   const productId = data.productId;
   const id = data.productId;
 
-  const [redirect, setRedirect] = useState(false);
-  const redirectToSignin = () => {
-    return <Redirect to='/signin' />;
-  };
+  const [setRedirect] = useState(false);
+  
 
   const handleClick = () => {
-    if (isAuthenticated() == false) {
+    if (isAuthenticated() === false) {
       setRedirect(true);
     } else {
       const {
-        jwt,
         user: { userNumber },
       } = isAuthenticated();
       addToCart({ userNumber, id })
@@ -48,20 +40,19 @@ const Card = ({
 
   // console.log(data);
 
-  const handleChange = (productId) => (e) => {};
+  // const handleChange = (productId) => (e) => {};
 
-  const decrease = () => {
-    count >= 0 && setCount(count - 1);
-  };
+  // const decrease = () => {
+  //   count >= 0 && setCount(count - 1);
+  // };
 
-  const increase = () => {
-    setCount(count + 1);
-  };
+  // const increase = () => {
+  //   setCount(count + 1);
+  // };
 
   useEffect(() => {
     if (count >= 0) {
       const {
-        jwt,
         user: { userNumber },
       } = isAuthenticated();
       isAuthenticated() &&
@@ -79,144 +70,88 @@ const Card = ({
     }
   }, [count]);
 
-  const showCartUpdateOptions = (cartUpdate) => {
-    return (
-      cartUpdate && (
-        <div style={{ width: '50%', margin: 'auto' }}>
-          <div className='input-group mt-3 mb-3 '>
-            <div className='input-group-prepend'>
-              <button
-                onClick={decrease}
-                className='input-group-text btn btn-warning rounded-circle'
-              >
-                -
-              </button>
-            </div>
-            <input
-              type='number'
-              className='form-control text-center'
-              style={{ borderTop: '0', borderLeft: '0', borderRight: '0' }}
-              value={count}
-              onChange={handleChange(data.productId)}
-            />
-            <div className='input-group-prepend'>
-              <button
-                onClick={increase}
-                className='input-group-text btn btn-warning rounded-circle '
-              >
-                +
-              </button>
-            </div>
-          </div>
-        </div>
-      )
-    );
-  };
+  // const showCartUpdateOptions = (cartUpdate) => {
+  //   return (
+  //     cartUpdate && (
+  //       <div style={{ width: '50%', margin: 'auto' }}>
+  //         <div className='input-group mt-3 mb-3 '>
+  //           <div className='input-group-prepend'>
+  //             <button
+  //               onClick={decrease}
+  //               className='input-group-text btn btn-warning rounded-circle'
+  //             >
+  //               -
+  //             </button>
+  //           </div>
+  //           <input
+  //             type='number'
+  //             className='form-control text-center'
+  //             style={{ borderTop: '0', borderLeft: '0', borderRight: '0' }}
+  //             value={count}
+  //             onChange={handleChange(data.productId)}
+  //           />
+  //           <div className='input-group-prepend'>
+  //             <button
+  //               onClick={increase}
+  //               className='input-group-text btn btn-warning rounded-circle '
+  //             >
+  //               +
+  //             </button>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )
+  //   );
+  // };
 
-  const [visible, setVisible] = useState(false);
+  const [ setVisible] = useState(false);
 
-  const toggle = () => setVisible(!visible);
+  // const toggle = () => setVisible(!visible);
 
   return (
-    <div className='single_courses'>
-      <div className='thumb'>
-        <Link
-          to={{
-            pathname: `/product/${data.productId}`,
-            state: data,
-          }}
-          style={{ textDecorationLine: 'none' }}
-        >
-          {disable && (
-            <img
-              src={soldout}
-              alt='soldout'
-              style={{
-                position: 'absolute',
-                zIndex: '10',
-                opacity: '50%',
-                top: '5%',
-                left: '30%',
-                width: '40%',
-              }}
-            />
-          )}
-
-          <a className='akruti-a'>
-            {data.productImages ? (
-              <img
-                className='akruti-img'
-                src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-                alt='image'
-              />
-            ) : (
-              <img className='akruti-img' src={noImage} alt='No image found' />
-            )}
-          </a>
-        </Link>
+    <div class="card h-100 text-center">
+      <div class="h-50 card-body">
+        {data.productImages ? (
+          <img
+          src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
+          alt='image' class="card-img-top h-100" alt={`${data.productId}_img`}
+          />
+        ) : (
+          <img className='' src={noImage} alt='No image found' />
+        )}
       </div>
-      <div className='courses_info'>
-        <h3 className='akruti-h3'>
-          {data.title} <br></br>
-        </h3>
-        {/* <p className="d-sm-none d-md-block d-none d-sm-block">
-                {data.description.slice(0,95)}
-                {data.description.length>95 && <Fragment>.....</Fragment>}
-            </p> */}
-        <div className='star_prise justify-content-between'>
-          <div className='star col-sm-8 col-12 lol'>
-            <div
-              className='prise col-sm-4 col-12 lol'
-              style={{ display: 'inline-block' }}
-            >
-              <span className='offer'>₹{data.price}</span>
-              <span className='active_prise'>
-                ₹{data.price - (data.price * data.discount) / 100}
-              </span>
-            </div>
-          </div>
-          {showAddToButton && (
-            <div className='buttons'>
+      <div class="card-footer p-0">
+        <h5 class="card-title m-0 font-size-16 py-2">{data.title}</h5>
+        <div>
+          <span className='mr-1 text-dark text-decoration-line-through' style={{ textDecoration: 'line-through' }}>₹{data.price}</span>
+          <span className='ml-1 font-weight-bold text-secondary'>
+            ₹{data.price - (data.price * data.discount) / 100}
+          </span>
+        </div>
+        {/* <p class="card-text m-0 font-size-14">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+        {showAddToButton && (
+            <div className=''>
               <button
-                className='btn btn-outline-warning btn-sm mb-2 '
+                className='btn btn-primary btn-sm mb-2 mr-2'
                 onClick={handleClick}
                 disabled={disable}
-                style={{
-                  cursor: disable ? 'not-allowed' : 'pointer',
-                  position: 'absolute',
-                  bottom: '15%',
-                  left: '20%',
-                }}
               >
                 Add to Cart
               </button>
-              {/* <a href="#"><span ><i class="far fa-lg fa-heart" style={{paddingRight:"20px"}}></i></span></a>{' '} */}
               <Link
                 to={{
                   pathname: `/product/${data.productId}`,
                   state: data,
                 }}
                 className='btn btn-danger btn-sm mb-2'
-                style={{
-                  textDecorationLine: 'none',
-                  position: 'absolute',
-                  bottom: '15%',
-                  right: '20%',
-                }}
               >
                 Buy Now
               </Link>
             </div>
           )}
-        </div>
-
-        {showCartUpdateOptions(cartUpdate)}
-        {redirect && redirectToSignin()}
       </div>
-      <Alert color='success' isOpen={visible} toggle={toggle}>
-        Product has been added to cart
-      </Alert>
     </div>
+    
   );
 };
 

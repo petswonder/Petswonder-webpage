@@ -1,0 +1,122 @@
+$theme-colors: (
+    "primary": #f1b815,
+    "secondary": #000,
+    "tertiary": #cacaca,
+    "bg": #d44400
+  );
+// Exo font
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700;800&family=Poppins:wght@100;300;400;600;700&display=swap');
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import "../../node_modules/slick-carousel/slick/slick.css"; 
+@import "../../node_modules/slick-carousel/slick/slick-theme.css";
+
+
+
+@each $h in (150,200,300,350, 400) {
+    .h-#{$h} {
+      height: unquote($h + "px !important");
+    }
+    .w-#{$h} {
+      width: unquote($h + "px !important");
+    }
+    .min-height-#{$h} {
+      min-height: unquote($h + "px !important");
+    }
+    .max-height-#{$h} {
+      max-height: unquote($h + "px !important");
+    }
+  }
+
+
+  @each $size in (12,14,16,18,22,30,40) {
+    .font-size-#{$size} {
+      font-size: unquote($size + "px !important");
+    }
+  }
+
+
+  @each $p in (71,100) {
+    .pb-#{$p} {
+      padding-bottom: unquote($p + "px !important");
+    }
+    .pt-#{$p} {
+        padding-top: unquote($p + "px !important");
+      }
+      .px-#{$p} {
+        padding: unquote($p + "px 0px !important");
+      }
+      .py-#{$p} {
+        padding: unquote("0px " + $p + "px !important");
+      }
+      .mb-#{$p} {
+        margin-bottom: unquote($p + "px !important");
+      }
+      .mt-#{$p} {
+          margin-top: unquote($p + "px !important");
+        }
+        .mx-#{$p} {
+          margin: unquote($p + "px 0px !important");
+        }
+        .my-#{$p} {
+          margin: unquote("0px " + $p + "px !important");
+        }
+  }
+
+
+  @each $number in (9){
+    .z-#{$number} {
+      z-index: unquote($number)
+    }
+  }
+
+  @each $prop in ('pointer'){
+    .cursor-#{$prop} {
+      cursor: unquote($prop)
+    }
+  }
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+//jeswanth scss
+@each $w in (0, 100) {
+  .w-#{$w} {
+    width: '#{$w}%';
+  }
+}
+// .colored-heading {
+//   background-color: rgba(225, 173, 1, 0.2);
+//   padding-left: 7px;
+//   text-align: left;
+//   border-left: solid 6px red;
+// }
+// .colored-crumbs {
+//   background-color: rgba(225, 173, 1, 0.2);
+//   padding-top: 0px;
+//   font-size: 0.8rem;
+//   text-align: left;
+//   border-left: solid 6px red;
+// }
+// .colored-heading h2 {
+//   margin-bottom: 0;
+// }
+
+@media (max-width: 700px) {
+  .colored-heading h2 {
+    font-size: 1.5rem;
+  }
+}
+// .logo-img {
+//   border-radius: 50%;
+//   padding: 8px;
+//   height: 10rem;
+//   border-left: 3px solid red;
+//   border-top: 2px solid red;
+// }
+
+
+
+
+// jeswanth css
