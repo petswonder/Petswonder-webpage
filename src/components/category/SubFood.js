@@ -32,7 +32,7 @@ const SubFood = (props) => {
 
   return (
     <div className=''>
-      <img className='category-img' src={icon} alt='' />
+      <img className='category-img w-100' src={icon} alt='' />
       <Heading text={`${pet} ${sub}`} />
       <div className="container">
         <div className='row'>
