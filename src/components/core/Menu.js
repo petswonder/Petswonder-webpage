@@ -75,7 +75,7 @@ const Menu = ({ history }) => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu align="right" menuRole="menu" flip="true" className="rounded-0 border-0 py-0 shadow">
-                  <Dropdown.Item to='/profile' className="font-size-14 py-2">Profile</Dropdown.Item>
+                  <Dropdown.Item as={Link} to='/profile' className="font-size-14 py-2">Profile</Dropdown.Item>
                   <Dropdown.Item to='/signin' className="font-size-14 py-2" onClick={() =>
                     signout(() => {
                       history.push('/signin');

@@ -20,16 +20,13 @@ const Profile = (props) => {
 
 
     return (
-        <div>
-         
+        <div class="py-4">
+        
           
-          <div class="container col-12 col-md-10 profile-about bg-light p-2" style={{textAlign:"left"}}>
-          <br/>
+          <div class="container col-12 col-md-10 profile-about bg-light px-5 py-3">
           {profile.petName ? (<Fragment>
-            <div className="container mt-4">
                 <h3>Account</h3>
                 <h6>{profile.petName}</h6>
-                <hr/>
                 <div className="row">
                 <div className="col-md-4">
                     <p class="copyright "> <img src="/static/media/logo1.7393573c.png" id="aradhna_footer_logo" /> </p>
@@ -74,23 +71,21 @@ const Profile = (props) => {
                     </table>
                 </div>
                 </div>
-            </div>
           </Fragment>) : (
-              <div className="container mt-5">
+              <>
                   <h3 className="ml-2 mb-3">No Profile found, create now!!!</h3>
-                  <hr/>
                   <div className="row">
                     <div className="col-4">
                         <Link to="/createProfile"><button className="btn btn-warning btn-block mb-4">Create Profile</button></Link>
                         <Link to="/historyPurchase"><button className="btn btn-block btn-warning mb-4">Your Orders</button></Link>
                     </div>
                     <div className="col-8">
-                        <img src={sed} alt=""/>
+                        <img src={sed} alt="" class="w-100"/>
                     </div>
                   </div>
                   
                 
-              </div>
+              </>
           )}
           
     

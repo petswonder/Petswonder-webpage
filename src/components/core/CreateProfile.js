@@ -64,34 +64,34 @@ const CreateProfile = () => {
     }
 
     return (
+        <div class="py-4">
         <div className="container profile-about bg-light p-4">
             {redirectTo()}
-            <br/>
             <Heading text="Create your Pet's Profile" />
-            <br/>
+            
             {/* <small>* = required field</small> */}
          
             <form className="form" onSubmit={e => onSubmit(e)}>
             <div className="row">
-                <div className="form-group row col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="" className="col-sm-12 control-label">Pet Name</label>
                     <div class="col-sm-9 controls">
                         <input className="ml-1 col-md-12" type="text" placeholder="Pet Name" name="petName" value={petName} onChange={e => onChange(e)} required/>
                     </div>
                 </div>
-                <div className="form-group row col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="" className="col-sm-12 control-label">Mobile Number</label>
                     <div class="col-sm-9 controls">
                         <input className="ml-1 col-md-12" type="number" placeholder="Mobile Number" name="mobileNumber" value={mobileNumber} onChange={e => onChange(e)} required/>
                     </div>
                 </div>
-                <div className="form-group row col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="" className="col-sm-12 control-label">Email</label>
                     <div class="col-sm-9 controls">
                         <input className="ml-1 col-md-12" type="email" placeholder="Email" name="email" value={email} onChange={e => onChange(e)} required/>
                     </div>
                 </div>
-                <div className="form-group row col-md-6">  
+                <div className="form-group col-md-6">  
                 <label htmlFor="" className="col-sm-12 control-label">Pet Gender</label>
                 <div class="col-sm-9 controls">
                 <select className="ml-1 col-md-12" name="petGender" value={petGender} onChange={e => onChange(e)} required>
@@ -101,45 +101,45 @@ const CreateProfile = () => {
                 </select>
                 </div>
                 </div>
-                <div className="form-group row col-md-6">
+                <div className="form-group col-md-6">
                 <label htmlFor="" className="col-sm-12 control-label">Pet DOB</label>
                 <div class="col-sm-9 controls">
                 <input className="ml-1 col-md-12" type="date" placeholder="Pet Date Of Birth" name="petDob" value={petDob} onChange={e => onChange(e)} required/>
                 </div>
                 </div>
 
-                 <div className="form-group row col-md-6">
+                 <div className="form-group col-md-6">
                 <label htmlFor="" className="col-sm-12 control-label">Address1</label>
                 <div class="col-sm-9 controls">
                 <input className="ml-1 col-md-12" type="text" placeholder="Address1" name="addressLine1" value={addressLine1} onChange={e => detailsChange(e)} required/>
                 </div>
                 </div>
-                 <div className="form-group row col-md-6">
+                 <div className="form-group col-md-6">
                 <label htmlFor="" className="col-sm-12 control-label">Adress2</label>
                 <div class="col-sm-9 controls">
                 <input className="ml-1 col-md-12" type="text" placeholder="Adress2" name="addressLine2" value={addressLine2} onChange={e => detailsChange(e)} required/>
                 </div>
                 </div>
-                <div className="form-group row col-md-6">
+                <div className="form-group col-md-6">
                 <label htmlFor="" className="col-sm-12 control-label">State</label>
                 <div class="col-sm-9 controls">
                 <input className="ml-1 col-md-12" type="text" placeholder="State" name="state" value={state} onChange={e => detailsChange(e)} required/>
                 </div>
                 </div>
-                <div className="form-group row col-md-6">
+                <div className="form-group col-md-6">
                 <label htmlFor="" className="col-sm-12 control-label">City</label>
                 <div class="col-sm-9 controls">
                 <input className="ml-1 col-md-12" type="text" placeholder="City" name="city" value={city} onChange={e => detailsChange(e)} required/>
                 </div>
                 </div>
-                <div className="form-group row col-md-6">
+                <div className="form-group col-md-6">
                 <label htmlFor="" className="col-sm-12 control-label">Area</label>
                 <div class="col-sm-9 controls">
                 <input className="ml-1 col-md-12" type="text" placeholder="Area" name="area" value={area} onChange={e => detailsChange(e)} required/>
                 </div>
                 </div>
                
-                <div className="form-group row col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="" className="col-sm-12 control-label">Pincode</label>
                     <div class="col-sm-9 controls">
                     <input className="ml-1 col-md-12" type="number" placeholder="Pincode" name="pinCode" value={pinCode} onChange={e => detailsChange(e)} required/>
@@ -153,6 +153,7 @@ const CreateProfile = () => {
             
     
             
+        </div>
         </div>
     );
 }
