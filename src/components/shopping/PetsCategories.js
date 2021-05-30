@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom'
+import ShopByBrand from './ShopByBrand'
 
 
 const PetsCategories = () => {
@@ -36,7 +37,7 @@ const PetsCategories = () => {
             ))}
            </div>
         </div>
-        
+        <ShopByBrand/>
         </>
     )
 }
