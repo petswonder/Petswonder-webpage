@@ -13,6 +13,7 @@ import {
 } from 'react-bootstrap';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { isAuthenticated, signout } from '../auth/index';
+import { getCart } from '../cart/cartApi';
 import LogoName from '../../images/LogoName.png';
 import SearchComponent from '../core/Search'
 
@@ -21,6 +22,7 @@ const isActive = (history, path) => {
     return { color: '#000000' };
   } else return { color: '#ffffff' };
 };
+
 
 var nav_items = [
   {id: 1, name: "Home", auth: false, link: "/" },
@@ -36,16 +38,15 @@ const Menu = ({ history }) => {
   
   nav_items = jwt ? nav_items : nav_items.filter( i => {return i.auth == false})
   const search_bar = false
-  // const [search, setSearch] = useState('');
-
-  // const handleChange = e =>{
-  //     setSearch(e.target.value);
-  //     console.log(search);
-  // }
-
-  // const handleClick = () =>{
-  //     setSearch('');
-  // }
+  const [cart_length, setCount] = useState([]);
+  
+  if(jwt){
+    getCart(jwt.user.userNumber)
+      .then((data) => {
+        setCount(data.cart.length)
+      })
+    }
+  
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="light" className="py-1 fixed-top">
@@ -67,7 +68,7 @@ const Menu = ({ history }) => {
             <>
               <Link to='/cart' className="font-size-22 mx-3">
                 <i class="fas fa-shopping-cart text-secondary"></i>
-                <span class="badge bg-light position-absolute rounded-circle font-size-12 text-dark w-15 h-15 p-0 lh-15"></span>
+                <span class="badge bg-light position-absolute rounded-circle font-size-12 text-dark w-15 h-15 p-0 lh-15">{cart_length}</span>
               </Link>
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-custom-components" className='nav-link dropdown-toggle py-0 h5 m-0'>

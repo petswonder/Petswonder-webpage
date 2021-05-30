@@ -17,12 +17,10 @@ const Cart = () => {
   const {
     user: { userNumber },
   } = isAuthenticated();
-  console.log(userNumber);
 
   const getItemsInCart = () => {
     getCart(userNumber)
       .then((data) => {
-        console.log(data);
         setItems(data.cart);
       })
       .catch((err) => {
