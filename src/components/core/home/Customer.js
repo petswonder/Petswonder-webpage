@@ -1,5 +1,4 @@
 import React from 'react';
-import photo from '../../../images/img7.jpg';
 
 const service_items = [
   {"id": 1, "name": "Online Vet Doctor", "desc": "24/7 online vet consultation.", "img": require('../../../images/services/vet.svg').default},

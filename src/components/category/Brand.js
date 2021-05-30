@@ -27,37 +27,18 @@ const Brand = (props) => {
     const name = props.match.params.name;
 
     return (
-        <div className="container category col-12 ">
-            <img className="category-img" src={icon} alt=""/>
+        <>
+        <Heading text={`${name}`} />
+        <div className="container">
             <div className="row">
-                {/* <div className="col-12 col-md-3">
-                <h1 className="mt-4 mb-4">Filters</h1>
-                <hr/>
-                <Search />
-                <ul className="mt-2" style={{background: "#fff"}}>
-                    <Checkbox />
-                    <Checkbox />
-                    <Checkbox />
-                    <Checkbox />
-                </ul>
-                </div> */}
-                <div className="col-12 col-md-12">
-                    <h1 className="mt-4 mb-4">{props.location.nameProps}</h1>
-                    <Heading text={`${name}`} />
-                    <br/>
-                    <div className="row">
-                        
-                            {data && data.map((p,i)=>(
-                                <div key={i} className="col-xl-3 col-lg-4 col-6 product">
-                                    <Card data={p} />
-                                </div>
-                            ))}
-                        
+                {data && data.map((p,i)=>(
+                    <div key={i} className="col-md-3 col-xs-12 my-3">
+                        <Card data={p} />
                     </div>
-                    
-                </div>
+                ))}
             </div>
         </div>
+        </>
     )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 
 
@@ -45,13 +46,13 @@ const ShopByBrand = () => {
               <Slider {...slider_settings} className="h-100 w-100 align-items-center">
               {petbrands.map(brand => (
                 <div class="col flex-column h-100 text-center">
-                {/* <Link to ={`/brand/${brand.name}`} className=""> */}
+                <Link to ={`/brand/${brand.name}`} className="">
                     <div className="mx-auto w-200 h-200 align-items-center d-flex">
                     {/* <i class="fa fa-fish"></i> */}
                     <img src={brand.img} alt={brand.name + '_img'} className="mx-auto w-75"/>
                     </div>
                     {/* <h5 class="mt-3">{brand.name}</h5> */}
-                {/* </Link> */}
+                </Link>
                 </div>
               ))}
               </Slider>
