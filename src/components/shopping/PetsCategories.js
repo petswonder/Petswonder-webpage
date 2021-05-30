@@ -23,11 +23,11 @@ const PetsCategories = () => {
             <div className="row my-4">
             {petcategories.map(pet => (
                 <div className="col flex-column h-100 text-center" key={pet.id}>
-                <Link to ={`/pet/${pet.name}`} className="">
-                    <div className="mx-auto w-200 h-200 mx-auto">
-                    <img src={pet.img} alt={pet.name + '_img'} className="img-responsive w-100 "/>
+                <Link to ={`/pet/${pet.name}`} className="text-center">
+                    <div className="">
+                    <img src={pet.img} alt={pet.name + '_img'} className="img-responsive mx-auto" style={{'width': '150px'}}/>
                     </div> 
-                    {/* <h5 className="mt-3">{pet.name}</h5> */}
+                    <h5 className="mt-3 font-weight-bold text-secondary">{pet.name}</h5>
                 </Link>
                 </div>
             ))}
