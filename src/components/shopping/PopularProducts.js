@@ -31,7 +31,7 @@ const PopularProducts = () => {
           if (data[i] != undefined) arrayForHoldingPosts[i] = data[i];
         }
         loopWithSlice(0, postsPerPage);
-        console.log(arrayForHoldingPosts);
+        // console.log(arrayForHoldingPosts);
       })
       .catch((err) => {
         console.log(err);

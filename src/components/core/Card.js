@@ -114,7 +114,7 @@ const Card = ({
         {data.productImages ? (
           <img
           src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-          alt='image' style={{'object-fit': 'contain'}} className="card-img-top w-100 h-100" alt={`${data.productId}_img`}
+          alt='image' style={{'objectFit': 'contain'}} className="card-img-top w-100 h-100" alt={`${data.productId}_img`}
           />
         ) : (
           <img className='' src={noImage} alt='No image found' />

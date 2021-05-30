@@ -20,12 +20,12 @@ const Breadcrumbs = (props) => {
             const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
             const isLast = index === pathnames.length - 1;
             return isLast ? (
-              <li className='breadcrumb-item font-size-14 active' aria-current='page'>
+              <li className='breadcrumb-item font-size-14 active' aria-current='page' key={index}>
                 {name}
               </li>
             ) : (
               <li
-                className='breadcrumb-item font-size-14 '
+                className='breadcrumb-item font-size-14 ' key={index}
                 onClick={() => history.push(routeTo)}
               >
                 <a href=''>{name}</a>

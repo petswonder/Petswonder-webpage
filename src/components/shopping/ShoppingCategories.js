@@ -19,7 +19,7 @@ const ShoppingCategories = (pet) => {
 
       <div className='row'>
         {categories.map(category => (
-          <div className="col my-3">
+          <div className="col my-3" key={category.id}>
            <Link to={`/pet/${pet.pet}/category/${category.name}`} className="text-center">
            <img alt={category.name + '_img'} className='w-100 p-4' src={category.img}/>
            <h5 className="text-secondary">{category.name}</h5>

@@ -28,7 +28,7 @@ const SubFood = (props) => {
   const name = props.match.params.name;
   const sub = props.match.params.sub;
   const pet = props.match.params.pet;
-  console.log(name, sub, pet);
+  // console.log(name, sub, pet);
 
   return (
     <div className=''>

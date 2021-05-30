@@ -6,9 +6,7 @@ const Heading = ({ text }) => {
     <div className="bg-light">
       <div className='container py-2'>
         <h2 className="m-0">{text}</h2>
-        <p className="m-0">
-          <Breadcrumbs />
-        </p>
+        <Breadcrumbs />
       </div>
     </div>
   );
