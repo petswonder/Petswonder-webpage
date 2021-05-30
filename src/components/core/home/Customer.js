@@ -10,27 +10,27 @@ const Customer = () => {
   
   return (
     <section className='py-2 mb-5'>
-      <div class='mx-5'>
-        <div class='container'>
-          <div class='row'>
-            <div class='col-12'>
-              <h1 class='text-center mb-3'>Services</h1>
+      <div className='mx-5'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12'>
+              <h1 className='text-center mb-3'>Services</h1>
             </div>
           </div>
         </div>
 
-        <div class='container'>
-          <div class='row '>
+        <div className='container'>
+          <div className='row '>
           {service_items.map(service => (
-            <div class='col'>
-              <div class='d-flex justify-content-between flex-column px-4 py-3 text-center shadow bg-light'>
-                <div class='icon text-center font-size-40'>
-                  {/* <i class={`fas fa-${service.icon} fa-lg text-primary`}></i> */}
+            <div className='col'>
+              <div className='d-flex justify-content-between flex-column px-4 py-3 text-center shadow bg-light'>
+                <div className='icon text-center font-size-40'>
+                  {/* <i className={`fas fa-${service.icon} fa-lg text-primary`}></i> */}
                   <img src={service.img} alt={service.name + '_img'} className="w-100 p-4"/>
                 </div>
-                <div class='media-body'>
-                  <h5 class='heading font-weight-bold my-1'>{service.name}</h5>
-                  <p class='mb-0 font-size-12'>{service.desc}</p>
+                <div className='media-body'>
+                  <h5 className='heading font-weight-bold my-1'>{service.name}</h5>
+                  <p className='mb-0 font-size-12'>{service.desc}</p>
                 </div>
               </div>
             </div>

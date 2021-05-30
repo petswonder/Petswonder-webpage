@@ -13,7 +13,7 @@ const PetSnap = () => {
         <div className="">
             <Heading text="Pet Snap" />
             <div className="container my-4">
-                <div class="row">
+                <div className="row">
 
                 
                 <Book d={{title:"Pet Photography", serviceImageUrls:PetPhoto, price:"20"}} comingSoon="true"   />

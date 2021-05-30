@@ -21,7 +21,7 @@ const ShoppingCategories = (pet) => {
         {categories.map(category => (
           <div className="col my-3">
            <Link to={`/pet/${pet.pet}/category/${category.name}`} className="text-center">
-           <img alt={category.name + '_img'} class='w-100 p-4' src={category.img}/>
+           <img alt={category.name + '_img'} className='w-100 p-4' src={category.img}/>
            <h5 className="text-secondary">{category.name}</h5>
           </Link>
           </div>

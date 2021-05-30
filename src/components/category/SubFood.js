@@ -34,7 +34,7 @@ const SubFood = (props) => {
     <div className=''>
       <img className='category-img' src={icon} alt='' />
       <Heading text={`${pet} ${sub}`} />
-      <div class="container">
+      <div className="container">
         <div className='row'>
           {data &&
               data.map((p, i) => (

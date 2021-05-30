@@ -18,18 +18,18 @@ const Customer = () => {
         
           {service_items.map(service => (
             <div className={service.bgclass}>
-            <div class='container'>
-              <div class="row align-items-center justify-content-between">
-            <div class="col-md-6 col-lg-6 col-xl-6">
-                <div class="learning_img w-100 py-2 px-5">
-                    <img src={service.img} alt="image" class='w-100' />
+            <div className='container'>
+              <div className="row align-items-center justify-content-between">
+            <div className="col-md-6 col-lg-6 col-xl-6">
+                <div className="learning_img w-100 py-2 px-5">
+                    <img src={service.img} alt="image" className='w-100' />
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-6">
-                <div class="">
+            <div className="col-md-6 col-lg-6 col-xl-6">
+                <div className="">
                     <h6 id="mentorship-heading"></h6>
-                    <h2 class='text-left'>{service.title}</h2>
-                    <p class="text-left">{service.desc}</p>
+                    <h2 className='text-left'>{service.title}</h2>
+                    <p className="text-left">{service.desc}</p>
                 </div>
             </div>
            

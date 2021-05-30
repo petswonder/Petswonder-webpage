@@ -9,15 +9,15 @@ import Drools from '../../images/brands/drools.png';
 
 export const brand = (name, photo) => {
   return (
-    <div class='col-6 col-md-2 ttmcat-slider mb-3'>
-      <div class='content'>
-        <div class=''>
+    <div className='col-6 col-md-2 ttmcat-slider mb-3'>
+      <div className='content'>
+        <div className=''>
           <Link to={`/brand/${name}`}>
             <img
               src={photo}
               alt='Cats'
               title='Cats'
-              class='same-sizes'
+              className='same-sizes'
               style={{ objectFit: 'cover' }}
             />
           </Link>
@@ -34,7 +34,7 @@ const Brands = () => {
         <div className='row'>
           <div className='col-2'>
             <h2>
-              <i class='fas fa-paw'></i>
+              <i className='fas fa-paw'></i>
             </h2>
           </div>
           <div className='col-8'>
@@ -42,7 +42,7 @@ const Brands = () => {
           </div>
           <div className='col-2'>
             <h2>
-              <i class='fas fa-paw'></i>
+              <i className='fas fa-paw'></i>
             </h2>
           </div>
         </div>

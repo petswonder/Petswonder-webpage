@@ -46,7 +46,7 @@ const PopularProducts = () => {
             {/* <Heading text="Popular Products" /> */}
             {/* {postsToShow.length > 0 && ( */}
             {/* <Search /> */}
-            <h2 class="text-center">Popular Products</h2>
+            <h2 className="text-center">Popular Products</h2>
             <div className="row">
                 
                 {postsToShow.map((data, i) => (
@@ -56,10 +56,10 @@ const PopularProducts = () => {
                 ))}
                 
             </div>
-            {/* <div class="group">
+            {/* <div className="group">
                 <button className="btn btn-warning button" onClick={handleShowMorePosts}>Load More</button>
             </div> */}
-            <div class="text-center">
+            <div className="text-center">
                 <Link to="/popularProducts"><button className="btn btn-warning button">Explore More</button></Link>
             </div>
             <br/>

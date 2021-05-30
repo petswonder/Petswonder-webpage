@@ -34,7 +34,7 @@ const PopularProductPage = () => {
                 ))}
                 </div>
             </div>
-            {/* <div class="group">
+            {/* <div className="group">
                 <button className="btn btn-warning button" onClick={handleShowMorePosts}>Load More</button>
             </div> */}
             

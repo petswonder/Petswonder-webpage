@@ -210,7 +210,7 @@ const Payment = (props) => {
 
   const table = () => {
     return (
-      <table class='table table-borderless table-light'>
+      <table className='table table-borderless table-light'>
         <tbody>
           <tr>
             <th scope='row'>PRICE DETAILS</th>

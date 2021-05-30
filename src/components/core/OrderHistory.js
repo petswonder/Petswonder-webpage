@@ -64,7 +64,7 @@ const OrderHistory = () => {
                   </div>
                 </div>
                 <div>
-                  <span class='badge bg-warning rounded-pill text-dark m-3 '>
+                  <span className='badge bg-warning rounded-pill text-dark m-3 '>
                     {orderStatus}
                   </span>
                 </div>

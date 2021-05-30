@@ -10,14 +10,14 @@ import slids1 from './imgs/slids1.jpg';
 const SamplePrevArrow = (props) => {
   const { onClick } = props;
   return (
-    <div onClick={onClick} className="cursor-pointer position-absolute font-size-40 z-9 h-100 align-items-center d-flex px-4" style={{'left':0, 'background': 'linear-gradient(90deg, rgba(0,0,0,0.3), transparent)'}}><i class="fas fa-chevron-left text-light"></i></div>
+    <div onClick={onClick} className="cursor-pointer position-absolute font-size-40 z-9 h-100 align-items-center d-flex px-4" style={{'left':0, 'background': 'linear-gradient(90deg, rgba(0,0,0,0.3), transparent)'}}><i className="fas fa-chevron-left text-light"></i></div>
   )
 }
 
 const SampleNextArrow = (props) => {
   const { onClick } = props;
   return (
-    <div onClick={onClick} className="cursor-pointer position-absolute font-size-40 z-9 h-100 align-items-center d-flex px-4" style={{'top':0,'right':0, 'background': 'linear-gradient(-90deg, rgba(0,0,0,0.3), transparent)'}}><i class="fas fa-chevron-right text-light"></i></div>
+    <div onClick={onClick} className="cursor-pointer position-absolute font-size-40 z-9 h-100 align-items-center d-flex px-4" style={{'top':0,'right':0, 'background': 'linear-gradient(-90deg, rgba(0,0,0,0.3), transparent)'}}><i className="fas fa-chevron-right text-light"></i></div>
   )
 }
 
@@ -35,7 +35,7 @@ const HomeBannerSlider = ({ banners }) => {
 
   const slides = items.map((item) => {
     return (
-      <div className="h-100 w-100">
+      <div className="h-100 w-100" key={item.id}>
         <img
           className='slider-images w-100 h-100'
           src={item.bannerName}

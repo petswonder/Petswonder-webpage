@@ -92,7 +92,7 @@ const Book = ({
   const comingS = () => {
     return (
       <div>
-        <h6 class="m-0">Coming Soon !!!</h6>
+        <h6 className="m-0">Coming Soon !!!</h6>
       </div>
     );
   };
@@ -145,7 +145,7 @@ const Book = ({
               <button
                 onClick={openPayModal}
                 type='button'
-                class='btn btn-warning'
+                className='btn btn-warning'
               >
                 Book Now
               </button>

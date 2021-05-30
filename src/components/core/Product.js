@@ -66,39 +66,39 @@ const Product = ({ product }) => {
           />
         </div>
         <div className='col-12 col-md-6 justify-content-center d-flex flex-column'>
-          <h2 class="m-0">{product.title}</h2>
+          <h2 className="m-0">{product.title}</h2>
           <p className="m-0 font-size-14 py-1">{product.description}</p>
-          <h3 class="m-0">
-            <span class="mr-2 font-weight-bold">
+          <h3 className="m-0">
+            <span className="mr-2 font-weight-bold">
               ₹ {product.price - (product.price * product.discount) / 100}
             </span>
             <span className='cross text-bg mr-2' style={{ textDecoration: 'line-through' }}>₹ {product.price}</span>
             <span className='font-size-18'>({parseInt(product.discount)}% OFF)</span>
           </h3>
-          <p class="m-0 font-size-14 py-1 d-flex align-items-center">
-            <i class='fas fa-exclamation-circle text-dark mr-2'></i>
+          <p className="m-0 font-size-14 py-1 d-flex align-items-center">
+            <i className='fas fa-exclamation-circle text-dark mr-2'></i>
             By purchasing this product, you will earn {product.plusPoints} pluspoints
           </p>
           <div className='d-flex'>
             <div className='mr-2'>
-              <i class='fas fa-shopping-cart'></i>
+              <i className='fas fa-shopping-cart'></i>
               {disable && ' Not'} In Stock
             </div>
             <div className='mr-2'>
-              <i class='fas fa-money-bill'></i> COD Available
+              <i className='fas fa-money-bill'></i> COD Available
             </div>
             <div className=''>
-              <i class='far fa-times-circle'></i> No Returns
+              <i className='far fa-times-circle'></i> No Returns
             </div>
           </div>
-          <div class="mt-3">
+          <div className="mt-3">
             <button
               onClick={handleClick}
               className='btn btn-lg btn-primary'
               disabled={disable}
               style={{ cursor: disable ? 'not-allowed' : 'pointer' }}
             >
-              <span class='fas fa-sm fa-shopping-cart'></span> Add To Cart
+              <span className='fas fa-sm fa-shopping-cart'></span> Add To Cart
             </button>
           </div>
           

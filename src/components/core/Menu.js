@@ -54,8 +54,8 @@ const Menu = ({ history }) => {
       <Navbar.Brand><Link to={'/'} className="nav-link p-0"> <img src={LogoName} style={{ width: '160px' }} /> </Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <div class="row flex-column w-100">
-          <div class="col-12">
+        <div className="row flex-column w-100">
+          <div className="col-12">
           <Nav className="d-flex justify-content-end align-items-center">
             <SearchComponent />
           
@@ -67,12 +67,12 @@ const Menu = ({ history }) => {
           ) : (
             <>
               <Link to='/cart' className="font-size-22 mx-3">
-                <i class="fas fa-shopping-cart text-secondary"></i>
-                <span class="badge bg-light position-absolute rounded-circle font-size-12 text-dark w-15 h-15 p-0 lh-15">{cart_length}</span>
+                <i className="fas fa-shopping-cart text-secondary"></i>
+                <span className="badge bg-light position-absolute rounded-circle font-size-12 text-dark w-15 h-15 p-0 lh-15">{cart_length}</span>
               </Link>
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-custom-components" className='nav-link dropdown-toggle py-0 h5 m-0'>
-                  <i class="fa fa-user text-secondary font-size-22"></i>
+                  <i className="fa fa-user text-secondary font-size-22"></i>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu align="right" menuRole="menu" flip="true" className="rounded-0 border-0 py-0 shadow">
@@ -90,10 +90,10 @@ const Menu = ({ history }) => {
           </Nav>
           
         </div>
-        <div class="col-12">
+        <div className="col-12">
         <Nav className="d-flex justify-content-end mt-2">
           {nav_items.map(item => (
-            <NavLink to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
+            <NavLink key={item.id} to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
           ))}
         </Nav>
         </div>

@@ -12,7 +12,7 @@ const ParticularProduct = (props) => {
   const relatedProducts = () => {
     return (
       <div className='container'>
-        <h3 class="m-0">Related Products</h3>
+        <h3 className="m-0">Related Products</h3>
         <div className='row text-center'>
           {console.log(productData)}
           {productData.map((p, i) => (

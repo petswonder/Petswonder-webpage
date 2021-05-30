@@ -12,7 +12,7 @@ const Book1 = ({
   const comingS = () => {
     return (
       <div>
-        <h6 class="m-0">Coming Soon !!!</h6>
+        <h6 className="m-0">Coming Soon !!!</h6>
       </div>
     );
   };
@@ -32,8 +32,8 @@ const Book1 = ({
         >
           {title}
         </Card.Title>
-        <div class="h-200 text-center">
-          <img src={serviceImageUrls} alt="" class="h-100"/>
+        <div className="h-200 text-center">
+          <img src={serviceImageUrls} alt="" className="h-100"/>
         </div>
         {/* <Card.Img
           variant='top'
@@ -62,7 +62,7 @@ const Book1 = ({
           ) : (
             <div style={{ minHeight: '' }}>
               <Link to={`/${page}`}>
-                <button type='button' class='btn btn-warning '>
+                <button type='button' className='btn btn-warning '>
                   Book now
                 </button>
               </Link>

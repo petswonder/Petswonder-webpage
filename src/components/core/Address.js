@@ -67,7 +67,7 @@ const Address = () => {
         <div className='address-block'>
           {console.log(profile)}
           {profile.mobileNumber > 0 && (
-            <table class='table table-borderless table-light'>
+            <table className='table table-borderless table-light'>
               <tbody>
                 <tr>
                   <th scope='row'>{profile.petName}</th>
@@ -136,7 +136,7 @@ const Address = () => {
               <label htmlFor='' className='col-sm-12 control-label'>
                 Mobile Number
               </label>
-              <div class='controls col-12 col-lg-10'>
+              <div className='controls col-12 col-lg-10'>
                 <input
                   className='ml-1 col-md-12'
                   type='number'
@@ -151,7 +151,7 @@ const Address = () => {
               <label htmlFor='' className='col-sm-12 control-label'>
                 Email
               </label>
-              <div class='controls col-12 col-lg-10'>
+              <div className='controls col-12 col-lg-10'>
                 <input
                   className='ml-1 col-md-12'
                   type='email'
@@ -167,7 +167,7 @@ const Address = () => {
               <label htmlFor='' className='col-sm-12 control-label'>
                 Address1
               </label>
-              <div class='controls col-12 col-lg-10'>
+              <div className='controls col-12 col-lg-10'>
                 <input
                   className='ml-1 col-md-12'
                   type='text'
@@ -183,7 +183,7 @@ const Address = () => {
               <label htmlFor='' className='col-sm-12 control-label'>
                 Adress2
               </label>
-              <div class='controls col-12 col-lg-10'>
+              <div className='controls col-12 col-lg-10'>
                 <input
                   className='ml-1 col-md-12'
                   type='text'
@@ -199,7 +199,7 @@ const Address = () => {
               <label htmlFor='' className='col-sm-12 control-label'>
                 State
               </label>
-              <div class='controls col-12 col-lg-10'>
+              <div className='controls col-12 col-lg-10'>
                 <input
                   className='ml-1 col-md-12'
                   type='text'
@@ -215,7 +215,7 @@ const Address = () => {
               <label htmlFor='' className='col-sm-12 control-label'>
                 City
               </label>
-              <div class='controls col-12 col-lg-10'>
+              <div className='controls col-12 col-lg-10'>
                 <input
                   className='ml-1 col-md-12'
                   type='text'
@@ -231,7 +231,7 @@ const Address = () => {
               <label htmlFor='' className='col-sm-12 control-label'>
                 Area
               </label>
-              <div class='controls col-12 col-lg-10'>
+              <div className='controls col-12 col-lg-10'>
                 <input
                   className='ml-1 col-md-12'
                   type='text'
@@ -247,7 +247,7 @@ const Address = () => {
               <label htmlFor='' className='col-sm-12 control-label'>
                 Pincode
               </label>
-              <div class='controls col-12 col-lg-10'>
+              <div className='controls col-12 col-lg-10'>
                 <input
                   className='ml-1 col-md-12'
                   type='number'

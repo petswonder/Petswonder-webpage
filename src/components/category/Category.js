@@ -38,14 +38,14 @@ const Category = (props) => {
 
   const categoryBox = (n, photo, categoryId, color, url) => {
     return (
-      <div class='col text-center my-3'>
+      <div className='col text-center my-3'>
           <Link to={`/pet/${pet}/category/${name}/${url}`}>
             <img
-              class='img-responsive mx-auto'
+              className='img-responsive mx-auto'
               src={photo}
               style={{'width': '150px'}}
             />
-            <h5 class="text-secondary mt-1">{n}</h5>
+            <h5 className="text-secondary mt-1">{n}</h5>
           </Link>
         
       </div>
@@ -57,14 +57,14 @@ const Category = (props) => {
       <div className='container recent-game-section spad set-bg'>
         <div className='row'>
           {categories.map( item => (
-            <div class='col text-center my-3'>
+            <div className='col text-center my-3'>
               <Link to={`/pet/${pet}/category/${name}/${item.url}`}>
                 <img
-                  class='img-responsive mx-auto'
+                  className='img-responsive mx-auto'
                   src={item.img}
                   style={{'max-width': '100px'}}
                 />
-                <h5 class="text-secondary mt-1">{item.name}</h5>
+                <h5 className="text-secondary mt-1">{item.name}</h5>
               </Link>
             
           </div>
@@ -76,10 +76,10 @@ const Category = (props) => {
 
   return (
     <>
-    <div class="">
+    <div className="">
       <img className='category-img w-100' src={icon} alt='' />
     </div>
-    <div class="">
+    <div className="">
     <Heading text={`Pet ${name}`} />
     </div>
     <div className='container'>

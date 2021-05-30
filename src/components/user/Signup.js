@@ -88,17 +88,17 @@ const Signup = () => {
 
   const signupForm = () => (
     <form onSubmit={(e) => handleSubmit(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
-      <div class='login-wrap'>
-        <div class='login-html'>
+      <div className='login-wrap'>
+        <div className='login-html'>
           <div className='img-sign'>
             {/* <img src={logo} alt='' /> */}
           </div>
           <div className='sign-content'>
             <h2>SIGNUP</h2>
             <br />
-            <div class='login-form'>
-              <div class='sign-in-htm'>
-                <div class='group'>
+            <div className='login-form'>
+              <div className='sign-in-htm'>
+                <div className='group'>
                   <label className='label'>Phone Number</label>
                   <input
                     type='phoneNumber'
@@ -109,10 +109,10 @@ const Signup = () => {
                   />
                 </div>
                 <br />
-                <div class='group'>
+                <div className='group'>
                   <button className='btn btn-secondary button'>Send OTP</button>
                 </div>
-                <div class='font-size-14 mt-3'>
+                <div className='font-size-14 mt-3'>
                   Already have an Account?{' '}
                   <Link className='text-secondary text-underline ml-2 ' to='/signin'>
                     Signin
@@ -133,22 +133,22 @@ const Signup = () => {
 
   const validateForm = () => (
     <form onSubmit={(e) => handleOTP(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
-      <div class='login-wrap'>
-        <div class='login-html'>
+      <div className='login-wrap'>
+        <div className='login-html'>
           <div className='img-sign'>
             {/* <img src={logo} alt='' /> */}
           </div>
           <div className='sign-content'>
             <h2>
               <button onClick={handleBack} className='btn btn-warning'>
-                <i class='fas fa-arrow-left fa-lg'></i>
+                <i className='fas fa-arrow-left fa-lg'></i>
               </button>{' '}
               Validate OTP
             </h2>
             <br />
-            <div class='login-form'>
-              <div class='sign-in-htm'>
-                <div class='group'>
+            <div className='login-form'>
+              <div className='sign-in-htm'>
+                <div className='group'>
                   <label className='label'>OTP</label>
                   <input
                     type='number'
@@ -159,12 +159,12 @@ const Signup = () => {
                   />
                 </div>
                 <br />
-                <div class='group'>
+                <div className='group'>
                   <button className='btn btn-secondary button'>
                     Validate OTP
                   </button>
                 </div>
-                <div class='font-size-14 mt-3'>
+                <div className='font-size-14 mt-3'>
                   Already have an Account?{' '}
                   <Link className='text-secondary text-underline ml-2 ' to='/signin'>
                     Signin
@@ -180,22 +180,22 @@ const Signup = () => {
 
   const registerForm = () => (
     <form onSubmit={(e) => handleregister(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
-      <div class='login-wrap'>
-        <div class='login-html'>
+      <div className='login-wrap'>
+        <div className='login-html'>
           <div className='img-sign'>
             {/* <img src={logo} alt='' /> */}
           </div>
           <div className='sign-content'>
             <h2>Register User</h2>
             <br />
-            <div class='login-form'>
-              <div class='sign-in-htm'>
-                <div class='group'>
+            <div className='login-form'>
+              <div className='sign-in-htm'>
+                <div className='group'>
                   <label className='label'>Phone Number</label>
                   <p className='text-muted'>{phoneNumber}</p>
                 </div>
                 <br />
-                <div class='group'>
+                <div className='group'>
                   <label className='label'>Password</label>
                   <input
                     type='password'
@@ -206,7 +206,7 @@ const Signup = () => {
                   />
                 </div>
                 <br />
-                <div class='group'>
+                <div className='group'>
                   <label className='label'>email</label>
                   <input
                     type='email'
@@ -217,7 +217,7 @@ const Signup = () => {
                   />
                 </div>
                 <br />
-                <div class='group'>
+                <div className='group'>
                   <label className='label'>Name</label>
                   <input
                     type='text'
@@ -228,10 +228,10 @@ const Signup = () => {
                   />
                 </div>
                 <br />
-                <div class='group'>
+                <div className='group'>
                   <button className='btn btn-secondary button'>Register</button>
                 </div>
-                {/* <div class="foot-lnk">
+                {/* <div className="foot-lnk">
                             Already have an Account? <Link className="signlinks" to="/signin">Signin</Link>
                             </div> */}
               </div>

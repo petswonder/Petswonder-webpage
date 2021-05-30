@@ -69,29 +69,29 @@ const CheckOut = ({ products }) => {
     console.log(total);
     return (
       total && (
-        <div class="bg-white p-2">
-          <div class="d-flex">
-            <h6 class="font-weight-bold mr-2">Total MRP :</h6>
+        <div className="bg-white p-2">
+          <div className="d-flex">
+            <h6 className="font-weight-bold mr-2">Total MRP :</h6>
             <span>₹{total.totalValue}</span>
           </div>
-          <div class="d-flex">
-            <h6 class="font-weight-bold mr-2">Discount on MRP :</h6>
+          <div className="d-flex">
+            <h6 className="font-weight-bold mr-2">Discount on MRP :</h6>
             <span>₹{Math.round(total.discount, 2)}</span>
           </div>
-          <div class="d-flex">
-            <h6 class="font-weight-bold mr-2">Total Gst :</h6>
+          <div className="d-flex">
+            <h6 className="font-weight-bold mr-2">Total Gst :</h6>
             <span>₹{total.totalGst}</span>
           </div>
-          <div class="d-flex">
-            <h6 class="font-weight-bold mr-2">Total Delivery Charge :</h6>
+          <div className="d-flex">
+            <h6 className="font-weight-bold mr-2">Total Delivery Charge :</h6>
             <span>₹{total.totalDeliveryCharge}</span>
           </div>
-          <div class="d-flex">
-            <h6 class="font-weight-bold mr-2">Total Amount :</h6>
+          <div className="d-flex">
+            <h6 className="font-weight-bold mr-2">Total Amount :</h6>
             <span>₹{total.totalPrice}</span>
           </div>
-          <div class="d-flex">
-            <h6 class="font-weight-bold mr-2">Total Plus Points :</h6>
+          <div className="d-flex">
+            <h6 className="font-weight-bold mr-2">Total Plus Points :</h6>
             <span>₹{total.totalPlusPoints}</span>
           </div>
         </div>

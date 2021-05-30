@@ -62,17 +62,17 @@ const Signin = () => {
 
   const signinForm = () => (
     <form onSubmit={(e) => handleSubmit(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
-      <div class='login-wrap'>
-        <div class='login-html'>
+      <div className='login-wrap'>
+        <div className='login-html'>
           <div className='img-sign'>
             {/* <img src={logo} alt='' /> */}
           </div>
           <div className='sign-content'>
             <h2>SIGNIN</h2>
             <br />
-            <div class='login-form'>
-              <div class='sign-in-htm'>
-                <div class='group'>
+            <div className='login-form'>
+              <div className='sign-in-htm'>
+                <div className='group'>
                   <label className='label'>Phone Number</label>
                   <input
                     type='userNumber'
@@ -83,7 +83,7 @@ const Signin = () => {
                   />
                 </div>
                 <br />
-                <div class='group'>
+                <div className='group'>
                   <label className='label'>Password</label>
                   <input
                     type='password'
@@ -94,11 +94,11 @@ const Signin = () => {
                   />
                 </div>
                 <br />
-                <div class='group'>
+                <div className='group'>
                   <button className='btn btn-secondary button'>Signin</button>
                 </div>
 
-                <div class='font-size-14 mt-3'>
+                <div className='font-size-14 mt-3'>
                   Don't have an Account?{' '}
                   <Link className='text-secondary text-underline ml-2' to='/signup'>
                     Signup

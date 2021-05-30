@@ -20,22 +20,22 @@ const Profile = (props) => {
 
 
     return (
-        <div class="py-4">
+        <div className="py-4">
         
           
-          <div class="container col-12 col-md-10 profile-about bg-light px-5 py-3">
+          <div className="container col-12 col-md-10 profile-about bg-light px-5 py-3">
           {profile.petName ? (<Fragment>
                 <h3>Account</h3>
                 <h6>{profile.petName}</h6>
                 <div className="row">
                 <div className="col-md-4">
-                    <p class="copyright "> <img src="/static/media/logo1.7393573c.png" id="aradhna_footer_logo" /> </p>
+                    <p className="copyright "> <img src="/static/media/logo1.7393573c.png" id="aradhna_footer_logo" /> </p>
                     <Link to="/editProfile"><button className="btn btn-block btn-warning mb-4">Edit Profile</button></Link>
                     <Link to="/historyPurchase"><button className="btn btn-block btn-warning mb-4">Your Orders</button></Link>
                 </div>
                 <div className="col-md-8">
                     <h3>Profile Details</h3>
-                    <table class="table table-borderless table-light">
+                    <table className="table table-borderless table-light">
                         <tbody>
                             <tr>
                             <th scope="row">Pet Name</th>
@@ -80,7 +80,7 @@ const Profile = (props) => {
                         <Link to="/historyPurchase"><button className="btn btn-block btn-warning mb-4">Your Orders</button></Link>
                     </div>
                     <div className="col-8">
-                        <img src={sed} alt="" class="w-100"/>
+                        <img src={sed} alt="" className="w-100"/>
                     </div>
                   </div>
                   
@@ -89,7 +89,7 @@ const Profile = (props) => {
           )}
           
     
-          <div class="icons my-1">
+          <div className="icons my-1">
             
            
           </div>

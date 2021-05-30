@@ -42,7 +42,7 @@ const Cart = () => {
         {items.map((p, i) => {
           return (
             p && (
-              <div class="row">
+              <div className="row">
               <div
                 key={i}
                 className='col-xl-4 col-lg-6 col-12 col-md-3 product mb-3'
@@ -63,7 +63,7 @@ const Cart = () => {
         Your Cart is Empty
         <br />
         <br />
-        <span class='badge badge-warning'>
+        <span className='badge badge-warning'>
           <Link to='/shopping'>Shop Now</Link>
         </span>
       </h3>
@@ -84,7 +84,7 @@ const Cart = () => {
   return (
     <>
       <Heading text="Cart"></Heading>
-      <div class="container my-3">
+      <div className="container my-3">
       <div className='row'>
         <div className='col-md-3 col-12 order-last'>
           <h6 className='mb-4'>Your Cart Summary</h6>

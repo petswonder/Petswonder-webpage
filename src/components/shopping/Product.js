@@ -38,10 +38,10 @@ const Product = ({ data }) => {
                     </p> */}
                     <div className="star_prise justify-content-between">
                         <div className="star col-sm-8 col-12 lol" style={{display:"inline-block"}}>
-                        <button className="btn btn-outline-warning mr-4" onClick={handleClick}><span><i class="fas fa-lg fa-shopping-cart"></i></span></button>
+                        <button className="btn btn-outline-warning mr-4" onClick={handleClick}><span><i className="fas fa-lg fa-shopping-cart"></i></span></button>
                             
                             {'  '}
-                            {/* <a href="#"><span ><i class="far fa-lg fa-heart" style={{paddingRight:"20px"}}></i></span></a>{' '} */}
+                            {/* <a href="#"><span ><i className="far fa-lg fa-heart" style={{paddingRight:"20px"}}></i></span></a>{' '} */}
                             <Link to = {`/product/${data.productId}`}>{' '}Buy Now</Link>
                         </div>
                         <div className="prise col-sm-4 col-12 lol" style={{display:"inline-block"}}>

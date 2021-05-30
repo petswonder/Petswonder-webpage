@@ -7,8 +7,8 @@ const Tc = () => {
     <div className="">
         <Heading text="Terms and Conditions" />
         <div className="container my-4">
-            <div class="row">
-              <div class="col">
+            <div className="row">
+              <div className="col">
               <h5>Return Policy:</h5>
               <p className='text-muted font-weight-light'>
                 Petswonder ensures proper information regarding any product or size in

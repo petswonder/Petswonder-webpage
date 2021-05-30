@@ -109,26 +109,26 @@ const Card = ({
   // const toggle = () => setVisible(!visible);
 
   return (
-    <div class="card h-100 text-center">
-      <div class="h-50 card-body">
+    <div className="card h-100 text-center">
+      <div className="h-50 card-body">
         {data.productImages ? (
           <img
           src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-          alt='image' class="card-img-top h-100" alt={`${data.productId}_img`}
+          alt='image' className="card-img-top h-100" alt={`${data.productId}_img`}
           />
         ) : (
           <img className='' src={noImage} alt='No image found' />
         )}
       </div>
-      <div class="card-footer p-0">
-        <h5 class="card-title m-0 font-size-16 py-2">{data.title}</h5>
+      <div className="card-footer p-0">
+        <h5 className="card-title m-0 font-size-16 py-2">{data.title}</h5>
         <div>
           <span className='mr-1 text-dark text-decoration-line-through' style={{ textDecoration: 'line-through' }}>₹{data.price}</span>
           <span className='ml-1 font-weight-bold text-secondary'>
             ₹{data.price - (data.price * data.discount) / 100}
           </span>
         </div>
-        {/* <p class="card-text m-0 font-size-14">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+        {/* <p className="card-text m-0 font-size-14">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
         {showAddToButton && (
             <div className=''>
               <button
