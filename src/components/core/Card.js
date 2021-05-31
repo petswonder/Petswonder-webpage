@@ -59,7 +59,7 @@ const Card = ({
         cartUpdate &&
         updateItem({ userNumber, productId, count })
           .then((data) => {
-            console.log(data);
+            // console.log(data);
           })
           .catch((err) => {
             console.log(err);
@@ -114,10 +114,10 @@ const Card = ({
         {data.productImages ? (
           <img
           src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-          alt='image' style={{'objectFit': 'contain'}} className="card-img-top w-100 h-100" alt={`${data.productId}_img`}
+          alt='product_img' style={{'objectFit': 'contain'}} className="card-img-top w-100 h-100" alt={`${data.productId}`}
           />
         ) : (
-          <img className='' src={noImage} alt='No image found' />
+          <img className='' src={noImage} alt='nodata' />
         )}
       </div>
       <div className="card-footer p-0">

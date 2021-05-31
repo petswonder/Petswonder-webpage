@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../core/Card'
 import {productByBrand} from '../product/apiProduct'
-import * as icons from '../../images/index'
 import Heading from '../core/Heading'
 
 const Brand = (props) => {
     const [data, setData] = useState([]);
-    const icon = icons[`${props.match.params.name}Icon`];
   
     const getProductByName = (name) =>{
         

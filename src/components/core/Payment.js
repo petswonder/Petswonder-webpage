@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { deleteCart, getCart, getTotal, saveOrder } from '../cart/cartApi';
-import { getProfile, isAuthenticated } from '../auth/index';
+import { isAuthenticated } from '../auth/index';
 import logo from '../../images/logo1.png';
 import Heading from './Heading';
-import { UncontrolledAlert } from 'reactstrap';
-import { putOrder } from './OrderApi';
 
 const Payment = (props) => {
   const [total, setTotal] = useState({});

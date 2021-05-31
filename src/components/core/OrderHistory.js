@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const OrderHistory = () => {
   const [orderHistory, setOrderHistory] = useState([]);
   const {
-    jwt,
+    // jwt,
     user: { userNumber },
   } = isAuthenticated();
 
@@ -47,7 +47,7 @@ const OrderHistory = () => {
             return (
               <div
                 className='col-12 my-5 d-flex justify-content-between align-items-center '
-                style={{ border: '2px solid grey', borderRadius: '7px' }}
+                style={{ border: '2px solid grey', borderRadius: '7px' }} key={order.id}
               >
                 <div className='m-3 text-left'>
                   <div>

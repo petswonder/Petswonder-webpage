@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../images/logo1.png';
 import { isAuthenticated } from '../auth/index';
-import { getTotal, saveOrder } from '../cart/cartApi';
+import { saveOrder } from '../cart/cartApi';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-import cs from '../../images/cs.png';
 
 const Book = ({
   d: { category, description, serviceImageUrls, title, price },

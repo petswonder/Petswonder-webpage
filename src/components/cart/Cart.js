@@ -9,6 +9,15 @@ import Heading from '../core/Heading'
 
 const Cart = () => {
   useEffect(() => {
+    const getItemsInCart = () => {
+      getCart(userNumber)
+        .then((data) => {
+          setItems(data.cart);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
     getItemsInCart();
   }, []);
   const [items, setItems] = useState([]);
@@ -17,15 +26,7 @@ const Cart = () => {
     user: { userNumber },
   } = isAuthenticated();
 
-  const getItemsInCart = () => {
-    getCart(userNumber)
-      .then((data) => {
-        setItems(data.cart);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  
 
   // console.log(items);
 
@@ -37,21 +38,22 @@ const Cart = () => {
         {/* {items.map((product, i)=>{
                 return product && <Card key={i} product={product} showAddToButton={false} cartUpdate={true} showRemoveProductButton = {true} />          
             })} */}
-
-        {items.map((p, i) => {
-          return (
-            p && (
-              <div className="row">
-              <div
-                key={i}
-                className='col-xl-4 col-lg-6 col-12 col-md-3 product mb-3'
-              >
-                <Card data={p} cartUpdate={true} showAddToButton={false} />
-              </div>
-              </div>
-            )
-          );
-        })}
+        <div className="row">
+          {items.map((p, i) => {
+            return (
+              p && (
+                
+                <div
+                  key={i}
+                  className='col-xl-4 col-lg-6 col-12 col-md-3 product mb-3'
+                >
+                  <Card data={p} cartUpdate={true} showAddToButton={false} />
+                </div>
+                
+              )
+            );
+          })}
+          </div>
       </div>
     );
   };

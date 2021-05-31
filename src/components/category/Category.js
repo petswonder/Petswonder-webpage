@@ -4,7 +4,6 @@ import { productByCategory } from '../product/apiProduct';
 import * as icons from '../../images/index';
 import Heading from '../core/Heading';
 import { Link } from 'react-router-dom';
-import food from '../../images/categories/food.svg';
 
 const Category = (props) => {
   const [data, setData] = useState([]);
@@ -36,33 +35,17 @@ const Category = (props) => {
     {"id": 4, "name": "Treats & Snacks", "img": require('../../images/categories/food_4.svg').default, "url": "Treat-Snacks"}
   ]
 
-  const categoryBox = (n, photo, categoryId, color, url) => {
-    return (
-      <div className='col text-center my-3'>
-          <Link to={`/pet/${pet}/category/${name}/${url}`}>
-            <img
-              className='img-responsive mx-auto'
-              src={photo}
-              style={{'width': '150px'}}
-            />
-            <h5 className="text-secondary mt-1">{n}</h5>
-          </Link>
-        
-      </div>
-    );
-  };
-
   const FoodCategories = () => {
     return (
       <div className='container recent-game-section spad set-bg'>
         <div className='row'>
           {categories.map( item => (
-            <div className='col text-center my-3'>
+            <div className='col text-center my-3' key={item.id}>
               <Link to={`/pet/${pet}/category/${name}/${item.url}`}>
                 <img
                   className='img-responsive mx-auto'
                   src={item.img}
-                  style={{'max-width': '100px'}}
+                  style={{'max-width': '100px'}} alt={item.name}
                 />
                 <h5 className="text-secondary mt-1">{item.name}</h5>
               </Link>

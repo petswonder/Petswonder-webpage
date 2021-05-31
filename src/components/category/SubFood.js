@@ -19,13 +19,11 @@ const SubFood = (props) => {
   };
   useEffect(() => {
     const name = props.match.params.name;
-    const sub = props.match.params.sub;
     const pet = props.match.params.pet;
     getProductByCategory(name, pet);
     window.scrollTo(0, 0);
   }, []);
 
-  const name = props.match.params.name;
   const sub = props.match.params.sub;
   const pet = props.match.params.pet;
   // console.log(name, sub, pet);

@@ -68,34 +68,34 @@ const Footer = () => {
             <div className='col-sm-4 col-md-3 item col-lg-2'>
               <h6 className='text-primary font-weight-medium font-size-14'>Also Available On:</h6>
               <img href='https://www.facebook.com/petswonder.in'
-                  target='_blank'  src={aplay} className='w-100'/>
+                  target='_blank' rel="noreferrer" alt="ios" src={aplay} className='w-100'/>
               <img href='https://play.google.com/store/apps/details?id=com.petswonder'
-                  target='_blank' src={gplay} className='w-100'/>
+                  target='_blank' rel="noreferrer" alt="gp" src={gplay} className='w-100'/>
             </div>
             <div className='col-sm-4 col-md-3 item col-lg-2 text-center'>
               <div className="">
-                <a className="mr-2" href='https://www.facebook.com/petswonder.in' target='_blank'>
+                <a className="mr-2" href='https://www.facebook.com/petswonder.in' target='_blank' rel="noreferrer">
                   <i className='h5 fab fa-facebook-square'></i>
                 </a>
                 <a className="mr-2"
                   href='https://www.instagram.com/petswonder_official/'
-                  target='_blank'>
+                  target='_blank' rel="noreferrer">
                   
                   <i className='h5 fab fa-instagram-square'></i>
                 </a>
 
-                <a className="mr-2" href='https://twitter.com/PetsWonder1' target='_blank'>
+                <a className="mr-2" href='https://twitter.com/PetsWonder1' target='_blank' rel="noreferrer">
                   
                   <i className='h5 fab fa-twitter'></i>
                 </a>
                 <a className="mr-2"
                   href='https://www.linkedin.com/company/petswonder/?viewAsMember=true'
-                  target='_blank'>
+                  target='_blank' rel="noreferrer">
                   
                   <i className='h5 fab fa-linkedin-square'></i>
                 </a>
               </div>
-              <img src={logo} className='w-25'/>
+              <img src={logo} alt="logo" className='w-25'/>
               <p className='copyright text-white font-size-14 text-center'>
                 At Petswonder your pet is our pet.
               </p>

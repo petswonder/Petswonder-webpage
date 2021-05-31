@@ -24,11 +24,11 @@ const Product = ({ product }) => {
   };
 
   const handleClick = () => {
-    if (isAuthenticated() == false) {
+    if (isAuthenticated() === false) {
       setRedirect(true);
     } else {
       const {
-        jwt,
+        // jwt,
         user: { userNumber },
       } = isAuthenticated();
       addToCart({ userNumber, id })
@@ -45,9 +45,9 @@ const Product = ({ product }) => {
 
 
 
-  const relatedProducts = () => {
-    return <div>yo</div>;
-  };
+  // const relatedProducts = () => {
+  //   return <div>yo</div>;
+  // };
   const [visible, setVisible] = useState(false);
 
   const toggle = () => setVisible(!visible);

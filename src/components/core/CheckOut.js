@@ -45,7 +45,7 @@ const CheckOut = ({ products }) => {
   }, []);
   // console.log(total);
   const { totalValue } = total;
-  var amount = totalValue * 100;
+  // var amount = totalValue * 100;
 
   const showCheckOut = () => {
     return isAuthenticated() ? (
@@ -61,9 +61,9 @@ const CheckOut = ({ products }) => {
     );
   };
 
-  const placeOrder = () => {
-    return <button className='btn btn-success mb-4'>Place Order</button>;
-  };
+  // const placeOrder = () => {
+  //   return <button className='btn btn-success mb-4'>Place Order</button>;
+  // };
 
   const table = () => {
     // console.log(total);

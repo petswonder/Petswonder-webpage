@@ -32,20 +32,20 @@ const ComingSoon = () => {
         <div
           className='d-flex justify-content-center mt-3 '
         >
-          <a href='https://www.facebook.com/petswonder.in' target='_blank' className="px-3 py-0">
+          <a href='https://www.facebook.com/petswonder.in' target='_blank' className="px-3 py-0" rel="noopener noreferrer">
             {' '}
             <i className='fab font-size-30 fa-facebook'></i>{' '}
           </a>
 
           <a
             href='https://www.instagram.com/petswonder_official/'
-            target='_blank' className="px-3 py-0"
+            target='_blank' className="px-3 py-0" rel="noopener noreferrer"
           >
             {' '}
             <i className='fab font-size-30 fa-instagram'></i>{' '}
           </a>
 
-          <a href='https://twitter.com/PetsWonder1' target='_blank' className="px-3 py-0">
+          <a href='https://twitter.com/PetsWonder1' target='_blank' className="px-3 py-0" rel="noopener noreferrer">
             {' '}
             <i className='fab font-size-30 fa-twitter'></i>{' '}
           </a>

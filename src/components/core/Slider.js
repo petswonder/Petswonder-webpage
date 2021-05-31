@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Slider from "react-slick";
-import img7 from '../../images/petcommunity.jpg';
-import img6 from '../../images/donate.jpg';
 import photo from '../../images/hero_image_01.png';
 
-import slids1 from './imgs/slids1.jpg';
 
 const SamplePrevArrow = (props) => {
   const { onClick } = props;

@@ -1,12 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { getProfile, isAuthenticated } from '../auth/index';
-import Payment from './Payment';
-
 const Address = () => {
   const [profile, setProfile] = useState({});
   const {
-    jwt,
+    // jwt,
     user: { userNumber },
   } = isAuthenticated();
   const [formData, setFormData] = useState({

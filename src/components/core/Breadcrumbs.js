@@ -28,7 +28,7 @@ const Breadcrumbs = (props) => {
                 className='breadcrumb-item font-size-14 ' key={index}
                 onClick={() => history.push(routeTo)}
               >
-                <a href=''>{name}</a>
+                {name}
               </li>
             );
           })}

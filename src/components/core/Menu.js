@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import {
   Navbar,
-  NavDropdown,
   Nav,
-  Form,
-  Row,
-  Col,
-  FormControl,
-  Button,
   Container,
   Dropdown
 } from 'react-bootstrap';
@@ -17,11 +11,11 @@ import { getCart } from '../cart/cartApi';
 import LogoName from '../../images/LogoName.png';
 import SearchComponent from '../core/Search'
 
-const isActive = (history, path) => {
-  if (history.location.pathname === path) {
-    return { color: '#000000' };
-  } else return { color: '#ffffff' };
-};
+// const isActive = (history, path) => {
+//   if (history.location.pathname === path) {
+//     return { color: '#000000' };
+//   } else return { color: '#ffffff' };
+// };
 
 
 
@@ -39,8 +33,8 @@ const Menu = ({ history }) => {
   ]
   const jwt = isAuthenticated();
   
-  const def_nav_items = nav_items.filter( i => {return i.auth == false})
-  const search_bar = false
+  const def_nav_items = nav_items.filter( i => {return i.auth === false})
+  // const search_bar = false
   const [cart_length, setCount] = useState([]);
   
   if(jwt){
@@ -54,7 +48,7 @@ const Menu = ({ history }) => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="light" className="py-1 fixed-top">
       <Container>
-      <Navbar.Brand><Link to={'/'} className="nav-link p-0"> <img src={LogoName} style={{ width: '160px' }} /> </Link></Navbar.Brand>
+      <Navbar.Brand><Link to={'/'} className="nav-link p-0"> <img src={LogoName} style={{ width: '160px' }} alt="logo" /> </Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <div className="row flex-column w-100">
