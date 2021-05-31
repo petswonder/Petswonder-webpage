@@ -1,11 +1,7 @@
 import React from 'react';
 import logo from '../../images/logo1.png';
 import { Link } from 'react-router-dom';
-import {
-  faPaperPlane,
-  faLocationArrow,
-  faPhone,
-} from '@fortawesome/free-solid-svg-icons';
+
 import aplay from '../../images/aplay.png';
 import gplay from '../../images/gplay.png';
 
