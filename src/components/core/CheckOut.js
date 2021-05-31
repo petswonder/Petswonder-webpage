@@ -69,6 +69,8 @@ const CheckOut = ({ products }) => {
     // console.log(total);
     return (
       total && (
+        <>
+        <h6 className='mb-4'>Your Cart Summary</h6>
         <div className="bg-white p-2">
           <div className="d-flex">
             <h6 className="font-weight-bold mr-2">Total MRP :</h6>
@@ -95,12 +97,13 @@ const CheckOut = ({ products }) => {
             <span>₹{total.totalPlusPoints}</span>
           </div>
         </div>
+        </>
       )
     );
   };
 
   return (
-    <div>
+    <div className="col-md-3 order-last">
       {/* <h6>Tota</h6> */}
       {table()}
       {/* <h2>Total: ${JSON.stringify(total)}</h2> */}

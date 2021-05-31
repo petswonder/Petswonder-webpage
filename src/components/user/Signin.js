@@ -92,13 +92,13 @@ const Signin = () => {
                 </div>
                 <br />
                 <div className='group'>
-                  <button className='btn btn-secondary button'>Signin</button>
+                  <button className='btn btn-secondary button'>Sign In</button>
                 </div>
 
                 <div className='font-size-14 mt-3'>
                   Don't have an Account?{' '}
                   <Link className='text-secondary text-underline ml-2' to='/signup'>
-                    Signup
+                    Sign Up
                   </Link>
                 </div>
               </div>

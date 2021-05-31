@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Heading from './Heading';
-import emptycart from '../../images/emptycart.png';
 import { getOrderHistory, isAuthenticated } from '../auth/index';
+import { Link } from 'react-router-dom';
+
 
 const OrderHistory = () => {
   const [orderHistory, setOrderHistory] = useState([]);
@@ -22,20 +23,21 @@ const OrderHistory = () => {
 
   const emptyOrderHistory = () => {
     return (
-      <div>
-        <h1>No Order History</h1>
-        <img src={emptycart} alt='' />
+      <div className="d-flex flex-column align-items-center my-3">
+        <h5>No Order History</h5>
+        <div className="w-200 p-3 border rounded-circle mb-3 shadow bg-light h-200 d-flex justify-content-center">
+          <img src={require('../../images/emptycart.svg').default} alt='nocartimg' className="w-75"/>
+        </div>
+        <Link to='/shopping' className="btn btn-primary">Shop Now</Link>
       </div>
     );
   };
 
   return (
+    <>
+    <Heading text='Order History' />
     <div className='container'>
-      <br />
-      <Heading text='Order History' />
-      <br />
-
-      {console.log(orderHistory)}
+      
       {orderHistory && orderHistory.length > 0 ? (
         <div className='row p-2'>
           {orderHistory.map((order) => {
@@ -76,6 +78,7 @@ const OrderHistory = () => {
         emptyOrderHistory()
       )}
     </div>
+    </>
   );
 };
 
