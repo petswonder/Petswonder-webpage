@@ -109,7 +109,13 @@ const Card = ({
   // const toggle = () => setVisible(!visible);
 
   return (
+    
     <div className="card h-100 text-center">
+      <Link
+        to={{
+          pathname: `/product/${data.productId}`,
+          state: data,
+        }}>
       <div className="card-body h-200">
         {data.productImages ? (
           <img
@@ -120,8 +126,13 @@ const Card = ({
           <img className='' src={noImage} alt='nodata' />
         )}
       </div>
+      </Link>
       <div className="card-footer p-0">
-        <h5 className="card-title m-0 font-size-14 py-2">{data.title}</h5>
+      <Link
+        to={{
+          pathname: `/product/${data.productId}`,
+          state: data,
+        }}><h5 className="card-title m-0 font-size-14 py-2">{data.title}</h5></Link>
         <div>
           <span className='mr-1 text-dark text-decoration-line-through' style={{ textDecoration: 'line-through' }}>₹{data.price}</span>
           <span className='ml-1 font-weight-bold text-secondary'>
@@ -151,7 +162,6 @@ const Card = ({
           )}
       </div>
     </div>
-    
   );
 };
 
