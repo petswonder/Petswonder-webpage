@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../core/Card'
+import { Link } from 'react-router-dom';
 import {productByBrand} from '../product/apiProduct'
 import Heading from '../core/Heading'
 
@@ -23,17 +24,29 @@ const Brand = (props) => {
     },[]);
 
     const name = props.match.params.name;
-
+    console.log(data.length)
     return (
         <>
         <Heading text={`${name}`} />
         <div className="container">
             <div className="row">
-                {data && data.map((p,i)=>(
-                    <div key={i} className="col-md-3 col-xs-12 my-3">
-                        <Card data={p} />
+                {data.length == 0 ? (
+                    <div class="text-center py-3 col">
+                        <img src={require('../../images/noproducts.svg').default} alt="noproducts" width="200px"/>
+                        <h5 className="mt-2">No Products Available</h5>
+                        <div class="text-center">
+                        <Link to='/' className="btn btn-primary mx-2">Go to Home</Link>
+                        <Link to='/shopping' className="btn btn-primary mx-2">Shop Now</Link>
+                        </div>
                     </div>
-                ))}
+                ) : (
+                    data.map((p,i)=>(
+                        <div key={i} className="col-md-3 col-xs-12 my-3">
+                            <Card data={p} />
+                        </div>
+                    ))
+                )}
+                
             </div>
         </div>
         </>
