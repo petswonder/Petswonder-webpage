@@ -8,6 +8,7 @@ const Card = ({
   data,
   showAddToButton = true,
   cartUpdate = false,
+  cartPage = false
 }) => {
   // console.log(data);
   const [count] = useState(data.quantity);
@@ -120,7 +121,7 @@ const Card = ({
         {data.productImages ? (
           <img
           src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
-          alt='product_img' style={{'objectFit': 'contain'}} className="card-img-top w-100 h-100" alt={`${data.productId}`}
+           style={{'objectFit': 'contain'}} className="card-img-top w-100 h-100" alt={`${data.productId}`}
           />
         ) : (
           <img className='' src={noImage} alt='nodata' />
@@ -141,6 +142,7 @@ const Card = ({
         </div>
         {/* <p className="card-text m-0 font-size-14">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
         {showAddToButton && (
+          <>
             <div className=''>
               <button
                 className='btn btn-primary btn-sm mb-2 mr-2'
@@ -158,8 +160,21 @@ const Card = ({
               >
                 Buy Now
               </Link>
+              
             </div>
+            
+            
+            </>
           )}
+        {cartPage ? (
+            <div class="btn-group mb-2" role="group" aria-label="Basic outlined example">
+              <button type="button" class="btn btn-outline-primary px-2 py-0">+</button>
+              <span class="border-primary align-self-center p-1 border-top border-bottom px-2">1</span>
+              <button type="button" class="btn btn-outline-primary px-2 py-0">-</button>
+            </div>
+            ) : (
+            <></>
+            )}
       </div>
     </div>
   );

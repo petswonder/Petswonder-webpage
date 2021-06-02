@@ -47,7 +47,7 @@ const Cart = () => {
                   key={i}
                   className='col-xl-4 col-lg-6 col-12 col-md-3 product mb-3'
                 >
-                  <Card data={p} cartUpdate={true} showAddToButton={false} />
+                  <Card data={p} cartUpdate={true} showAddToButton={false} cartPage={true}/>
                 </div>
                 
               )
