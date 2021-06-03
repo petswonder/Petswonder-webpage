@@ -67,10 +67,14 @@ const Footer = () => {
             
             <div className='col-sm-4 col-md-3 item col-lg-2'>
               <h6 className='text-primary font-weight-medium font-size-14'>Also Available On:</h6>
-              <img href='https://www.facebook.com/petswonder.in'
-                  target='_blank' rel="noreferrer" alt="ios" src={aplay} className='w-100'/>
-              <img href='https://play.google.com/store/apps/details?id=com.petswonder'
-                  target='_blank' rel="noreferrer" alt="gp" src={gplay} className='w-100'/>
+              <a href='https://www.facebook.com/petswonder.in' target='_blank' rel="noreferrer" >
+                <img alt="ios" src={aplay} className='w-100'/></a>
+              <a href='https://play.google.com/store/apps/details?id=com.petswonder'
+                  target='_blank' rel="noreferrer" >
+                <img alt="gp" src={gplay} className='w-100'/>
+              </a>
+              
+              
             </div>
             <div className='col-sm-4 col-md-3 item col-lg-2 text-center'>
               <div className="">

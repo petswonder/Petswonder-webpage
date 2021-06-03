@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
 import noImage from '../../images/no image.png';
+import Notification from '../core/Notification'
+// import { Alert } from '.react-alert'
+
 
 const Card = ({
   data,
@@ -31,6 +34,8 @@ const Card = ({
         .then((data) => {
           if (data.status === 'Product added to cart') {
             setVisible(true);
+            // alert("Your file is being uploaded!")
+            
           }
         })
         .catch((err) => {
@@ -110,7 +115,6 @@ const Card = ({
   // const toggle = () => setVisible(!visible);
 
   return (
-    
     <div className="card h-100 text-center">
       <Link
         to={{
