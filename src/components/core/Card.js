@@ -3,8 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
 import noImage from '../../images/no image.png';
-import Notification from '../core/Notification'
-// import { Alert } from '.react-alert'
 
 
 const Card = ({
@@ -15,7 +13,7 @@ const Card = ({
 }) => {
   // console.log(data);
   const history = useHistory()
-  const [count] = useState(data.quantity);
+  const [count, setCount] = useState(data.quantity);
   const [disable, setDisable] = useState(false);
 
   const productId = data.productId;
@@ -34,10 +32,7 @@ const Card = ({
       addToCart({ userNumber, id })
         .then((data) => {
           if (data.status === 'Product added to cart') {
-            // setVisible(true);
-            // alert("Your file is being uploaded!")
             history.push('/cart')
-            // this.props.history.push("/path/to/push");
           }
         })
         .catch((err) => {
@@ -46,17 +41,19 @@ const Card = ({
     }
   };
 
+
+
   // console.log(data);
 
   // const handleChange = (productId) => (e) => {};
 
-  // const decrease = () => {
-  //   count >= 0 && setCount(count - 1);
-  // };
+  const decreaseQuantity = () => {
+    count >= 0 && setCount(count - 1);
+  };
 
-  // const increase = () => {
-  //   setCount(count + 1);
-  // };
+  const increaseQuantity = () => {
+    setCount(count + 1);
+  };
 
   useEffect(() => {
     if (count >= 0) {
@@ -67,7 +64,7 @@ const Card = ({
         cartUpdate &&
         updateItem({ userNumber, productId, count })
           .then((data) => {
-            // console.log(data);
+            console.log(data);
           })
           .catch((err) => {
             console.log(err);
@@ -78,39 +75,6 @@ const Card = ({
     }
   }, [count]);
 
-  // const showCartUpdateOptions = (cartUpdate) => {
-  //   return (
-  //     cartUpdate && (
-  //       <div style={{ width: '50%', margin: 'auto' }}>
-  //         <div className='input-group mt-3 mb-3 '>
-  //           <div className='input-group-prepend'>
-  //             <button
-  //               onClick={decrease}
-  //               className='input-group-text btn btn-warning rounded-circle'
-  //             >
-  //               -
-  //             </button>
-  //           </div>
-  //           <input
-  //             type='number'
-  //             className='form-control text-center'
-  //             style={{ borderTop: '0', borderLeft: '0', borderRight: '0' }}
-  //             value={count}
-  //             onChange={handleChange(data.productId)}
-  //           />
-  //           <div className='input-group-prepend'>
-  //             <button
-  //               onClick={increase}
-  //               className='input-group-text btn btn-warning rounded-circle '
-  //             >
-  //               +
-  //             </button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     )
-  //   );
-  // };
 
   const [ setVisible] = useState(false);
 
@@ -174,9 +138,9 @@ const Card = ({
           )}
         {cartPage ? (
             <div class="btn-group mb-2" role="group" aria-label="Basic outlined example">
-              <button type="button" class="btn btn-outline-primary px-2 py-0">+</button>
-              <span class="border-primary align-self-center p-1 border-top border-bottom px-2">1</span>
-              <button type="button" class="btn btn-outline-primary px-2 py-0">-</button>
+              <button type="button" class="btn btn-outline-primary px-2 py-0" onClick={increaseQuantity}>+</button>
+              <span class="border-primary align-self-center p-1 border-top border-bottom px-2">{count}</span>
+              <button type="button" class="btn btn-outline-primary px-2 py-0" onClick={decreaseQuantity}>-</button>
             </div>
             ) : (
             <></>
