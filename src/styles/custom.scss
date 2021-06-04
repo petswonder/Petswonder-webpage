@@ -41,7 +41,7 @@ body{
   }
 
 
-  @each $p in (71,100) {
+  @each $p in (62,71,100) {
     .pb-#{$p} {
       padding-bottom: unquote($p + "px !important");
     }

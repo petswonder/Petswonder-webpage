@@ -46,13 +46,30 @@ const Menu = ({ history }) => {
   
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="primary" variant="light" className="py-1 fixed-top">
-      <Container>
-      <Navbar.Brand><Link to={'/'} className="nav-link p-0"> <img src={LogoName} style={{ width: '160px' }} alt="logo" /> </Link></Navbar.Brand>
+    <Navbar collapseOnSelect expand="lg" bg="primary" variant="light" className="py-2 fixed-top">
+      <Container fluid>
+      <Navbar.Brand className="py-0"><Link to={'/'} className="nav-link p-0"> <img src={LogoName} style={{ width: '160px' }} alt="logo" /> </Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <div className="row flex-column w-100">
-          <div className="col-12">
+      <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+        <div className="row w-100">
+          <div className="col-12 d-flex pr-0 justify-content-end">
+          <Nav className="d-flex justify-content-end mt-2 mr-2">
+          {!jwt ? (
+            <>
+            {def_nav_items.map(item => (
+              <NavLink key={item.id} to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
+            ))}
+            </>
+          ) : (
+            <>
+            {nav_items.map(item => (
+              <NavLink key={item.id} to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
+            ))}
+            </>
+          )}
+          
+        </Nav>
+        
           <Nav className="d-flex justify-content-end align-items-center">
             <SearchComponent />
           
@@ -87,24 +104,7 @@ const Menu = ({ history }) => {
           </Nav>
           
         </div>
-        <div className="col-12">
-        <Nav className="d-flex justify-content-end mt-2">
-          {!jwt ? (
-            <>
-            {def_nav_items.map(item => (
-              <NavLink key={item.id} to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
-            ))}
-            </>
-          ) : (
-            <>
-            {nav_items.map(item => (
-              <NavLink key={item.id} to={item.link} exact={true} activeClassName='font-weight-bold' className="nav-link py-0 text-secondary">{item.name}</NavLink>
-            ))}
-            </>
-          )}
-          
-        </Nav>
-        </div>
+        
         </div>
       </Navbar.Collapse>
       </Container>

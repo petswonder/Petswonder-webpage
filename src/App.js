@@ -37,7 +37,7 @@ const App = () => {
   return (
     <Router>
       <Menu />
-      <div className='mt-71'>
+      <div className='mt-62'>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/signup' component={Signup} />
