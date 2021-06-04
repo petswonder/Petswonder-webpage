@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
 import noImage from '../../images/no image.png';
@@ -14,6 +14,7 @@ const Card = ({
   cartPage = false
 }) => {
   // console.log(data);
+  const history = useHistory()
   const [count] = useState(data.quantity);
   const [disable, setDisable] = useState(false);
 
@@ -33,9 +34,10 @@ const Card = ({
       addToCart({ userNumber, id })
         .then((data) => {
           if (data.status === 'Product added to cart') {
-            setVisible(true);
+            // setVisible(true);
             // alert("Your file is being uploaded!")
-            
+            history.push('/cart')
+            // this.props.history.push("/path/to/push");
           }
         })
         .catch((err) => {
