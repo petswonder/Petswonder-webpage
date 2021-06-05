@@ -40,7 +40,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(phoneNumber);
+
     sentOTP(phoneNumber).then((data) => {
       if (data === undefined) {
         setError('User Already exists');
@@ -52,7 +52,6 @@ const Signup = () => {
 
   const handleOTP = (e) => {
     e.preventDefault();
-    //console.log(phoneNumber, otp);
 
     validateOTP({ phoneNumber, otp }).then((data) => {
       if (data === 'Entered Otp is valid') {
@@ -69,30 +68,29 @@ const Signup = () => {
 
   const handleregister = (e) => {
     e.preventDefault();
-    // console.log(phoneNumber, otp);
 
     registerUser({ phoneNumber, password, name, email }).then((data) => {
       if (data === 'User added successfully') {
         authenticate(
           { data: data, user: { userNumber: phoneNumber, name } },
           () => {
-            console.log('success');
             setredirectToReferrer(true);
           }
         );
       } else {
-        console.log('failed');
+        alert('failed');
       }
     });
   };
 
   const signupForm = () => (
-    <form onSubmit={(e) => handleSubmit(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className='col-md-6 col-xs-12 p-5 bg-primary'
+    >
       <div className='login-wrap'>
         <div className='login-html'>
-          <div className='img-sign'>
-            {/* <img src={logo} alt='' /> */}
-          </div>
+          <div className='img-sign'>{/* <img src={logo} alt='' /> */}</div>
           <div className='sign-content'>
             <h2>SIGNUP</h2>
             <br />
@@ -114,7 +112,10 @@ const Signup = () => {
                 </div>
                 <div className='font-size-14 mt-3'>
                   Already have an Account?{' '}
-                  <Link className='text-secondary text-underline ml-2 ' to='/signin'>
+                  <Link
+                    className='text-secondary text-underline ml-2 '
+                    to='/signin'
+                  >
                     Signin
                   </Link>
                 </div>
@@ -132,12 +133,13 @@ const Signup = () => {
   };
 
   const validateForm = () => (
-    <form onSubmit={(e) => handleOTP(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
+    <form
+      onSubmit={(e) => handleOTP(e)}
+      className='col-md-6 col-xs-12 p-5 bg-primary'
+    >
       <div className='login-wrap'>
         <div className='login-html'>
-          <div className='img-sign'>
-            {/* <img src={logo} alt='' /> */}
-          </div>
+          <div className='img-sign'>{/* <img src={logo} alt='' /> */}</div>
           <div className='sign-content'>
             <h2>
               <button onClick={handleBack} className='btn btn-warning'>
@@ -166,7 +168,10 @@ const Signup = () => {
                 </div>
                 <div className='font-size-14 mt-3'>
                   Already have an Account?{' '}
-                  <Link className='text-secondary text-underline ml-2 ' to='/signin'>
+                  <Link
+                    className='text-secondary text-underline ml-2 '
+                    to='/signin'
+                  >
                     Signin
                   </Link>
                 </div>
@@ -179,12 +184,13 @@ const Signup = () => {
   );
 
   const registerForm = () => (
-    <form onSubmit={(e) => handleregister(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
+    <form
+      onSubmit={(e) => handleregister(e)}
+      className='col-md-6 col-xs-12 p-5 bg-primary'
+    >
       <div className='login-wrap'>
         <div className='login-html'>
-          <div className='img-sign'>
-            {/* <img src={logo} alt='' /> */}
-          </div>
+          <div className='img-sign'>{/* <img src={logo} alt='' /> */}</div>
           <div className='sign-content'>
             <h2>Register User</h2>
             <br />
@@ -255,7 +261,6 @@ const Signup = () => {
 
   const redirectUser = () => {
     if (redirectToReferrer) {
-      console.log(jwt);
       if (jwt === 'Success') {
         return <Redirect to='/shopping' />;
       }
@@ -266,15 +271,21 @@ const Signup = () => {
   };
 
   return (
-    <div className="container py-5">
-    <div className='signforms border-primary border border-5' style={{'background': `url(${signin_bg})`, 'background-size': 'contain',
-    'background-position': 'right center'}}>
-      {redirectUser()}
-      {showError()}
-      {!otpSent && signupForm()}
-      {otpSent && !register && validateForm()}
-      {otpSent && register && registerForm()}
-    </div>
+    <div className='container py-5'>
+      <div
+        className='signforms border-primary border border-5'
+        style={{
+          background: `url(${signin_bg})`,
+          'background-size': 'contain',
+          'background-position': 'right center',
+        }}
+      >
+        {redirectUser()}
+        {showError()}
+        {!otpSent && signupForm()}
+        {otpSent && !register && validateForm()}
+        {otpSent && register && registerForm()}
+      </div>
     </div>
   );
 };

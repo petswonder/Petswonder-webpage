@@ -49,7 +49,6 @@ const Book = ({
 
   var rzp1 = new window.Razorpay(options);
   rzp1.on('payment.failed', function (response) {
-    console.log(response.error.code);
     alert(response.error.description);
   });
 
@@ -75,7 +74,7 @@ const Book = ({
         setOrder(data);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -91,7 +90,7 @@ const Book = ({
   const comingS = () => {
     return (
       <div>
-        <h6 className="m-0">Coming Soon !!!</h6>
+        <h6 className='m-0'>Coming Soon !!!</h6>
       </div>
     );
   };

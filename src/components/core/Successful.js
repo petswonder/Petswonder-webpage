@@ -6,18 +6,18 @@ const Successful = () => {
   return (
     <div className='row'>
       <div className='col-md-6 mx-auto' style={{ background: 'white' }}>
-        <div>
+        <div className='mx-auto'>
           <h3>Order placed successful!</h3>
           <img src={tick} alt='' />
+          <Link to='/shopping'>
+            <button
+              className='btn btn-warning w-50 m-4'
+              style={{ height: '55px' }}
+            >
+              Shop more
+            </button>
+          </Link>
         </div>
-        <Link to='/shopping'>
-          <button
-            className='btn btn-warning w-50 m-4'
-            style={{ height: '55px' }}
-          >
-            Shop more
-          </button>
-        </Link>
       </div>
     </div>
   );

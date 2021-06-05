@@ -37,7 +37,7 @@ const Address = () => {
         setProfile(data);
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
     window.scrollTo(0, 0);
   }, []);
@@ -52,10 +52,9 @@ const Address = () => {
     //     <Redirect to="/profile" />
     // })
     // .catch(error=>{
-    //     console.log(error);
+    //
     // })
     <Redirect to='/payment' />;
-    console.log(formData);
   };
 
   const address = () => {
@@ -63,7 +62,6 @@ const Address = () => {
       <div className='address'>
         <h5>Default Address</h5>
         <div className='address-block'>
-          {console.log(profile)}
           {profile.mobileNumber > 0 && (
             <table className='table table-borderless table-light'>
               <tbody>
@@ -122,7 +120,6 @@ const Address = () => {
           <button className='btn btn-warning btn-md my-1' onClick={handleClick}>
             Submit this address 👇
           </button>
-          {console.log(formData)}
         </div>
       )}
 

@@ -6,7 +6,7 @@ export const BannerApi = () => {
       return response.json();
     })
     .catch((err) => {
-      console.log(err);
+      alert(err);
     });
 };
 export default BannerApi;

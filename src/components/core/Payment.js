@@ -32,11 +32,10 @@ const Payment = (props) => {
   const getItemsInCart = () => {
     getCart(userNumber)
       .then((data) => {
-        console.log(data);
         setItems(data.cart);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -59,7 +58,7 @@ const Payment = (props) => {
         razorpaySignature: response.razorpay_signature,
       };
       setData(data);
-      console.log(d);
+
       giveOrderOnline();
       setRedirect(true);
     },
@@ -71,7 +70,6 @@ const Payment = (props) => {
 
   var rzp1 = new window.Razorpay(options);
   rzp1.on('payment.failed', function (response) {
-    console.log(response.error.code);
     alert(response.error.description);
     // alert(response.error.source);
     // alert(response.error.step);
@@ -91,7 +89,7 @@ const Payment = (props) => {
         setTotal(data);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -137,14 +135,13 @@ const Payment = (props) => {
       },
       productDetails: products,
     };
-    console.log(data);
+
     saveOrder(data)
       .then((res) => {
-        console.log(res);
         setRedirect(true);
         deleteCart(userNumber);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
   };
   //Give the orderOnline
   const giveOrderOnline = () => {
@@ -173,18 +170,15 @@ const Payment = (props) => {
       },
       productDetails: products,
     };
-    console.log(data);
+
     saveOrder(data)
       .then((res) => {
-        console.log(res);
         setRedirect(true);
         deleteCart(userNumber);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
   };
 
-  console.log(products, 'products');
-  console.log(items, 'cartitems');
   const handleCOD = () => {
     giveOrderCod();
   };
@@ -243,17 +237,12 @@ const Payment = (props) => {
     );
   };
 
-  console.log(address);
-  console.log(items);
-  console.log(total);
-
   const redirectToCart = () => {
     return <Redirect to='/success' />;
   };
 
   return (
     <div className='container'>
-      {console.log(d)}
       {/* {d && <UncontrolledAlert color='info'>{d}</UncontrolledAlert>} */}
       <br />
       {/* <h2 className="mt-8 payment"></h2> */}

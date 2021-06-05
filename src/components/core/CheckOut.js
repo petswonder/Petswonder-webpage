@@ -10,16 +10,14 @@ const CheckOut = ({ products }) => {
   const {
     user: { userNumber },
   } = isAuthenticated();
-  // console.log(userNumber);
 
   const getTotalOfCart = () => {
     getCart(userNumber)
       .then((data) => {
-        // console.log(data.cartTotal);
         setTotal(data.cartTotal);
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
   };
 
@@ -30,7 +28,7 @@ const CheckOut = ({ products }) => {
         setProfile(data);
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
   }, [total]);
 
@@ -40,10 +38,10 @@ const CheckOut = ({ products }) => {
         setProfile(data);
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
   }, []);
-  // console.log(total);
+
   const { totalValue } = total;
   // var amount = totalValue * 100;
 
@@ -51,7 +49,9 @@ const CheckOut = ({ products }) => {
     return isAuthenticated() ? (
       <div>
         <Link to='/setaddress'>
-          <button className='btn btn-success mb-4 mr-4 mt-3'>Proceed To Buy</button>
+          <button className='btn btn-success mb-4 mr-4 mt-3'>
+            Proceed To Buy
+          </button>
         </Link>
       </div>
     ) : (
@@ -66,44 +66,43 @@ const CheckOut = ({ products }) => {
   // };
 
   const table = () => {
-    // console.log(total);
     return (
       total && (
         <>
-        <h6 className='mb-4'>Your Cart Summary</h6>
-        <div className="bg-white p-2">
-          <div className="d-flex">
-            <h6 className="font-weight-bold mr-2">Total MRP :</h6>
-            <span>₹{total.totalValue}</span>
+          <h6 className='mb-4'>Your Cart Summary</h6>
+          <div className='bg-white p-2'>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total MRP :</h6>
+              <span>₹{total.totalValue}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Discount on MRP :</h6>
+              <span>₹{Math.round(total.discount, 2)}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total Gst :</h6>
+              <span>₹{total.totalGst}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total Delivery Charge :</h6>
+              <span>₹{total.totalDeliveryCharge}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total Amount :</h6>
+              <span>₹{total.totalPrice}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total Plus Points :</h6>
+              <span>₹{total.totalPlusPoints}</span>
+            </div>
           </div>
-          <div className="d-flex">
-            <h6 className="font-weight-bold mr-2">Discount on MRP :</h6>
-            <span>₹{Math.round(total.discount, 2)}</span>
-          </div>
-          <div className="d-flex">
-            <h6 className="font-weight-bold mr-2">Total Gst :</h6>
-            <span>₹{total.totalGst}</span>
-          </div>
-          <div className="d-flex">
-            <h6 className="font-weight-bold mr-2">Total Delivery Charge :</h6>
-            <span>₹{total.totalDeliveryCharge}</span>
-          </div>
-          <div className="d-flex">
-            <h6 className="font-weight-bold mr-2">Total Amount :</h6>
-            <span>₹{total.totalPrice}</span>
-          </div>
-          <div className="d-flex">
-            <h6 className="font-weight-bold mr-2">Total Plus Points :</h6>
-            <span>₹{total.totalPlusPoints}</span>
-          </div>
-        </div>
         </>
       )
     );
   };
 
   return (
-    <div className="col-md-3 order-last">
+    <div className='col-md-3 order-last'>
       {/* <h6>Tota</h6> */}
       {table()}
       {/* <h2>Total: ${JSON.stringify(total)}</h2> */}

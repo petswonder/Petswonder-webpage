@@ -46,8 +46,6 @@ const Signin = () => {
         });
       }
     });
-
-    // console.log(status);
   };
 
   const redirectUser = () => {
@@ -60,12 +58,13 @@ const Signin = () => {
   };
 
   const signinForm = () => (
-    <form onSubmit={(e) => handleSubmit(e)} className="col-md-6 col-xs-12 p-5 bg-primary">
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className='col-md-6 col-xs-12 p-5 bg-primary'
+    >
       <div className='login-wrap'>
         <div className='login-html'>
-          <div className='img-sign'>
-            {/* <img src={logo} alt='' /> */}
-          </div>
+          <div className='img-sign'>{/* <img src={logo} alt='' /> */}</div>
           <div className='sign-content'>
             <h2>SIGNIN</h2>
             <div className='login-form'>
@@ -97,7 +96,10 @@ const Signin = () => {
 
                 <div className='font-size-14 mt-3'>
                   Don't have an Account?{' '}
-                  <Link className='text-secondary text-underline ml-2' to='/signup'>
+                  <Link
+                    className='text-secondary text-underline ml-2'
+                    to='/signup'
+                  >
                     Sign Up
                   </Link>
                 </div>
@@ -121,15 +123,20 @@ const Signin = () => {
   };
 
   return (
-    <div className="container py-5">
-      <div className='signforms border-primary border border-5' style={{'background': `url(${signin_bg})`, 'background-size': 'contain',
-    'background-position': 'right center'}}>
+    <div className='container py-5'>
+      <div
+        className='signforms border-primary border border-5'
+        style={{
+          background: `url(${signin_bg})`,
+          'background-size': 'contain',
+          'background-position': 'right center',
+        }}
+      >
         {showError()}
         {redirectUser()}
         {signinForm()}
       </div>
     </div>
-    
   );
 };
 

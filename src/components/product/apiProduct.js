@@ -1,97 +1,109 @@
-
-
 //get all prooducts
-export const getProducts = () =>{
-    return fetch(`https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=all&species=all`,{
-        method: "POST",
-    })
+export const getProducts = () => {
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=all&species=all`,
+    {
+      method: 'POST',
+    }
+  )
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .catch((err) => {
-        console.log(err);
+      alert(err);
     });
-}
-
+};
 
 //get searched prooducts
-export const list = (search) =>{
-    return fetch(`https://petswonder.co.in/petswonder/api/productUpload/searchProducts?search=${search}`,{
-        method: "POST",
-    })
+export const list = (search) => {
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/productUpload/searchProducts?search=${search}`,
+    {
+      method: 'POST',
+    }
+  )
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .catch((err) => {
-        console.log(err);
+      alert(err);
     });
-}
-
+};
 
 //get product by pets
-export const productByPets = (name) =>{
-    return fetch(`https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=all&species=${name}`,{
-        method: "POST",
-    })
+export const productByPets = (name) => {
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=all&species=${name}`,
+    {
+      method: 'POST',
+    }
+  )
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .catch((err) => {
-        console.log(err);
+      alert(err);
     });
-}
-
+};
 
 //get product by category
-export const productByCategory = ({name, pet}) =>{
-    return fetch(`https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=${name}&species=${pet}`,{
-        method: "POST",
-    })
+export const productByCategory = ({ name, pet }) => {
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=${name}&species=${pet}`,
+    {
+      method: 'POST',
+    }
+  )
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .catch((err) => {
-        console.log(err);
+      alert(err);
     });
-}
+};
 
-
-export const productBySubCategory = ({name, pet, sub}) =>{
-    return fetch(`https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=${sub}&species=${pet}`,{
-        method: "POST",
-    })
+export const productBySubCategory = ({ name, pet, sub }) => {
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=${sub}&species=${pet}`,
+    {
+      method: 'POST',
+    }
+  )
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .catch((err) => {
-        console.log(err);
+      alert(err);
     });
-}
-
+};
 
 //get product by brand
-export const productByBrand = (name) =>{
-    return fetch(`https://petswonder.co.in/petswonder/api/productUpload/getProductsByBrand?brand=${name}`,{
-        method: "POST",
-    })
+export const productByBrand = (name) => {
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/productUpload/getProductsByBrand?brand=${name}`,
+    {
+      method: 'POST',
+    }
+  )
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .catch((err) => {
-        console.log(err);
+      alert(err);
     });
-}
+};
 
-
-export const lol = (name) =>{
-    return fetch(`https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=Food&species=all`,{
-        method: "POST",
-    })
+export const lol = (name) => {
+  return fetch(
+    `https://petswonder.co.in/petswonder/api/productUpload/getProducts?category=Food&species=all`,
+    {
+      method: 'POST',
+    }
+  )
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .catch((err) => {
-        console.log(err);
+      alert(err);
     });
-}
-
+};
