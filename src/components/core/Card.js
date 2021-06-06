@@ -3,7 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
 import noImage from '../../images/no image.png';
-import outOfStock from '../../images/outofstock.png';
+import outOfStock from '../../images/outOfStock.png';
+import { getCart } from '../cart/cartApi';
 
 const Card = ({
   data,
@@ -14,6 +15,8 @@ const Card = ({
   const history = useHistory();
   const [count, setCount] = useState(data.quantity);
   const [disable, setDisable] = useState(false);
+
+  const [items, setItems] = useState('');
 
   const productId = data.productId;
   const id = data.productId;
@@ -39,14 +42,28 @@ const Card = ({
     }
   };
 
-  // const handleChange = (productId) => (e) => {};
+  //Updates the quantity api
+  const quantityChange = () => {
+    if (isAuthenticated() === false) {
+      setRedirect(true);
+    } else {
+      const {
+        user: { userNumber },
+      } = isAuthenticated();
+      getCart(userNumber).then((data) => {
+        console.log(data.cart);
+      });
+    }
+  };
 
   const decreaseQuantity = () => {
-    count >= 0 && setCount(count - 1);
+    count > 0 && setCount(count - 1);
+    quantityChange();
   };
 
   const increaseQuantity = () => {
     setCount(count + 1);
+    quantityChange();
   };
 
   useEffect(() => {
@@ -57,7 +74,9 @@ const Card = ({
       isAuthenticated() &&
         cartUpdate &&
         updateItem({ userNumber, productId, count })
-          .then((data) => {})
+          .then((data) => {
+            console.log(data);
+          })
           .catch((err) => {
             alert(err);
           });
@@ -87,9 +106,9 @@ const Card = ({
               alt='nodata'
               style={{
                 width: '50%',
-                opacity: '40%',
+                top: '0%',
                 position: 'absolute',
-                left: '25%',
+                left: '0%',
               }}
             />
           )}
