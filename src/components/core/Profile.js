@@ -11,6 +11,7 @@ const Profile = (props) => {
     useEffect(()=>{
         getProfile(userNumber)
         .then(data=>{
+            console.log(data)
             setProfile(data);
         })
         .catch(error=>{
@@ -29,43 +30,44 @@ const Profile = (props) => {
                 <div className="row">
                 <div className="col-md-8 mx-auto">
                     <h3>{profile.petName} Details</h3>
-                    <table className="table table-borderless table-light">
-                        <tbody>
-                            <tr>
-                            <th scope="row">Pet Name</th>
-                            <td>{profile.petName}</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Pet Gender</th>
-                            <td>{profile.petGender}</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Pet Date Of Birth</th>
-                            <td>{profile.petDob}</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Mobile Number</th>
-                            <td>{profile.mobileNumber}</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Email</th>
-                            <td>{profile.email}</td>
-                            </tr>
-                            {profile.details && <tr>
-                            <th scope="row">Address</th>
-                            <td>{profile.details.addressLine1}<br/>{profile.details.addressLine2}
+                    <div className="d-flex">
+                        <div className="col-4 font-weight-bold">Pet Name</div>
+                        <span>:</span>
+                        <div class="ml-2">{profile.petName}</div>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-4 font-weight-bold">Pet Gender</div>
+                        <span>:</span>
+                        <div class="ml-2">{profile.petGender}</div>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-4 font-weight-bold">Pet Date Of Birth</div>
+                        <span>:</span>
+                        <div class="ml-2">{profile.petDob}</div>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-4 font-weight-bold">Mobile Number</div>
+                        <span>:</span>
+                        <div class="ml-2">{profile.mobileNumber}</div>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-4 font-weight-bold">Email</div>
+                        <span>:</span>
+                        <div class="ml-2">{profile.email}</div>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-4 font-weight-bold">Address</div>
+                        <span>:</span>
+                        <div class="ml-2">{profile.details.addressLine1}<br/>{profile.details.addressLine2}
                                 <br/>
                                 {profile.details.area} - {profile.details.pinCode}
                                 <br/>
                                 {profile.details.state}
-                            </td>
-                            </tr> }
-                           
-                        </tbody>
-                    </table>
-                    <div className="text-center">
-                    <Link to="/editProfile"><button className="btn btn-primary mb-4 mx-2">Edit Profile</button></Link>
-                    <Link to="/historyPurchase"><button className="btn btn-primary mb-4 mx-2">Your Orders</button></Link>
+                                </div>
+                    </div>
+                    <div className="text-center mt-2">
+                    <Link to="/editProfile"><button className="btn btn-primary mx-2">Edit Profile</button></Link>
+                    <Link to="/historyPurchase"><button className="btn btn-primary mx-2">Your Orders</button></Link>
                     </div>
                 </div>
                 </div>
@@ -91,7 +93,6 @@ const Profile = (props) => {
             
            
           </div>
-          <br/>
         </div>
         </div>
     )

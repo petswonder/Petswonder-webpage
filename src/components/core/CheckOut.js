@@ -15,7 +15,7 @@ const CheckOut = ({ products }) => {
   const getTotalOfCart = () => {
     getCart(userNumber)
       .then((data) => {
-        // console.log(data.cartTotal);
+        // console.log(data);
         setTotal(data.cartTotal);
       })
       .catch((error) => {

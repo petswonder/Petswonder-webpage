@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { getProfile, isAuthenticated } from '../auth/index';
+// import CreateProfile from '../core/CreateProfile';
+
 const Address = () => {
   const [profile, setProfile] = useState({});
   const {
@@ -53,7 +55,7 @@ const Address = () => {
     // })
     // .catch(error=>{
     //     console.log(error);
-    // })
+    // });
     <Redirect to='/payment' />;
     console.log(formData);
   };
@@ -63,7 +65,7 @@ const Address = () => {
       <div className='address'>
         <h5>Default Address</h5>
         <div className='address-block'>
-          {console.log(profile)}
+          {/* {console.log(profile)} */}
           {profile.mobileNumber > 0 && (
             <table className='table table-borderless table-light'>
               <tbody>
@@ -142,6 +144,7 @@ const Address = () => {
                   name='mobileNumber'
                   value={mobileNumber}
                   onChange={(e) => onChange(e)}
+                  required
                 />
               </div>
             </div>
@@ -157,6 +160,7 @@ const Address = () => {
                   name='email'
                   value={email}
                   onChange={(e) => onChange(e)}
+                  required
                 />
               </div>
             </div>
@@ -173,6 +177,7 @@ const Address = () => {
                   name='addressLine1'
                   value={addressLine1}
                   onChange={(e) => onChange(e)}
+                  required
                 />
               </div>
             </div>
@@ -189,6 +194,7 @@ const Address = () => {
                   name='addressLine2'
                   value={addressLine2}
                   onChange={(e) => onChange(e)}
+                  required
                 />
               </div>
             </div>
@@ -205,6 +211,7 @@ const Address = () => {
                   name='state'
                   value={state}
                   onChange={(e) => onChange(e)}
+                  required
                 />
               </div>
             </div>
@@ -221,6 +228,7 @@ const Address = () => {
                   name='city'
                   value={city}
                   onChange={(e) => onChange(e)}
+                  required
                 />
               </div>
             </div>
@@ -237,6 +245,7 @@ const Address = () => {
                   name='area'
                   value={area}
                   onChange={(e) => onChange(e)}
+                  required
                 />
               </div>
             </div>
@@ -253,6 +262,7 @@ const Address = () => {
                   name='pinCode'
                   value={pinCode}
                   onChange={(e) => onChange(e)}
+                  required
                 />
               </div>
             </div>

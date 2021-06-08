@@ -78,6 +78,7 @@ const EditProfile = () => {
 
     const onSubmit = e => {
         e.preventDefault();
+        // debugger
         editProfile({petName, mobileNumber, email, petGender, petDob, details})
         .then(data=>{
             setRediect(true);

@@ -137,6 +137,7 @@ const Payment = (props) => {
       },
       productDetails: products,
     };
+    // debugger
     console.log(data);
     saveOrder(data)
       .then((res) => {
