@@ -90,7 +90,7 @@ export const signout = (next) => {
     localStorage.removeItem('jwt');
     next();
   }
-  return fetch(`http://localhost/api/signin`, {
+  return fetch(`https://petswonder.co.in/petswonder/api/signin`, {
     method: 'GET',
   })
     .then((response) => {
