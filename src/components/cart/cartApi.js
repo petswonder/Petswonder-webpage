@@ -9,11 +9,10 @@ export const addToCart = ({ userNumber, id }) => {
     }
   )
     .then((response) => {
-      console.log(userNumber, id);
       return response.json();
     })
     .catch((err) => {
-      console.log(err);
+      alert(err);
     });
 };
 //get products of cart
@@ -28,7 +27,7 @@ export const getCart = (userNumber) => {
       return response.json();
     })
     .catch((err) => {
-      console.log(err);
+      alert(err);
     });
 };
 
@@ -44,7 +43,7 @@ export const deleteCart = (userNumber) => {
       return response.json();
     })
     .catch((err) => {
-      console.log(err);
+      alert(err);
     });
 };
 
@@ -60,7 +59,7 @@ export const updateItem = ({ userNumber, productId, count }) => {
       return response.json();
     })
     .catch((err) => {
-      console.log(err);
+      alert(err);
     });
 };
 
@@ -76,7 +75,7 @@ export const getTotal = (userNumber) => {
       return response.json();
     })
     .catch((err) => {
-      console.log(err);
+      alert(err);
     });
 };
 

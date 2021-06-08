@@ -17,7 +17,7 @@ const Pet = (props) => {
         setData(response);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
   useEffect(() => {
@@ -38,17 +38,17 @@ const Pet = (props) => {
         setItems(banners);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
   return (
     <>
-    <Slider banners={items} />
-    <div className='container'>
-      <ShoppingCategories pet={pet} />
-      <ShopByBrand />
-    </div>
+      <Slider banners={items} />
+      <div className='container'>
+        <ShoppingCategories pet={pet} />
+        <ShopByBrand />
+      </div>
     </>
   );
 };

@@ -39,7 +39,7 @@ const Address = () => {
         setProfile(data);
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
     window.scrollTo(0, 0);
   }, []);
@@ -57,7 +57,6 @@ const Address = () => {
     //     console.log(error);
     // });
     <Redirect to='/payment' />;
-    console.log(formData);
   };
 
   const address = () => {
@@ -124,7 +123,6 @@ const Address = () => {
           <button className='btn btn-warning btn-md my-1' onClick={handleClick}>
             Submit this address 👇
           </button>
-          {console.log(formData)}
         </div>
       )}
 

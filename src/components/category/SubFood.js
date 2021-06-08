@@ -14,7 +14,7 @@ const SubFood = (props) => {
         setData(response);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
   useEffect(() => {
@@ -26,20 +26,22 @@ const SubFood = (props) => {
 
   const sub = props.match.params.sub;
   const pet = props.match.params.pet;
-  // console.log(name, sub, pet);
 
   return (
     <div className=''>
       <img className='category-img w-100' src={icon} alt='' />
       <Heading text={`${pet} ${sub}`} />
-      <div className="container">
+      <div className='container'>
         <div className='row'>
           {data &&
-              data.map((p, i) => (
-                <div key={i} className='col-xl-3 col-lg-4 col-6 product col-md-3 my-3'>
-                  <Card data={p} />
-                </div>
-              ))}
+            data.map((p, i) => (
+              <div
+                key={i}
+                className='col-xl-3 col-lg-4 col-6 product col-md-3 my-3'
+              >
+                <Card data={p} />
+              </div>
+            ))}
         </div>
       </div>
     </div>

@@ -32,6 +32,7 @@ import OnlineDoc from './components/petServices/OnlineDoc';
 import Successful from './components/core/Successful';
 import NotFound from './components/404';
 import Tc from './components/core/Tc';
+import Maintenance from './components/core/Maintenance';
 
 const App = () => {
   return (
@@ -82,6 +83,7 @@ const App = () => {
           />
           <Route exact path='/about' component={AboutUs} />
           <Route exact path='/termsandconditions' component={Tc} />
+          <Route exact path='/maintenance' component={Maintenance} />
           <Route exact path='*' component={NotFound} />
         </Switch>
       </div>

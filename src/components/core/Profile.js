@@ -1,12 +1,24 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {getProfile, isAuthenticated } from '../auth/index'
-import sed from '../../images/sed.jpg'
+import { getProfile, isAuthenticated } from '../auth/index';
+import sed from '../../images/sed.jpg';
 
 const Profile = (props) => {
+  const [profile, setProfile] = useState({});
+  const {
+    jwt,
+    user: { userNumber },
+  } = isAuthenticated();
 
-    const [profile, setProfile] = useState({});
-    const {jwt, user:{userNumber}} = isAuthenticated();
+  useEffect(() => {
+    getProfile(userNumber)
+      .then((data) => {
+        setProfile(data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }, []);
 
     useEffect(()=>{
         getProfile(userNumber)
@@ -98,4 +110,4 @@ const Profile = (props) => {
     )
 }
 
-export default Profile
+export default Profile;
