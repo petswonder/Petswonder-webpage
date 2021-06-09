@@ -224,7 +224,6 @@ const Payment = (props) => {
             <th scope='row'>Total Delivery Charge</th>
             <td>₹{total.totalDeliveryCharge}</td>
           </tr>
-          <hr />
           <tr>
             <th scope='row'>Total Amount</th>
             <td style={{ fontWeight: 'bold' }}>₹{total.totalPrice}</td>

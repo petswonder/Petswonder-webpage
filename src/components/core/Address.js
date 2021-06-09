@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { getProfile, isAuthenticated } from '../auth/index';
+import { putOrder } from './OrderApi';
 // import CreateProfile from '../core/CreateProfile';
 
 const Address = () => {
@@ -56,6 +57,7 @@ const Address = () => {
     // .catch(error=>{
     //     console.log(error);
     // });
+    // putOrder()
     <Redirect to='/payment' />;
   };
 

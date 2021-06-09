@@ -45,32 +45,32 @@ const Profile = (props) => {
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Pet Name</div>
                         <span>:</span>
-                        <div class="ml-2">{profile.petName}</div>
+                        <div className="ml-2">{profile.petName}</div>
                     </div>
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Pet Gender</div>
                         <span>:</span>
-                        <div class="ml-2">{profile.petGender}</div>
+                        <div className="ml-2">{profile.petGender}</div>
                     </div>
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Pet Date Of Birth</div>
                         <span>:</span>
-                        <div class="ml-2">{profile.petDob}</div>
+                        <div className="ml-2">{profile.petDob}</div>
                     </div>
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Mobile Number</div>
                         <span>:</span>
-                        <div class="ml-2">{profile.mobileNumber}</div>
+                        <div className="ml-2">{profile.mobileNumber}</div>
                     </div>
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Email</div>
                         <span>:</span>
-                        <div class="ml-2">{profile.email}</div>
+                        <div className="ml-2">{profile.email}</div>
                     </div>
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Address</div>
                         <span>:</span>
-                        <div class="ml-2">{profile.details.addressLine1}<br/>{profile.details.addressLine2}
+                        <div className="ml-2">{profile.details.addressLine1}<br/>{profile.details.addressLine2}
                                 <br/>
                                 {profile.details.area} - {profile.details.pinCode}
                                 <br/>

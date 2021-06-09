@@ -36,59 +36,60 @@ import Maintenance from './components/core/Maintenance';
 
 const App = () => {
   return (
-    <Router>
-      <Menu />
-      <div className='mt-62'>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path='/signin' component={Signin} />
-          <Route exact path='/shopping' component={Shopping} />
-          <PrivateRoute exact path='/profile' component={Profile} />
-          <Route
-            exact
-            path='/product/:productId'
-            component={ParticularProduct}
-          />
-          <Route exact path='/pet/:pet/category/:name' component={Category} />
-          <Route
-            exact
-            path='/pet/:pet/category/:name/:sub'
-            component={SubFood}
-          />
-          <Route exact path='/pet/:pet' component={Pet} />
-          <Route exact path='/brand/:name' component={Brand} />
-          <PrivateRoute exact path='/cart' component={Cart} />
-          <PrivateRoute
-            exact
-            path='/popularProducts'
-            component={PopularProductPage}
-          />
-          <Route exact path='/search' component={Search} />
-          <PrivateRoute exact path='/payByRazorPay' component={PayByRazorPay} />
-          <PrivateRoute exact path='/createProfile' component={CreateProfile} />
-          <PrivateRoute exact path='/editProfile' component={EditProfile} />
-          <PrivateRoute exact path='/setaddress' component={Address} />
-          <PrivateRoute exact path='/payment' component={Payment} />
-          <PrivateRoute exact path='/petCare' component={PetServices} />
-          <PrivateRoute exact path='/onlineDoc' component={OnlineDoc} />
-          <PrivateRoute exact path='/petGuide' component={PetGuide} />
-          <PrivateRoute exact path='/petMate' component={petMate} />
-          <PrivateRoute exact path='/petSnap' component={PetSnap} />
-          <PrivateRoute exact path='/success' component={Successful} />
-          <PrivateRoute
-            exact
-            path='/historyPurchase'
-            component={OrderHistory}
-          />
-          <Route exact path='/about' component={AboutUs} />
-          <Route exact path='/termsandconditions' component={Tc} />
-          <Route exact path='/maintenance' component={Maintenance} />
-          <Route exact path='*' component={NotFound} />
-        </Switch>
-      </div>
-      <Footer />
-    </Router>
+    <Maintenance />
+    // <Router>
+    //   <Menu />
+    //   <div className='mt-62'>
+    //     <Switch>
+    //       <Route exact path='/' component={Home} />
+    //       <Route exact path='/signup' component={Signup} />
+    //       <Route exact path='/signin' component={Signin} />
+    //       <Route exact path='/shopping' component={Shopping} />
+    //       <PrivateRoute exact path='/profile' component={Profile} />
+    //       <Route
+    //         exact
+    //         path='/product/:productId'
+    //         component={ParticularProduct}
+    //       />
+    //       <Route exact path='/pet/:pet/category/:name' component={Category} />
+    //       <Route
+    //         exact
+    //         path='/pet/:pet/category/:name/:sub'
+    //         component={SubFood}
+    //       />
+    //       <Route exact path='/pet/:pet' component={Pet} />
+    //       <Route exact path='/brand/:name' component={Brand} />
+    //       <PrivateRoute exact path='/cart' component={Cart} />
+    //       <PrivateRoute
+    //         exact
+    //         path='/popularProducts'
+    //         component={PopularProductPage}
+    //       />
+    //       <Route exact path='/search' component={Search} />
+    //       <PrivateRoute exact path='/payByRazorPay' component={PayByRazorPay} />
+    //       <PrivateRoute exact path='/createProfile' component={CreateProfile} />
+    //       <PrivateRoute exact path='/editProfile' component={EditProfile} />
+    //       <PrivateRoute exact path='/setaddress' component={Address} />
+    //       <PrivateRoute exact path='/payment' component={Payment} />
+    //       <PrivateRoute exact path='/petCare' component={PetServices} />
+    //       <PrivateRoute exact path='/onlineDoc' component={OnlineDoc} />
+    //       <PrivateRoute exact path='/petGuide' component={PetGuide} />
+    //       <PrivateRoute exact path='/petMate' component={petMate} />
+    //       <PrivateRoute exact path='/petSnap' component={PetSnap} />
+    //       <PrivateRoute exact path='/success' component={Successful} />
+    //       <PrivateRoute
+    //         exact
+    //         path='/historyPurchase'
+    //         component={OrderHistory}
+    //       />
+    //       <Route exact path='/about' component={AboutUs} />
+    //       <Route exact path='/termsandconditions' component={Tc} />
+    //       <Route exact path='/maintenance' component={Maintenance} />
+    //       <Route exact path='*' component={NotFound} />
+    //     </Switch>
+    //   </div>
+    //   <Footer />
+    // </Router>
   );
 };
 

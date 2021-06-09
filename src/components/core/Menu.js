@@ -31,7 +31,7 @@ const Menu = ({ history }) => {
 
   if (jwt) {
     getCart(jwt.user.userNumber).then((data) => {
-      console.log(data.cart);
+      // console.log(data.cart);
       setCount(data.cart.length);
     });
   }

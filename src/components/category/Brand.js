@@ -31,14 +31,14 @@ const Brand = (props) => {
         <div className='row'>
           dsadas=
           {data.length == 0 ? (
-            <div class='text-center py-3 col'>
+            <div className='text-center py-3 col'>
               <img
                 src={require('../../images/noproducts.svg').default}
                 alt='noproducts'
                 width='200px'
               />
               <h5 className='mt-2'>No Products Available</h5>
-              <div class='text-center'>
+              <div className='text-center'>
                 <Link to='/' className='btn btn-primary mx-2'>
                   Go to Home
                 </Link>

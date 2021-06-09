@@ -169,23 +169,23 @@ const Card = ({
         )}
         {cartPage ? (
           <div
-            class='btn-group mb-2'
+            className='btn-group mb-2'
             role='group'
             aria-label='Basic outlined example'
           >
             <button
               type='button'
-              class='btn btn-outline-primary px-2 py-0'
+              className='btn btn-outline-primary px-2 py-0'
               onClick={decreaseQuantity}
             >
               -
             </button>
-            <span class='border-primary align-self-center p-1 border-top border-bottom px-2'>
+            <span className='border-primary align-self-center p-1 border-top border-bottom px-2'>
               {count}
             </span>
             <button
               type='button'
-              class='btn btn-outline-primary px-2 py-0'
+              className='btn btn-outline-primary px-2 py-0'
               onClick={increaseQuantity}
             >
               +
