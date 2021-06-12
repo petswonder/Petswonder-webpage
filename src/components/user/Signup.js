@@ -108,7 +108,7 @@ const Signup = () => {
                 </div>
                 <br />
                 <div className='group'>
-                  <button className='btn btn-secondary button'>Send OTP</button>
+                  <button className='btn btn-secondary button' type="submit">Send OTP</button>
                 </div>
                 <div className='font-size-14 mt-3'>
                   Already have an Account?{' '}

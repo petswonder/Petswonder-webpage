@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getProfile, isAuthenticated } from '../auth/index';
 import { getCart } from '../cart/cartApi';
 
@@ -45,15 +45,26 @@ const CheckOut = ({ products }) => {
 
   const { totalValue } = total;
   // var amount = totalValue * 100;
+  const history = useHistory()
+
+  const handleClick = (e) => {
+    // console.log(profile)
+    if(profile.petName == ''){
+      history.push('/profile')
+    }
+    else {
+      history.push('/setaddress')
+    }
+  }
 
   const showCheckOut = () => {
     return isAuthenticated() ? (
       <div>
-        <Link to='/setaddress'>
-          <button className='btn btn-success mb-4 mr-4 mt-3'>
+        {/* <Link to='/setaddress'> */}
+          <button className='btn btn-success mb-4 mr-4 mt-3' onClick={(e) => handleClick(e)}>
             Proceed To Buy
           </button>
-        </Link>
+        {/* </Link> */}
       </div>
     ) : (
       <Link to='/signin'>
