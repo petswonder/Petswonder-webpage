@@ -91,7 +91,7 @@ const Signin = () => {
                 </div>
                 <br />
                 <div className='group'>
-                  <button className='btn btn-secondary button'>Sign In</button>
+                  <button className='btn btn-secondary button' type="submit">Sign In</button>
                 </div>
 
                 <div className='font-size-14 mt-3'>
