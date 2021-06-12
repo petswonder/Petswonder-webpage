@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
 import noImage from '../../images/no image.png';
@@ -25,11 +25,9 @@ const Card = ({
 
   const handleClick = () => {
     if (isAuthenticated() === false) {
-      setRedirect(true);
+      history.push('/signin');
     } else {
-      const {
-        user: { userNumber },
-      } = isAuthenticated();
+      const {user: { userNumber }} = isAuthenticated();
       addToCart({ userNumber, id })
         .then((data) => {
           if (data.status === 'Product added to cart') {

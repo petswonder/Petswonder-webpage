@@ -6,12 +6,14 @@ import logo from '../../images/logo1.png';
 import Heading from './Heading';
 
 const Payment = (props) => {
+  // debugger
   const [total, setTotal] = useState({});
   const [order, setOrder] = useState({});
   const [redirect, setRedirect] = useState(false);
   const [d, setData] = useState({});
   const [items, setItems] = useState([]);
-  const address = props.location.state.formData;
+  const address = props.location.orderAddress.formData;
+  // debugger
 
   const {
     user: { userNumber },

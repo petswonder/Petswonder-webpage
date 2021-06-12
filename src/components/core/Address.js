@@ -6,6 +6,7 @@ import { putOrder } from './OrderApi';
 
 const Address = () => {
   const [profile, setProfile] = useState({});
+  const [redirect, setRedirect] = useState(false);
   const {
     // jwt,
     user: { userNumber },
@@ -50,16 +51,13 @@ const Address = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // createProfile(userNumber, formData)
-    // .then(data=>{
-    //     <Redirect to="/profile" />
-    // })
-    // .catch(error=>{
-    //     console.log(error);
-    // });
-    // putOrder()
-    <Redirect to='/payment' />;
+    setRedirect(true);
   };
+
+  if (redirect) {
+    // debugger 
+    return <Redirect to={{ pathname: '/payment', orderAddress: { formData } }} />
+  }
 
   const address = () => {
     return (
@@ -114,7 +112,7 @@ const Address = () => {
       addressLine2: profile.details.addressLine2,
       addressLine1: profile.details.addressLine1,
     });
-    <Redirect to='/payment' />;
+    // <Redirect to='/payment' />;
   };
 
   return (
@@ -268,16 +266,16 @@ const Address = () => {
             </div>
           </div>
 
-          <Link
+          {/* <Link
             to={{
               pathname: '/payment',
               state: {
                 formData,
               },
             }}
-          >
+          > */}
             <input type='submit' className='btn btn-warning btn-md my-1' />
-          </Link>
+          {/* </Link> */}
           {/* <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link> */}
         </form>
       </div>
