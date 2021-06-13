@@ -13,6 +13,7 @@ const Profile = (props) => {
   useEffect(() => {
     getProfile(userNumber)
       .then((data) => {
+        
         setProfile(data);
       })
       .catch((error) => {
@@ -20,22 +21,9 @@ const Profile = (props) => {
       });
   }, []);
 
-    useEffect(()=>{
-        getProfile(userNumber)
-        .then(data=>{
-            console.log(data)
-            setProfile(data);
-        })
-        .catch(error=>{
-            console.log(error);
-        })
-    },[])
-
 
     return (
         <div className="py-4">
-        
-          
           <div className="container col-12 col-md-10 profile-about bg-light px-5 py-3">
           {profile.petName ? (<Fragment>
                 {/* <h5>Account</h5> */}

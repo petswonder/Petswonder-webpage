@@ -242,7 +242,7 @@ const CreateProfile = () => {
               </div>
             </div>
           </div>
-          <input type='submit' className='btn btn-warning btn-md my-1 mr-3' />
+          <button type='submit' className='btn btn-warning btn-md my-1 mr-3'>Submit</button>
           <Link className='btn btn-light my-1 btn-md btn-dark' to='/profile'>
             Go Back
           </Link>
