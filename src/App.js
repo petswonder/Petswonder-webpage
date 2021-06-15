@@ -10,7 +10,6 @@ import Shopping from './components/shopping/Shopping';
 import ParticularProduct from './components/core/ParticularProduct';
 import Category from './components/category/Category';
 import Cart from './components/cart/Cart';
-import Search from './components/core/Search';
 import Pet from './components/category/Pet';
 import PopularProductPage from './components/shopping/PopularProductPage';
 import PayByRazorPay from './components/core/PayByRazorPay';
@@ -33,6 +32,7 @@ import Successful from './components/core/Successful';
 import NotFound from './components/404';
 import Tc from './components/core/Tc';
 import Maintenance from './components/core/Maintenance';
+import SearchPage from './components/core/SearchPage';
 
 const App = () => {
   return (
@@ -65,7 +65,7 @@ const App = () => {
             path='/popularProducts'
             component={PopularProductPage}
           />
-          <Route exact path='/search' component={Search} />
+          <Route exact path='/search' component={SearchPage} />
           <PrivateRoute exact path='/payByRazorPay' component={PayByRazorPay} />
           <PrivateRoute exact path='/createProfile' component={CreateProfile} />
           <PrivateRoute exact path='/editProfile' component={EditProfile} />

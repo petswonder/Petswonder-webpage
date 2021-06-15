@@ -1,6 +1,6 @@
-import React from 'react'
+import React , {useState, useEffect }from 'react'
 import { list} from '../product/apiProduct'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
     Form,
     FormControl,
@@ -8,54 +8,42 @@ import {
   } from 'react-bootstrap';
 
 // const Sea
-class SearchComponent extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {value: '', searchResults: []};
+const SearchComponent = () => {
+    const [value, setSearchVal] = useState('');
+    const history = useHistory()
 
-        this.handleChange = this.handleChange.bind(this);
-        this.resetSearch = this.resetSearch.bind(this);
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            handleChange(value)
+        }, 1000)
+        return () => clearTimeout(timeout)
+      }, [value])
 
-    }
-
-    resetSearch(){
-        this.state.value = ''
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-        // if(search){
-            list(event.target.value)
+    const handleChange = (searchInput) => {
+        if((searchInput !== '')){
+            list(searchInput)
             .then(response=>{
-                this.setState({searchResults : response})
+                history.push({ 
+                    pathname: '/search',
+                    searchProducts: response,
+                    searchTerm : searchInput
+                });
             })
-        // }
+        }
+        else{
+            history.push('/')
+        }
+        
     }
 
-    render() {
-        return (
-            <div className="position-relative">
-            <Form inline className="bg-transparent form-inline border-secondary border rounded-pill ">
-                <FormControl type="text" placeholder="Search for brand/item" value={this.state.value} onChange={this.handleChange} className="bg-transparent form-control border-0 py-1 h-auto font-size-14 w-350"/>
-                <Button className="bg-transparent py-0 rounded-0 border-0"><i className="fa fa-search"></i></Button>
-            </Form>
-            <ul className={`position-absolute w-100 list-group rounded-0 shadow z-9 overflow-auto ${this.state.value !== '' ? 'max-height-200': ''}`}>
-                { this.state.value === '' ? 
-                    <li className="list-group-item py-0 border-0"></li>
-                : this.state.searchResults.length === 0 ? 
-                    <li className="list-group-item py-0 border-0">No Results</li>
-                :
-                    this.state.searchResults.map(item => (
-                        <li className="list-group-item py-0 border-0" key={item.id}><Link to={{
-                            pathname: `/product/${item.productId}`,
-                            state: item,
-                          }} onClick={this.resetSearch}>{item.title}</Link></li>
-                    ))
-                }
-            </ul>
-            </div>
-            
-        )
-    }
+    return (
+        <div className="position-relative">
+        <Form inline className="bg-transparent form-inline border-secondary border rounded-pill ">
+            <FormControl type="text" placeholder="Search for brand/item" value={value} onChange={(e) => setSearchVal(e.target.value)} className="bg-transparent form-control border-0 py-1 h-auto font-size-14 w-350"/>
+            <Button className="bg-transparent py-0 rounded-0 border-0"><i className="fa fa-search"></i></Button>
+        </Form>
+        </div>
+        
+    )
 }
 export default SearchComponent

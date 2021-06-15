@@ -12,6 +12,7 @@ const Card = ({
   cartUpdate = false,
   cartPage = false,
 }) => {
+  // console.log(data)
   const history = useHistory();
   const [count, setCount] = useState(data.quantity);
   const [disable, setDisable] = useState(false);
