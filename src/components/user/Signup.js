@@ -11,7 +11,7 @@ import {
 } from '../auth/index';
 
 const Signup = () => {
-  const [phoneNumber, setPhoneNumber] = useState('91 ');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOTP] = useState('');
   const [name, setName] = useState('');
@@ -40,7 +40,6 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     sentOTP(phoneNumber).then((data) => {
       if (data === undefined) {
         setError('User Already exists');
@@ -68,8 +67,8 @@ const Signup = () => {
 
   const handleregister = (e) => {
     e.preventDefault();
-
     registerUser({ phoneNumber, password, name, email }).then((data) => {
+      // debugger
       if (data === 'User added successfully') {
         authenticate(
           { data: data, user: { userNumber: phoneNumber, name } },

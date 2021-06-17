@@ -13,22 +13,22 @@ const Customer = () => {
       
         
           {service_items.map(service => (
-            <div className={service.bgclass}>
-            <div className='container'>
-              <div className="row align-items-center justify-content-between">
-            <div className="col-md-6 col-lg-6 col-xl-6">
-                <div className="learning_img w-100 py-2 px-5">
-                    <img src={service.img} alt={service.name} className='w-100' />
+            <div className={service.bgclass} key={service.id.toString()}>
+                <div className='container'>
+                  <div className="row align-items-center justify-content-between">
+                <div className="col-md-6 col-lg-6 col-xl-6">
+                    <div className="learning_img w-100 py-2 px-5">
+                        <img src={service.img} alt={service.name} className='w-100' />
+                    </div>
                 </div>
-            </div>
-            <div className="col-md-6 col-lg-6 col-xl-6">
-                <div className="">
-                    <h2 className='text-left'>{service.title}</h2>
-                    <p className="text-left">{service.desc}</p>
+                <div className="col-md-6 col-lg-6 col-xl-6">
+                    <div className="">
+                        <h2 className='text-left'>{service.title}</h2>
+                        <p className="text-left">{service.desc}</p>
+                    </div>
                 </div>
+              
             </div>
-           
-        </div>
             </div>
             </div>
           ))}

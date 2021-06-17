@@ -1,6 +1,6 @@
 export const sentOTP = (phoneNumber) => {
   return fetch(
-    `https://petswonder.co.in/petswonder/api/Otp/generateOtpForRegistration?phoneNumber=${phoneNumber}`,
+    `https://petswonder.co.in/petswonder/api/Otp/generateOtpForRegistration?phoneNumber=91 ${phoneNumber}`,
     {
       method: 'POST',
     }
@@ -15,7 +15,7 @@ export const sentOTP = (phoneNumber) => {
 
 export const validateOTP = ({ phoneNumber, otp }) => {
   return fetch(
-    `https://petswonder.co.in/petswonder/api/Otp/validateOTP?phoneNumber=${phoneNumber}&otp=${otp}`,
+    `https://petswonder.co.in/petswonder/api/Otp/validateOTP?phoneNumber=91 ${phoneNumber}&otp=${otp}`,
     {
       method: 'POST',
     }

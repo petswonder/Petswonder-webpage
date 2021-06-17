@@ -40,6 +40,7 @@ const CreateProfile = () => {
     e.preventDefault();
     createProfile({ petName, mobileNumber, email, petGender, petDob, details })
       .then((data) => {
+        debugger
         setRediect(true);
       })
       .catch((error) => {
