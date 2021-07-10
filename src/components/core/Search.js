@@ -9,24 +9,33 @@ import {
 
 // const Sea
 const SearchComponent = () => {
-    const [value, setSearchVal] = useState('');
+    const [searchVal, setSearchVal] = useState('');
     const history = useHistory()
 
     useEffect(() => {
+        const temp = searchVal === undefined ? window.localStorage.getItem('searchVal') : searchVal
+        setSearchVal(temp)
+    })
+    
+    useEffect(() => {
+        window.localStorage.setItem('searchVal', searchVal)
         const timeout = setTimeout(() => {
-            handleChange(value)
+            handleChange(searchVal)
         }, 1000)
         return () => clearTimeout(timeout)
-      }, [value])
+      }, [searchVal])
 
+    
     const handleChange = (searchInput) => {
         if((searchInput !== '')){
             list(searchInput)
             .then(response=>{
+                window.localStorage.setItem('searchProds', JSON.stringify(response))
                 history.push({ 
                     pathname: '/search',
                     searchProducts: response,
-                    searchTerm : searchInput
+                    searchTerm : searchInput,
+                    state: response
                 });
             })
         }
@@ -36,10 +45,11 @@ const SearchComponent = () => {
         
     }
 
+
     return (
         <div className="position-relative">
         <Form inline className="bg-transparent form-inline border-secondary border rounded-pill ">
-            <FormControl type="text" placeholder="Search for brand/item" value={value} onChange={(e) => setSearchVal(e.target.value)} className="bg-transparent form-control border-0 py-1 h-auto font-size-14 w-350"/>
+            <FormControl type="text" placeholder="Search for brand/item" value={searchVal} onChange={(e) => setSearchVal(e.target.value)} className="bg-transparent form-control border-0 py-1 h-auto font-size-14 w-350"/>
             <Button className="bg-transparent py-0 rounded-0 border-0"><i className="fa fa-search"></i></Button>
         </Form>
         </div>
