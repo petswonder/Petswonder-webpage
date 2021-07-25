@@ -126,7 +126,6 @@ const Menu = ({ history }) => {
 
                       <Dropdown.Menu
                         align='right'
-                        menuRole='menu'
                         flip='true'
                         className='rounded-0 border-0 py-0 shadow'
                       >

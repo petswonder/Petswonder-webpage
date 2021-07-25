@@ -10,8 +10,8 @@ const EditProfile = () => {
     petName: '',
     mobileNumber: userNumber,
     email: '',
-    petGender: '',
-    petDob: '',
+    gender: '',
+    dob: '',
   });
   const [details, setDetails] = useState({
     latitude: '',
@@ -24,7 +24,7 @@ const EditProfile = () => {
     area: '',
   });
 
-  const { petName, mobileNumber, email, petGender, petDob } = formData;
+  const { petName, mobileNumber, email, gender, dob } = formData;
 
   const { city, state, pinCode, area, addressLine2, addressLine1 } = details;
 
@@ -37,8 +37,8 @@ const EditProfile = () => {
           petName: !profile.petName ? '' : profile.petName,
           mobileNumber: !profile.mobileNumber ? '' : profile.mobileNumber,
           email: !profile.email ? '' : profile.email,
-          petGender: !profile.petGender ? '' : profile.petGender,
-          petDob: !profile.petDob ? '' : profile.petDob,
+          gender: !profile.gender ? '' : profile.gender,
+          dob: !profile.dob ? '' : profile.dob,
         });
 
         setDetails({
@@ -62,7 +62,7 @@ const EditProfile = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    editProfile({ petName, mobileNumber, email, petGender, petDob, details })
+    editProfile({ petName, mobileNumber, email, gender, dob, details })
       .then((data) => {
         setRediect(true);
       })
@@ -142,14 +142,14 @@ const EditProfile = () => {
             <div className='col-sm-9 controls'>
               <select
                 className='ml-1 col-md-12'
-                name='petGender'
-                value={petGender}
+                name='gender'
+                value={gender}
                 onChange={(e) => onChange(e)}
                 required
               >
                 <option value='0'>* Select Gender</option>
-                <option value='Male'>Male</option>
-                <option value='Female'>Female</option>
+                <option value='male'>Male</option>
+                <option value='female'>Female</option>
               </select>
             </div>
           </div>
@@ -162,8 +162,8 @@ const EditProfile = () => {
                 className='ml-1 col-md-12'
                 type='date'
                 placeholder='Pet Date Of Birth'
-                name='petDob'
-                value={petDob}
+                name='dob'
+                value={dob}
                 onChange={(e) => onChange(e)}
                 required
               />

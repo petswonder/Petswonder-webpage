@@ -101,6 +101,7 @@ export const signout = (next) => {
 
 //get profile
 export const getProfile = (userNumber) => {
+  // debugger
   return fetch(
     `https://petswonder.co.in/petswonder/api/petProfileDetails/getPetDetails?mobileNumber=${userNumber}`,
     {
@@ -118,6 +119,7 @@ export const getProfile = (userNumber) => {
 //create profile
 export const createProfile = (formData) => {
   console.log(JSON.stringify(formData));
+  // debugger
   return fetch(
     `https://petswonder.co.in/petswonder/api/petProfileDetails/addPetDetails`,
     {

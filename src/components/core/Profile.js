@@ -13,7 +13,7 @@ const Profile = (props) => {
   useEffect(() => {
     getProfile(userNumber)
       .then((data) => {
-        
+        // debugger
         setProfile(data);
       })
       .catch((error) => {
@@ -38,12 +38,12 @@ const Profile = (props) => {
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Pet Gender</div>
                         <span>:</span>
-                        <div className="ml-2">{profile.petGender}</div>
+                        <div className="ml-2">{profile.gender}</div>
                     </div>
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Pet Date Of Birth</div>
                         <span>:</span>
-                        <div className="ml-2">{profile.petDob}</div>
+                        <div className="ml-2">{profile.dob}</div>
                     </div>
                     <div className="d-flex">
                         <div className="col-4 font-weight-bold">Mobile Number</div>
