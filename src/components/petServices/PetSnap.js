@@ -1,8 +1,8 @@
-import React, { useState, useEffect} from 'react'
+import React from 'react'
 import Heading from '../core/Heading'
 import Book from './Book'
-import {getAllDoctors} from './petApi'
-import PetGroom from '../../images/PetGroom.jpg'
+// import {getAllDoctors} from './petApi'
+// import PetGroom from '../../images/PetGroom.jpg'
 import PetPhoto from '../../images/PetPhoto.png'
 
 

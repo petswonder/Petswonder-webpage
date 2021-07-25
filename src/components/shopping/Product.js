@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import {addToCart} from '../cart/cartApi'
 import { isAuthenticated } from "../auth/index";
@@ -6,7 +6,7 @@ import { isAuthenticated } from "../auth/index";
 const Product = ({ data }) => {
 
     // console.log(data);
-    const {jwt, user:{userNumber}} = isAuthenticated();
+    const {user:{userNumber}} = isAuthenticated();
     const id = data.productId;
 
     const handleClick = () =>{

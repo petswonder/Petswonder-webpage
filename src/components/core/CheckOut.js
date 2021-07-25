@@ -49,7 +49,7 @@ const CheckOut = ({ products }) => {
 
   const handleClick = (e) => {
     // console.log(profile)
-    if(profile.petName == ''){
+    if(profile.petName === ''){
       history.push('/profile')
     }
     else {

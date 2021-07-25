@@ -29,8 +29,7 @@ const Brand = (props) => {
       <Heading text={`${name}`} />
       <div className='container'>
         <div className='row'>
-          dsadas=
-          {data.length == 0 ? (
+          {data.length === 0 ? (
             <div className='text-center py-3 col'>
               <img
                 src={require('../../images/noproducts.svg').default}

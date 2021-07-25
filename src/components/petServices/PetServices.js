@@ -1,6 +1,6 @@
 import Heading from '../core/Heading';
 import PetGroom from '../../images/PetGroom.jpg';
-import PetPhoto from '../../images/PetPhoto.png';
+// import PetPhoto from '../../images/PetPhoto.png';
 import vet from '../../images/vet.png';
 import Book1 from './Book1';
 

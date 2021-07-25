@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../images/logo1.png';
 import { Link } from 'react-router-dom';
 
-import aplay from '../../images/aplay.png';
+// import aplay from '../../images/aplay.png';
 import gplay from '../../images/gplay.png';
 
 const Footer = () => {

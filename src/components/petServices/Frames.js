@@ -1,5 +1,5 @@
 import React from 'react';
-import img6 from '../../images/donate.jpg';
+// import img6 from '../../images/donate.jpg';
 
 const Frames = ({ text, img, desc }) => {
   return (

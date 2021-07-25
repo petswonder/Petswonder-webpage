@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { addToCart, updateItem } from '../cart/cartApi';
 import { isAuthenticated } from '../auth/index';
 import noImage from '../../images/no image.png';
@@ -17,7 +17,7 @@ const Card = ({
   const [count, setCount] = useState(data.quantity);
   const [disable, setDisable] = useState(false);
 
-  const [items, setItems] = useState('');
+  // const [items, setItems] = useState('');
 
   const productId = data.productId;
   const id = data.productId;
@@ -85,7 +85,7 @@ const Card = ({
     }
   }, [count]);
 
-  const [visible, setVisible] = useState(false);
+  // const [visible, setVisible] = useState(false);
 
   // const toggle = () => setVisible(!visible);
 

@@ -26,7 +26,7 @@ const SearchPage = (props) => {
             </div>
             </div>
             <div className="row pb-2">
-                {searchProducts.length == 0 ? (<h1>No Search Results</h1>) : (
+                {searchProducts.length === 0 ? (<h1>No Search Results</h1>) : (
                     searchProducts.map((product, i)=> (
                         <div className="col-md-3 my-2" key={i}>
                             <Card data={product}  />

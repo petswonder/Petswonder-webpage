@@ -8,7 +8,7 @@ import Heading from './Heading';
 const Payment = (props) => {
   // debugger
   const [total, setTotal] = useState({});
-  const [order, setOrder] = useState({});
+  const [order] = useState({});
   const [redirect, setRedirect] = useState(false);
   const [d, setData] = useState({});
   const [items, setItems] = useState([]);
@@ -112,39 +112,46 @@ const Payment = (props) => {
 
   //Give the orderCOD
   const giveOrderCod = () => {
-    const data = {
-      orderedBy: userNumber,
-      totalPrice: total.totalPrice,
-      paymentType: 'COD',
-      deliveryCharge: total.totalDeliveryCharge,
-      address: {
-        latitude: '0',
-        longitude: '0',
-        state: address.state,
-        city: address.city,
-        addressLine1: address.addressLine1,
-        addressLine2: address.addressLine2,
-        pinCode: address.pinCode,
-        area: address.area,
-      },
-      paymentStatus: 'Pending',
-      orderStatus: 'pending',
-
-      plusPointsEarned: total.totalPlusPoints,
-      promoCodeDetails: {
-        promoCode: '',
-        promoCodeDiscount: 0,
-      },
-      productDetails: products,
-    };
     // debugger
-    // console.log(data);
-    saveOrder(data)
-      .then((res) => {
-        setRedirect(true);
-        deleteCart(userNumber);
-      })
-      .catch((err) => alert(err));
+    if(userNumber !== 0){
+      const data = {
+        orderedBy: userNumber,
+        totalPrice: total.totalPrice,
+        paymentType: 'COD',
+        deliveryCharge: total.totalDeliveryCharge,
+        address: {
+          latitude: '0',
+          longitude: '0',
+          state: address.state,
+          city: address.city,
+          addressLine1: address.addressLine1,
+          addressLine2: address.addressLine2,
+          pinCode: address.pinCode,
+          area: address.area,
+        },
+        paymentStatus: 'Pending',
+        orderStatus: 'pending',
+  
+        plusPointsEarned: total.totalPlusPoints,
+        promoCodeDetails: {
+          promoCode: '',
+          promoCodeDiscount: 0,
+        },
+        productDetails: products,
+      };
+      // debugger
+      // console.log(data);
+      saveOrder(data)
+        .then((res) => {
+          setRedirect(true);
+          deleteCart(userNumber);
+        })
+        .catch((err) => alert(err));
+    }
+    else{
+      alert('Not at this moment!!!')
+    }
+    
   };
   //Give the orderOnline
   const giveOrderOnline = () => {

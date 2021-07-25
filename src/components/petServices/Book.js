@@ -6,7 +6,7 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
 const Book = ({
-  d: { category, description, serviceImageUrls, title, price },
+  d: { serviceImageUrls, title, price },
   comingSoon = false,
 }) => {
   const [total, setTotal] = useState({});
@@ -20,7 +20,7 @@ const Book = ({
   } = isAuthenticated();
 
   const { totalValue } = total;
-  const l = total.totalPrice;
+  // const l = total.totalPrice;
   var am = price * 100;
 
   const options = {
@@ -122,18 +122,6 @@ const Book = ({
                     selectedDays: date,
                     disabledDays: {
                       daysOfWeek: [0, 6],
-                    },
-                  }}
-                  dayPickerProps={{
-                    modifiers: {
-                      disabled: [
-                        {
-                          daysOfWeek: [0, 6],
-                        },
-                        {
-                          before: new Date(),
-                        },
-                      ],
                     },
                   }}
                 />

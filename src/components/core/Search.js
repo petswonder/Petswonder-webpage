@@ -1,6 +1,6 @@
 import React , {useState, useEffect }from 'react'
 import { list} from '../product/apiProduct'
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
     Form,
     FormControl,

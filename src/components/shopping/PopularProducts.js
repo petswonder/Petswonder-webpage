@@ -10,7 +10,7 @@ const PopularProducts = () => {
   const [products, setProducts] = useState([]);
 
   const [postsToShow, setPostsToShow] = useState([]);
-  const [next, setNext] = useState(0);
+  // const [next, setNext] = useState(0);
 
   const loopWithSlice = (start, end) => {
     const slicedPosts = products.slice(start, end);
@@ -18,17 +18,17 @@ const PopularProducts = () => {
     setPostsToShow(arrayForHoldingPosts);
   };
 
-  const handleShowMorePosts = () => {
-    loopWithSlice(next, next + postsPerPage);
-    setNext(next + postsPerPage);
-  };
+  // const handleShowMorePosts = () => {
+  //   loopWithSlice(next, next + postsPerPage);
+  //   setNext(next + postsPerPage);
+  // };
 
   useEffect(() => {
     getProducts()
       .then((data) => {
         setProducts(data);
         for (var i = 0; i < 4; ++i) {
-          if (data[i] != undefined) arrayForHoldingPosts[i] = data[i];
+          if (data[i] !== undefined) arrayForHoldingPosts[i] = data[i];
         }
         loopWithSlice(0, postsPerPage);
         // console.log(arrayForHoldingPosts);

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { getProfile, isAuthenticated } from '../auth/index';
-import { putOrder } from './OrderApi';
 // import CreateProfile from '../core/CreateProfile';
 
 const Address = () => {

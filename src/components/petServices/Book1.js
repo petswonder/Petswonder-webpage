@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import logo from '../../images/logo1.png';
-import cs from '../../images/cs.png';
+import React from 'react';
+// import logo from '../../images/logo1.png';
+// import cs from '../../images/cs.png';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
@@ -16,13 +16,13 @@ const Book1 = ({
       </div>
     );
   };
-  const redirectToPage = () => {
-    return (
-      <div>
-        <Redirect to={`/petSnap`} />
-      </div>
-    );
-  };
+  // const redirectToPage = () => {
+  //   return (
+  //     <div>
+  //       <Redirect to={`/petSnap`} />
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className='col-12 col-md-6 mb-4 mx-auto'>
