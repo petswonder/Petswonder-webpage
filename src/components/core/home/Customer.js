@@ -25,7 +25,7 @@ const Customer = () => {
             <div className='col' key={service.id.toString()}>
               <div className='d-flex justify-content-between flex-column px-4 py-3 text-center shadow bg-light'>
                 <div className='text-center h-150'>
-                  <img src={service.img} alt={service.name + '_img'} className="p-3 h-100"/>
+                  <img src={service.img} alt={service.name + '_img'} className="p-3 h-100 w-100"/>
                 </div>
                 <div className='media-body'>
                   <h5 className='heading font-weight-bold my-1'>{service.name}</h5>
