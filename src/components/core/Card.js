@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { addToCart, updateItem } from '../cart/cartApi';
+// import { updateItem } from '../cart/cartApi';
+import { addToCart, getCartSummary, updateItem } from '../auth/api';
 import { isAuthenticated } from '../auth/index';
 import noImage from '../../images/no image.png';
 import outOfStock from '../../images/outofstock.png';
-import { getCart } from '../cart/cartApi';
+// import { getCart } from '../cart/cartApi';
 
 const Card = ({
   data,
@@ -14,13 +15,14 @@ const Card = ({
 }) => {
   // console.log(data)
   const history = useHistory();
-  const [count, setCount] = useState(data.quantity);
+  const [count, setCount] = useState(data.product_quantity);
   const [disable, setDisable] = useState(false);
 
   // const [items, setItems] = useState('');
+  const userNumber = isAuthenticated().data[0].user_mobile
 
-  const productId = data.productId;
-  const id = data.productId;
+  const productId = data.product_id;
+  const id = data.product_id;
 
   const [setRedirect] = useState(false);
 
@@ -28,10 +30,11 @@ const Card = ({
     if (isAuthenticated() === false) {
       history.push('/signin');
     } else {
-      const {user: { userNumber }} = isAuthenticated();
+      // const {user: { userNumber }} = isAuthenticated();
+      // console.log({userNumber, id})
       addToCart({ userNumber, id })
         .then((data) => {
-          if (data.status === 'Product added to cart') {
+          if (data === 'success') {
             history.push('/cart');
           }
         })
@@ -46,12 +49,10 @@ const Card = ({
     if (isAuthenticated() === false) {
       setRedirect(true);
     } else {
-      const {
-        user: { userNumber },
-      } = isAuthenticated();
-      getCart(userNumber).then((data) => {
-        console.log(data.cart);
-      });
+      // const userNumber = isAuthenticated().data[0].user_mobile
+      // getCartSummary(userNumber).then((data) => {
+      //   // console.log(data);
+      // });
     }
   };
 
@@ -67,14 +68,13 @@ const Card = ({
 
   useEffect(() => {
     if (count >= 0) {
-      const {
-        user: { userNumber },
-      } = isAuthenticated();
+      // const userNumber = isAuthenticated().data[0].user_mobile
+      console.log(userNumber)
       isAuthenticated() &&
         cartUpdate &&
         updateItem({ userNumber, productId, count })
           .then((data) => {
-            console.log(data);
+            // console.log(data);
           })
           .catch((err) => {
             alert(err);
@@ -83,7 +83,7 @@ const Card = ({
     if (data.inventory === 0) {
       setDisable(true);
     }
-  }, [count]);
+  }, [count, cartUpdate, data.inventory, productId]);
 
   // const [visible, setVisible] = useState(false);
 
@@ -93,7 +93,7 @@ const Card = ({
     <div className='card h-100 text-center'>
       <Link
         to={{
-          pathname: `/product/${data.productId}`,
+          pathname: `/product/${data.product_id}`,
           state: data,
         }}
       >
@@ -111,12 +111,12 @@ const Card = ({
               }}
             />
           )}
-          {data.productImages ? (
+          {data.product_images ? (
             <img
-              src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.productId}.PNG`}
+              src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${data.product_id}.PNG`}
               style={{ objectFit: 'contain' }}
               className='card-img-top w-100 h-100'
-              alt={`${data.productId}`}
+              alt={`${data.product_id}`}
             />
           ) : (
             <img className='' src={noImage} alt='nodata' />
@@ -126,21 +126,21 @@ const Card = ({
       <div className='card-footer p-0'>
         <Link
           to={{
-            pathname: `/product/${data.productId}`,
+            pathname: `/product/${data.product_id}`,
             state: data,
           }}
         >
-          <h5 className='card-title m-0 font-size-14 py-2'>{data.title}</h5>
+          <h5 className='card-title m-0 font-size-14 py-2'>{data.product_title}</h5>
         </Link>
         <div>
           <span
             className='mr-1 text-dark text-decoration-line-through'
             style={{ textDecoration: 'line-through' }}
           >
-            ₹{data.price}
+            ₹{data.product_price}
           </span>
           <span className='ml-1 font-weight-bold text-secondary'>
-            ₹{data.price - (data.price * data.discount) / 100}
+            ₹{data.product_price - (data.product_price * data.product_discount) / 100}
           </span>
         </div>
         {/* <p className="card-text m-0 font-size-14">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
@@ -156,7 +156,7 @@ const Card = ({
               </button>
               <Link
                 to={{
-                  pathname: `/product/${data.productId}`,
+                  pathname: `/product/${data.product_id}`,
                   state: data,
                 }}
                 className='btn btn-danger btn-sm mb-2'

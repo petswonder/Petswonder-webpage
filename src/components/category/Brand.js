@@ -16,13 +16,14 @@ const Brand = (props) => {
         alert(err);
       });
   };
+  const name = props.match.params.name;
   useEffect(() => {
-    const name = props.match.params.name;
+    // const name = props.match.params.name;
     getProductByName(name);
     window.scrollTo(0, 0);
-  }, []);
+  }, [name]);
 
-  const name = props.match.params.name;
+  
 
   return (
     <>

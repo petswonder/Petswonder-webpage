@@ -6,10 +6,8 @@ import { Link } from 'react-router-dom';
 
 const OrderHistory = () => {
   const [orderHistory, setOrderHistory] = useState([]);
-  const {
-    // jwt,
-    user: { userNumber },
-  } = isAuthenticated();
+  const userNumber = isAuthenticated().data[0].user_mobile
+
 
   useEffect(() => {
     getOrderHistory(userNumber)
@@ -19,7 +17,7 @@ const OrderHistory = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [userNumber]);
 
   const emptyOrderHistory = () => {
     return (

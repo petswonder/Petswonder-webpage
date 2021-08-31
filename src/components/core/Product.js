@@ -7,6 +7,7 @@ import Heading from '../core/Heading';
 
 const Product = ({ product }) => {
   // const {jwt, user:{userNumber}} = isAuthenticated();
+  const userNumber = isAuthenticated().data[0].user_mobile
 
   const [disable, setDisable] = useState(false);
   if (product.inventory === 0) {
@@ -24,10 +25,8 @@ const Product = ({ product }) => {
     if (isAuthenticated() === false) {
       setRedirect(true);
     } else {
-      const {
-        // jwt,
-        user: { userNumber },
-      } = isAuthenticated();
+      
+
       addToCart({ userNumber, id })
         .then((data) => {
           if (data.status === 'Product added to cart') {
@@ -57,32 +56,32 @@ const Product = ({ product }) => {
         <div className='row h-350'>
           <div className='col-12 col-md-6 h-100 text-center'>
             <img
-              src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${product.productId}.PNG`}
-              alt={product.title}
+              src={`https://s3.ap-south-1.amazonaws.com/petswonder.productimages/${product.product_id}.PNG`}
+              alt={product.product_title}
               className='h-100'
             />
           </div>
           <div className='col-12 col-md-6 justify-content-center d-flex flex-column'>
-            <h2 className='m-0'>{product.title}</h2>
-            <p className='m-0 font-size-14 py-1'>{product.description}</p>
+            <h2 className='m-0'>{product.product_title}</h2>
+            <p className='m-0 font-size-14 py-1'>{product.product_description}</p>
             <h3 className='m-0'>
               <span className='mr-2 font-weight-bold'>
-                ₹ {product.price - (product.price * product.discount) / 100}
+                ₹ {product.product_price - (product.product_price * product.product_discount) / 100}
               </span>
               <span
                 className='cross text-bg mr-2'
                 style={{ textDecoration: 'line-through' }}
               >
-                ₹ {product.price}
+                ₹ {product.product_price}
               </span>
               <span className='font-size-18'>
-                ({parseInt(product.discount)}% OFF)
+                ({parseInt(product.product_discount)}% OFF)
               </span>
             </h3>
             <p className='m-0 font-size-14 py-1 d-flex align-items-center'>
               <i className='fas fa-exclamation-circle text-dark mr-2'></i>
               By purchasing this product, you will earn {
-                product.plusPoints
+                product.product_plusPoints
               }{' '}
               pluspoints
             </p>

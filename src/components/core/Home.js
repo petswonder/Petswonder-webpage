@@ -8,22 +8,23 @@ const Home = () => {
   var banners = [];
   const [items, setItems] = useState([]);
   useEffect(() => {
+    const getBanners = () => {
+      BannerApi()
+        .then((data) => {
+          banners = data.filter((ab) => {
+            return ab.content === 'home';
+          });
+          setItems(banners);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
     getBanners();
     window.scrollTo(0, 0);
   }, []);
 
-  const getBanners = () => {
-    BannerApi()
-      .then((data) => {
-        banners = data.filter((ab) => {
-          return ab.content === 'home';
-        });
-        setItems(banners);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  
   return (
     <div>
       {/* <Layout title="Home Page" description="Node React E-Commerce App" className="" > */}

@@ -1,4 +1,6 @@
 import React from 'react';
+// import React,  from 'react'
+
 // import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/core/Home';
@@ -14,6 +16,7 @@ import Pet from './components/category/Pet';
 import PopularProductPage from './components/shopping/PopularProductPage';
 import PayByRazorPay from './components/core/PayByRazorPay';
 import Profile from './components/core/Profile';
+import PetProfile from './components/core/PetProfile';
 import CreateProfile from './components/core/CreateProfile';
 import EditProfile from './components/core/EditProfile';
 import PrivateRoute from './components/auth/PrivateRoute';
@@ -33,8 +36,13 @@ import NotFound from './components/404';
 import Tc from './components/core/Tc';
 import Maintenance from './components/core/Maintenance';
 import SearchPage from './components/core/SearchPage';
+import CreatePet from './components/core/CreatePetProfile';
+import EditPetProfile from './components/core/EditPetProfile'
 
 const App = () => {
+
+    
+
   return (
     // <Maintenance />
     <Router>
@@ -46,6 +54,7 @@ const App = () => {
           <Route exact path='/signin' component={Signin} />
           <Route exact path='/shopping' component={Shopping} />
           <PrivateRoute exact path='/profile' component={Profile} />
+          <PrivateRoute exact path='/petprofile' component={PetProfile} />
           <Route
             exact
             path='/product/:productId'
@@ -69,6 +78,8 @@ const App = () => {
           <PrivateRoute exact path='/payByRazorPay' component={PayByRazorPay} />
           <PrivateRoute exact path='/createProfile' component={CreateProfile} />
           <PrivateRoute exact path='/editProfile' component={EditProfile} />
+          <PrivateRoute exact path='/createPet' component={CreatePet} />
+          <PrivateRoute exact path='/editPetProfile' component={EditPetProfile} />
           <PrivateRoute exact path='/setaddress' component={Address} />
           <PrivateRoute exact path='/payment' component={Payment} />
           <PrivateRoute exact path='/petCare' component={PetServices} />
@@ -95,3 +106,4 @@ const App = () => {
 };
 
 export default App;
+

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { signin, authenticate } from '../auth/index';
+import {  authenticate } from '../auth/index';
+import { signin } from '../auth/api';
 import signin_bg from '../../images/signin_bg.jpg';
 
 const Signin = () => {
@@ -31,8 +32,9 @@ const Signin = () => {
     e.preventDefault();
 
     signin({ userNumber, password }).then((data) => {
-      if (data === 'Success') {
-        authenticate({ data: data, user: { userNumber } }, () => {
+      // console.log(data)
+      if (data.length === 1) {
+        authenticate({data}, () => {
           setFormdata({
             ...formData,
             loading: false,

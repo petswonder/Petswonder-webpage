@@ -1,30 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import { deleteCart, getCart } from './cartApi';
+// import { deleteCart } from './cartApi';
+import { getCart, deleteCart, getCartSummary } from '../auth/api';
 import Card from '../core/Card';
-import CheckOut from '../core/CheckOut';
-import { Link } from 'react-router-dom';
+// import CheckOut from '../core/CheckOut';
+import { Link, useHistory } from 'react-router-dom';
 import { isAuthenticated } from '../auth/index';
 import Heading from '../core/Heading';
 
+const userNumber = isAuthenticated().data[0].user_mobile
+
+
+
 const Cart = () => {
+
+  const [items, setItems] = useState([]);
+  const [summary_data, setSummary] = useState([]);
+
   useEffect(() => {
     const getItemsInCart = () => {
-      getCart(userNumber)
+      // console.log(userNumber)
+      getCart({userNumber})
         .then((data) => {
-          setItems(data.cart);
+          setItems(data);
         })
         .catch((err) => {
-          alert(err);
+          // alert(err);
         });
+        
     };
+    const getPrice = () => {
+      getCartSummary({userNumber})
+        .then((data) => {
+          console.log(data)
+          setSummary(data[0]);
+        })
+        .catch((error) => {
+          // alert(error);
+        });
+    }
     getItemsInCart();
+    getPrice();
   }, []);
-  const [items, setItems] = useState([]);
-
-  const {
-    user: { userNumber },
-  } = isAuthenticated();
-
+  
+  
   const showItems = (items) => {
     return (
       <div>
@@ -73,15 +91,79 @@ const Cart = () => {
       </div>
     );
   };
+
   //delete items in cart
   const deleteItemsInCart = () => {
-    deleteCart(userNumber)
+    deleteCart({userNumber})
       .then((data) => {
-        if (data.status === 'Success') {
+        if (data === 'success') {
           setItems([]);
         }
       })
       .catch((err) => alert(err));
+  };
+
+  const history = useHistory()
+  const handleClick = (e) => {
+    // console.log(profile)
+    if(userNumber === ''){
+      history.push('/profile')
+    }
+    else {
+      history.push('/setaddress')
+    }
+  }
+
+  const showCheckOut = () => {
+    return isAuthenticated() ? (
+      <div>
+        {/* <Link to='/setaddress'> */}
+          <button className='btn btn-success mb-4 mr-4 mt-3' onClick={(e) => handleClick(e)}>
+            Proceed To Buy
+          </button>
+        {/* </Link> */}
+      </div>
+    ) : (
+      <Link to='/signin'>
+        <button className='btn btn-primary'>Signin To CheckOut</button>
+      </Link>
+    );
+  };
+
+  const table = () => {
+    return (
+      summary_data && (
+        <>
+          <h6 className='mb-4'>Your Cart Summary</h6>
+          <div className='bg-white p-2'>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total MRP :</h6>
+              <span>₹{summary_data.mrp}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Discount on MRP :</h6>
+              <span>₹{Math.round(summary_data.discount, 2)}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total Gst :</h6>
+              <span>₹{summary_data.gst}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total Delivery Charge :</h6>
+              <span>₹{summary_data.delivery}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total Amount :</h6>
+              <span>₹{summary_data.mrp - summary_data.discount}</span>
+            </div>
+            <div className='d-flex'>
+              <h6 className='font-weight-bold mr-2'>Total Plus Points :</h6>
+              <span>₹{summary_data.totalPlusPoints}</span>
+            </div>
+          </div>
+        </>
+      )
+    );
   };
 
   return (
@@ -91,11 +173,15 @@ const Cart = () => {
         <div className='row justify-content-center'>
           {items !== undefined &&
             (items.length > 0 ? (
-              <CheckOut products={items} />
+              <div className='col-md-3 order-last'>
+                {/* <h6>Tota</h6> */}
+                {table()}
+                {/* <h2>Total: ${JSON.stringify(total)}</h2> */}
+                {showCheckOut()}
+              </div>
             ) : (
               <div className='d-none'></div>
             ))}
-          {/* <p>show checkout options, payent options</p> */}
 
           <div className='col-md-9 col-12'>
             {items.length > 0 ? showItems(items) : noItemsMessage()}

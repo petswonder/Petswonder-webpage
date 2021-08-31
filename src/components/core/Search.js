@@ -1,6 +1,7 @@
 import React , {useState, useEffect }from 'react'
-import { list} from '../product/apiProduct'
+// import { list} from '../product/apiProduct'
 import { useHistory } from 'react-router-dom';
+import { getAllProducts } from '../auth/api';
 import {
     Form,
     FormControl,
@@ -20,30 +21,32 @@ const SearchComponent = () => {
     useEffect(() => {
         window.localStorage.setItem('searchVal', searchVal)
         const timeout = setTimeout(() => {
+            const handleChange = (searchInput) => {
+                if((searchInput !== '')){
+                    getAllProducts(searchInput)
+                    .then(response=>{
+                        console.log(response)
+                        window.localStorage.setItem('searchProds', JSON.stringify(response))
+                        history.push({ 
+                            pathname: '/search',
+                            searchProducts: response,
+                            searchTerm : searchInput,
+                            state: response
+                        });
+                    })
+                }
+                else{
+                    // history.push('/')
+                }
+                
+            }
             handleChange(searchVal)
         }, 1000)
         return () => clearTimeout(timeout)
-      }, [searchVal])
+      }, [searchVal, history])
 
     
-    const handleChange = (searchInput) => {
-        if((searchInput !== '')){
-            list(searchInput)
-            .then(response=>{
-                window.localStorage.setItem('searchProds', JSON.stringify(response))
-                history.push({ 
-                    pathname: '/search',
-                    searchProducts: response,
-                    searchTerm : searchInput,
-                    state: response
-                });
-            })
-        }
-        else{
-            history.push('/')
-        }
-        
-    }
+    
 
 
     return (

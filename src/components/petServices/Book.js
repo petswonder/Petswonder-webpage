@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../images/logo1.png';
-import { isAuthenticated } from '../auth/index';
+// import { isAuthenticated } from '../auth/index';
 import { saveOrder } from '../cart/cartApi';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
@@ -9,17 +9,16 @@ const Book = ({
   d: { serviceImageUrls, title, price },
   comingSoon = false,
 }) => {
-  const [total, setTotal] = useState({});
+  // const [total, setTotal] = useState({});
   const [order, setOrder] = useState({});
   const [redirect, setRedirect] = useState(false);
   const [d, setData] = useState({});
   const [date, setDate] = useState(undefined);
 
-  const {
-    user: { userNumber },
-  } = isAuthenticated();
+  // const userNumber = isAuthenticated().data[0].user_mobile
 
-  const { totalValue } = total;
+
+  // const { totalValue } = total;
   // const l = total.totalPrice;
   var am = price * 100;
 
@@ -38,7 +37,7 @@ const Book = ({
         razorpaySignature: response.razorpay_signature,
       };
       setData(data);
-      alert(d);
+      // alert(d);
       setRedirect(true);
     },
     theme: {

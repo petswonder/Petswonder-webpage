@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import Product from './Product';
-import {getProducts} from '../product/apiProduct'
+import {getAllProducts} from '../auth/api'
 import { Link } from 'react-router-dom'
 
 
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 const ParticularProduct = (props) => {
   const [relatedProducts, setProducts] = useState([]);
   useEffect(() => {
-    getProducts()
+    getAllProducts()
       .then((data) => {
         setProducts(data.slice(0,4));
         
@@ -17,7 +17,7 @@ const ParticularProduct = (props) => {
       .catch((err) => {
         console.log(err);
       });
-  }, [getProducts]);
+  }, []);
   
 
   
@@ -29,7 +29,7 @@ const ParticularProduct = (props) => {
         <h3 className="m-0">Related Products</h3>
         <div className='row text-center'>
           {relatedProducts.map((p, i) => (
-            <div key={i} className='col-xl-3 col-lg-4 col-6 productmy-3'>
+            <div key={i} className='col-xl-3 col-lg-4 col-6 product my-3'>
               <Card data={p}/>
             </div>
           ))}

@@ -8,24 +8,28 @@ const SubFood = (props) => {
   const [data, setData] = useState([]);
   const icon = icons[`${props.match.params.name}Icon`];
 
-  const getProductByCategory = (name, pet) => {
-    productBySubCategory({ name, pet, sub })
-      .then((response) => {
-        setData(response);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
+  
+
+  const name = props.match.params.name;
+  const pet = props.match.params.pet;
+  const sub = props.match.params.sub;
+
   useEffect(() => {
-    const name = props.match.params.name;
-    const pet = props.match.params.pet;
+    const getProductByCategory = (name, pet) => {
+      productBySubCategory({ name, pet, sub })
+        .then((response) => {
+          setData(response);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    };
     getProductByCategory(name, pet);
     window.scrollTo(0, 0);
-  }, []);
+  }, [name, pet, sub]);
 
-  const sub = props.match.params.sub;
-  const pet = props.match.params.pet;
+  
+  // const pet = props.match.params.pet;
 
   return (
     <div className=''>

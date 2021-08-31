@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import { Link, NavLink, withRouter } from 'react-router-dom';
-import { isAuthenticated, signout } from '../auth/index';
-import { getCart } from '../cart/cartApi';
+import { signout } from '../auth/index';
+import { getCart } from '../auth/api';
 import LogoName from '../../images/LogoName.png';
 import SearchComponent from '../core/Search';
 
@@ -21,7 +21,7 @@ const Menu = ({ history }) => {
     { id: 5, name: 'Pet Snap', auth: true, link: '/petSnap' },
     { id: 6, name: 'Pet Guide', auth: true, link: '/petGuide' },
   ];
-  const jwt = isAuthenticated();
+  const jwt = localStorage.getItem('jwt')
 
   const def_nav_items = nav_items.filter((i) => {
     return i.auth === false;
@@ -30,9 +30,10 @@ const Menu = ({ history }) => {
   const [cart_length, setCount] = useState([]);
 
   if (jwt) {
-    getCart(jwt.user.userNumber).then((data) => {
+    let userNumber = JSON.parse(jwt).data[0].user_mobile
+    getCart({userNumber}).then((data) => {
       // console.log(data.cart);
-      setCount(data.cart.length);
+      setCount(data.length);
     });
   }
 
@@ -134,7 +135,14 @@ const Menu = ({ history }) => {
                           to='/profile'
                           className='font-size-14 py-2'
                         >
-                          Profile
+                          Your Profile
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          as={Link}
+                          to='/petprofile'
+                          className='font-size-14 py-2'
+                        >
+                          Your Pet
                         </Dropdown.Item>
                         <Dropdown.Item
                           to='/signin'

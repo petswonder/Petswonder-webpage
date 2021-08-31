@@ -1,49 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { getProfile, isAuthenticated } from '../auth/index';
-import { getCart } from '../cart/cartApi';
+import {  isAuthenticated } from '../auth/index';
 
-const CheckOut = ({ products }) => {
-  const [total, setTotal] = useState({});
+const CheckOut = ({ products, cartSummary }) => {
+  // console.log(cartSummary)
+  const [summary_data, setSummary] = useState({});
   const [profile, setProfile] = useState({});
+  // setSummary(cartSummary)
 
-  const {
-    user: { userNumber },
-  } = isAuthenticated();
+  // const userNumber = isAuthenticated().data[0].user_mobile
 
-  const getTotalOfCart = () => {
-    getCart(userNumber)
-      .then((data) => {
-        // console.log(data);
-        setTotal(data.cartTotal);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
 
-  useEffect(() => {
-    getTotalOfCart();
-    getProfile(userNumber)
-      .then((data) => {
-        setProfile(data);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }, [total]);
+  // if(summary_data.length == 0){
+  //   getCartSummary({userNumber})
+  //     .then((data) => {
+  //       console.log(data)
+  //       setSummary(data[0]);
+  //     })
+  //     .catch((error) => {
+  //       // alert(error);
+  //     });
+  // }
 
-  useEffect(() => {
-    getProfile(userNumber)
-      .then((data) => {
-        setProfile(data);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }, []);
+  // useEffect(() => {
+    
+    
+  //   // getProfile(userNumber)
+  //   //   .then((data) => {
+  //   //     setProfile(data);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     alert(error);
+  //   //   });
+  // }, [summary_data]);
 
-  const { totalValue } = total;
+  // useEffect(() => {
+  //   getProfile(userNumber)
+  //     .then((data) => {
+  //       setProfile(data);
+  //     })
+  //     .catch((error) => {
+  //       alert(error);
+  //     });
+  // }, []);
+
+  // const { totalValue } = summary_data;
   // var amount = totalValue * 100;
   const history = useHistory()
 
@@ -79,33 +80,33 @@ const CheckOut = ({ products }) => {
 
   const table = () => {
     return (
-      total && (
+      summary_data && (
         <>
           <h6 className='mb-4'>Your Cart Summary</h6>
           <div className='bg-white p-2'>
             <div className='d-flex'>
               <h6 className='font-weight-bold mr-2'>Total MRP :</h6>
-              <span>₹{total.totalValue}</span>
+              <span>₹{summary_data.mrp}</span>
             </div>
             <div className='d-flex'>
               <h6 className='font-weight-bold mr-2'>Discount on MRP :</h6>
-              <span>₹{Math.round(total.discount, 2)}</span>
+              <span>₹{Math.round(summary_data.discount, 2)}</span>
             </div>
             <div className='d-flex'>
               <h6 className='font-weight-bold mr-2'>Total Gst :</h6>
-              <span>₹{total.totalGst}</span>
+              <span>₹{summary_data.gst}</span>
             </div>
             <div className='d-flex'>
               <h6 className='font-weight-bold mr-2'>Total Delivery Charge :</h6>
-              <span>₹{total.totalDeliveryCharge}</span>
+              <span>₹{summary_data.delivery}</span>
             </div>
             <div className='d-flex'>
               <h6 className='font-weight-bold mr-2'>Total Amount :</h6>
-              <span>₹{total.totalPrice}</span>
+              <span>₹{summary_data.totalPrice}</span>
             </div>
             <div className='d-flex'>
               <h6 className='font-weight-bold mr-2'>Total Plus Points :</h6>
-              <span>₹{total.totalPlusPoints}</span>
+              <span>₹{summary_data.totalPlusPoints}</span>
             </div>
           </div>
         </>

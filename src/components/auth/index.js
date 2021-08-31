@@ -51,6 +51,7 @@ export const authenticate = (data, next) => {
   }
 };
 
+
 //signin user
 export const signin = (user) => {
   // console.log(user);
@@ -82,7 +83,7 @@ export const isAuthenticated = () => {
     return JSON.parse(localStorage.getItem('jwt'));
   }
   return false;
-};
+}
 
 //signout
 export const signout = (next) => {

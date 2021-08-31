@@ -18,15 +18,17 @@ const Category = (props) => {
         alert(err);
       });
   };
-  useEffect(() => {
-    const name = props.match.params.name;
-    const pet = props.match.params.pet;
-    getProductByCategory(name, pet);
-    window.scrollTo(0, 0);
-  }, []);
 
   const name = props.match.params.name;
   const pet = props.match.params.pet;
+  useEffect(() => {
+    // const name = props.match.params.name;
+    // const pet = props.match.params.pet;
+    getProductByCategory(name, pet);
+    window.scrollTo(0, 0);
+  }, [name, pet]);
+
+  
 
   const categories = [
     {

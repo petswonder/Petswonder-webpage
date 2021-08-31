@@ -1,69 +1,83 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getProfile, isAuthenticated } from '../auth/index';
+import { isAuthenticated } from '../auth/index';
+import {getProfile} from '../auth/api'
 import sed from '../../images/sed.jpg';
+import PetProfile from './PetProfile';
 
 const Profile = (props) => {
   const [profile, setProfile] = useState({});
-  const {
-    jwt,
-    user: { userNumber },
-  } = isAuthenticated();
+  const userNumber = isAuthenticated().data[0].user_mobile
+
 
   useEffect(() => {
-    getProfile(userNumber)
+    getProfile({userNumber})
       .then((data) => {
-        // debugger
-        setProfile(data);
+        setProfile(data[0]);
       })
       .catch((error) => {
         alert(error);
       });
-  }, []);
+  }, [userNumber]);
 
 
     return (
-        <div className="py-4">
-          <div className="container col-12 col-md-10 profile-about bg-light px-5 py-3">
-          {profile.petName ? (<Fragment>
-                {/* <h5>Account</h5> */}
+        <div className="container">
+        <div className="py-4  row">
+          <div className="col-8 col-md-8 profile-about bg-light py-3 mx-auto">
+          {profile ? (<Fragment>
                 <div className="row">
-                <div className="col-md-8 mx-auto">
-                    <h3>{profile.petName} Details</h3>
+                <div className="w-100 ">
+                    <h3 className="px-2 text-center">Your Profile</h3>
                     <div className="d-flex">
-                        <div className="col-4 font-weight-bold">Pet Name</div>
+                        <div className="col-5 text-right font-weight-bold">Name</div>
                         <span>:</span>
-                        <div className="ml-2">{profile.petName}</div>
+                        <div className="ml-2">{profile.user_name}</div>
                     </div>
-                    <div className="d-flex">
-                        <div className="col-4 font-weight-bold">Pet Gender</div>
+                    {/* <div className="d-flex">
+                        <div className="col-5 text-right font-weight-bold">Pet Gender</div>
                         <span>:</span>
                         <div className="ml-2 text-capitalize">{profile.gender}</div>
-                    </div>
-                    <div className="d-flex">
-                        <div className="col-4 font-weight-bold">Pet Date Of Birth</div>
+                    </div> */}
+                    {/* <div className="d-flex">
+                        <div className="col-5 text-right font-weight-bold">Pet Date Of Birth</div>
                         <span>:</span>
                         <div className="ml-2">{profile.dob}</div>
+                    </div> */}
+                    <div className="d-flex">
+                        <div className="col-5 text-right font-weight-bold">Mobile Number</div>
+                        <span>:</span>
+                        <div className="ml-2">{profile.user_mobile}</div>
                     </div>
                     <div className="d-flex">
-                        <div className="col-4 font-weight-bold">Mobile Number</div>
+                        <div className="col-5 text-right font-weight-bold">Email</div>
                         <span>:</span>
-                        <div className="ml-2">{profile.mobileNumber}</div>
+                        <div className="ml-2">{profile.user_email}</div>
                     </div>
                     <div className="d-flex">
-                        <div className="col-4 font-weight-bold">Email</div>
+                        <div className="col-5 text-right font-weight-bold">Address</div>
                         <span>:</span>
-                        <div className="ml-2">{profile.email}</div>
+                        <div className={`ml-2 ${profile.user_address === null ? "text-muted font-italic" : ""}`}>{profile.user_address === null ? 'Address not added yet' : profile.user_address}</div>
                     </div>
                     <div className="d-flex">
-                        <div className="col-4 font-weight-bold">Address</div>
+                        <div className="col-5 text-right font-weight-bold">District</div>
                         <span>:</span>
-                        <div className="ml-2">{profile.details.addressLine1}<br/>{profile.details.addressLine2}
-                                <br/>
-                                {profile.details.area} - {profile.details.pinCode}
-                                <br/>
-                                {profile.details.state}
-                                </div>
+                        <div className="ml-2">{profile.user_district}</div>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-5 text-right font-weight-bold">City</div>
+                        <span>:</span>
+                        <div className="ml-2">{profile.user_city}</div>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-5 text-right font-weight-bold">State</div>
+                        <span>:</span>
+                        <div className="ml-2">{profile.user_state}</div>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-5 text-right font-weight-bold">Pin Code</div>
+                        <span>:</span>
+                        <div className="ml-2">{profile.user_pincode}</div>
                     </div>
                     <div className="text-center mt-2">
                     <Link to="/editProfile"><button className="btn btn-primary mx-2">Edit Profile</button></Link>
@@ -87,12 +101,10 @@ const Profile = (props) => {
                 
               </>
           )}
-          
-    
-          <div className="icons my-1">
-            
-           
-          </div>
+        </div>
+        {/* <div className="col-6 col-md-6">
+        <PetProfile></PetProfile>
+        </div> */}
         </div>
         </div>
     )

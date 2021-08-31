@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {getProducts} from '../product/apiProduct'
+import {getAllProducts} from '../auth/api'
 import Card from '../core/Card'
 import { Link } from 'react-router-dom'
 
@@ -24,7 +24,7 @@ const PopularProducts = () => {
   // };
 
   useEffect(() => {
-    getProducts()
+    getAllProducts()
       .then((data) => {
         setProducts(data);
         for (var i = 0; i < 4; ++i) {
@@ -36,7 +36,7 @@ const PopularProducts = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [getProducts]);
+  }, [getAllProducts]);
 
 
 

@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { deleteCart, getCart, getTotal, saveOrder } from '../cart/cartApi';
+import { deleteCart, getCart, getCartSummary, saveOrder } from '../auth/api';
 import { isAuthenticated } from '../auth/index';
 import logo from '../../images/logo1.png';
 import Heading from './Heading';
 
 const Payment = (props) => {
   // debugger
-  const [total, setTotal] = useState({});
+  const [total, setTotal] = useState([]);
   const [order] = useState({});
   const [redirect, setRedirect] = useState(false);
   const [d, setData] = useState({});
   const [items, setItems] = useState([]);
   const address = props.location.orderAddress.formData;
+  console.log(address)
+  var products = [];
   // debugger
 
-  const {
-    user: { userNumber },
-  } = isAuthenticated();
+  const userNumber = isAuthenticated().data[0].user_mobile
+  // console.log(userNumber)
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://checkout.razorpay.com/v1/checkout.js';
@@ -26,28 +28,54 @@ const Payment = (props) => {
   }, []);
 
   useEffect(() => {
-    getTotalOfCart();
-    // getOrderId();
-    getItemsInCart();
+    
+    const getTotalOfCart = () => {
+      getCartSummary({userNumber})
+        .then((res) => {
+          // console.log(res)
+          let temp = res[0]
+          setTotal(temp)
+          
+          for (var i = 0; i < items.length; i++) {
+            products.push({
+              productId: items[i].product_id,
+              quantityOrdered: items[i].product_quantity,
+              sellerNumber: items[i].product_sellerNumber,
+              singleItemPrice: items[i].product_price,
+              totalItemsPrice: total.mrp,
+              discount: total.discount,
+              priceAfterDiscount: total.mrp = total.discount,
+              productTitle: items[i].product_title,
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    const getItemsInCart = () => {
+      getCart({userNumber})
+        .then((data) => {
+          setItems(data);
+          getTotalOfCart();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getItemsInCart()
+    
   }, []);
 
-  const getItemsInCart = () => {
-    getCart(userNumber)
-      .then((data) => {
-        setItems(data.cart);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
+  
 
-  const { totalPrice } = total;
-  const l = totalPrice;
-  var am = l * 100;
+  // const { totalPrice } = total;
+  // const l = total.mrp;
+  // var am = l * 100;
 
   const options = {
     key: 'rzp_live_1P3qqDk71fnJ6t',
-    amount: am, //  =amount to be paid
+    amount: (total.mrp - total.discount) * 100, //  =amount to be paid
     currency: 'INR',
     name: 'PetsWonder',
     order_id: order.id,
@@ -72,12 +100,7 @@ const Payment = (props) => {
 
   var rzp1 = new window.Razorpay(options);
   rzp1.on('payment.failed', function (response) {
-    alert(response.error.description);
-    // alert(response.error.source);
-    // alert(response.error.step);
-    // alert(response.error.reason);
-    // alert(response.error.metadata.order_id);
-    // alert(response.error.metadata.payment_id);
+    console.log(response.error.description)
   });
 
   const openPayModal = (e) => {
@@ -85,30 +108,9 @@ const Payment = (props) => {
     e.preventDefault();
   };
 
-  const getTotalOfCart = () => {
-    getTotal(userNumber)
-      .then((data) => {
-        setTotal(data);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
+  
 
-  var products = [];
-
-  for (var i = 0; i < items.length; i++) {
-    products.push({
-      productId: items[i].productId,
-      quantityOrdered: items[i].quantity,
-      sellerNumber: items[i].sellerNumber,
-      singleItemPrice: items[i].price,
-      totalItemsPrice: total.totalValue,
-      discount: total.discount,
-      priceAfterDiscount: total.totalPrice,
-      productTitle: items[i].title,
-    });
-  }
+  
 
   //Give the orderCOD
   const giveOrderCod = () => {
@@ -116,19 +118,20 @@ const Payment = (props) => {
     if(userNumber !== 0){
       const data = {
         orderedBy: userNumber,
+        orderedTo : '',
         totalPrice: total.totalPrice,
         paymentType: 'COD',
         deliveryCharge: total.totalDeliveryCharge,
-        address: {
-          latitude: '0',
-          longitude: '0',
-          state: address.state,
-          city: address.city,
-          addressLine1: address.addressLine1,
-          addressLine2: address.addressLine2,
-          pinCode: address.pinCode,
-          area: address.area,
-        },
+        // address: {
+        //   latitude: '0',
+        //   longitude: '0',
+        //   state: address.state,
+        //   city: address.city,
+        //   addressLine1: address.addressLine1,
+        //   addressLine2: address.addressLine2,
+        //   pinCode: address.pinCode,
+        //   area: address.area,
+        // },
         paymentStatus: 'Pending',
         orderStatus: 'pending',
   
@@ -144,10 +147,10 @@ const Payment = (props) => {
           setRedirect(true);
           deleteCart(userNumber);
         })
-        .catch((err) => alert(err));
+        .catch((err) => console.log(err));
     }
     else{
-      alert('Not at this moment!!!')
+      // alert('Not at this moment!!!')
     }
     
   };
@@ -184,7 +187,7 @@ const Payment = (props) => {
         setRedirect(true);
         deleteCart(userNumber);
       })
-      .catch((err) => alert(err));
+      .catch((err) => console.log(err));
   };
 
   const handleCOD = () => {
@@ -217,7 +220,7 @@ const Payment = (props) => {
           </tr>
           <tr>
             <th scope='row'>Total MRP</th>
-            <td>₹{total.totalValue}</td>
+            <td>₹{total.mrp}</td>
           </tr>
           <tr>
             <th scope='row'>Discount on MRP</th>
@@ -225,19 +228,19 @@ const Payment = (props) => {
           </tr>
           <tr>
             <th scope='row'>Total Gst</th>
-            <td>₹{total.totalGst}</td>
+            <td>₹{total.gst}</td>
           </tr>
           <tr>
             <th scope='row'>Total Delivery Charge</th>
-            <td>₹{total.totalDeliveryCharge}</td>
+            <td>₹{total.delivery}</td>
           </tr>
           <tr>
             <th scope='row'>Total Amount</th>
-            <td style={{ fontWeight: 'bold' }}>₹{total.totalPrice}</td>
+            <td style={{ fontWeight: 'bold' }}>₹{total.mrp - total.discount}</td>
           </tr>
           <tr>
             <th scope='row'>Total Plus Points</th>
-            <td>{total.totalPlusPoints}</td>
+            <td>{total.plus_points}</td>
           </tr>
         </tbody>
       </table>
@@ -250,13 +253,8 @@ const Payment = (props) => {
 
   return (
     <div className='container'>
-      {/* {d && <UncontrolledAlert color='info'>{d}</UncontrolledAlert>} */}
-      <br />
-      {/* <h2 className="mt-8 payment"></h2> */}
       <Heading text='Make Payment' />
-      <br />
       {table()}
-      {/* <h2>Total: ${JSON.stringify(total)}</h2> */}
       {showCheckOut()}
       {redirect && redirectToCart()}
     </div>

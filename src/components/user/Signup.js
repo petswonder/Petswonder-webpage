@@ -3,12 +3,14 @@ import { Link, Redirect } from 'react-router-dom';
 import signin_bg from '../../images/signin_bg.jpg';
 
 import {
-  sentOTP,
-  validateOTP,
-  registerUser,
+  // sentOTP,
+  // validateOTP,
+  // registerUser,
   isAuthenticated,
   authenticate,
 } from '../auth/index';
+
+import {sendOTP, validateOTP, registerUser} from '../auth/api'
 
 const Signup = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -40,7 +42,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sentOTP(phoneNumber).then((data) => {
+    sendOTP(phoneNumber).then((data) => {
       if (data === undefined) {
         setError('User Already exists');
       } else {
@@ -51,11 +53,10 @@ const Signup = () => {
 
   const handleOTP = (e) => {
     e.preventDefault();
-
-    validateOTP({ phoneNumber, otp }).then((data) => {
-      if (data === 'Entered Otp is valid') {
+    validateOTP(phoneNumber, otp).then((data) => {
+      if (data === 'success') {
         setRegister(true);
-      } else if (data === 'Entered Otp is NOT valid') {
+      } else if (data === 'failed') {
         setError('Entered Otp is NOT valid');
       }
     });
@@ -69,7 +70,7 @@ const Signup = () => {
     e.preventDefault();
     registerUser({ phoneNumber, password, name, email }).then((data) => {
       // debugger
-      if (data === 'User added successfully') {
+      if (data === 'success') {
         authenticate(
           { data: data, user: { userNumber: phoneNumber, name } },
           () => {
@@ -77,7 +78,7 @@ const Signup = () => {
           }
         );
       } else {
-        alert('failed');
+        // alert('failed');
       }
     });
   };

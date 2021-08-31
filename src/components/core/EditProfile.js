@@ -1,70 +1,65 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { editProfile, isAuthenticated, getProfile } from '../auth/index';
+import { isAuthenticated } from '../auth/index';
+import { editProfile, getProfile } from '../auth/api';
 
 const EditProfile = () => {
-  const {
-    user: { userNumber },
-  } = isAuthenticated();
+  const userNumber = isAuthenticated().data[0].user_mobile
+
   const [formData, setFormData] = useState({
-    petName: '',
+    userName: '',
     mobileNumber: userNumber,
     email: '',
-    gender: '',
-    dob: '',
   });
-  const [details, setDetails] = useState({
-    latitude: '',
-    longitude: '',
-    state: '',
-    city: '',
-    addressLine1: '',
-    addressLine2: '',
-    pinCode: '',
-    area: '',
-  });
+  // const [details, setDetails] = useState({
+  //   latitude: '',
+  //   longitude: '',
+  //   state: '',
+  //   city: '',
+  //   addressLine1: '',
+  //   addressLine2: '',
+  //   pinCode: '',
+  //   area: '',
+  // });
 
-  const { petName, mobileNumber, email, gender, dob } = formData;
+  const { userName, mobileNumber, email, address, district, city, state, pincode } = formData;
 
-  const { city, state, pinCode, area, addressLine2, addressLine1 } = details;
+  // const { city, state, pinCode, area, addressLine2, addressLine1 } = details;
 
   const [redirect, setRediect] = useState(false);
 
   useEffect(() => {
-    getProfile(userNumber)
+    getProfile({userNumber})
       .then((profile) => {
         setFormData({
-          petName: !profile.petName ? '' : profile.petName,
-          mobileNumber: !profile.mobileNumber ? '' : profile.mobileNumber,
-          email: !profile.email ? '' : profile.email,
-          gender: !profile.gender ? '' : profile.gender,
-          dob: !profile.dob ? '' : profile.dob,
-        });
-
-        setDetails({
-          city: !profile.details ? '' : profile.details.city,
-          state: !profile.details ? '' : profile.details.state,
-          pinCode: !profile.details ? '' : profile.details.pinCode,
-          area: !profile.details ? '' : profile.details.area,
-          addressLine2: !profile.details ? '' : profile.details.addressLine2,
-          addressLine1: !profile.details ? '' : profile.details.addressLine1,
+          userName: !profile[0].user_name ? '' : profile[0].user_name,
+          mobileNumber: !profile[0].user_mobile ? '' : profile[0].user_mobile,
+          email: !profile[0].user_email ? '' : profile[0].user_email,
+          address : !profile[0].user_address ? '' : profile[0].user_address,
+          district : !profile[0].user_district ? '' : profile[0].user_district,
+          city : !profile[0].user_city ? '' : profile[0].user_city,
+          state : !profile[0].user_state ? '' : profile[0].user_state,
+          pincode : !profile[0].user_pincode ? '' : profile[0].user_pincode,
         });
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [getProfile]);
+  }, [ userNumber]);
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  const detailsChange = (e) =>
-    setDetails({ ...details, [e.target.name]: e.target.value });
+  // const detailsChange = (e) =>
+  //   setDetails({ ...details, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    editProfile({ petName, mobileNumber, email, gender, dob, details })
+    editProfile({ userName, mobileNumber, email, address, district, city, state, pincode })
       .then((data) => {
-        setRediect(true);
+        if(data === 'success'){
+          setRediect(true);
+        }
+        
       })
       .catch((error) => {
         console.log(error);
@@ -78,25 +73,25 @@ const EditProfile = () => {
   return (
     <div className='container profile-about bg-light p-5'>
       {redirectTo()}
-      <h1 className='large'>Edit Your Pet's Profile</h1>
+      <h1 className='large'>Edit Your Profile</h1>
 
-      <p className='lead'>
+      {/* <p className='lead'>
         <i className='fas fa-user'></i> Tell Us More about you!
-      </p>
+      </p> */}
       {/* <small>* = required field</small> */}
       <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='row'>
           <div className='form-group row col-md-6'>
             <label htmlFor='' className='col-sm-12 control-label'>
-              Pet Name
+              Name
             </label>
             <div className='col-sm-9 controls'>
               <input
                 className='ml-1 col-md-12 effect-11'
                 type='text'
                 placeholder='Pet Name'
-                name='petName'
-                value={petName}
+                name='userName'
+                value={userName}
                 onChange={(e) => onChange(e)}
                 required
               />
@@ -135,7 +130,7 @@ const EditProfile = () => {
               />
             </div>
           </div>
-          <div className='form-group row col-md-6'>
+          {/* <div className='form-group row col-md-6'>
             <label htmlFor='' className='col-sm-12 control-label'>
               Pet Gender
             </label>
@@ -152,8 +147,8 @@ const EditProfile = () => {
                 <option value='female'>Female</option>
               </select>
             </div>
-          </div>
-          <div className='form-group row col-md-6'>
+          </div> */}
+          {/* <div className='form-group row col-md-6'>
             <label htmlFor='' className='col-sm-12 control-label'>
               Pet DOB
             </label>
@@ -168,20 +163,20 @@ const EditProfile = () => {
                 required
               />
             </div>
-          </div>
+          </div> */}
 
           <div className='form-group row col-md-6'>
             <label htmlFor='' className='col-sm-12 control-label'>
-              Address1
+              Address
             </label>
             <div className='col-sm-9 controls'>
               <input
                 className='ml-1 col-md-12'
                 type='text'
-                placeholder='Address1'
-                name='addressLine1'
-                value={addressLine1}
-                onChange={(e) => detailsChange(e)}
+                placeholder='Address'
+                name='address'
+                value={address}
+                onChange={(e) => onChange(e)}
                 required
               />
             </div>
@@ -189,33 +184,16 @@ const EditProfile = () => {
 
           <div className='form-group row col-md-6'>
             <label htmlFor='' className='col-sm-12 control-label'>
-              Adress2
+              District
             </label>
             <div className='col-sm-9 controls'>
               <input
                 className='ml-1 col-md-12'
                 type='text'
-                placeholder='Adress2'
-                name='addressLine2'
-                value={addressLine2}
-                onChange={(e) => detailsChange(e)}
-                required
-              />
-            </div>
-          </div>
-
-          <div className='form-group row col-md-6'>
-            <label htmlFor='' className='col-sm-12 control-label'>
-              State
-            </label>
-            <div className='col-sm-9 controls'>
-              <input
-                className='ml-1 col-md-12'
-                type='text'
-                placeholder='State'
-                name='state'
-                value={state}
-                onChange={(e) => detailsChange(e)}
+                placeholder='District'
+                name='district'
+                value={district}
+                onChange={(e) => onChange(e)}
                 required
               />
             </div>
@@ -232,13 +210,30 @@ const EditProfile = () => {
                 placeholder='City'
                 name='city'
                 value={city}
-                onChange={(e) => detailsChange(e)}
+                onChange={(e) => onChange(e)}
                 required
               />
             </div>
           </div>
 
           <div className='form-group row col-md-6'>
+            <label htmlFor='' className='col-sm-12 control-label'>
+              State
+            </label>
+            <div className='col-sm-9 controls'>
+              <input
+                className='ml-1 col-md-12'
+                type='text'
+                placeholder='State'
+                name='state'
+                value={state}
+                onChange={(e) => onChange(e)}
+                required
+              />
+            </div>
+          </div>
+
+          {/* <div className='form-group row col-md-6'>
             <label htmlFor='' className='col-sm-12 control-label'>
               Area
             </label>
@@ -253,7 +248,7 @@ const EditProfile = () => {
                 required
               />
             </div>
-          </div>
+          </div> */}
 
           <div className='form-group row col-md-6'>
             <label htmlFor='' className='col-sm-12 control-label'>
@@ -263,10 +258,10 @@ const EditProfile = () => {
               <input
                 className='ml-1 col-md-12'
                 type='number'
-                placeholder='Pincode'
-                name='pinCode'
-                value={pinCode}
-                onChange={(e) => detailsChange(e)}
+                placeholder='Pin code'
+                name='pincode'
+                value={pincode}
+                onChange={(e) => onChange(e)}
                 required
               />
             </div>

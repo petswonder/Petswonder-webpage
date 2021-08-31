@@ -6,10 +6,8 @@ import { getProfile, isAuthenticated } from '../auth/index';
 const Address = () => {
   const [profile, setProfile] = useState({});
   const [redirect, setRedirect] = useState(false);
-  const {
-    // jwt,
-    user: { userNumber },
-  } = isAuthenticated();
+  const userNumber = isAuthenticated().data[0].user_mobile
+
   const [formData, setFormData] = useState({
     mobileNumber: '',
     email: '',
@@ -18,7 +16,6 @@ const Address = () => {
     pinCode: '',
     area: '',
     addressLine2: '',
-    addressLine1: '',
     longitude: '',
     latitude: '',
   });
@@ -43,7 +40,7 @@ const Address = () => {
         alert(error);
       });
     window.scrollTo(0, 0);
-  }, []);
+  }, [userNumber]);
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -61,39 +58,20 @@ const Address = () => {
   const address = () => {
     return (
       <div className='address'>
-        <h5>Default Address</h5>
+        
         <div className='address-block'>
           {/* {console.log(profile)} */}
           {profile.mobileNumber > 0 && (
-            <table className='table table-borderless table-light'>
-              <tbody>
-                <tr>
-                  <th scope='row'>{profile.petName}</th>
-                </tr>
-                <tr>
-                  <th scope='row'>{profile.email}</th>
-                </tr>
-                <tr>
-                  <th scope='row'>{profile.mobileNumber}</th>
-                  <td></td>
-                </tr>
-                {profile.details && (
-                  <tr>
-                    <th scope='row'>
-                      {profile.details.addressLine1}
-                      <br />
-                      {profile.details.addressLine2}
-                      <br />
-                      {profile.details.area} - {profile.details.pinCode}
-                      <br />
-                      {profile.details.city}
-                      <br />
-                      {profile.details.state}
-                    </th>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+            <div className="bg-light p-2">
+              <p className="fs-12 mb-0">Email : {profile.email}</p>
+              <p className="fs-12 mb-0">Mobile : {profile.mobileNumber}</p>
+              <p className="fs-12 mb-0">Address :</p>
+              <p className="fs-12 mb-0">{profile.details.addressLine1}</p>
+              <p className="fs-12 mb-0">{profile.details.state} - {profile.details.pinCode}</p>
+              <button className='btn btn-warning btn-md my-3' onClick={handleClick}>
+                Use Default Address
+              </button>
+            </div>
           )}
         </div>
       </div>
@@ -115,27 +93,27 @@ const Address = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container py-2'>
+      <h5 className="my-2 mb-1">Add Address Details</h5>
+      <div className="row py-3">
+        
       {profile.mobileNumber > 0 && (
-        <div className='col-md-6 mx-auto'>
+        <div className='col-md-5'>
           {address()}
-          <button className='btn btn-warning btn-md my-1' onClick={handleClick}>
-            Submit this address 👇
-          </button>
         </div>
       )}
 
-      <div className='container profile-about bg-light p-5 mt-5'>
-        <h3 className='mb-3'>Add Address</h3>
-        <form className='form' onSubmit={(e) => onSubmit(e)}>
-          <div className='row'>
-            <div className='form-group row col-md-6'>
+      <div className='col-md-7'>
+        {/* <h5 className=''>Add Address</h5> */}
+        <form className='form bg-light p-2' onSubmit={(e) => onSubmit(e)}>
+          <div className='row w-100'>
+            <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
                 Mobile Number
               </label>
-              <div className='controls col-12 col-lg-10'>
+              <div className='controls col-12'>
                 <input
-                  className='ml-1 col-md-12'
+                  className='col-md-12'
                   type='number'
                   placeholder='Mobile Number'
                   name='mobileNumber'
@@ -145,13 +123,13 @@ const Address = () => {
                 />
               </div>
             </div>
-            <div className='form-group row col-md-6'>
+            <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
                 Email
               </label>
-              <div className='controls col-12 col-lg-10'>
+              <div className='controls col-12'>
                 <input
-                  className='ml-1 col-md-12'
+                  className='col-md-12'
                   type='email'
                   placeholder='Email'
                   name='email'
@@ -162,15 +140,15 @@ const Address = () => {
               </div>
             </div>
 
-            <div className='form-group row col-md-6'>
+            <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
-                Address1
+                Address
               </label>
-              <div className='controls col-12 col-lg-10'>
+              <div className='controls col-12'>
                 <input
-                  className='ml-1 col-md-12'
+                  className='col-md-12'
                   type='text'
-                  placeholder='Address1'
+                  placeholder='Address'
                   name='addressLine1'
                   value={addressLine1}
                   onChange={(e) => onChange(e)}
@@ -179,13 +157,13 @@ const Address = () => {
               </div>
             </div>
 
-            <div className='form-group row col-md-6'>
+            {/* <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
                 Adress2
               </label>
-              <div className='controls col-12 col-lg-10'>
+              <div className='controls col-12'>
                 <input
-                  className='ml-1 col-md-12'
+                  className='col-md-12'
                   type='text'
                   placeholder='Adress2'
                   name='addressLine2'
@@ -194,15 +172,30 @@ const Address = () => {
                   required
                 />
               </div>
+            </div> */}
+            <div className='form-group col-md-6'>
+              <label htmlFor='' className='col-sm-12 control-label'>
+                City
+              </label>
+              <div className='controls col-12'>
+                <input
+                  className='col-md-12'
+                  type='text'
+                  placeholder='City'
+                  name='city'
+                  value={city}
+                  onChange={(e) => onChange(e)}
+                  required
+                />
+              </div>
             </div>
-
-            <div className='form-group row col-md-6'>
+            <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
                 State
               </label>
-              <div className='controls col-12 col-lg-10'>
+              <div className='controls col-12'>
                 <input
-                  className='ml-1 col-md-12'
+                  className='col-md-12'
                   type='text'
                   placeholder='State'
                   name='state'
@@ -213,30 +206,15 @@ const Address = () => {
               </div>
             </div>
 
-            <div className='form-group row col-md-6'>
-              <label htmlFor='' className='col-sm-12 control-label'>
-                City
-              </label>
-              <div className='controls col-12 col-lg-10'>
-                <input
-                  className='ml-1 col-md-12'
-                  type='text'
-                  placeholder='City'
-                  name='city'
-                  value={city}
-                  onChange={(e) => onChange(e)}
-                  required
-                />
-              </div>
-            </div>
+            
 
-            <div className='form-group row col-md-6'>
+            {/* <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
                 Area
               </label>
-              <div className='controls col-12 col-lg-10'>
+              <div className='controls col-12'>
                 <input
-                  className='ml-1 col-md-12'
+                  className='col-md-12'
                   type='text'
                   placeholder='Area'
                   name='area'
@@ -245,15 +223,15 @@ const Address = () => {
                   required
                 />
               </div>
-            </div>
+            </div> */}
 
-            <div className='form-group row col-md-6'>
+            <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
                 Pincode
               </label>
-              <div className='controls col-12 col-lg-10'>
+              <div className='controls col-12'>
                 <input
-                  className='ml-1 col-md-12'
+                  className='col-md-12'
                   type='number'
                   placeholder='Pincode'
                   name='pinCode'
@@ -273,10 +251,13 @@ const Address = () => {
               },
             }}
           > */}
+          <div className="col">
             <input type='submit' className='btn btn-warning btn-md my-1' />
+            </div>
           {/* </Link> */}
           {/* <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link> */}
         </form>
+      </div>
       </div>
     </div>
   );

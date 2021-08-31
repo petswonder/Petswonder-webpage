@@ -1,7 +1,7 @@
 import React from 'react';
 // import logo from '../../images/logo1.png';
 // import cs from '../../images/cs.png';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 
