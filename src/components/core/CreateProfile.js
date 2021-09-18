@@ -1,43 +1,47 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { createProfile, isAuthenticated } from '../auth/index';
+import { isAuthenticated } from '../auth/index';
+import { editProfile } from '../auth/api';
 import Heading from './Heading';
 
 const CreateProfile = () => {
-  const userNumber = isAuthenticated().data[0].user_mobile
-
+  const userData = isAuthenticated().user
+  const userNumber = userData.userNumber
   const [formData, setFormData] = useState({
-    petName: '',
+    profileName: userData.name,
     mobileNumber: userNumber,
-    email: '',
-    petGender: '',
-    petDob: '',
+    email: userData.email,
+    address : userData.address,
+    district : userData.district,
+    city : userData.city,
+    state : userData.state,
+    pincode : userData.pincode
   });
-  const [details, setDetails] = useState({
-    latitude: '',
-    longitude: '',
-    state: '',
-    city: '',
-    addressLine1: '',
-    addressLine2: '',
-    pinCode: '',
-    area: '',
-  });
+  // const [details, setDetails] = useState({
+  //   latitude: '',
+  //   longitude: '',
+  //   state: '',
+  //   city: '',
+  //   addressLine1: '',
+  //   addressLine2: '',
+  //   pinCode: '',
+  //   area: '',
+  // });
 
-  const { petName, mobileNumber, email, petGender, petDob } = formData;
+  const { profileName, mobileNumber, email, address, district, city, state, pincode } = formData;
 
-  const { city, state, pinCode, area, addressLine2, addressLine1 } = details;
+  // const { city, state, pinCode, area, addressLine2, addressLine1 } = details;
 
   const [redirect, setRediect] = useState(false);
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  const detailsChange = (e) =>
-    setDetails({ ...details, [e.target.name]: e.target.value });
+  // const detailsChange = (e) =>
+  //   setDetails({ ...details, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createProfile({ petName, mobileNumber, email, petGender, petDob, details })
+    editProfile({ profileName, mobileNumber, email, address, district, city, state, pincode })
       .then((data) => {
         // debugger
         setRediect(true);
@@ -55,7 +59,7 @@ const CreateProfile = () => {
     <div className='py-4'>
       <div className='container profile-about bg-light p-4'>
         {redirectTo()}
-        <Heading text="Create your Pet's Profile" />
+        <Heading text="Create your Profile" />
 
         {/* <small>* = required field</small> */}
 
@@ -63,15 +67,15 @@ const CreateProfile = () => {
           <div className='row'>
             <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
-                Pet Name
+                Name
               </label>
               <div className='col-sm-9 controls'>
                 <input
                   className='ml-1 col-md-12'
                   type='text'
-                  placeholder='Pet Name'
-                  name='petName'
-                  value={petName}
+                  placeholder='Name'
+                  name='profileName'
+                  value={profileName}
                   onChange={(e) => onChange(e)}
                   required
                 />
@@ -111,83 +115,32 @@ const CreateProfile = () => {
             </div>
             <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
-                Pet Gender
-              </label>
-              <div className='col-sm-9 controls'>
-                <select
-                  className='ml-1 col-md-12'
-                  name='petGender'
-                  value={petGender}
-                  onChange={(e) => onChange(e)}
-                  required
-                >
-                  <option value='0'>* Select Gender</option>
-                  <option value='Male'>Male</option>
-                  <option value='Female'>Female</option>
-                </select>
-              </div>
-            </div>
-            <div className='form-group col-md-6'>
-              <label htmlFor='' className='col-sm-12 control-label'>
-                Pet DOB
+                Address
               </label>
               <div className='col-sm-9 controls'>
                 <input
                   className='ml-1 col-md-12'
-                  type='date'
-                  placeholder='Pet Date Of Birth'
-                  name='petDob'
-                  value={petDob}
+                  type='text'
+                  placeholder='Address'
+                  name='address'
+                  value={address}
                   onChange={(e) => onChange(e)}
                   required
                 />
               </div>
             </div>
-
             <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
-                Address1
+                District
               </label>
               <div className='col-sm-9 controls'>
                 <input
                   className='ml-1 col-md-12'
                   type='text'
-                  placeholder='Address1'
-                  name='addressLine1'
-                  value={addressLine1}
-                  onChange={(e) => detailsChange(e)}
-                  required
-                />
-              </div>
-            </div>
-            <div className='form-group col-md-6'>
-              <label htmlFor='' className='col-sm-12 control-label'>
-                Adress2
-              </label>
-              <div className='col-sm-9 controls'>
-                <input
-                  className='ml-1 col-md-12'
-                  type='text'
-                  placeholder='Adress2'
-                  name='addressLine2'
-                  value={addressLine2}
-                  onChange={(e) => detailsChange(e)}
-                  required
-                />
-              </div>
-            </div>
-            <div className='form-group col-md-6'>
-              <label htmlFor='' className='col-sm-12 control-label'>
-                State
-              </label>
-              <div className='col-sm-9 controls'>
-                <input
-                  className='ml-1 col-md-12'
-                  type='text'
-                  placeholder='State'
-                  name='state'
-                  value={state}
-                  onChange={(e) => detailsChange(e)}
+                  placeholder='District'
+                  name='district'
+                  value={district}
+                  onChange={(e) => onChange(e)}
                   required
                 />
               </div>
@@ -203,27 +156,29 @@ const CreateProfile = () => {
                   placeholder='City'
                   name='city'
                   value={city}
-                  onChange={(e) => detailsChange(e)}
+                  onChange={(e) => onChange(e)}
                   required
                 />
               </div>
             </div>
+            
             <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
-                Area
+                State
               </label>
               <div className='col-sm-9 controls'>
                 <input
                   className='ml-1 col-md-12'
                   type='text'
-                  placeholder='Area'
-                  name='area'
-                  value={area}
-                  onChange={(e) => detailsChange(e)}
+                  placeholder='State'
+                  name='state'
+                  value={state}
+                  onChange={(e) => onChange(e)}
                   required
                 />
               </div>
             </div>
+            
 
             <div className='form-group col-md-6'>
               <label htmlFor='' className='col-sm-12 control-label'>
@@ -234,18 +189,21 @@ const CreateProfile = () => {
                   className='ml-1 col-md-12'
                   type='number'
                   placeholder='Pincode'
-                  name='pinCode'
-                  value={pinCode}
-                  onChange={(e) => detailsChange(e)}
+                  name='pincode'
+                  value={pincode}
+                  onChange={(e) => onChange(e)}
                   required
                 />
               </div>
             </div>
           </div>
-          <button type='submit' className='btn btn-warning btn-md my-1 mr-3'>Submit</button>
-          <Link className='btn btn-light my-1 btn-md btn-dark' to='/profile'>
-            Go Back
-          </Link>
+          <div className="col-md-12">
+            <button type='submit' className='btn btn-warning btn-md my-1 mr-3'>Submit</button>
+            <Link className='btn btn-light my-1 btn-md btn-dark' to='/profile'>
+              Go Back
+            </Link>
+          </div>
+          
         </form>
       </div>
     </div>

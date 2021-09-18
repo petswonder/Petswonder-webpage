@@ -1,6 +1,6 @@
 
 
-const apiBaseUrl = 'http://localhost:8899'
+const apiBaseUrl = 'http://localhost:5000'
 
 
 
@@ -115,13 +115,27 @@ export const sendOTP = (phoneNumber) => {
       })
   }
 
-  export const createPet = (userNumber) => {
+  export const createPet = (data) => {
     //   console.log(JSON.stringify(userData))
       return fetch(`${apiBaseUrl}/createpetprofile`,
       {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(userNumber)
+          body: JSON.stringify(data)
+      }).then((response) => {
+        return response.json();
+      }).catch((err) => {
+        console.log(err)
+      })
+  }
+
+  export const editPet = (data) => {
+      console.log(JSON.stringify(data))
+      return fetch(`${apiBaseUrl}/editpetprofile`,
+      {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
       }).then((response) => {
         return response.json();
       }).catch((err) => {

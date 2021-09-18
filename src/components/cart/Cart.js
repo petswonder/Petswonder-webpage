@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { isAuthenticated } from '../auth/index';
 import Heading from '../core/Heading';
 
-const userNumber = isAuthenticated().data[0].user_mobile
+const userNumber = isAuthenticated() ? isAuthenticated().user.userNumber : ''
 
 
 
@@ -31,7 +31,6 @@ const Cart = () => {
     const getPrice = () => {
       getCartSummary({userNumber})
         .then((data) => {
-          console.log(data)
           setSummary(data[0]);
         })
         .catch((error) => {
@@ -40,7 +39,7 @@ const Cart = () => {
     }
     getItemsInCart();
     getPrice();
-  }, []);
+  }, [summary_data]);
   
   
   const showItems = (items) => {

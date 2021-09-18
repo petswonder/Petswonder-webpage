@@ -17,7 +17,7 @@ const Payment = (props) => {
   var products = [];
   // debugger
 
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
   // console.log(userNumber)
 
   useEffect(() => {
@@ -32,7 +32,6 @@ const Payment = (props) => {
     const getTotalOfCart = () => {
       getCartSummary({userNumber})
         .then((res) => {
-          // console.log(res)
           let temp = res[0]
           setTotal(temp)
           
@@ -117,10 +116,12 @@ const Payment = (props) => {
     // debugger
     if(userNumber !== 0){
       const data = {
-        orderedBy: userNumber,
-        orderedTo : '',
+        user_mobile: userNumber,
+        order_to : '',
+        order_date: new Date(),
+        cart_id: '',
         totalPrice: total.totalPrice,
-        paymentType: 'COD',
+        payment_type: 'COD',
         deliveryCharge: total.totalDeliveryCharge,
         // address: {
         //   latitude: '0',
@@ -132,15 +133,16 @@ const Payment = (props) => {
         //   pinCode: address.pinCode,
         //   area: address.area,
         // },
-        paymentStatus: 'Pending',
-        orderStatus: 'pending',
-  
+        payment_status: 'Pending',
+        order_status: 'pending',
+        order_platform : 'web',
         plusPointsEarned: total.totalPlusPoints,
         promoCodeDetails: {
           promoCode: '',
           promoCodeDiscount: 0,
         },
         productDetails: products,
+        order_ref_id : ''
       };
       saveOrder(data)
         .then((res) => {

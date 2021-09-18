@@ -5,7 +5,7 @@ import { createPet } from '../auth/api'
 import Heading from './Heading';
 
 const CreateProfile = () => {
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
 
   const [formData, setFormData] = useState({
     name: '',

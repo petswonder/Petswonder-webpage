@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { editProfile, isAuthenticated } from '../auth/index';
-import { getPetProfile } from '../auth/api';
+import { isAuthenticated } from '../auth/index';
+import { getPetProfile, editPet } from '../auth/api';
 
 const EditPetProfile = () => {
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
 
   const [formData, setFormData] = useState({
     name: '',
@@ -44,7 +44,8 @@ const EditPetProfile = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    editProfile({ name, gender, dob, breed, category })
+    console.log({ name, gender, dob, breed, category, userNumber} )
+    editPet({ name, gender, dob, breed, category, userNumber})
       .then((data) => {
         setRediect(true);
       })

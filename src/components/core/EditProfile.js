@@ -4,7 +4,7 @@ import { isAuthenticated } from '../auth/index';
 import { editProfile, getProfile } from '../auth/api';
 
 const EditProfile = () => {
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
 
   const [formData, setFormData] = useState({
     userName: '',

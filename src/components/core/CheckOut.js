@@ -8,7 +8,7 @@ const CheckOut = ({ products, cartSummary }) => {
   const [profile, setProfile] = useState({});
   // setSummary(cartSummary)
 
-  // const userNumber = isAuthenticated().data[0].user_mobile
+  // const userNumber = isAuthenticated().user.userNumber
 
 
   // if(summary_data.length == 0){

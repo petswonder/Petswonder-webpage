@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { getProfile, isAuthenticated } from '../auth/index';
+import {  isAuthenticated } from '../auth/index';
+import { getProfile } from '../auth/api';
 // import CreateProfile from '../core/CreateProfile';
 
 const Address = () => {
   const [profile, setProfile] = useState({});
   const [redirect, setRedirect] = useState(false);
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
 
   const [formData, setFormData] = useState({
     mobileNumber: '',
@@ -14,10 +15,7 @@ const Address = () => {
     city: '',
     state: '',
     pinCode: '',
-    area: '',
-    addressLine2: '',
-    longitude: '',
-    latitude: '',
+    address: ''
   });
 
   const {
@@ -26,18 +24,17 @@ const Address = () => {
     city,
     state,
     pinCode,
-    area,
-    addressLine2,
-    addressLine1,
+    address
   } = formData;
 
   useEffect(() => {
-    getProfile(userNumber)
+    getProfile({userNumber})
       .then((data) => {
-        setProfile(data);
+        console.log(data)
+        setProfile(data[0]);
       })
       .catch((error) => {
-        alert(error);
+        // alert(error);
       });
     window.scrollTo(0, 0);
   }, [userNumber]);
@@ -55,19 +52,18 @@ const Address = () => {
     return <Redirect to={{ pathname: '/payment', orderAddress: { formData } }} />
   }
 
-  const address = () => {
+  const addressTemplate = () => {
     return (
       <div className='address'>
         
         <div className='address-block'>
           {/* {console.log(profile)} */}
-          {profile.mobileNumber > 0 && (
+          {profile.user_mobile > 0 && (
             <div className="bg-light p-2">
-              <p className="fs-12 mb-0">Email : {profile.email}</p>
-              <p className="fs-12 mb-0">Mobile : {profile.mobileNumber}</p>
-              <p className="fs-12 mb-0">Address :</p>
-              <p className="fs-12 mb-0">{profile.details.addressLine1}</p>
-              <p className="fs-12 mb-0">{profile.details.state} - {profile.details.pinCode}</p>
+              <p className="fs-12 mb-0">Email : {profile.user_email}</p>
+              <p className="fs-12 mb-0">Mobile : {profile.user_mobile}</p>
+              <p className="fs-12 mb-0">Address : {profile.user_address},{profile.user_district}, {profile.user_city}, {profile.user_state} - {profile.user_pincode}</p>
+              <p className="fs-12 mb-0"></p>
               <button className='btn btn-warning btn-md my-3' onClick={handleClick}>
                 Use Default Address
               </button>
@@ -80,14 +76,13 @@ const Address = () => {
 
   const handleClick = () => {
     setFormData({
-      mobileNumber: profile.mobileNumber,
-      email: profile.email,
-      city: profile.details.city,
-      state: profile.details.state,
-      pinCode: profile.details.pinCode,
-      area: profile.details.area,
-      addressLine2: profile.details.addressLine2,
-      addressLine1: profile.details.addressLine1,
+      mobileNumber: profile.user_mobile,
+      email: profile.user_email,
+      city: profile.user_city,
+      state: profile.user_state,
+      pinCode: profile.user_pincode,
+      address: profile.user_address,
+      // addressLine1: profile.details.addressLine1,
     });
     // <Redirect to='/payment' />;
   };
@@ -97,9 +92,9 @@ const Address = () => {
       <h5 className="my-2 mb-1">Add Address Details</h5>
       <div className="row py-3">
         
-      {profile.mobileNumber > 0 && (
+      {profile.user_mobile > 0 && (
         <div className='col-md-5'>
-          {address()}
+          {addressTemplate()}
         </div>
       )}
 
@@ -150,7 +145,7 @@ const Address = () => {
                   type='text'
                   placeholder='Address'
                   name='addressLine1'
-                  value={addressLine1}
+                  value={address}
                   onChange={(e) => onChange(e)}
                   required
                 />

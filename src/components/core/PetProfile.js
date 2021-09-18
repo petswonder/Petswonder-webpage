@@ -6,7 +6,7 @@ import sed from '../../images/sed.jpg';
 
 const PetProfile = (props) => {
   const [profile, setProfile] = useState({});
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
 
 
   useEffect(() => {

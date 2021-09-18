@@ -7,7 +7,7 @@ import Heading from '../core/Heading';
 
 const Product = ({ product }) => {
   // const {jwt, user:{userNumber}} = isAuthenticated();
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
 
   const [disable, setDisable] = useState(false);
   if (product.inventory === 0) {

@@ -19,7 +19,7 @@ const Card = ({
   const [disable, setDisable] = useState(false);
 
   // const [items, setItems] = useState('');
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
 
   const productId = data.product_id;
   const id = data.product_id;
@@ -49,10 +49,10 @@ const Card = ({
     if (isAuthenticated() === false) {
       setRedirect(true);
     } else {
-      // const userNumber = isAuthenticated().data[0].user_mobile
-      // getCartSummary(userNumber).then((data) => {
-      //   // console.log(data);
-      // });
+      const userNumber = isAuthenticated().user.userNumber
+      getCartSummary({userNumber}).then((data) => {
+        console.log(data);
+      });
     }
   };
 
@@ -68,7 +68,7 @@ const Card = ({
 
   useEffect(() => {
     if (count >= 0) {
-      // const userNumber = isAuthenticated().data[0].user_mobile
+      // const userNumber = isAuthenticated().user.userNumber
       console.log(userNumber)
       isAuthenticated() &&
         cartUpdate &&

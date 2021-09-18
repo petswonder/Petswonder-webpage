@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const OrderHistory = () => {
   const [orderHistory, setOrderHistory] = useState([]);
-  const userNumber = isAuthenticated().data[0].user_mobile
+  const userNumber = isAuthenticated().user.userNumber
 
 
   useEffect(() => {
