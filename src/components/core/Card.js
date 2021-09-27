@@ -19,7 +19,8 @@ const Card = ({
   const [disable, setDisable] = useState(false);
 
   // const [items, setItems] = useState('');
-  const userNumber = isAuthenticated() ? isAuthenticated().user.userNumber : null
+  // console.log(isAuthenticated())
+  // const userNumber = isAuthenticated() ? isAuthenticated().user.userNumber : null
 
   const productId = data.product_id;
   const id = data.product_id;
@@ -32,6 +33,7 @@ const Card = ({
     } else {
       // const {user: { userNumber }} = isAuthenticated();
       // console.log({userNumber, id})
+      const userNumber = isAuthenticated().user.userNumber
       addToCart({ userNumber, id })
         .then((data) => {
           if (data === 'success') {
@@ -68,7 +70,7 @@ const Card = ({
 
   useEffect(() => {
     if (count >= 0) {
-      // const userNumber = isAuthenticated().user.userNumber
+      const userNumber = isAuthenticated().user.userNumber
       console.log(userNumber)
       isAuthenticated() &&
         cartUpdate &&

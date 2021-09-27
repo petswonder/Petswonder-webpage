@@ -7,8 +7,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { isAuthenticated } from '../auth/index';
 import Heading from '../core/Heading';
 
-const userNumber = isAuthenticated() ? isAuthenticated().user.userNumber : ''
+const userNumber = isAuthenticated() !== false ? isAuthenticated().user.userNumber : ''
 
+console.log(isAuthenticated())
 
 
 const Cart = () => {

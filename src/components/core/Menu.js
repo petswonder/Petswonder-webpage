@@ -149,6 +149,7 @@ const Menu = ({ history }) => {
                           className='font-size-14 py-2'
                           onClick={() =>
                             signout(() => {
+                              signout()
                               history.push('/signin');
                             })
                           }

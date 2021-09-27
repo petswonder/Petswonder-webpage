@@ -76,6 +76,7 @@ export const signin = (user) => {
 
 //to check if authenticated
 export const isAuthenticated = () => {
+  // debugger
   if (typeof window == 'undefined') {
     return false;
   }
