@@ -9,7 +9,7 @@ import Heading from '../core/Heading';
 
 const userNumber = isAuthenticated() !== false ? isAuthenticated().data.user_mobile : ''
 
-console.log(isAuthenticated())
+// console.log(isAuthenticated())
 
 
 const Cart = () => {
