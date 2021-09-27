@@ -19,7 +19,7 @@ const Card = ({
   const [disable, setDisable] = useState(false);
 
   // const [items, setItems] = useState('');
-  const userNumber = isAuthenticated().user.userNumber
+  const userNumber = isAuthenticated() ? isAuthenticated().user.userNumber : null
 
   const productId = data.product_id;
   const id = data.product_id;
