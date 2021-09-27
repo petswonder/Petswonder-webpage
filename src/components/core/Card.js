@@ -20,7 +20,7 @@ const Card = ({
 
   // const [items, setItems] = useState('');
   // console.log(isAuthenticated())
-  // const userNumber = isAuthenticated() ? isAuthenticated().user.userNumber : null
+  // const userNumber = isAuthenticated() ? isAuthenticated().data.user_mobile : null
 
   const productId = data.product_id;
   const id = data.product_id;
@@ -33,7 +33,7 @@ const Card = ({
     } else {
       // const {user: { userNumber }} = isAuthenticated();
       // console.log({userNumber, id})
-      const userNumber = isAuthenticated().user.userNumber
+      const userNumber = isAuthenticated().data.user_mobile
       addToCart({ userNumber, id })
         .then((data) => {
           if (data === 'success') {
@@ -51,7 +51,7 @@ const Card = ({
     if (isAuthenticated() === false) {
       setRedirect(true);
     } else {
-      const userNumber = isAuthenticated().user.userNumber
+      const userNumber = isAuthenticated().data.user_mobile
       getCartSummary({userNumber}).then((data) => {
         console.log(data);
       });
@@ -70,7 +70,7 @@ const Card = ({
 
   useEffect(() => {
     if (count >= 0) {
-      const userNumber = isAuthenticated().user.userNumber
+      const userNumber = isAuthenticated().data.user_mobile
       console.log(userNumber)
       isAuthenticated() &&
         cartUpdate &&

@@ -7,7 +7,7 @@ import PetProfile from './PetProfile';
 
 const Profile = (props) => {
   const [profile, setProfile] = useState({});
-  const userNumber = isAuthenticated().user.userNumber
+  const userNumber = isAuthenticated().data.user_mobile
 
 
   useEffect(() => {

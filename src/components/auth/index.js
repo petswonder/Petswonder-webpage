@@ -87,10 +87,10 @@ export const isAuthenticated = () => {
 }
 
 //signout
-export const signout = (next) => {
+export const signout = () => {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('jwt');
-    next();
+    // next();
   }
   return fetch(`https://petswonder.co.in/petswonder/api/signin`, {
     method: 'GET',
