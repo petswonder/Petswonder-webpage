@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import ShopByBrand from '../shopping/ShopByBrand';
-import { productByPets } from '../product/apiProduct';
+import { getProductsByPet } from '../auth/api'; 
 import ShoppingCategories from '../shopping/ShoppingCategories';
 import Slider from '../core/Slider';
 import BannerApi from '../core/BannerApi';
@@ -26,8 +26,8 @@ const Pet = (props) => {
           alert(err);
         });
     }
-    const getProductByName = (name) => {
-      productByPets(name)
+    const getProducts = (name) => {
+      getProductsByPet(name)
         .then((response) => {
           // setData(response);
         })
@@ -35,7 +35,7 @@ const Pet = (props) => {
           alert(err);
         });
     }
-    getProductByName(pet);
+    getProducts(pet);
     getBanners();
     
     window.scrollTo(0, 0);

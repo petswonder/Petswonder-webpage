@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../core/Card';
 import { Link } from 'react-router-dom';
-import { productByBrand } from '../product/apiProduct';
+import { getProductsByBrand } from '../auth/api';
 import Heading from '../core/Heading';
 
 const Brand = (props) => {
   const [data, setData] = useState([]);
 
-  const getProductByName = (name) => {
-    productByBrand(name)
+  const getProducts = (name) => {
+    getProductsByBrand(name)
       .then((response) => {
         setData(response);
       })
@@ -19,7 +19,7 @@ const Brand = (props) => {
   const name = props.match.params.name;
   useEffect(() => {
     // const name = props.match.params.name;
-    getProductByName(name);
+    getProducts(name);
     window.scrollTo(0, 0);
   }, [name]);
 

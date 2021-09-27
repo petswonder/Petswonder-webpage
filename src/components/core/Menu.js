@@ -31,10 +31,10 @@ const Menu = ({ history }) => {
 
   if (jwt) {
     let userNumber = JSON.parse(jwt).data[0].user_mobile
-    getCart({userNumber}).then((data) => {
-      // console.log(data.cart);
-      setCount(data.length);
-    });
+    // getCart({userNumber}).then((data) => {
+    //   // console.log(data.cart);
+    //   setCount(data.length);
+    // });
   }
 
   return (

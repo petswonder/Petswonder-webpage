@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../core/Card';
-import { productByCategory } from '../product/apiProduct';
+import { getProductsByCategory } from '../auth/api';
 import * as icons from '../../images/index';
 import Heading from '../core/Heading';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ const Category = (props) => {
   const icon = icons[`${props.match.params.name}Icon`];
 
   const getProductByCategory = (name, pet) => {
-    productByCategory({ name, pet })
+    getProductsByCategory({ name, pet })
       .then((response) => {
         setData(response);
       })
@@ -24,7 +24,7 @@ const Category = (props) => {
   useEffect(() => {
     // const name = props.match.params.name;
     // const pet = props.match.params.pet;
-    getProductByCategory(name, pet);
+    getProductsByCategory(name, pet);
     window.scrollTo(0, 0);
   }, [name, pet]);
 

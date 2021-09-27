@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../core/Card';
-import { productBySubCategory } from '../product/apiProduct';
+import { getProductsBySubCategory } from '../auth/api';
 import * as icons from '../../images/index';
 import Heading from '../core/Heading';
 
@@ -12,11 +12,11 @@ const SubFood = (props) => {
 
   const name = props.match.params.name;
   const pet = props.match.params.pet;
-  const sub = props.match.params.sub;
-
+  const category = props.match.params.sub;
+  // console.log(props.match.params)
   useEffect(() => {
-    const getProductByCategory = (name, pet) => {
-      productBySubCategory({ name, pet, sub })
+    const getProductByCategory = (category, pet) => {
+      getProductsBySubCategory(category, pet)
         .then((response) => {
           setData(response);
         })
@@ -24,9 +24,9 @@ const SubFood = (props) => {
           alert(err);
         });
     };
-    getProductByCategory(name, pet);
+    getProductByCategory(category, pet);
     window.scrollTo(0, 0);
-  }, [name, pet, sub]);
+  }, [name, pet, category]);
 
   
   // const pet = props.match.params.pet;
@@ -34,7 +34,7 @@ const SubFood = (props) => {
   return (
     <div className=''>
       <img className='category-img w-100' src={icon} alt='' />
-      <Heading text={`${pet} ${sub}`} />
+      <Heading text={`${pet} ${category}`} />
       <div className='container'>
         <div className='row'>
           {data &&

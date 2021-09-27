@@ -117,22 +117,12 @@ const Payment = (props) => {
     if(userNumber !== 0){
       const data = {
         user_mobile: userNumber,
-        order_to : '',
+        order_to : address,
         order_date: new Date(),
         cart_id: '',
         totalPrice: total.totalPrice,
         payment_type: 'COD',
         deliveryCharge: total.totalDeliveryCharge,
-        // address: {
-        //   latitude: '0',
-        //   longitude: '0',
-        //   state: address.state,
-        //   city: address.city,
-        //   addressLine1: address.addressLine1,
-        //   addressLine2: address.addressLine2,
-        //   pinCode: address.pinCode,
-        //   area: address.area,
-        // },
         payment_status: 'Pending',
         order_status: 'pending',
         order_platform : 'web',
@@ -141,15 +131,16 @@ const Payment = (props) => {
           promoCode: '',
           promoCodeDiscount: 0,
         },
-        productDetails: products,
-        order_ref_id : ''
+        productDetails: products
+        // order_ref_id : ''
       };
-      saveOrder(data)
-        .then((res) => {
-          setRedirect(true);
-          deleteCart(userNumber);
-        })
-        .catch((err) => console.log(err));
+      // console.log(data)
+      // saveOrder(data)
+      //   .then((res) => {
+      //     setRedirect(true);
+      //     deleteCart(userNumber);
+      //   })
+      //   .catch((err) => console.log(err));
     }
     else{
       // alert('Not at this moment!!!')

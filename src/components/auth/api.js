@@ -1,7 +1,7 @@
 
 
-// const apiBaseUrl = 'http://localhost:5000'
-const apiBaseUrl = 'http://3.109.207.187:5000/'
+const apiBaseUrl = 'http://localhost:5000'
+// const apiBaseUrl = 'http://3.109.207.187:5000/'
 
 
 
@@ -151,9 +151,36 @@ export const sendOTP = (phoneNumber) => {
 
 //   products api
 
-export const getAllProducts = (search) => {
-  console.log(search)
+export const getAllProducts = () => {
     return fetch(`${apiBaseUrl}/products`).then(res => {
+        return res.json()
+    })
+}
+
+export const getProductsByPet = (pet) => {
+  // console.log(search)
+    return fetch(`${apiBaseUrl}/productbypet?pet=${pet}`).then(res => {
+        return res.json()
+    })
+}
+
+export const getProductsByBrand = (brand) => {
+  // console.log(search)
+    return fetch(`${apiBaseUrl}/productbybrands?brand=${brand}`).then(res => {
+        return res.json()
+    })
+}
+
+export const getProductsByCategory = (category) => {
+  // console.log(search)
+    return fetch(`${apiBaseUrl}/productbycategory?category=${category}`).then(res => {
+        return res.json()
+    })
+}
+
+export const getProductsBySubCategory = (category, pet) => {
+  // console.log(search)
+    return fetch(`${apiBaseUrl}/productbysubcategory?category=${category}&pet=${pet}`).then(res => {
         return res.json()
     })
 }

@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import Card from '../core/Card';
 import Heading from '../core/Heading';
-import { getProducts } from '../product/apiProduct';
+// import { getProducts } from '../product/apiProduct';
+import { getAllProducts } from '../auth/api';
 
 const PopularProductPage = () => {
     const [products, setProducts] = useState([]);
 
     const getProduct = () =>{
         
-        getProducts()
+        getAllProducts()
         .then(response=>{
             setProducts(response)
         })
