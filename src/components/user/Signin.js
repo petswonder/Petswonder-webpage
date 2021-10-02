@@ -130,8 +130,8 @@ const Signin = () => {
         className='signforms border-primary border border-5'
         style={{
           background: `url(${signin_bg})`,
-          'background-size': 'contain',
-          'background-position': 'right center',
+          backgroundSize: 'contain',
+          backgroundPosition: 'right center',
         }}
       >
         {showError()}

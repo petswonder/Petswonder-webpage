@@ -42,6 +42,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(phoneNumber)
     sendOTP(phoneNumber).then((data) => {
       if (data === undefined) {
         setError('User Already exists');

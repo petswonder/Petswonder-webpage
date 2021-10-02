@@ -33,7 +33,8 @@ const Card = ({
     } else {
       // const {user: { userNumber }} = isAuthenticated();
       // console.log({userNumber, id})
-      const userNumber = isAuthenticated().data.user_mobile
+      const userNumber = isAuthenticated().data[0].user_mobile
+      console.log(isAuthenticated())
       addToCart({ userNumber, id })
         .then((data) => {
           if (data === 'success') {

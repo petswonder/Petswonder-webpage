@@ -92,13 +92,13 @@ export const signout = () => {
     localStorage.removeItem('jwt');
     // next();
   }
-  return fetch(`https://petswonder.co.in/petswonder/api/signin`, {
-    method: 'GET',
-  })
-    .then((response) => {
-      console.log('signout', response);
-    })
-    .catch((err) => console.log(err));
+  // return fetch(`https://petswonder.co.in/petswonder/api/signin`, {
+  //   method: 'GET',
+  // })
+  //   .then((response) => {
+  //     console.log('signout', response);
+  //   })
+  //   .catch((err) => console.log(err));
 };
 
 //get profile
