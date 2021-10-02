@@ -1,54 +1,39 @@
 {
-  "name": "petswonder",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.3",
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "animate.css": "^4.1.1",
-    "axios": "^0.21.1",
-    "bootstrap": "^4.5.3",
-    "jquery": "^3.6.0",
-    "lottie-web": "^5.7.8",
-    "mdb-ui-kit": "^3.3.0",
-    "node-sass": "^4.14.1",
-    "react": "^17.0.1",
-    "react-bootstrap": "^1.4.0",
-    "react-cookie": "^4.1.1",
-    "react-day-picker": "^7.4.8",
-    "react-dom": "^17.0.1",
-    "react-notifications-component": "^3.0.4",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
-    "react-slick": "^0.28.1",
-    "reactstrap": "^8.6.0",
-    "slick-carousel": "^1.8.1",
-    "web-vitals": "^0.2.4"
-  },
+  "name": "nodejs_mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node app.js",
+    "dev": "npx nodemon",
+    "create-db": "node ./src/seed/db_creation.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "keywords": [],
+  "author": "Jorge García Torralba",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.980.0",
+    "bcrypt": "^5.0.0",
+    "bootstrap": "^4.5.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-mysql-session": "^2.1.4",
+    "helmet": "^4.1.1",
+    "jquery": "^3.5.1",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.0",
+    "uuid": "^8.3.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
