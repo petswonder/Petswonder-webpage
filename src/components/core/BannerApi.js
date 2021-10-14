@@ -8,12 +8,14 @@ export const BannerApi = () => {
   //   .catch((err) => {
   //     alert(err);
   //   });
-  return [
+  const items = [
     {'id': 1, 'bannerName': require('../../images/banners/1.png').default},
     {'id': 2, 'bannerName': require('../../images/banners/2.jpg').default},
     {'id': 3, 'bannerName': require('../../images/banners/3.jpg').default},
     {'id': 4, 'bannerName': require('../../images/banners/4.jpg').default},
     {'id': 5, 'bannerName': require('../../images/banners/5.jpg').default}
   ]
+  console.log(JSON.stringify(items))
+  return JSON.stringify(items)
 };
 export default BannerApi;
