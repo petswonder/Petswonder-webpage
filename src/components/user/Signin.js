@@ -30,7 +30,7 @@ const Signin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // console.log({userNumber, password})
     signin({ userNumber, password }).then((data) => {
       // console.log(data)
       if (data.length === 1) {
