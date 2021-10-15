@@ -153,7 +153,7 @@ export const sendOTP = (phoneNumber) => {
 //   products api
 
 export const getAllProducts = () => {
-    return fetch(`${apiBaseUrl}/products`).then(res => {
+    return fetch(`${apiBaseUrl}/products`, {headers: {'Access-Control-Allow-Origin':'*', 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'}}).then(res => {
         return res.json()
     })
 }
