@@ -3,13 +3,18 @@
 // const apiBaseUrl = 'http://localhost:5000'
 const apiBaseUrl = 'https://adminpetswonder.in/api'
 
+const header_opts = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin':'*',
+  'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+}
 
 
 // const csrf = () => {
 //     // console.log(headers)
 //     return fetch(`${apiBaseUrl}/`).then(res => {
 //         // headers['CSRF-Token'] = res.json()
-//         // console.log(headers)
+//         // console.log(headers)   
 //         return res.json()
 //     })
 // }
@@ -66,7 +71,7 @@ export const sendOTP = (phoneNumber) => {
       {
           method: 'POST',
           // mode: 'no-cors',
-          headers: {'Content-Type': 'application/json'},
+          headers: header_opts,
           body: JSON.stringify(userData)
       }).then((response) => {
         return response.json();
@@ -136,7 +141,7 @@ export const sendOTP = (phoneNumber) => {
       return fetch(`${apiBaseUrl}/editpetprofile`,
       {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
+          headers: {'Content-Type': 'application/json', header_opts},
           body: JSON.stringify(data)
       }).then((response) => {
         return response.json();
@@ -153,7 +158,7 @@ export const sendOTP = (phoneNumber) => {
 //   products api
 
 export const getAllProducts = () => {
-    return fetch(`${apiBaseUrl}/products`, {headers: {'Access-Control-Allow-Origin':'*', 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'}}).then(res => {
+    return fetch(`${apiBaseUrl}/products`, {headers: header_opts}).then(res => {
         return res.json()
     })
 }
