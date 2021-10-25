@@ -17,7 +17,7 @@ const Payment = (props) => {
   var products = [];
   // debugger
 
-  const userNumber = isAuthenticated().data.user_mobile
+  const userNumber = isAuthenticated().data[0].user_mobile
   // console.log(userNumber)
 
   useEffect(() => {

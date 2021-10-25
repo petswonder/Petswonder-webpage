@@ -4,7 +4,8 @@ import { isAuthenticated } from '../auth/index';
 import { editProfile, getProfile } from '../auth/api';
 
 const EditProfile = () => {
-  const userNumber = isAuthenticated().data.user_mobile
+  const userNumber = isAuthenticated().data[0].user_mobile
+  // console.log(isAuthenticated().data[0])
 
   const [formData, setFormData] = useState({
     userName: '',
@@ -89,7 +90,7 @@ const EditProfile = () => {
               <input
                 className='ml-1 col-md-12 effect-11'
                 type='text'
-                placeholder='Pet Name'
+                placeholder='Name'
                 name='userName'
                 value={userName}
                 onChange={(e) => onChange(e)}

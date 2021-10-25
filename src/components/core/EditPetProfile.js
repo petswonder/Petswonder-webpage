@@ -4,7 +4,7 @@ import { isAuthenticated } from '../auth/index';
 import { getPetProfile, editPet } from '../auth/api';
 
 const EditPetProfile = () => {
-  const userNumber = isAuthenticated().data.user_mobile
+  const userNumber = isAuthenticated().data[0].user_mobile
 
   const [formData, setFormData] = useState({
     name: '',

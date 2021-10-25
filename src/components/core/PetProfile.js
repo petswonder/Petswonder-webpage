@@ -6,15 +6,16 @@ import sed from '../../images/sed.jpg';
 
 const PetProfile = (props) => {
   const [profile, setProfile] = useState({});
-  const userNumber = isAuthenticated().data.user_mobile
+  const userNumber = isAuthenticated().data[0].user_mobile
 
 
   useEffect(() => {
     getPetProfile({userNumber})
       .then((data) => {
         // debugger
-        console.log(data)
-        setProfile(data)
+        // console.log(data)
+        setProfile(data[0])
+        // console.log(data[0])
       })
       .catch((error) => {
         alert(error);

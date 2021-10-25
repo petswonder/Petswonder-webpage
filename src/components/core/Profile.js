@@ -7,8 +7,8 @@ import PetProfile from './PetProfile';
 
 const Profile = (props) => {
   const [profile, setProfile] = useState({});
-  const userNumber = isAuthenticated().data.user_mobile
-
+  const userNumber = isAuthenticated().data[0].user_mobile
+console.log(isAuthenticated())
 
   useEffect(() => {
     getProfile({userNumber})

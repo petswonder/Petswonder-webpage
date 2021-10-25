@@ -5,7 +5,8 @@ import { editProfile } from '../auth/api';
 import Heading from './Heading';
 
 const CreateProfile = () => {
-  const userData = isAuthenticated().user
+  // console.log(isAuthenticated())
+  const userData = isAuthenticated().data[0]
   const userNumber = userData.userNumber
   const [formData, setFormData] = useState({
     profileName: userData.name,

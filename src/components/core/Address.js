@@ -7,8 +7,8 @@ import { getProfile } from '../auth/api';
 const Address = () => {
   const [profile, setProfile] = useState({});
   const [redirect, setRedirect] = useState(false);
-  const userNumber = isAuthenticated().data.user_mobile
-
+  const userNumber = isAuthenticated().data[0].user_mobile
+  // console.log(isAuthenticated())
   const [formData, setFormData] = useState({
     mobileNumber: '',
     email: '',

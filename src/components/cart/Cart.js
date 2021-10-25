@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { isAuthenticated } from '../auth/index';
 import Heading from '../core/Heading';
 
-const userNumber = isAuthenticated() !== false ? isAuthenticated().data.user_mobile : ''
+const userNumber = isAuthenticated() !== false ? isAuthenticated().data[0].user_mobile : ''
 
 // console.log(isAuthenticated())
 
