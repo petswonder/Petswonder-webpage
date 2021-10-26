@@ -12,6 +12,7 @@ const Category = (props) => {
   const getProductByCategory = (name, pet) => {
     getProductsByCategory({ name, pet })
       .then((response) => {
+        console.log(response)
         setData(response);
       })
       .catch((err) => {
@@ -24,7 +25,7 @@ const Category = (props) => {
   useEffect(() => {
     // const name = props.match.params.name;
     // const pet = props.match.params.pet;
-    getProductsByCategory(name, pet);
+    getProductByCategory(name, pet);
     window.scrollTo(0, 0);
   }, [name, pet]);
 

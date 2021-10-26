@@ -144,7 +144,7 @@ const Address = () => {
                   className='col-md-12'
                   type='text'
                   placeholder='Address'
-                  name='addressLine1'
+                  name='address'
                   value={address}
                   onChange={(e) => onChange(e)}
                   required

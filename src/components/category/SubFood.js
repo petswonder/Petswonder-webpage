@@ -18,6 +18,7 @@ const SubFood = (props) => {
     const getProductByCategory = (category, pet) => {
       getProductsBySubCategory(category, pet)
         .then((response) => {
+          // console.log(response)
           setData(response);
         })
         .catch((err) => {
@@ -36,16 +37,17 @@ const SubFood = (props) => {
       <img className='category-img w-100' src={icon} alt='' />
       <Heading text={`${pet} ${category}`} />
       <div className='container'>
-        <div className='row'>
-          {data &&
-            data.map((p, i) => (
-              <div
-                key={i}
-                className='col-xl-3 col-lg-4 col-6 product col-md-3 my-3'
-              >
-                <Card data={p} />
-              </div>
-            ))}
+        <div className='row justify-content-center'>
+          {data.length === 0 ? (<h3 className="my-2">No Search Results</h3>) : (
+              data.map((p, i)=> (
+                <div
+                  key={i}
+                  className='col-xl-3 col-lg-4 col-6 product col-md-3 my-3'
+                >
+                  <Card data={p} />
+                </div>         
+              ))
+          )}
         </div>
       </div>
     </div>
