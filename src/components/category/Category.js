@@ -89,15 +89,15 @@ const Category = (props) => {
         <Heading text={`Pet ${name}`} />
       </div>
       <div className='container'>
-        <div className='row'>
+        <div className='row justify-content-center'>
           {name === 'Food' && FoodCategories()}
-          <div className='row my-4'>
-            {data &&
+          <div className='row my-4 '>
+            {data.length === 0 ? (<h3 className="my-2">No Search Results</h3>) : (data &&
               data.map((p, i) => (
                 <div key={i} className='col-xl-3 col-lg-4 col-6 product'>
                   <Card data={p} />
                 </div>
-              ))}
+              )))}
           </div>
         </div>
       </div>
