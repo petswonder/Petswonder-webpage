@@ -275,10 +275,10 @@ const Signup = () => {
     <div className='container py-5'>
       <div
         className='signforms border-primary border border-5'
+        backgroundPosition="right center"
+        backgroundSize="contain"
         style={{
-          background: `url(${signin_bg})`,
-          'background-size': 'contain',
-          'background-position': 'right center',
+          background: `url(${signin_bg})`
         }}
       >
         {redirectUser()}

@@ -22,6 +22,7 @@ const Cart = () => {
       // console.log(userNumber)
       getCart({userNumber})
         .then((data) => {
+          console.log(data)
           setItems(data);
         })
         .catch((err) => {

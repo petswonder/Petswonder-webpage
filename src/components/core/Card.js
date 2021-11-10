@@ -73,11 +73,9 @@ const Card = ({
     if (count >= 0) {
       const userNumber = isAuthenticated().data[0].user_mobile
       console.log(userNumber)
-      isAuthenticated() &&
-        cartUpdate &&
-        updateItem({ userNumber, productId, count })
+      updateItem({ userNumber, productId, count })
           .then((data) => {
-            // console.log(data);
+            console.log(data);
           })
           .catch((err) => {
             alert(err);
@@ -85,6 +83,9 @@ const Card = ({
     }
     if (data.inventory === 0) {
       setDisable(true);
+    }
+    if(count == 0){
+      console.log('0')
     }
   }, [count, cartUpdate, data.inventory, productId]);
 

@@ -221,6 +221,7 @@ export const getCart = (data) => {
 }
 
 export const updateItem = (data) => {
+  console.log(data)
     return fetch(`${apiBaseUrl}/cart/updatecart`,{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
